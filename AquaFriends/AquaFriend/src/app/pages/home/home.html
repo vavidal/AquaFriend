@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Parque Acuario Puyehue y granja </title>
+        <meta name="description"
+            content="Acuario Puyehue: exhibiciones, granja educativa y programas escolares en la Patagonia chilena." />
+        <meta name="theme-color" content="#0d6efd" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+        <style>
+      :root{--brand:#0d6efd}
+      .navbar-logo{height:48px}
+      .section-title{font-weight:800}
+      .rounded-xxl{border-radius:1.25rem}
+      header.hero{min-height:60svh;background:linear-gradient(180deg,#0d6efd22,transparent), url('/proyecto_acuario/src/imagenes/hero.jpg') center/cover no-repeat; position:relative}
+      header.hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,#00000066,transparent 40%,#00000066)}
+      header.hero .content{position:relative;z-index:1;color:#fff}
+      .icon-grid svg{width:72px;height:72px;display:block;margin-inline:auto}
+      .icon-grid .kw{font-size:.85rem;line-height:1.15}
+      .btn-brand{--bs-btn-bg:var(--brand);--bs-btn-border-color:var(--brand);--bs-btn-hover-bg:#0b5ed7;--bs-btn-hover-border-color:#0b5ed7}
+      .gallery-img{aspect-ratio:4/3;object-fit:cover}
+      .site-footer a{color:inherit}
+      #btnTop{right:1rem;bottom:1rem}
+    </style>
+    </head>
+    <body data-bs-spy="scroll" data-bs-target="#mainNav" tabindex="0">
+        <nav id="mainNav"
+            class="navbar navbar-expand-lg sticky-top bg-white border-bottom">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#inicio"
+                    aria-label="Ir al inicio">
+                    <img src="/proyecto_acuario/src/imagenes/Logo_acuario.png"
+                        class="navbar-logo" alt="Parque Acuario Puyehue" />
+                </a>
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navMenu"
+                    aria-label="Abrir menú"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul
+                        class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                        <li class="nav-item"><a class="nav-link"
+                                href="#exhibiciones">Exhibiciones</a></li>
+                        <li class="nav-item"><a class="nav-link"
+                                href="#entradas">Entradas</a></li>
+                        <li class="nav-item"><a class="nav-link"
+                                href="#galeria">Galería</a></li>
+                        <li class="nav-item"><a class="nav-link"
+                                href="#visitanos">Visítanos</a></li>
+                        <li class="nav-item ms-lg-3 w-100 w-lg-auto">
+                            <form class="d-flex" role="search"
+                                onsubmit="return false;">
+                                <div class="input-group">
+                                    <input class="form-control" type="search"
+                                        placeholder="Buscar..."
+                                        aria-label="Buscar" />
+                                    <button class="btn btn-outline-secondary"
+                                        type="button" id="btnBuscar"
+                                        title="Buscar"><i
+                                            class="bi bi-search"></i></button>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <header id="inicio" class="hero d-grid align-items-center"
+            style="background: url('/proyecto_acuario/src/imagenes/imagen_inicio.jpg') no-repeat center center/cover; height: 100vh;">
+            <div class="overlay"
+                style="background-color: rgba(0,0,0,0.4); height: 100%; width: 100%; position: absolute; top: 0; left: 0;"></div>
+            <div class="container content py-5 text-center"
+                style="position: relative; z-index: 1;">
+                <h1 class="display-5 fw-bold">Acuario Puyehue &amp; Granja
+                    Educativa</h1>
+                <p class="lead mb-4">Aprendizaje, biodiversidad y turismo
+                    educativo en el sur de Chile.</p>
+            </div>
+        </header>
+
+        <main>
+            <section class="py-5 bg-light">
+                <div class="container">
+                    <div
+                        class="row text-center icon-grid g-4 justify-content-center">
+                        <div class="col-6 col-md-3">
+                            <svg viewBox="0 0 24 24" fill="#5b8aa1"
+                                aria-hidden="true"><path
+                                    d="M3 14c3 0 4-3 6-3s3 3 6 3 3-2 6-2v3c0 2.2-1.8 4-4 4H7c-2.2 0-4-1.8-4-4v-1zM4 8l2 1 3-2 3 1 4-3 2 1v2l-2-1-4 3-3-1-3 2-2-1V8z" /></svg>
+                            <p class="mt-2 mb-0 fw-semibold">acuario</p>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <svg viewBox="0 0 24 24" fill="#68a87a"
+                                aria-hidden="true"><path
+                                    d="M7 12c-2.8 0-5-2.2-5-5 3 0 5 2.2 5 5zm5 5c-2.8 0-5-2.2-5-5 3 0 5 2.2 5 5zm5-5c0-2.8 2-5 5-5 0 2.8-2.2 5-5 5z" /></svg>
+                            <ul class="list-unstyled mt-2 mb-0 kw">
+                                <li>biodiversidad</li><li>conciencia</li><li>medioambiental</li><li>huerto</li><li>invernadero</li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <svg viewBox="0 0 24 24" fill="#f08e41"
+                                aria-hidden="true"><circle cx="6" cy="7"
+                                    r="2" /><path
+                                    d="M2 19c0-3 3-5 6-5h1c3 0 6 2 6 5H2z" /></svg>
+                            <ul class="list-unstyled mt-2 mb-0 kw">
+                                <li>mirador</li><li>parque</li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <svg viewBox="0 0 24 24" fill="#cc5a1b"
+                                aria-hidden="true"><path
+                                    d="M13 7c3 0 7 2 9 5-2 3-6 5-9 5-3 0-5-1-7-3l-4 1 2-3-2-3 4 1c2-2 4-3 7-3zm7 5l2 2-2 1-1-1 1-2z" /></svg>
+                            <ul class="list-unstyled mt-2 mb-0 kw">
+                                <li>peces</li><li>especies
+                                    marinas</li><li>agua</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="exhibiciones" class="py-5">
+                <div class="container">
+                    <div class="row mb-4">
+                        <div class="col-lg-8">
+                            <h2 class="section-title">Exhibiciones
+                                destacadas</h2>
+                            <p class="text-muted">Acuarios de agua dulce, granja
+                                educativa y áreas exteriores para aprender
+                                haciendo.</p>
+                        </div>
+                        <div
+                            class="col-lg-4 d-flex align-items-end justify-content-lg-end">
+                            <button class="btn btn-link p-0"
+                                data-bs-toggle="modal"
+                                data-bs-target="#politicasModal">
+                                <i class="bi bi-info-circle me-1"></i> Políticas
+                                de visita
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-4">
+                            <article class="card h-100 rounded-xxl">
+                                <img
+                                    src="/proyecto_acuario/src/imagenes/imagen_inicio.jpg"
+                                    class="card-img-top"
+                                    alt="Acuario de agua dulce con especies nativas"
+                                    loading="lazy" />
+                                <div class="card-body">
+                                    <h3 class="h5">Acuario</h3>
+                                    <p>Observa el ciclo de vida de salmónidos y
+                                        otras especies dulceacuícolas.</p>
+                                    <button class="btn btn-outline-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#exhibicionModal"
+                                        data-title="Acuario"
+                                        data-desc="Fauna de agua dulce, filtros y biofiltros, sala de incubación y tratamiento.">Ver
+                                        más</button>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <article class="card h-100 rounded-xxl">
+                                <img
+                                    src="/proyecto_acuario/src/imagenes/granja.jpg"
+                                    class="card-img-top"
+                                    alt="Zona de granja con animales para interacción"
+                                    loading="lazy" />
+                                <div class="card-body">
+                                    <h3 class="h5">Granja educativa</h3>
+                                    <p>Interacción respetuosa con animales de
+                                        granja y mediación guiada.</p>
+                                    <button class="btn btn-outline-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#exhibicionModal"
+                                        data-title="Granja educativa"
+                                        data-desc="Actividades guiadas, bienestar animal y contenidos de sustentabilidad.">Ver
+                                        más</button>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <article class="card h-100 rounded-xxl">
+                                <img
+                                    src="/proyecto_acuario/src/imagenes/coto_pesca.jpeg"
+                                    class="card-img-top"
+                                    alt="Coto de pesca deportiva con devolución"
+                                    loading="lazy" />
+                                <div class="card-body">
+                                    <h3 class="h5">Coto de pesca (catch &amp;
+                                        release)</h3>
+                                    <p>Pesca deportiva responsable en laguna,
+                                        con devolución.</p>
+                                    <button class="btn btn-outline-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#exhibicionModal"
+                                        data-title="Coto de pesca"
+                                        data-desc="Actividad supervisada y responsable con el entorno.">Ver
+                                        más</button>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="programas" class="py-5 bg-light">
+                <div class="container">
+                    <div class="row mb-4 align-items-end">
+                        <div class="col-lg-8">
+                            <h2 class="section-title">Programas Educativos</h2>
+                            <p class="text-muted mb-0">Enfoque por niveles con
+                                mediación y contenidos curriculares: ciencias,
+                                geografía, tecnología y medioambiente.</p>
+                        </div>
+                        <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                            <a class="btn btn-brand" href="#contacto">Reservar
+                                visita pedagógica</a>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 rounded-xxl">
+                                <div class="card-header"><h3
+                                        class="h5 mb-0">Programa N°1 · Visita
+                                        básica</h3></div>
+                                <div class="card-body">
+                                    <p>Recorrido por acuarios y granja con
+                                        monitor(a). Charla de seguridad e
+                                        introducción al desarrollo de
+                                        especies.</p>
+                                    <ul class="small text-muted mb-3">
+                                        <li>Patio de juegos, mirador y coto de
+                                            pesca.</li>
+                                        <li>Duración estimada: 60–90 min.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <div
+                                class="card h-100 rounded-xxl border-2 border-primary">
+                                <div
+                                    class="card-header d-flex justify-content-between align-items-center">
+                                    <h3 class="h5 mb-0">Programa N°2 · Visita
+                                        académica</h3>
+                                    <span
+                                        class="badge bg-primary">Recomendado</span>
+                                </div>
+                                <div class="card-body">
+                                    <p>Profundización biológica, técnica y de
+                                        ingeniería.</p>
+                                    <ul class="small text-muted mb-3">
+                                        <li>Charlas: seguridad, medioambiente y
+                                            geografía.</li>
+                                        <li>Ciclo de vida de salmónidos,
+                                            filtros/biofiltros, incubación.</li>
+                                        <li>Interacción con peces y animales de
+                                            granja.</li>
+                                        <li>Duración: 2.0–2.5 h.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 rounded-xxl">
+                                <div class="card-header"><h3
+                                        class="h5 mb-0">Programa N°3 · Taller
+                                        aplicado</h3></div>
+                                <div class="card-body">
+                                    <p>Incluye lo del N°2 y actividades
+                                        prácticas:</p>
+                                    <ul class="small text-muted mb-3">
+                                        <li>Habilidades blandas en terreno.</li>
+                                        <li>Anatomía de un pez (modelado),
+                                            necropsia demostrativa.</li>
+                                        <li>Traslado de peces, plenario por
+                                            grupos y evaluación.</li>
+                                        <li>Certificación para participantes.
+                                            Duración: 2.5–3.5 h.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info mt-4" role="alert">
+                        <i class="bi bi-info-circle me-2"></i>
+                        Reservas con mínimo 15 días de anticipación. Traslados y
+                        seguros son responsabilidad de la institución
+                        solicitante.
+                    </div>
+                </div>
+            </section>
+
+            <section id="entradas" class="py-5">
+                <div class="container">
+                    <div class="row mb-4 align-items-end">
+                        <div class="col-lg-8">
+                            <h2 class="section-title">Entradas &amp;
+                                Horarios</h2>
+                            <p class="text-muted mb-0">Viernes a domingo · 11:00
+                                a 17:00 (último ingreso 45 min antes del
+                                cierre).</p>
+                        </div>
+                        <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                            <a href="#contacto" class="btn btn-brand">Contactar
+                                ventas</a>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card rounded-xxl h-100">
+                                <div class="card-header"><h3
+                                        class="h5 mb-0">Niños</h3></div>
+                                <div class="card-body">
+                                    <p class="display-6 mb-0">$5.500</p>
+                                    <span class="text-muted">2 a 12 años</span>
+                                    <ul
+                                        class="mt-3 mb-0 small text-muted"><li>Acompañados
+                                            por un adulto</li></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div
+                                class="card rounded-xxl h-100 border-2 border-primary">
+                                <div
+                                    class="card-header d-flex align-items-center justify-content-between">
+                                    <h3 class="h5 mb-0">Adultos</h3>
+                                    <span
+                                        class="badge bg-primary">Popular</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="display-6 mb-0">$7.500</p>
+                                    <span class="text-muted">Entrada
+                                        general</span>
+                                    <ul
+                                        class="mt-3 mb-0 small text-muted"><li>Acceso
+                                            a todo el recinto</li></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card rounded-xxl h-100">
+                                <div class="card-header"><h3
+                                        class="h5 mb-0">Tercera Edad</h3></div>
+                                <div class="card-body">
+                                    <p class="display-6 mb-0">$5.500</p>
+                                    <span class="text-muted">Con cédula
+                                        vigente</span>
+                                    <ul
+                                        class="mt-3 mb-0 small text-muted"><li>Acceso
+                                            a todo el recinto</li></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-lg-8">
+                            <div class="accordion" id="faq">
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header" id="faq1h">
+                                        <button class="accordion-button"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#faq1">¿Se puede
+                                            comprar entrada en el
+                                            lugar?</button>
+                                    </h3>
+                                    <div id="faq1"
+                                        class="accordion-collapse collapse show"
+                                        data-bs-parent="#faq">
+                                        <div class="accordion-body">Sí, sujeto a
+                                            aforo. Recomendamos reservar con
+                                            anticipación.</div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header" id="faq2h">
+                                        <button
+                                            class="accordion-button collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#faq2">¿Descuentos
+                                            para instituciones?</button>
+                                    </h3>
+                                    <div id="faq2"
+                                        class="accordion-collapse collapse"
+                                        data-bs-parent="#faq">
+                                        <div class="accordion-body">Sí.
+                                            Escríbenos desde <a
+                                                href="#contacto">Contacto</a>
+                                            para cotizar visitas guiadas.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="galeria" class="py-5 bg-light">
+                <div class="container">
+                    <div class="row mb-4">
+                        <div class="col-lg-8">
+                            <h2 class="section-title">Galería</h2>
+                            <p class="text-muted">Un vistazo a nuestras áreas y
+                                actividades.</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-6 col-md-4">
+                            <a href="#" data-bs-toggle="modal"
+                                data-bs-target="#lightboxModal"
+                                data-img="/proyecto_acuario/src/imagenes/vista_cafe_acuario.jpg">
+                                <img class="w-100 rounded gallery-img"
+                                    src="/proyecto_acuario/src/imagenes/vista_cafe_acuario.jpg"
+                                    alt="Vista interior del acuario"
+                                    loading="lazy" />
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <a href="#" data-bs-toggle="modal"
+                                data-bs-target="#lightboxModal"
+                                data-img="/proyecto_acuario/src/imagenes/coto_pesca.jpeg">
+                                <img class="w-100 rounded gallery-img"
+                                    src="/proyecto_acuario/src/imagenes/coto_pesca.jpeg"
+                                    alt="Coto de pesca con devolución"
+                                    loading="lazy" />
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <a href="#" data-bs-toggle="modal"
+                                data-bs-target="#lightboxModal"
+                                data-img="/proyecto_acuario/src/imagenes/mirador.jpg">
+                                <img class="w-100 rounded gallery-img"
+                                    src="/proyecto_acuario/src/imagenes/mirador.jpg"
+                                    alt="Mirador y cordillera" loading="lazy" />
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <a href="#" data-bs-toggle="modal"
+                                data-bs-target="#lightboxModal"
+                                data-img="/proyecto_acuario/src/imagenes/granja.jpg">
+                                <img class="w-100 rounded gallery-img"
+                                    src="/proyecto_acuario/src/imagenes/granja.jpg"
+                                    alt="Granja educativa" loading="lazy" />
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <a href="#" data-bs-toggle="modal"
+                                data-bs-target="#lightboxModal"
+                                data-img="/proyecto_acuario/src/imagenes/zona_juegos.jpg">
+                                <img class="w-100 rounded gallery-img"
+                                    src="/proyecto_acuario/src/imagenes/zona_juegos.jpg"
+                                    alt="Zona de juegos" loading="lazy" />
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <a href="#" data-bs-toggle="modal"
+                                data-bs-target="#lightboxModal"
+                                data-img="/proyecto_acuario/src/imagenes/bosque_lluvioso.jpg">
+                                <img class="w-100 rounded gallery-img"
+                                    src="/proyecto_acuario/src/imagenes/bosque_lluvioso.jpg"
+                                    alt="Bosque lluvioso" loading="lazy" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="visitanos" class="py-5">
+                <div class="container">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-6">
+                            <h2 class="section-title">¿Cómo llegar?</h2>
+                            <p class="text-muted">Ruta Interlagos, comuna de
+                                Puyehue, Región de Los Lagos. A 15 min de Entre
+                                Lagos y 50 min de Osorno.</p>
+                            <ul class="list-unstyled small">
+                                <li class="mb-2"><i
+                                        class="bi bi-geo-alt me-2"></i>Coordenadas:
+                                    -40.7, -72.6</li>
+                                <li class="mb-2"><i
+                                        class="bi bi-clock me-2"></i>Viernes a
+                                    Domingo: 11:00 - 17:00</li>
+                                <li class="mb-2"><i
+                                        class="bi bi-cup-hot me-2"></i>Acuario,
+                                    granja y tienda</li>
+                            </ul>
+                            <a class="btn btn-outline-primary"
+                                href="https://www.google.com/maps/dir/?api=1&destination=-40.7,-72.6"
+                                target="_blank" rel="noopener">Abrir en Google
+                                Maps</a>
+                        </div>
+                        <div class="col-lg-6">
+                            <div
+                                class="ratio ratio-16x9 rounded-xxl overflow-hidden shadow">
+                                <iframe title="Mapa Puyehue"
+                                    src="https://www.google.com/maps?q=-40.7,-72.6&hl=es&z=10&output=embed"
+                                    allowfullscreen loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contacto" class="py-5 bg-light">
+                <div class="container">
+                    <div class="row mb-4">
+                        <div class="col-lg-8">
+                            <h2 class="section-title">Contáctanos</h2>
+                            <p class="text-muted">Te responderemos a la
+                                brevedad.</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-lg-7">
+                            <form id="formReserva" class="needs-validation"
+                                novalidate>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="nombre"
+                                            class="form-label">Nombre</label>
+                                        <input id="nombre" name="nombre"
+                                            type="text" class="form-control"
+                                            required />
+                                        <div class="invalid-feedback">Ingresa tu
+                                            nombre.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email"
+                                            class="form-label">Correo</label>
+                                        <input id="email" name="email"
+                                            type="email" class="form-control"
+                                            required />
+                                        <div class="invalid-feedback">Correo no
+                                            válido.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="fecha"
+                                            class="form-label">Fecha de
+                                            visita</label>
+                                        <input id="fecha" name="fecha"
+                                            type="date" class="form-control"
+                                            required />
+                                        <div class="invalid-feedback">Selecciona
+                                            una fecha.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="personas"
+                                            class="form-label">Personas</label>
+                                        <input id="personas" name="personas"
+                                            type="number" min="1" value="2"
+                                            class="form-control" required />
+                                        <div class="invalid-feedback">Indica el
+                                            número de personas.</div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="mensaje"
+                                            class="form-label">Mensaje</label>
+                                        <textarea id="mensaje" name="mensaje"
+                                            rows="4" class="form-control"
+                                            placeholder="Comentarios o requerimientos especiales"></textarea>
+                                    </div>
+                                    <div class="d-none">
+                                        <label for="hp">No llenar</label>
+                                        <input id="hp" type="text"
+                                            name="empresa" tabindex="-1"
+                                            autocomplete="off" />
+                                    </div>
+                                    <div class="col-12 d-grid d-md-block">
+                                        <button class="btn btn-brand btn-lg"
+                                            type="submit">Enviar
+                                            solicitud</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <aside class="col-lg-5">
+                            <div class="card rounded-xxl h-100">
+                                <div class="card-body">
+                                    <h3 class="h5 mb-3">Información de
+                                        contacto</h3>
+                                    <p class="mb-1"><i
+                                            class="bi bi-telephone me-2"></i><a
+                                            href="tel:+56912345678">+56 9 1234
+                                            5678</a></p>
+                                    <p class="mb-1"><i
+                                            class="bi bi-envelope me-2"></i><a
+                                            href="mailto:contacto@acuariopuyehue.cl">contacto@acuariopuyehue.cl</a></p>
+                                    <p class="mb-3"><i
+                                            class="bi bi-instagram me-2"></i><a
+                                            href="https://instagram.com/acuariopuyehue"
+                                            target="_blank"
+                                            rel="noopener">@acuariopuyehue</a></p>
+                                    <div class="alert alert-success d-none"
+                                        id="alertaOk" role="alert">¡Gracias!
+                                        Hemos recibido tu solicitud.</div>
+                                    <div class="alert alert-danger d-none"
+                                        id="alertaError" role="alert">Ocurrió un
+                                        problema. Intenta nuevamente.</div>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer bg-dark text-white-50">
+            <div class="container py-5">
+                <div class="row g-4 text-center text-md-start">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <h5 class="text-white">Dirección</h5>
+                        <address class="mb-0">Ruta Interlagos T981U, kilómetro
+                            3<br>Sector Chiscaihue, Río Bueno · Región de Los
+                            Ríos</address>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <h5 class="text-white">Feriados y fines de semana</h5>
+                        <p class="mb-1">10:00 - 23:00</p>
+                        <p class="mb-0"><a
+                                class="link-light text-decoration-none"
+                                href="tel:+56966225698">+56 9 6622 5698</a></p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <h5 class="text-white">Horarios</h5>
+                        <p class="mb-3">Lunes - viernes 07:00 - 23:00</p>
+                        <div
+                            class="d-flex gap-3 justify-content-center justify-content-md-start">
+                            <a href="#" aria-label="Facebook"><i
+                                    class="bi bi-facebook"></i></a>
+                            <a href="#" aria-label="Twitter"><i
+                                    class="bi bi-twitter"></i></a>
+                            <a href="https://instagram.com/acuariopuyehue"
+                                aria-label="Instagram"><i
+                                    class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <h5 class="text-white">Noticias</h5>
+                        <form class="sf-form" onsubmit="return false;">
+                            <label for="newsletter"
+                                class="visually-hidden">Correo</label>
+                            <input id="newsletter" type="email"
+                                class="form-control mb-3"
+                                placeholder="Tu correo" />
+                            <button type="submit"
+                                class="btn btn-brand w-100 fw-semibold">Suscribirse</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-black">
+                <div class="container text-center py-3">
+                    <small>Todos los derechos reservados © <span
+                            id="year"></span> Parque Acuario Puyehue</small>
+                </div>
+            </div>
+        </footer>
+
+        <button id="btnTop"
+            class="btn btn-primary rounded-circle position-fixed d-none"
+            type="button" aria-label="Volver arriba">
+            <i class="bi bi-arrow-up"></i>
+        </button>
+
+        <div class="modal fade" id="exhibicionModal" tabindex="-1"
+            aria-hidden="true" aria-labelledby="exhibicionTitle">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"
+                            id="exhibicionTitle">Exhibición</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body" id="exhibicionDesc">Descripción de
+                        la exhibición.</div>
+                    <div class="modal-footer">
+                        <a href="#entradas" class="btn btn-brand">Comprar
+                            entradas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="lightboxModal" tabindex="-1"
+            aria-hidden="true">
+            <div
+                class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down modal-lg">
+                <div class="modal-content bg-dark border-0">
+                    <img id="lightboxImg" alt="Imagen de galería" class="w-100"
+                        loading="lazy" />
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="politicasModal" tabindex="-1"
+            aria-hidden="true" aria-labelledby="politicasTitle">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="politicasTitle">Políticas de
+                            visita</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body small text-muted">
+                        <ul>
+                            <li>Prohibido alimentar animales fuera de
+                                actividades guiadas.</li>
+                            <li>No se permite flash en áreas sensibles.</li>
+                            <li>Menores de 12 años deben entrar
+                                acompañados.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+        const lightboxModal = document.getElementById('lightboxModal');
+        const lightboxImg = document.getElementById('lightboxImg');
+        document.querySelectorAll('[data-bs-target="#lightboxModal"]').forEach(link=>{
+          link.addEventListener('click', e=>{
+            e.preventDefault();
+            lightboxImg.src = link.getAttribute('data-img') || link.querySelector('img')?.src || '';
+            lightboxImg.alt = link.querySelector('img')?.alt || 'Imagen de galería';
+          });
+        });
+        lightboxModal.addEventListener('hidden.bs.modal',()=>{lightboxImg.src='';lightboxImg.alt='';});
+        const exModal = document.getElementById('exhibicionModal');
+        exModal?.addEventListener('show.bs.modal', evt=>{
+          const t = evt.relatedTarget;
+          exModal.querySelector('#exhibicionTitle').textContent = t?.getAttribute('data-title') || 'Exhibición';
+          exModal.querySelector('#exhibicionDesc').textContent = t?.getAttribute('data-desc') || 'Detalles próximamente.';
+        });
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form=>{
+          form.addEventListener('submit', e=>{
+            const hp = form.querySelector('#hp');
+            if(!form.checkValidity() || (hp && hp.value)){e.preventDefault();e.stopPropagation();}
+            else{
+              e.preventDefault();
+              document.getElementById('alertaOk')?.classList.remove('d-none');
+              form.reset();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+        const btnTop = document.getElementById('btnTop');
+        window.addEventListener('scroll',()=>{(window.scrollY>500?btnTop.classList.remove('d-none'):btnTop.classList.add('d-none'))});
+        btnTop?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+      });
+    </script>
+    </body>
+</html>
+
