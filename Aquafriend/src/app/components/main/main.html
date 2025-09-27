@@ -196,15 +196,31 @@
   </div>
 </section>
 
-<!-- Galería -->
+<!-- Galería en Cards -->
 <section id="galeria" class="py-5 bg-light">
   <div class="container">
     <h2 class="fw-bold mb-4">Galería</h2>
-    <div class="row g-3">
-      <div class="col-6 col-md-3"><a class="btn btn-outline-secondary w-100" href="#!">Vista interior del acuario</a></div>
-      <div class="col-6 col-md-3"><a class="btn btn-outline-secondary w-100" href="#!">Coto de pesca con devolución</a></div>
-      <div class="col-6 col-md-3"><a class="btn btn-outline-secondary w-100" href="#!">Senderos y avistamiento</a></div>
-      <div class="col-6 col-md-3"><a class="btn btn-outline-secondary w-100" href="#!">Bosque nativo</a></div>
+
+    <!-- Grid responsivo -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+      <!-- Una card por imagen -->
+      <div class="col" *ngFor="let item of images">
+        <div class="card gallery-card h-100 shadow-sm overflow-hidden">
+          <img
+            [src]="item.src"
+            [alt]="item.title"
+            class="card-img-top"
+            loading="lazy"
+            style="height: 180px; object-fit: cover;"
+          >
+          <div class="card-body">
+            <h6 class="card-title mb-1">{{ item.title }}</h6>
+            <p class="card-text small text-body-secondary mb-0" *ngIf="item.text">
+              {{ item.text }}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
