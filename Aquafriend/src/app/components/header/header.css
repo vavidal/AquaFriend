@@ -1,4 +1,4 @@
-/* Hero: altura responsiva y fluida */
+/* Hero: altura responsiva*/
 .hero {
   position: relative;
   height: clamp(380px, 55vh, 700px); /* min 380px, ideal 55% de la ventana, máx 700px */
@@ -105,7 +105,7 @@
   .navbar { min-height: 66px; }
 }
 
-/* Botón exclusivo para Reservar — versión sin mayúsculas y tamaño sm */
+/* Botón exclusivo para Reservar */
 .btn-reservar {
   /* quita las mayúsculas y el tamaño fijo */
   text-transform: none;

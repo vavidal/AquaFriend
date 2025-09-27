@@ -1,6 +1,3 @@
-<!-- Main content (Bootstrap 5) -->
-
-<!-- Exhibiciones destacadas -->
 <section id="exhibiciones" class="py-5">
   <div class="container">
     <h2 class="fw-bold mb-4">Exhibiciones destacadas</h2>
@@ -188,18 +185,37 @@
 <section id="visitanos" class="py-5">
   <div class="container">
     <div class="row g-4">
+
+      <!-- Columna Mapa con botón -->
       <div class="col-12 col-lg-6">
         <h2 class="fw-bold mb-3">¿Cómo llegar?</h2>
+
         <div class="ratio ratio-16x9 rounded overflow-hidden">
-          <iframe title="Mapa" src="https://maps.google.com/maps?q=-40.67,-72.59&z=10&output=embed" loading="lazy"></iframe>
+          <iframe
+            title="Mapa"
+            src="https://maps.google.com/maps?q=-40.67,-72.59&z=10&output=embed"
+            loading="lazy">
+          </iframe>
         </div>
-        <ul class="list-unstyled small text-body-secondary mt-2 mb-0">
-          <li>Ruta Interlagos, comuna de Puyehue, Región de Los Lagos.</li>
-          <li>Abierto fin de semana 11:00–17:00.</li>
-          <li><a class="link-primary" href="https://maps.google.com/?q=-40.67,-72.59" target="_blank" rel="noopener">Abrir en Google Maps</a></li>
-        </ul>
+
+        <div class="mt-2">
+          <a
+            class="btn btn-primary btn-sm d-inline-flex align-items-center gap-2"
+            href="https://www.google.com/maps/search/?api=1&query=-40.67,-72.59"
+            target="_blank"
+            rel="noopener"
+            aria-label="Abrir ubicación en Google Maps en una nueva pestaña">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                 fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16"
+                 aria-hidden="true" focusable="false">
+              <path d="M12.166 8.94c-.524 1.062-1.2 2.12-1.87 3.016A31.58 31.58 0 0 1 8 14.58a31.58 31.58 0 0 1-2.296-2.624c-.67-.895-1.346-1.954-1.87-3.016C3.29 7.826 3 6.842 3 6a5 5 0 1 1 10 0c0 .842-.29 1.826-.834 2.94ZM8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+            </svg>
+            Abrir en Google Maps
+          </a>
+        </div>
       </div>
 
+      <!-- Columna Contacto (tu bloque original) -->
       <div class="col-12 col-lg-6" id="contacto">
         <h2 class="fw-bold mb-3">Contáctanos</h2>
         <form class="row g-3">
@@ -235,6 +251,7 @@
           <div>IG: @acuarioeducativo</div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
