@@ -3,6 +3,7 @@
   position: relative;
   height: clamp(380px, 55vh, 700px); /* min 380px, ideal 55% de la ventana, máx 700px */
   overflow: hidden;
+  scroll-margin-top: 84px; /* compensa el header fijo cuando saltas a #inicio */
 }
 
 .hero-bg {
@@ -14,7 +15,7 @@
   display: block;
 }
 
-/* Overlay con grid*/
+/* Overlay con grid */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -29,7 +30,38 @@
   .hero-overlay .container { padding-left: 2rem; padding-right: 2rem; }
 }
 
-/*CTA (Call To Action(*/
+/* === Texto del hero más visible === */
+.hero-lead {
+  color: rgba(255, 255, 255, 0.92);   /* casi blanco */
+  font-weight: 500;                   /* un poco más grueso */
+  text-shadow: 0 1px 3px rgba(0,0,0,.6);  /* mejora legibilidad sobre la foto */
+}
+
+/* === Logo más grande y alineación === */
+.navbar-brand img {
+  height: 72px; /* puedes ajustar a 64/80/etc */
+  width: auto;
+  display: block;
+}
+
+/* Altura mínima del navbar para alojar el logo grande */
+.navbar {
+  min-height: 50px;
+  transition: box-shadow .2s ease, background-color .2s ease;
+}
+
+/* Centrado del menú (refuerzo por si cambia el orden/precedencia de clases) */
+#mainNav { 
+  justify-content: center;
+}
+#mainNav .navbar-nav {
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  text-align: center;
+}
+
+/* CTA (Call To Action) */
 .cta-pill {
   display: inline-flex;
   align-items: center;
@@ -61,8 +93,65 @@
   .hero { height: 320px; }
   .cta-pill { padding: .9rem 1.2rem; }
   .cta-icon { width: 32px; height: 32px; font-size: 1.1rem; }
+
+  .navbar-brand img { height: 60px; }
+  .navbar { min-height: 70px; }
 }
 @media (max-width: 575.98px) {
   .hero { height: 300px; }
   .display-5 { font-size: 2rem; }
+
+  .navbar-brand img { height: 56px; }
+  .navbar { min-height: 66px; }
 }
+
+/* Botón exclusivo para Reservar — versión sin mayúsculas y tamaño sm */
+.btn-reservar {
+  /* quita las mayúsculas y el tamaño fijo */
+  text-transform: none;
+  font-size: inherit;
+
+  position: relative;
+  text-decoration: none;
+  padding: 0.9em 2em;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 6em;
+  border: none;
+  font-family: inherit;
+  font-weight: 600;              /* si lo ves muy “grueso”, baja a 500 o 400 */
+  line-height: 1.1;
+
+  color: #fff;
+  background-color: #195eb3;
+  transition: transform .2s, box-shadow .2s, background-color .2s, color .2s;
+}
+
+/* Ajuste real para .btn-sm */
+.btn-reservar.btn-md {
+  font-size: 1rem;        /* 16px aprox */
+  padding: .6em 1.4em;
+  border-radius: 2.2rem;
+}
+
+/* Hover/active/halo se mantienen igual */
+.btn-reservar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.2);
+  background-color: #1c4c86;
+}
+.btn-reservar:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  background-color: #143a67;
+}
+.btn-reservar::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: 100px;
+  background-color: #fff; opacity: .15;
+  transition: transform .4s, opacity .4s;
+  z-index: -1;
+}
+.btn-reservar:hover::after { transform: scaleX(1.4) scaleY(1.6); opacity: 0; }
+.btn-reservar:focus-visible { outline: none; box-shadow: 0 0 0 .2rem rgba(24,64,112,.35); }
