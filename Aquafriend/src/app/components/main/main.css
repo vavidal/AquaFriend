@@ -1,3 +1,15 @@
 /* Ajustes mínimos de espaciado/escala */
 section + section { border-top: 1px solid rgba(0,0,0,.05); }
 .card .display-6 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+
+/* Hover "enfocado" para la galería */
+.gallery-card { transition: transform .25s ease, box-shadow .25s ease; will-change: transform; }
+.gallery-card img { transition: transform .4s ease, filter .4s ease; }
+.gallery-card:hover, .gallery-card:focus-within {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.15);
+}
+.gallery-card:hover img, .gallery-card:focus-within img {
+  transform: scale(1.06);
+  filter: saturate(1.05);
+}
