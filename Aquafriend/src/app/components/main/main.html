@@ -334,34 +334,72 @@
   </div>
 </section>
 
-<!-- Galería en Cards -->
+<!-- Galería -->
 <section id="galeria" class="py-5 bg-light">
   <div class="container">
     <h2 class="fw-bold mb-4">Galería</h2>
 
-    <!-- Grid responsivo -->
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-      <!-- Una card por imagen -->
-      <div class="col" *ngFor="let item of images">
-        <div class="card gallery-card h-100 shadow-sm overflow-hidden">
+      <div class="col" *ngFor="let item of images; let i = index">
+        <!-- OJO: position-relative para que la stretched-link cubra toda la card -->
+        <div class="card gallery-card h-100 shadow-sm overflow-hidden position-relative">
           <img
             [src]="item.src"
             [alt]="item.title"
             class="card-img-top"
             loading="lazy"
-            style="height: 180px; object-fit: cover;"
-          >
+            style="height:180px;object-fit:cover;">
           <div class="card-body">
             <h6 class="card-title mb-1">{{ item.title }}</h6>
-            <p class="card-text small text-body-secondary mb-0" *ngIf="item.text">
-              {{ item.text }}
-            </p>
+            <p class="card-text small text-body-secondary mb-0" *ngIf="item.text">{{ item.text }}</p>
           </div>
+
+          <!-- Enlace invisible que abre el modal y además fija el índice -->
+          <a
+            class="stretched-link"
+            role="button"
+            (click)="openGallery(i)"
+            data-bs-toggle="modal"
+            data-bs-target="#galleryModal">
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Modal de la galería -->
+<div class="modal fade modal-soft" id="galleryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <button type="button"
+              class="btn-close btn-close-white modal-soft-close"
+              data-bs-dismiss="modal" aria-label="Cerrar"></button>
+
+      <div class="modal-body p-0 d-flex justify-content-center align-items-center">
+        <div id="galleryCarousel" class="carousel slide" data-bs-interval="false">
+          <div class="carousel-inner">
+            <div class="carousel-item"
+                 *ngFor="let item of images; let i = index"
+                 [ngClass]="{'active': i === selectedIndex}">
+              <img [src]="item.src" [alt]="item.title" class="carousel-img">
+            </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- ¿Cómo llegar? + contacto -->
 <section id="visitanos" class="py-5">
