@@ -13,3 +13,32 @@ section + section { border-top: 1px solid rgba(0,0,0,.05); }
   transform: scale(1.06);
   filter: saturate(1.05);
 }
+
+.titulo-exdestacadas {
+  font-weight: 700;
+  color: #d95f14;
+}
+
+.titulo-proeducativos {
+  font-weight: 700;
+  color: #d95f14;
+}
+
+.titulo-entradas {
+  font-weight: 700;
+  color: #d95f14;
+}
+
+.titulo-destino {
+  font-weight: 700;
+  color: #4d9447;
+}
+
+.titulo-contactanos {
+  font-weight: 700;
+  color: #4d9447;
+}
+
+.btn-primary {
+  background-color: #195eb3;
+}
