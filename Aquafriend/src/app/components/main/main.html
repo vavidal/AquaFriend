@@ -442,30 +442,62 @@
       <!-- Columna Contacto (tu bloque original) -->
       <div class="col-12 col-lg-6" id="contacto">
         <h2 class="titulo-contactanos">Contáctanos</h2>
-        <form class="row g-3">
+
+        <!-- FormSubmit: envío sin backend -->
+        <form class="row g-3"
+              action="https://formsubmit.co/jzmnmoraga@gmail.com"
+              method="POST">
+
+          <!-- Nombre -->
           <div class="col-md-6">
             <label class="form-label">Nombre</label>
-            <input class="form-control" type="text" placeholder="Tu nombre">
+            <input class="form-control" type="text" name="name" placeholder="Tu nombre" required minlength="2">
           </div>
+
+          <!-- Correo -->
           <div class="col-md-6">
             <label class="form-label">Correo</label>
-            <input class="form-control" type="email" placeholder="tucorreo@ejemplo.com">
+            <input class="form-control" type="email" name="email" placeholder="tucorreo@ejemplo.com" required>
           </div>
+
+          <!-- Fecha -->
           <div class="col-md-6">
             <label class="form-label">Fecha de visita</label>
-            <input class="form-control" type="date">
+            <input class="form-control" type="date" name="date">
           </div>
+
+          <!-- Personas -->
           <div class="col-md-6">
             <label class="form-label">Personas</label>
-            <input class="form-control" type="number" min="1" value="2">
+            <input class="form-control" type="number" name="people" min="1" value="2">
           </div>
+
+          <!-- Mensaje -->
           <div class="col-12">
             <label class="form-label">Mensaje</label>
-            <textarea class="form-control" rows="4" placeholder="Comentarios o requerimientos especiales"></textarea>
+            <textarea class="form-control" name="message" rows="4" placeholder="Comentarios o requerimientos especiales"></textarea>
           </div>
+
+          <!-- Botón -->
           <div class="col-12">
-            <button class="btn btn-primary" type="button">Enviar solicitud</button>
+            <button class="btn btn-primary" type="submit">Enviar solicitud</button>
           </div>
+
+          <!-- ---------- Opciones/ocultos de FormSubmit ---------- -->
+          <!-- Asunto del correo -->
+          <input type="hidden" name="_subject" value="Nueva solicitud de visita">
+          <!-- Plantilla en tabla (se ve ordenado en el correo) -->
+          <input type="hidden" name="_template" value="table">
+          <!-- Desactiva el captcha de FormSubmit (si quieres mantenerlo, borra esta línea) -->
+          <input type="hidden" name="_captcha" value="false">
+          <!-- Redirección después de enviar (cámbiala a tu página de gracias si quieres) -->
+          <input type="hidden" name="_next" value="https://tusitio.com/gracias.html">
+          <!-- Copia al admin (opcional; puedes listar varios separados por coma) -->
+          <input type="hidden" name="_cc" value="acuariopuyehue@gmail.com">
+          <!-- Autorespuesta al usuario (mensaje simple) -->
+          <input type="hidden" name="_autoresponse" value="¡Gracias! Recibimos tu solicitud y te contactaremos a la brevedad. — Parque Acuario Puyehue">
+          <!-- Honeypot anti-spam (no eliminar; debe permanecer oculto) -->
+          <input type="text" name="_honey" style="display:none">
         </form>
 
         <div class="mt-3 small">
@@ -477,6 +509,7 @@
           <div>IG: @acuariopuyehue</div>
         </div>
       </div>
+
 
     </div>
   </div>
