@@ -14,13 +14,13 @@ export class MainComponent {
 
   // Solo números de archivos que EXISTEN
   private readonly nums = [
-    1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21
+    1, 2, 3, 4, 5, 10, 13, 15, 16, 17, 19, 20, 21
   ];
 
   // Si quieres títulos personalizados, ponlos aquí (opcional)
   private readonly titles: Record<number, string> = {
     1: 'Vista del barco del acuario',
-    2: 'Coto de pesca',
+    2: 'Puesto',
     3: 'Senderos',
     4: 'Bosque nativo',
     5: 'Aula abierta',
