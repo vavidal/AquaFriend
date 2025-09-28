@@ -15,7 +15,8 @@
           <div class="card-body">
             <h5 class="card-title">Acuario</h5>
             <p class="card-text small text-body-secondary">Descubre el ciclo de vida de las salmonídeas y otras especies nativas.</p>
-            <a class="btn btn-outline-primary btn-sm" href="#!">Ver más</a>
+            <a class="btn btn-outline-primary btn-sm"
+            data-bs-toggle="modal" data-bs-target="#modalAcuario">Ver más</a>
           </div>
         </div>
       </div>
@@ -32,7 +33,8 @@
           <div class="card-body">
             <h5 class="card-title">Granja educativa</h5>
             <p class="card-text small text-body-secondary">Interacción responsable con animales de granja y aprendizaje guiado.</p>
-            <a class="btn btn-outline-primary btn-sm" href="#!">Ver más</a>
+            <a class="btn btn-outline-primary btn-sm"
+            data-bs-toggle="modal" data-bs-target="#modalGranja">Ver más</a>
           </div>
         </div>
       </div>
@@ -49,13 +51,160 @@
           <div class="card-body">
             <h5 class="card-title">Coto de pesca</h5>
             <p class="card-text small text-body-secondary">Pesca deportiva responsable con devolución.</p>
-            <a class="btn btn-outline-primary btn-sm" href="#!">Ver más</a>
+            <a class="btn btn-outline-primary btn-sm"
+            data-bs-toggle="modal" data-bs-target="#modalCoto">Ver más</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ===================== MODALES + CARRUSELES ===================== -->
+
+<!-- ===================== MODAL: ACUARIO ===================== -->
+<div class="modal fade modal-soft" id="modalAcuario" tabindex="-1" aria-hidden="true" data-bs-keyboard="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <!-- X cerrar -->
+      <button type="button"
+              class="btn-close btn-close-white modal-soft-close"
+              data-bs-dismiss="modal" aria-label="Cerrar"></button>
+
+      <div class="modal-body p-0 d-flex justify-content-center align-items-center">
+        <div id="carouselAcuario" class="carousel slide" data-bs-interval="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/exhibiciones/peces_acuario.JPG" class="carousel-img" alt="Acuario 1">
+            </div>
+            <!-- Agrega más si tienes
+            <div class="carousel-item">
+              <img src="assets/exhibiciones/acuario_2.jpg" class="carousel-img" alt="Acuario 2">
+            </div>
+            -->
+          </div>
+
+          <!-- Flechas -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselAcuario" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselAcuario" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MODAL: GRANJA ===================== -->
+<div class="modal fade modal-soft" id="modalGranja" tabindex="-1" aria-hidden="true" data-bs-keyboard="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <!-- X cerrar -->
+      <button type="button"
+              class="btn-close btn-close-white modal-soft-close"
+              data-bs-dismiss="modal" aria-label="Cerrar"></button>
+
+      <div class="modal-body p-0 d-flex justify-content-center align-items-center">
+        <div id="carouselGranja" class="carousel slide" data-bs-interval="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/exhibiciones/granja_1.jpg" class="carousel-img" alt="Granja 1">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/exhibiciones/granja_2.jpg" class="carousel-img" alt="Granja 2">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/exhibiciones/granja_3.jpg" class="carousel-img" alt="Granja 3">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/exhibiciones/granja_4.jpg" class="carousel-img" alt="Granja 4">
+            </div>
+            <!-- También puedes usar granja_educativa.JPG -->
+          </div>
+
+          <!-- Flechas -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselGranja" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselGranja" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MODAL: COTO ===================== -->
+<div class="modal fade modal-soft" id="modalCoto" tabindex="-1" aria-hidden="true" data-bs-keyboard="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <!-- X cerrar -->
+      <button type="button"
+              class="btn-close btn-close-white modal-soft-close"
+              data-bs-dismiss="modal" aria-label="Cerrar"></button>
+
+      <div class="modal-body p-0 d-flex justify-content-center align-items-center">
+        <div id="carouselCoto" class="carousel slide" data-bs-interval="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/exhibiciones/coto_pesca.jpg" class="carousel-img" alt="Coto 1">
+            </div>
+            <!-- Agrega más si quieres
+            <div class="carousel-item">
+              <img src="assets/exhibiciones/coto_2.jpg" class="carousel-img" alt="Coto 2">
+            </div>
+            -->
+          </div>
+
+          <!-- Flechas -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselCoto" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselCoto" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: COTO -->
+<div class="modal fade modal-soft" id="modalCoto" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3"
+              data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      <div class="modal-body p-0 d-flex justify-content-center align-items-center">
+        <div id="carouselCoto" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/exhibiciones/coto_pesca.jpg" class="carousel-img" alt="Coto 1">
+            </div>
+            <!-- Agrega más si quieres -->
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselCoto" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselCoto" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- Programas Educativos -->
