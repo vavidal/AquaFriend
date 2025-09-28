@@ -17,36 +17,6 @@
   display: block;
 }
 
-/* Video de fondo */
-.hero-bg-video {
-  position: absolute;
-  inset: 0;             /* top:0 right:0 bottom:0 left:0 */
-  width: 100%;
-  height: 100%;
-  object-fit: cover;     /* que recorte sin deformar */
-  object-position: center 40%;
-  filter: brightness(0.6);
-  z-index: 0;            /* debajo del overlay */
-  pointer-events: none;  /* no captura clics/scroll */
-}
-
-/* Si el usuario prefiere reducir animaciones, ocultamos el video */
-@media (prefers-reduced-motion: reduce) {
-  .hero-bg-video { display: none; }
-}
-
-/* === Overlay con el contenido encima === */
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  z-index: 1; /* por encima del video */
-  /* leve oscurecido para legibilidad del texto */
-  background: linear-gradient(0deg, rgba(0,0,0,.35), rgba(0,0,0,.35));
-}
-
 /* Si tu overlay lleva un .container dentro, puedes ampliar su "aire" */
 .hero-overlay .container { padding-left: 1rem; padding-right: 1rem; }
 @media (min-width: 992px) {
