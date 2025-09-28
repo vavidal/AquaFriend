@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ContactService, ContactRequest } from '../../services/contact.service';
@@ -10,23 +10,20 @@ type GalleryItem = { src: string; title: string; text?: string };
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule], // 👈 añadimos ReactiveForms
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './main.html',
   styleUrls: ['./main.css'],
 })
 export class MainComponent {
-  // ============ GALERÍA ============
-  // Solo números de archivos que EXISTEN en public/assets/img/
+  // ===== GALERÍA =====
   private readonly nums = [1, 2, 3, 4, 5, 10, 13, 15, 16, 17, 19, 20, 21];
 
-  // Títulos personalizados (opcional)
   private readonly titles: Record<number, string> = {
     1: 'Vista del barco del acuario',
     2: 'Puesto',
     3: 'Senderos',
     4: 'Bosque nativo',
     5: 'Aula abierta',
-    // 6: 'Alevines',
   };
 
   images: GalleryItem[] = this.nums.map((n) => ({
@@ -34,10 +31,8 @@ export class MainComponent {
     title: this.titles[n] || `Imagen ${n}`,
   }));
 
-  // Índice seleccionado para activar el slide correcto
   selectedIndex = 0;
 
-  // Abre el modal y posiciona el carrusel en la imagen clicada
   openGallery(index: number) {
     this.selectedIndex = index;
 
@@ -47,7 +42,6 @@ export class MainComponent {
     const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
     modal.show();
 
-    // Posiciona el carrusel en el slide clicado
     setTimeout(() => {
       const carouselEl = document.getElementById('galleryCarousel');
       if (!carouselEl) return;
@@ -61,7 +55,10 @@ export class MainComponent {
     }, 50);
   }
 
-  // ============ FORMULARIO DE CONTACTO ============
+  // ===== FORMULARIO =====
+  private fb = inject(FormBuilder);
+  private contactSvc = inject(ContactService);
+
   contactForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
     email: ['', [Validators.required, Validators.email]],
@@ -73,8 +70,6 @@ export class MainComponent {
   sending = false;
   success: string | null = null;
   error: string | null = null;
-
-  constructor(private fb: FormBuilder, private contactSvc: ContactService) {}
 
   get f() { return this.contactForm.controls; }
 
