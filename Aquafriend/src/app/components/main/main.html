@@ -373,29 +373,33 @@
         <h2 class="titulo-destino">¿Cómo llegar?</h2>
 
         <div class="ratio ratio-16x9 rounded overflow-hidden">
+          <!-- Mapa embebido apuntando por dirección (Google geocodifica y pone el pin) -->
           <iframe
             title="Mapa"
-            src="https://maps.google.com/maps?q=-40.67,-72.59&z=10&output=embed"
-            loading="lazy">
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Acuario%20Tem%C3%A1tico%20-%20CHISCAIHUE%20PC%201LT%206%20RIO%20BUENO%20CHISCAIHUE%20PC%201LT%206,%205240000%20R%C3%ADo%20Bueno,%20Los%20R%C3%ADos&z=16&output=embed">
           </iframe>
         </div>
 
         <div class="mt-2">
+          <!-- Botón que abre Google Maps con destino ya cargado (útil en móvil para empezar navegación) -->
           <a
             class="btn btn-primary btn-sm d-inline-flex align-items-center gap-2"
-            href="https://www.google.com/maps/search/?api=1&query=-40.67,-72.59"
+            href="https://www.google.com/maps/dir/?api=1&destination=Acuario%20Tem%C3%A1tico%20-%20CHISCAIHUE%20PC%201LT%206%20RIO%20BUENO%20CHISCAIHUE%20PC%201LT%206,%205240000%20R%C3%ADo%20Bueno,%20Los%20R%C3%ADos"
             target="_blank"
             rel="noopener"
             aria-label="Abrir ubicación en Google Maps en una nueva pestaña">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                 fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16"
-                 aria-hidden="true" focusable="false">
+                fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16"
+                aria-hidden="true" focusable="false">
               <path d="M12.166 8.94c-.524 1.062-1.2 2.12-1.87 3.016A31.58 31.58 0 0 1 8 14.58a31.58 31.58 0 0 1-2.296-2.624c-.67-.895-1.346-1.954-1.87-3.016C3.29 7.826 3 6.842 3 6a5 5 0 1 1 10 0c0 .842-.29 1.826-.834 2.94ZM8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
             </svg>
             Abrir en Google Maps
           </a>
         </div>
       </div>
+
 
       <!-- Columna Contacto (tu bloque original) -->
       <div class="col-12 col-lg-6" id="contacto">
@@ -428,9 +432,11 @@
 
         <div class="mt-3 small">
           <div><strong>Información de contacto</strong></div>
-          <div>📞 +56 9 1234 5678</div>
-          <div>✉️ contacto@acuarioedu.cl</div>
-          <div>IG: @acuarioeducativo</div>
+          <div>📞 +56 9 8634 4271</div>
+          <div>✉️ acuariopuyehue@gmail.com</div>
+          <div>✉️ acb@acuariopuyehue.cl</div>
+          <div>✉️ plagos@acuariopuyehue.cl</div>
+          <div>IG: @acuariopuyehue</div>
         </div>
       </div>
 
