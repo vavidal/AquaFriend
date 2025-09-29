@@ -12,7 +12,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideClientHydration(),
-    // 👇 usa fetch para HttpClient (mejor para SSR/Vite)
     provideHttpClient(withFetch()),
     importProvidersFrom(ReactiveFormsModule),
   ],

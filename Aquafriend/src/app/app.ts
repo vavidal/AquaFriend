@@ -7,7 +7,7 @@ import { MainComponent } from './components/main/main';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Header, Footer, MainComponent],
+  imports: [Header, Footer, MainComponent, RouterOutlet],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
