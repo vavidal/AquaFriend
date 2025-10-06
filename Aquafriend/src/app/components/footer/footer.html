@@ -45,13 +45,16 @@
             <input class="form-control form-control-sm" type="email" name="email" placeholder="Correo" required>
           </div>
           <div class="mb-2">
-            <textarea class="form-control form-control-sm" name="message" rows="2" placeholder="Mensaje"></textarea>
+            <input class="form-control form-control-sm" type="tel" name="phone" placeholder="Teléfono" required>
+          </div>
+          <div class="mb-2">
+            <textarea class="form-control form-control-sm" name="message" rows="2" placeholder="Mensaje" required></textarea>
           </div>
           <button class="btn btn-outline-light btn-sm w-100" type="submit">Enviar</button>
           
           <!-- Campos ocultos -->
           <input type="hidden" name="_next" value="http://localhost:4200/pages/gracias.html">
-          <input type="hidden" name="_subject" value="Nueva solicitud de contacto">
+          <input type="hidden" name="_subject" value="Nueva consulta - Parque Acuario Puyehue">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_autoresponse" value="¡Gracias! Recibimos tu mensaje y te contactaremos pronto. — Parque Acuario Puyehue">
           <input type="hidden" name="_captcha" value="false">
