@@ -155,7 +155,6 @@
   <div class="container">
     <div class="d-flex align-items-center justify-content-between mb-3">
       <h2 class="titulo-proeducativos">Programas Educativos</h2>
-      <a class="btn btn-primary btn-sm" href="#!">Reservar visita pedagógica</a>
     </div>
 
     <div class="row g-3">
@@ -259,7 +258,7 @@
           </button>
         </h2>
         <div id="faq1c" class="accordion-collapse collapse" data-bs-parent="#entradasAccordion">
-          <div class="accordion-body small">Sí, sujeto a aforo. Recomendamos reservar con anticipación.</div>
+          <div class="accordion-body small">Sí, sujeto a aforo. Recomendamos reservar visita pedagógica con anticipación.</div>
         </div>
       </div>
 
@@ -329,7 +328,7 @@
     <div class="row g-4">
 
       <!-- Columna Mapa -->
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-4">
         <h2 class="titulo-destino">¿Cómo llegar?</h2>
 
         <div class="ratio ratio-16x9 rounded overflow-hidden">
@@ -356,63 +355,24 @@
             Abrir en Google Maps
           </a>
         </div>
+
+        <!-- Info de contacto (debajo del mapa) -->
+        <div class="mt-3 small">
+          <div><strong>Información de contacto</strong></div>
+          <div>📞 +56 9 8634 4271</div>
+          <div>✉️ acuariopuyehue@gmail.com</div>
+          <div>✉️ acb@acuariopuyehue.cl</div>
+          <div>✉️ plagos@acuariopuyehue.cl</div>
+          <div>IG: @acuariopuyehue</div>
+        </div>
       </div>
 
   <!-- Columna Derecha: Contacto + Reserva educativa -->
-  <div class="col-12 col-lg-6" id="contacto">
+  <div class="col-12 col-lg-8" id="contacto">
     <div class="row g-4">
 
-      <!-- Formulario de contacto general -->
-      <div class="col-12 col-md-6">
-        <h2 class="titulo-contactanos">Contáctanos</h2>
-
-        <form class="row g-3"
-              action="https://formsubmit.co/jzmnmoraga@gmail.com"
-              method="POST">
-
-          <div class="col-md-12">
-            <label class="form-label">Nombre</label>
-            <input class="form-control" type="text" name="name" placeholder="Tu nombre" required minlength="2">
-          </div>
-
-          <div class="col-md-12">
-            <label class="form-label">Correo</label>
-            <input class="form-control" type="email" name="email" placeholder="tucorreo@ejemplo.com" required>
-          </div>
-
-          <div class="col-md-12">
-            <label class="form-label">Fecha de visita</label>
-            <input class="form-control" type="date" name="date">
-          </div>
-
-          <div class="col-md-12">
-            <label class="form-label">Personas</label>
-            <input class="form-control" type="number" name="people" min="1" value="2">
-          </div>
-
-          <div class="col-12">
-            <label class="form-label">Mensaje</label>
-            <textarea class="form-control" name="message" rows="4"
-              placeholder="Comentarios o requerimientos especiales"></textarea>
-          </div>
-
-          <div class="col-12">
-            <button class="btn btn-primary w-100" type="submit">Enviar solicitud</button>
-          </div>
-
-          <!-- Campos ocultos -->
-          <input type="hidden" name="_next" value="http://localhost:4200/pages/gracias.html">
-          <input type="hidden" name="_subject" value="Nueva solicitud de contacto">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_autoresponse" value="¡Gracias! Recibimos tu mensaje y te contactaremos pronto. — Parque Acuario Puyehue">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_replyto" value="{email}">
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-        </form>
-      </div>
-
-      <!-- NUEVO FORMULARIO: Reserva educativa -->
-      <div class="col-12 col-md-6">
+      <!-- Formulario: Reserva educativa -->
+      <div class="col-12">
         <h3 class="text-success fw-bold mb-3">Reserva educativa</h3>
 
         <form [formGroup]="reservaForm" (ngSubmit)="onReservaSubmit()">
@@ -466,15 +426,6 @@
         </form>
       </div>
 
-      <!-- Info de contacto (abajo de ambos formularios) -->
-      <div class="col-12 mt-3 small">
-        <div><strong>Información de contacto</strong></div>
-        <div>📞 +56 9 8634 4271</div>
-        <div>✉️ acuariopuyehue@gmail.com</div>
-        <div>✉️ acb@acuariopuyehue.cl</div>
-        <div>✉️ plagos@acuariopuyehue.cl</div>
-        <div>IG: @acuariopuyehue</div>
-      </div>
 
     </div>
   </div>

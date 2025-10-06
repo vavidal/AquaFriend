@@ -3,7 +3,7 @@
 
     <!-- Bloque superior -->
     <div class="row g-4">
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-3">
         <h6 class="text-uppercase opacity-75">Dirección</h6>
         <p class="mb-2 small">
           Ruta Interlagos. T 981 U, km 3 Chiscaihue, comuna Río Bueno.<br>
@@ -11,13 +11,13 @@
         </p>
       </div>
 
-      <div class="col-6 col-md-4">
+      <div class="col-6 col-md-3">
         <h6 class="text-uppercase opacity-75">Feriados y fines de semana</h6>
         <p class="mb-2 small">11:00 – 17:00</p>
         <p class="mb-0 small">Tel: +56 9 8634 4271</p>
       </div>
 
-      <div class="col-6 col-md-4">
+      <div class="col-6 col-md-3">
         <h6 class="text-uppercase opacity-75">Horarios</h6>
         <p class="mb-3 small">Lunes – Viernes 09:00 – 18:00</p>
 
@@ -32,6 +32,32 @@
             <span class="visually-hidden">Instagram</span>
           </a>
         </div>
+      </div>
+
+      <!-- Formulario de contacto compacto -->
+      <div class="col-12 col-md-3">
+        <h6 class="text-uppercase opacity-75">Contáctanos</h6>
+        <form action="https://formsubmit.co/jzmnmoraga@gmail.com" method="POST" class="small">
+          <div class="mb-2">
+            <input class="form-control form-control-sm" type="text" name="name" placeholder="Tu nombre" required>
+          </div>
+          <div class="mb-2">
+            <input class="form-control form-control-sm" type="email" name="email" placeholder="Correo" required>
+          </div>
+          <div class="mb-2">
+            <textarea class="form-control form-control-sm" name="message" rows="2" placeholder="Mensaje"></textarea>
+          </div>
+          <button class="btn btn-outline-light btn-sm w-100" type="submit">Enviar</button>
+          
+          <!-- Campos ocultos -->
+          <input type="hidden" name="_next" value="http://localhost:4200/pages/gracias.html">
+          <input type="hidden" name="_subject" value="Nueva solicitud de contacto">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_autoresponse" value="¡Gracias! Recibimos tu mensaje y te contactaremos pronto. — Parque Acuario Puyehue">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_replyto" value="{email}">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        </form>
       </div>
     </div>
 
