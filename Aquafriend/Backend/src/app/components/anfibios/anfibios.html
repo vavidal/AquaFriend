@@ -1,0 +1,57 @@
+<section class="page">
+  <header class="page-head">
+    <div class="title">
+      <h1>Gestión de Anfibios</h1>
+      <p>Catálogo de especies de anfibios registradas en el acuario.</p>
+    </div>
+
+    <div class="actions">
+      <button class="btn ghost" (click)="onOpenFilters()">
+        <span class="mi"></span>
+        Filtros
+      </button>
+      <button class="btn primary" (click)="onCreateAmphibian()">
+        <span class="mi"></span>
+        Crear anfibio
+      </button>
+    </div>
+  </header>
+
+  <div class="table-wrap">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-especie">Especie</th>
+          <th>Hábitat</th>
+          <th>Alimentación</th>
+          <th>Tamaño</th>
+          <th>Registro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let a of anfibiosFiltrados()">
+          <td class="col-especie">
+            <div class="row-cell">
+              <div class="avatar" [style.backgroundImage]="'url(' + img(a) + ')'"></div>
+              <div class="info">
+                <div class="name">{{ a.especie }}</div>
+                <div class="sub" *ngIf="a.descripcion">{{ a.descripcion }}</div>
+              </div>
+            </div>
+          </td>
+          <td>{{ a.habitat || '—' }}</td>
+          <td>{{ a.alimentacion || '—' }}</td>
+          <td>{{ a.tamano_promedio || '—' }}</td>
+          <td>{{ a.fecha_registro | date: 'mediumDate' }}</td>
+        </tr>
+
+        <tr class="empty" *ngIf="anfibiosFiltrados().length === 0">
+          <td colspan="5">
+            <span class="mi"></span>
+            No hay información disponible.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

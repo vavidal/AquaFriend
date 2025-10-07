@@ -1,0 +1,251 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model categorias_especie {
+  id_categoria Int        @id @default(autoincrement()) @db.TinyInt
+  nombre       String     @unique(map: "nombre") @db.VarChar(60)
+  especies     especies[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model escenas_360 {
+  id_escena                                Int      @id @default(autoincrement())
+  titulo                                   String   @db.VarChar(160)
+  descripcion                              String?  @db.VarChar(600)
+  panorama_media                           Int?
+  thumbnail_media                          Int?
+  orden                                    Int?     @default(0)
+  publicado                                Int      @default(1) @db.TinyInt
+  created_at                               DateTime @default(dbgenerated("(now())")) @db.Timestamp(0)
+  updated_at                               DateTime @default(now()) @db.Timestamp(0)
+  media_escenas_360_panorama_mediaTomedia  media?   @relation("escenas_360_panorama_mediaTomedia", fields: [panorama_media], references: [id_media], map: "escenas_360_ibfk_1")
+  media_escenas_360_thumbnail_mediaTomedia media?   @relation("escenas_360_thumbnail_mediaTomedia", fields: [thumbnail_media], references: [id_media], map: "escenas_360_ibfk_2")
+
+  @@index([panorama_media], map: "panorama_media")
+  @@index([thumbnail_media], map: "thumbnail_media")
+}
+
+model escuelas {
+  id_escuela  Int           @id @default(autoincrement())
+  nombre      String        @db.VarChar(200)
+  tipo        String?       @db.VarChar(80)
+  comuna      String?       @db.VarChar(120)
+  region      String?       @db.VarChar(120)
+  email       String?       @db.VarChar(180)
+  telefono    String?       @db.VarChar(20)
+  created_at  DateTime      @default(dbgenerated("(now())")) @db.Timestamp(0)
+  estudiantes estudiantes[]
+  profesor    profesor[]
+  reserva     reserva[]
+}
+
+model especies {
+  id_especie          Int                @id @default(autoincrement())
+  nombre_comun        String             @db.VarChar(150)
+  nombre_cientifico   String?            @db.VarChar(180)
+  id_categoria        Int                @db.TinyInt
+  id_habitat          Int?
+  alimentacion        String?            @db.VarChar(200)
+  tamano_promedio     String?            @db.VarChar(50)
+  estado_conservacion String?            @db.VarChar(80)
+  descripcion         String?            @db.VarChar(800)
+  imagen_principal    String?            @db.VarChar(300)
+  fecha_registro      DateTime           @default(dbgenerated("(now())")) @db.Timestamp(0)
+  categorias_especie  categorias_especie @relation(fields: [id_categoria], references: [id_categoria], map: "especies_ibfk_1")
+  habitats            habitats?          @relation(fields: [id_habitat], references: [id_habitat], map: "especies_ibfk_2")
+  fichas              fichas[]
+
+  @@index([id_categoria], map: "idx_especie_categoria")
+  @@index([id_habitat], map: "idx_especie_habitat")
+}
+
+model estudiantes {
+  id_estudiante      Int                  @id @default(autoincrement())
+  rut                String?              @db.VarChar(15)
+  nombre             String               @db.VarChar(150)
+  apellido           String               @db.VarChar(150)
+  curso              String?              @db.VarChar(100)
+  escuela_id         Int?
+  created_at         DateTime             @default(dbgenerated("(now())")) @db.Timestamp(0)
+  escuelas           escuelas?            @relation(fields: [escuela_id], references: [id_escuela], map: "estudiantes_ibfk_1")
+  reserva_estudiante reserva_estudiante[]
+
+  @@index([escuela_id], map: "idx_estudiante_escuela")
+}
+
+model ficha_media {
+  id_ficha Int
+  id_media Int
+  tipo_uso String? @db.VarChar(40)
+  orden    Int?    @default(0)
+  fichas   fichas  @relation(fields: [id_ficha], references: [id_ficha], onDelete: Cascade, map: "ficha_media_ibfk_1")
+  media    media   @relation(fields: [id_media], references: [id_media], onDelete: Cascade, map: "ficha_media_ibfk_2")
+
+  @@id([id_ficha, id_media])
+  @@index([id_media], map: "id_media")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model fichas {
+  id_ficha       Int           @id @default(autoincrement())
+  id_especie     Int
+  nivel          String        @db.VarChar(40)
+  titulo         String        @db.VarChar(200)
+  resumen        String?       @db.VarChar(800)
+  contenido_html String?       @db.MediumText
+  creado_por     Int?
+  publicado      Int           @default(1) @db.TinyInt
+  created_at     DateTime      @default(dbgenerated("(now())")) @db.Timestamp(0)
+  updated_at     DateTime      @default(now()) @db.Timestamp(0)
+  ficha_media    ficha_media[]
+  especies       especies      @relation(fields: [id_especie], references: [id_especie], onDelete: Cascade, map: "fichas_ibfk_1")
+  usuarios       usuarios?     @relation(fields: [creado_por], references: [id_usuario], map: "fichas_ibfk_2")
+
+  @@index([creado_por], map: "creado_por")
+  @@index([id_especie], map: "idx_ficha_especie")
+}
+
+model habitats {
+  id_habitat  Int        @id @default(autoincrement())
+  nombre      String     @unique(map: "nombre") @db.VarChar(120)
+  descripcion String?    @db.VarChar(500)
+  especies    especies[]
+}
+
+model media {
+  id_media                                       Int           @id @default(autoincrement())
+  tipo                                           String        @db.VarChar(30)
+  url                                            String        @db.VarChar(500)
+  alt_text                                       String?       @db.VarChar(200)
+  creditos                                       String?       @db.VarChar(200)
+  licencia                                       String?       @db.VarChar(120)
+  ancho_px                                       Int?
+  alto_px                                        Int?
+  duracion_s                                     Int?
+  created_at                                     DateTime      @default(dbgenerated("(now())")) @db.Timestamp(0)
+  escenas_360_escenas_360_panorama_mediaTomedia  escenas_360[] @relation("escenas_360_panorama_mediaTomedia")
+  escenas_360_escenas_360_thumbnail_mediaTomedia escenas_360[] @relation("escenas_360_thumbnail_mediaTomedia")
+  ficha_media                                    ficha_media[]
+}
+
+model pagos {
+  id_pago         Int      @id @default(autoincrement())
+  id_reserva      Int
+  metodo          String   @db.VarChar(30)
+  monto           Decimal  @db.Decimal(12, 2)
+  fecha_pago      DateTime @default(dbgenerated("(now())")) @db.DateTime(0)
+  estado          String   @db.VarChar(20)
+  comprobante_url String?  @db.VarChar(300)
+  reserva         reserva  @relation(fields: [id_reserva], references: [id_reserva], onDelete: Cascade, map: "pagos_ibfk_1")
+
+  @@index([id_reserva], map: "id_reserva")
+}
+
+model profesor {
+  id_profesor Int       @id @default(autoincrement())
+  rut         String    @unique(map: "rut") @db.VarChar(15)
+  nombre      String    @db.VarChar(150)
+  apellido    String    @db.VarChar(150)
+  asignatura  String?   @db.VarChar(120)
+  escuela_id  Int?
+  email       String?   @db.VarChar(180)
+  telefono    String?   @db.VarChar(20)
+  created_at  DateTime  @default(dbgenerated("(now())")) @db.Timestamp(0)
+  escuelas    escuelas? @relation(fields: [escuela_id], references: [id_escuela], map: "profesor_ibfk_1")
+  reserva     reserva[]
+
+  @@index([escuela_id], map: "idx_profesor_escuela")
+}
+
+model programas_educativos {
+  id_plan           Int       @id @default(autoincrement())
+  nombre_plan       String    @db.VarChar(180)
+  monto_por_persona Decimal   @db.Decimal(10, 2)
+  iva_porcentaje    Decimal   @default(19.00) @db.Decimal(5, 2)
+  min_estudiantes   Int?      @default(1)
+  max_estudiantes   Int?      @default(200)
+  tiempo_programa   String    @db.VarChar(100)
+  descripcion       String?   @db.VarChar(600)
+  visible           Boolean   @default(true)
+  created_at        DateTime  @default(dbgenerated("(now())")) @db.Timestamp(0)
+  updated_at        DateTime  @default(now()) @db.Timestamp(0)
+  reserva           reserva[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model reserva {
+  id_reserva           Int                  @id @default(autoincrement())
+  id_plan              Int
+  escuela_id           Int?
+  profesor_id          Int?
+  fecha_reserva        DateTime             @db.Date
+  hora_entrada         DateTime             @db.Time(0)
+  hora_termino         DateTime             @db.Time(0)
+  cantidad_estudiantes Int
+  cantidad_docentes    Int
+  total_bruto          Decimal              @db.Decimal(12, 2)
+  total_iva            Decimal              @db.Decimal(12, 2)
+  total_pagar          Decimal              @db.Decimal(12, 2)
+  estado_id            Int                  @db.TinyInt
+  observaciones        String?              @db.VarChar(500)
+  created_at           DateTime             @default(dbgenerated("(now())")) @db.Timestamp(0)
+  updated_at           DateTime             @default(dbgenerated("(now())")) @db.Timestamp(0)
+  pagos                pagos[]
+  programas_educativos programas_educativos @relation(fields: [id_plan], references: [id_plan], map: "reserva_ibfk_1")
+  escuelas             escuelas?            @relation(fields: [escuela_id], references: [id_escuela], map: "reserva_ibfk_2")
+  profesor             profesor?            @relation(fields: [profesor_id], references: [id_profesor], map: "reserva_ibfk_3")
+  reservas_estado      reservas_estado      @relation(fields: [estado_id], references: [id_estado], map: "reserva_ibfk_4")
+  reserva_estudiante   reserva_estudiante[]
+
+  @@index([escuela_id], map: "escuela_id")
+  @@index([estado_id], map: "idx_reserva_estado")
+  @@index([fecha_reserva], map: "idx_reserva_fecha")
+  @@index([id_plan], map: "idx_reserva_plan")
+  @@index([profesor_id], map: "profesor_id")
+}
+
+model reserva_estudiante {
+  id_reserva_est Int         @id @default(autoincrement())
+  id_reserva     Int
+  id_estudiante  Int
+  reserva        reserva     @relation(fields: [id_reserva], references: [id_reserva], onDelete: Cascade, map: "reserva_estudiante_ibfk_1")
+  estudiantes    estudiantes @relation(fields: [id_estudiante], references: [id_estudiante], onDelete: Cascade, map: "reserva_estudiante_ibfk_2")
+
+  @@unique([id_reserva, id_estudiante], map: "uq_reserva_estudiante")
+  @@index([id_estudiante], map: "id_estudiante")
+}
+
+model reservas_estado {
+  id_estado Int       @id @db.TinyInt
+  nombre    String    @unique(map: "nombre") @db.VarChar(20)
+  reserva   reserva[]
+}
+
+model roles {
+  id_role  Int        @id @default(autoincrement()) @db.TinyInt
+  nombre   String     @unique(map: "nombre") @db.VarChar(40)
+  usuarios usuarios[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model usuarios {
+  id_usuario Int      @id @default(autoincrement())
+  nombre     String   @db.VarChar(150)
+  apellido   String   @db.VarChar(150)
+  email      String   @unique(map: "email") @db.VarChar(180)
+  pass_hash  String   @db.VarChar(255)
+  role_id    Int      @db.TinyInt
+  activo     Int      @default(1) @db.TinyInt
+  created_at DateTime @default(dbgenerated("(now())")) @db.Timestamp(0)
+  updated_at DateTime @default(now()) @db.Timestamp(0)
+  fichas     fichas[]
+  roles      roles    @relation(fields: [role_id], references: [id_role], map: "usuarios_ibfk_1")
+
+  @@index([role_id], map: "role_id")
+}

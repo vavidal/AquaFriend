@@ -1,0 +1,20 @@
+<button
+  matIconButton
+  [mat-menu-trigger-for]="themeMenu"
+  matTooltip="Choose your dark mode"
+  matTooltipPosition="below"
+>
+  <mat-icon>{{ themeService.selectedTheme()?.icon }}</mat-icon>
+</button>
+<mat-menu #themeMenu="matMenu">
+  @for (theme of themeService.getThemes(); track theme.name) {
+  <button
+    [class.selected-theme]="themeService.selectedTheme()?.name === theme.name"
+    mat-menu-item
+    (click)="themeService.setTheme(theme.name)"
+  >
+    <mat-icon>{{ theme.icon }}</mat-icon>
+    <span>{{ theme.name | titlecase }}</span>
+  </button>
+  }
+</mat-menu>

@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+/* Global porque afectan a todo el documento */
+
+/* Scroll suave */
+html { scroll-behavior: smooth; }
+
+/* Altura del navbar fijo (se actualiza en header.ts) */
+:root { --nav-offset: 72px; }
+
+/* Empuja el contenido para que no quede debajo del navbar fijo */
+body { padding-top: var(--nav-offset); }
+
+/* Ajusta las anclas para navegación con el nav fijo */
+section[id] { scroll-margin-top: var(--nav-offset); }
