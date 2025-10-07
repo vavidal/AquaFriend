@@ -1,0 +1,69 @@
+<section class="page">
+  <header class="page-head">
+    <div class="title">
+      <h1>Gestión de Usuarios</h1>
+      <p>Administra usuarios del panel de AquaFriend.</p>
+    </div>
+
+    <div class="actions">
+      <button class="btn ghost" type="button" (click)="abrirFiltros()">
+        <span class="mi" aria-hidden="true">tune</span>
+        <span>Filtros</span>
+      </button>
+
+      <button class="btn primary" type="button" (click)="crearUsuario()">
+        <span class="mi" aria-hidden="true">add</span>
+        <span>Crear Usuario</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="table-wrap" role="region" aria-label="Listado de usuarios">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-nombre">Nombre completo</th>
+          <th>Email</th>
+          <th>Rol</th>
+          <th>Contacto</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let u of usuarios(); trackBy: trackById">
+          <td class="col-nombre">
+            <div class="user-cell">
+              <img class="avatar" [ngSrc]="avatarDe(u)" width="44" height="44" alt="" />
+              <div class="info">
+                <div class="name">{{ u.nombre }} {{ u.apellido }}</div>
+              </div>
+            </div>
+          </td>
+
+          <td>{{ u.email }}</td>
+          <td>{{ u.rol || '—' }}</td>
+
+          <td>
+            <div class="contact">
+              <div class="row">
+                <span class="mi" aria-hidden="true">call</span>
+                <span>{{ u.telefono || '—' }}</span>
+              </div>
+              <div class="row">
+                <span class="mi" aria-hidden="true">location_on</span>
+                <span>{{ u.direccion || '—' }}</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="empty" *ngIf="usuarios().length === 0">
+          <td colspan="4">
+            <span class="mi" aria-hidden="true">info</span>
+            <span>No hay información disponible.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
