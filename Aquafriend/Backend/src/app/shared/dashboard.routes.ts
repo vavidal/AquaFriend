@@ -9,7 +9,6 @@ export const dashboardRoutes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: Home, title: 'Home' },
-
       {
         path: 'peces',
         loadChildren: () =>
@@ -38,7 +37,7 @@ export const dashboardRoutes: Routes = [
       {
         path: 'user',
         loadChildren: () =>
-          import('../components/user/user.routes').then(m => m.userRoutes),
+          import('../components/users/user.routes').then(m => m.userRoutes),
       },
       {
         path: 'article',
