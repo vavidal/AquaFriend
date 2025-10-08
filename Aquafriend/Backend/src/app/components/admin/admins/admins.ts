@@ -1,7 +1,7 @@
 import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 type Usuario = {
   id: number;
@@ -17,7 +17,7 @@ type Usuario = {
 @Component({
   selector: 'app-admins',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgOptimizedImage],
+  imports: [CommonModule, FormsModule, NgOptimizedImage, RouterLink],
   templateUrl: './admins.html',
   styleUrls: ['./admins.scss'],
 })
@@ -61,7 +61,9 @@ export class Admins {
 
   abrirFiltros() {}
 
-  crearUsuario() {}
+  crearUsuario() {
+    this.router.navigate(['/dashboard/user/crear']);
+  }
 
   avatarDe(u: Usuario) {
     return u.avatar && u.avatar.trim() ? u.avatar : 'assets/avatar-placeholder.png';

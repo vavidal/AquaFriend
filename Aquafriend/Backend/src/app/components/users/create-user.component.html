@@ -1,50 +1,94 @@
-<div class="container mx-auto max-w-4xl p-6">
-  <div class="flex items-center justify-between mb-6">
-    <h1 class="text-3xl font-bold">Crear Usuario</h1>
-    <a routerLink="/admin/usuarios" class="px-4 py-2 border rounded">Volver</a>
-  </div>
+<div class="afc-wrap">
+  <h1 class="afc-title">Crear cuenta</h1>
 
-  <form [formGroup]="f" (ngSubmit)="submit()" class="grid gap-5">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      <div>
-        <label class="block mb-1 font-medium">Nombre completo</label>
-        <input type="text" formControlName="nombreCompleto" class="w-full border rounded p-2" placeholder="Admin Principal" />
-        <small *ngIf="f.get('nombreCompleto')?.touched && f.get('nombreCompleto')?.invalid" class="text-red-600">Requerido</small>
-      </div>
-      <div>
-        <label class="block mb-1 font-medium">Email</label>
-        <input type="email" formControlName="email" class="w-full border rounded p-2" placeholder="correo@dominio.com" />
-        <small *ngIf="f.get('email')?.touched && f.get('email')?.invalid" class="text-red-600">Email inválido</small>
-      </div>
-    </div>
+  <section class="afc-card">
+    <aside class="afc-side">
+      <div class="afc-hero">
+        <div class="afc-bubble b1"></div>
+        <div class="afc-bubble b2"></div>
+        <div class="afc-bubble b3"></div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <div>
-        <label class="block mb-1 font-medium">Rol</label>
-        <select formControlName="rol" class="w-full border rounded p-2">
-          <option value="Administrador">Administrador</option>
-          <option value="Editor">Editor</option>
-          <option value="Viewer">Viewer</option>
-        </select>
-      </div>
-      <div>
-        <label class="block mb-1 font-medium">Teléfono</label>
-        <input type="text" formControlName="telefono" class="w-full border rounded p-2" placeholder="1234567890" />
-      </div>
-      <div>
-        <label class="block mb-1 font-medium">Dirección</label>
-        <input type="text" formControlName="direccion" class="w-full border rounded p-2" placeholder="Calle 123" />
-      </div>
-    </div>
+        <div class="afc-avatar">
+          <div class="ring">
+            <img [src]="avatarPreview()" alt="avatar" />
+          </div>
 
-    <div>
-      <label class="block mb-1 font-medium">Avatar (URL)</label>
-      <input type="text" formControlName="avatarUrl" class="w-full border rounded p-2" placeholder="https://..." />
-    </div>
+          <label class="drop">
+            <input type="file" accept="image/*" (change)="onAvatarChange($event)" />
+            <strong>Subir avatar</strong>
+          </label>
 
-    <div class="flex gap-3 mt-2">
-      <button type="submit" [disabled]="f.invalid" class="bg-blue-600 text-white px-5 py-2 rounded">Crear Usuario</button>
-      <a routerLink="/admin/usuarios" class="px-5 py-2 border rounded">Cancelar</a>
-    </div>
-  </form>
+          <p class="filename" *ngIf="avatarName()">{{ avatarName() }}</p>
+        </div>
+
+        <div class="afc-note">
+          <h2>Nuevo miembro</h2>
+          <p>Registra una cuenta en AquaFriend.</p>
+        </div>
+      </div>
+    </aside>
+
+    <section class="afc-form">
+      <div class="grid">
+        <div class="field">
+          <span class="tag">Nombre</span>
+          <input
+            type="text"
+            name="nombre"
+            placeholder="Nombre"
+            [(ngModel)]="model.nombre"
+          />
+        </div>
+
+        <div class="field">
+          <span class="tag">Apellido</span>
+          <input
+            type="text"
+            name="apellido"
+            placeholder="Apellido"
+            [(ngModel)]="model.apellido"
+          />
+        </div>
+
+        <div class="field">
+          <span class="tag">Email</span>
+          <input
+            type="email"
+            name="email"
+            placeholder="correo@dominio.com"
+            [(ngModel)]="model.email"
+          />
+        </div>
+
+        <div class="field">
+          <span class="tag">Teléfono</span>
+          <input
+            type="tel"
+            name="telefono"
+            placeholder="9 1234 5678"
+            [(ngModel)]="model.telefono"
+          />
+        </div>
+
+        <div class="field full select">
+          <span class="tag">Rol</span>
+          <select name="rol" [(ngModel)]="model.rol">
+            <option value="Administrador">Administrador</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn ghost" (click)="cancelar()">Cancelar</button>
+        <button
+          type="button"
+          class="btn create"
+          (click)="crear()"
+          [disabled]="!formValido()"
+        >
+          Crear usuario
+        </button>
+      </div>
+    </section>
+  </section>
 </div>

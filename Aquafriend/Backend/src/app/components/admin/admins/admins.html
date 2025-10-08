@@ -11,10 +11,12 @@
         <span>Filtros</span>
       </button>
 
-      <button class="btn primary" type="button" (click)="crearUsuario()">
+      <button class="btn primary" type="button"
+        [routerLink]="['/dashboard/user/crear']">
         <span class="mi" aria-hidden="true">add</span>
         <span>Crear Usuario</span>
       </button>
+
     </div>
   </header>
 
@@ -33,7 +35,8 @@
         <tr *ngFor="let u of usuarios(); trackBy: trackById">
           <td class="col-nombre">
             <div class="user-cell">
-              <img class="avatar" [ngSrc]="avatarDe(u)" width="44" height="44" alt="" />
+              <img class="avatar" [ngSrc]="avatarDe(u)" width="44" height="44"
+                alt />
               <div class="info">
                 <div class="name">{{ u.nombre }} {{ u.apellido }}</div>
               </div>

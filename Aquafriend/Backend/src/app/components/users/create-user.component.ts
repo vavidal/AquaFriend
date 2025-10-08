@@ -1,24 +1,76 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
+type UserForm = {
+  nombre: string;
+  apellido: string;
+  email: string;
+  telefono: string;
+  rol: string;
+  avatarFile: File | null;
+  avatarUrl: string;
+  avatarLabel: string;
+};
 
 @Component({
-  selector: 'app-create-user',
+  selector: 'app-create-account',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
-  templateUrl: './create-user.component.html'
+  imports: [CommonModule, FormsModule],
+  templateUrl: './create-user.component.html',
+  styleUrls: ['./create-user.component.scss'],
 })
-export class CreateUserComponent {
-  private fb = inject(FormBuilder);
-  f = this.fb.group({
-    nombreCompleto: ['', [Validators.required, Validators.minLength(3)]],
-    email: ['', [Validators.required, Validators.email]],
-    rol: ['Editor', Validators.required],
-    telefono: [''],
-    direccion: [''],
-    avatarUrl: ['']
-  });
+export class CreateAccountComponent {
+  constructor(private router: Router) {}
 
-  submit() { if (this.f.invalid) return; }
+  model: UserForm = {
+    nombre: '',
+    apellido: '',
+    email: '',
+    telefono: '',
+    rol: 'Administrador',
+    avatarFile: null,
+    avatarUrl: 'assets/avatar-placeholder.png',
+    avatarLabel: '',
+  };
+
+  onAvatarChange(ev: Event) {
+    const input = ev.target as HTMLInputElement;
+    const file = input.files && input.files[0] ? input.files[0] : null;
+    if (!file) return;
+    this.model.avatarFile = file;
+    this.model.avatarLabel = file.name;
+    const reader = new FileReader();
+    reader.onload = () => (this.model.avatarUrl = String(reader.result || this.model.avatarUrl));
+    reader.readAsDataURL(file);
+  }
+
+  avatarPreview() {
+    return this.model.avatarUrl;
+  }
+
+  avatarName() {
+    return this.model.avatarLabel;
+  }
+
+  formValido() {
+    return (
+      this.model.nombre.trim().length > 0 &&
+      this.model.apellido.trim().length > 0 &&
+      /\S+@\S+\.\S+/.test(this.model.email) &&
+      this.model.telefono.trim().length > 0 &&
+      this.model.rol.trim().length > 0
+    );
+  }
+
+  cancelar() {
+    this.router.navigate(['/dashboard/admin']);
+  }
+
+  crear() {
+    if (!this.formValido()) return;
+    console.log('Crear usuario:', this.model);
+    this.router.navigate(['/dashboard/admin']);
+  }
 }

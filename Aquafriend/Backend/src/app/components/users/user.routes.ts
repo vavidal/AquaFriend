@@ -1,15 +1,12 @@
 import { Routes } from '@angular/router';
 
 export const userRoutes: Routes = [
+  { path: '', redirectTo: 'crear', pathMatch: 'full' },
   {
-    path: 'usuarios',
-    children: [
-      {
-        path: 'crear',
-        loadComponent: () =>
-          import('../users/create-user.component').then(m => m.CreateUserComponent)
-      }
-    ]
+    path: 'crear',
+    loadComponent: () =>
+      import('./create-user.component').then(m => m.CreateAccountComponent), 
+    title: 'Crear usuario'
   }
 ];
 

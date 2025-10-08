@@ -1,0 +1,183 @@
+:root{
+  --ink:#0b2530;
+  --muted:#6b7c86;
+  --sea:#00a8c5;
+  --sea-dark:#008aa3;
+  --foam:#fff4ee;
+  --foam-2:#ffe7db;
+  --stroke:#0b2530;
+  --ring:rgba(0,168,197,.22);
+  --panel-1:#0e2430;
+  --panel-2:#0a1e2a;
+  --tag:#4f2d23;
+  --tag-ink:#ffe9e1;
+  --orange:#ff6f3d;
+  --orange-1:#da510c;
+  --orange-2:#ff5900;
+}
+
+.afc-wrap{padding:24px}
+.afc-title{margin:0 0 16px;font-size:36px;font-weight:900;color:var(--ink)}
+
+.afc-card{
+  border-radius:18px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:420px 1fr;
+  box-shadow:0 14px 36px rgba(11,37,48,.14);
+  background:
+    radial-gradient(1400px 500px at -10% -50%, #bdf2ff33 0%, #bdf2ff00 60%),
+    linear-gradient(180deg,var(--panel-1),var(--panel-2));
+  color:#ffffff;
+}
+
+.afc-side{
+  background-color:#7b7f8b;
+  padding:22px;
+  position:relative;
+}
+
+.afc-hero{position:relative;display:grid;gap:16px;justify-items:center}
+.afc-bubble{position:absolute;border-radius:999px;background:rgba(248,141,0,.85);filter:blur(2px)}
+.b1{width:110px;height:110px;left:16px;top:14px}
+.b2{width:86px;height:86px;right:18px;top:44px}
+.b3{width:140px;height:140px;right:-34px;bottom:-28px}
+
+.afc-avatar{display:grid;gap:10px;justify-items:center;z-index:1}
+.ring{
+  width:210px;
+  height:210px;
+  border-radius:50%;
+  padding:0;
+  overflow:hidden;
+  background:transparent;
+  border:10px solid #ffffff;
+  box-shadow:0 8px 18px rgba(11,37,48,.18);
+}
+.ring img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  box-shadow:none;
+}
+
+.drop{
+  display:grid;place-items:center;gap:4px;text-align:center;cursor:pointer;
+  border:2px dashed var(--stroke);border-radius:12px;background:#ffffffcc;padding:10px 14px;
+  color:var(--ink);
+  transition:box-shadow .2s,border .2s,transform .06s ease;
+}
+.drop:hover{border-color:var(--sea);box-shadow:0 0 0 4px var(--ring)}
+.drop input{display:none}
+.drop strong{font-weight:800}
+.filename{margin:0;color:#e6eff6;font-size:14px}
+
+.afc-note{text-align:center;color:#ffffff}
+.afc-note h2{margin:6px 0 2px;font-size:24px;font-weight:900}
+.afc-note p{margin:0;opacity:.9}
+
+.afc-form{
+  padding:22px 24px;
+  background:linear-gradient(180deg,#0f2734,#0a1f2b);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:18px;
+}
+
+.field{
+  grid-column:span 6;
+  display:grid;
+  gap:8px;
+  padding:12px;
+  background:linear-gradient(180deg,var(--foam),var(--foam-2));
+  border:2px solid var(--stroke);
+  border-radius:14px;
+  color:var(--ink);
+  box-shadow:0 8px 0 #00000010 inset;
+}
+.field.full{grid-column:span 12}
+
+.tag{
+  display:inline-block;
+  align-self:flex-start;
+  background:var(--tag);
+  color:var(--tag-ink);
+  border:2px solid var(--stroke);
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.02em;
+}
+
+input,select{
+  width:100%;
+  padding:14px 14px;
+  border:2px solid var(--stroke);
+  border-radius:10px;
+  background:#fff;
+  color:var(--ink);
+  outline:none;
+}
+input::placeholder{color:#8aa3b1}
+input:focus,select:focus{box-shadow:0 0 0 4px var(--ring)}
+
+.afc-form input,
+.afc-form select,
+.afc-form textarea{
+  color:#000 !important;
+  caret-color:#000;
+}
+.afc-form input::placeholder,
+.afc-form textarea::placeholder{
+  color:#3b3b3b;
+  opacity:1;
+}
+.afc-form input:-webkit-autofill,
+.afc-form input:-webkit-autofill:hover,
+.afc-form input:-webkit-autofill:focus{
+  -webkit-text-fill-color:#000;
+  box-shadow:0 0 0 1000px #fff inset;
+}
+
+.select{position:relative}
+.select::after{
+  content:"";
+  position:absolute;right:14px;top:50%;
+  transform:translateY(-50%);
+  border:6px solid transparent;border-top-color:#1f3a45;
+}
+.select select{appearance:none;-webkit-appearance:none;padding-right:40px;background:#fff}
+
+.actions{
+  margin-top:10px;
+  display:flex;justify-content:flex-end;gap:12px;
+}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 18px;border-radius:12px;border:2px solid var(--stroke);
+  font-weight:900;cursor:pointer;text-decoration:none;
+  transition:transform .05s ease, filter .18s ease;
+}
+.btn:active{transform:translateY(1px)}
+
+.ghost{background:#edf4f7;color:#000}
+.create{
+  background:#e37909;
+  color:#ffffff;
+}
+.create:hover{filter:brightness(.95)}
+.create:disabled{opacity:.6;cursor:not-allowed}
+
+@media (max-width:1100px){
+  .afc-card{grid-template-columns:1fr}
+  .field{grid-column:span 12}
+}

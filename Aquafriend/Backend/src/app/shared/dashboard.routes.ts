@@ -10,6 +10,11 @@ export const dashboardRoutes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: Home, title: 'Home' },
       {
+        path: 'admin',
+        loadChildren: () =>
+          import('../components/admin/admin.routes').then(m => m.adminRoutes),
+      },
+      {
         path: 'peces',
         loadChildren: () =>
           import('../components/peces/peces.routes').then(m => m.pecesRoutes),
@@ -24,25 +29,11 @@ export const dashboardRoutes: Routes = [
         loadChildren: () =>
           import('../components/anfibios/anfibios.routes').then(m => m.anfibiosRoutes),
       },
-      {
-        path: 'settings',
-        loadChildren: () =>
-          import('../components/settings/settings.routes').then(m => m.settingsRoutes),
-      },
-      {
-        path: 'admin',
-        loadChildren: () =>
-          import('../components/admin/admin.routes').then(m => m.adminRoutes),
-      },
+
       {
         path: 'user',
         loadChildren: () =>
           import('../components/users/user.routes').then(m => m.userRoutes),
-      },
-      {
-        path: 'article',
-        loadChildren: () =>
-          import('../components/article/article.routes').then(m => m.articleRoutes),
       },
       {
         path: 'drawer',
