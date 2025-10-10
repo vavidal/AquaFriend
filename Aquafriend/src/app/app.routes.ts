@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { MainComponent } from './components/main/main';
-import { View360Component } from './components/view360/view360';
+import { MainBody } from './components/main-body/main-body';
+import { View360 } from './components/view360/view360';
 
 export const routes: Routes = [
-  { path: '', component: MainComponent },
-  { path: 'view360', component: View360Component }
+  { path: '', component: MainBody },
+  { path: 'view360', component: View360 }
 ];
 
 

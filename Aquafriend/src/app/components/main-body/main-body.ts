@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { ContactService, ContactRequest } from '../../services/contact.service';
 
 @Component({
   selector: 'app-main-body',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './main-body.html',
   styleUrl: './main-body.css'
 })
@@ -12,8 +16,6 @@ declare const bootstrap: any; // API JS de Bootstrap 5
 type GalleryItem = { src: string; title: string; text?: string };
 
 export class MainBody {
-
-  export class MainComponent {
   // ===== GALERÍA =====
   private readonly nums = [1, 2, 3, 4, 5, 10, 13, 15, 16, 17, 19, 20, 21];
 
