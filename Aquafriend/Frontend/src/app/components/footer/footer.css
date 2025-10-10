@@ -1,9 +1,0 @@
-.footer { 
-  background-color: #194377 !important; /* Azul Bootstrap */
-}
-
-.footer a { text-decoration: none; }
-.social-icon { width: 24px; height: 24px; display: inline-block; }
-
-/* Fuerza blanco sin tocar el archivo SVG */
-.social-icon { filter: brightness(0) invert(1); }
