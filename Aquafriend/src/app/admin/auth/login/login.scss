@@ -52,7 +52,7 @@
   align-items: center;
   gap: 18px;
   svg { width: 46px; height: 46px; }
-  .brand-logo { width: 300px; height: 300px; object-fit: contain; display: block; }
+  .brand-logo { width: 160px; height: 160px; object-fit: contain; display: block; }
   .brand-title { font-weight: 600; letter-spacing: .2px; font-size: 26px; }
   .brand-sub { opacity: .7; font-size: 16px; }
 }
@@ -121,7 +121,7 @@ input {
   .panel.left { padding: 28px 22px; }
   .panel.right { padding: 0 0 28px; }
   .brand { justify-content: center; }
-  .brand .brand-logo { width: 180px; height: 180px; }
+  .brand .brand-logo { width: 120px; height: 120px; }
   .card { width: 100%; border-radius: 12px; }
 }
 
