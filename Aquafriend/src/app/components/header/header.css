@@ -43,7 +43,7 @@
 
 /* === Logo más grande y alineación === */
 .navbar-brand img {
-  height: 36px;
+  height: 65px;
   width: auto;
   display: block;
 }
@@ -55,7 +55,7 @@
   padding-bottom: 0.35rem;
   transition: box-shadow .2s ease, background-color .2s ease;
   z-index: 1030; /* Asegura que esté por encima de otros elementos */
-  position: relative;
+  position:absolute;
 }
 
 /* Centrado del menú (refuerzo por si cambia el orden/precedencia de clases) */

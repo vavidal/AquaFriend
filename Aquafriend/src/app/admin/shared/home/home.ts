@@ -19,7 +19,7 @@ export class Home implements AfterViewInit {
   ngAfterViewInit() {
     // Forzar recarga del video cuando el componente se monta
     const video = this.elementRef.nativeElement.querySelector('video');
-    if (video) {
+    if (video && typeof video.load === 'function') {
       video.load();
       video.play().catch(() => {
         // Ignorar error si autoplay falla
