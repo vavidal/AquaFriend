@@ -63,21 +63,24 @@
 .nav-item{
   display:flex;
   align-items:center;
-  gap:12px;
-  padding:12px 12px;
+  gap:10px;
+  padding:10px 12px;
   border-radius:14px;
   color:var(--ink);
   text-decoration:none;
   transition:background .15s ease,transform .04s ease,box-shadow .15s ease;
   outline:none;
+  flex-shrink:0;
 }
 
 .nav-item i,
 .nav-item .msr{
   font-size:20px;
-  width:22px;
+  width:24px;
+  min-width:24px;
   text-align:center;
   color:var(--icon);
+  flex-shrink:0;
 }
 
 .msr{
@@ -95,9 +98,12 @@
   font-variation-settings:'FILL' 0,'wght' 520,'GRAD' 0,'opsz' 24;
 }
 
-.nav-item span{
-  font-size:16px;
+.nav-item span:not(.msr){
+  font-size:14px;
   font-weight:600;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
 .nav-item:hover{
