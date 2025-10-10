@@ -31,7 +31,7 @@ export class CreateAccountComponent {
     telefono: '',
     rol: 'Administrador',
     avatarFile: null,
-    avatarUrl: 'assets/avatar-placeholder.png',
+    avatarUrl: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Ccircle cx="100" cy="100" r="100" fill="%23ddd"/%3E%3Ccircle cx="100" cy="80" r="35" fill="%23999"/%3E%3Cpath d="M100 120 Q50 140 40 200 L160 200 Q150 140 100 120 Z" fill="%23999"/%3E%3C/svg%3E',
     avatarLabel: '',
   };
 
@@ -65,12 +65,12 @@ export class CreateAccountComponent {
   }
 
   cancelar() {
-    this.router.navigate(['/dashboard/admin']);
+    this.router.navigate(['/dashboard/user']);
   }
 
   crear() {
     if (!this.formValido()) return;
     console.log('Crear usuario:', this.model);
-    this.router.navigate(['/dashboard/admin']);
+    this.router.navigate(['/dashboard/user']);
   }
 }

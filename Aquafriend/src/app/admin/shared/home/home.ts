@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, AfterViewInit, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../ui/material-module';
 
@@ -13,7 +13,19 @@ type ModuleCard = { title: string; description: string; traits: string[]; route:
   styleUrls: ['./home.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Home {
+export class Home implements AfterViewInit {
+  constructor(private elementRef: ElementRef) {}
+
+  ngAfterViewInit() {
+    // Forzar recarga del video cuando el componente se monta
+    const video = this.elementRef.nativeElement.querySelector('video');
+    if (video) {
+      video.load();
+      video.play().catch(() => {
+        // Ignorar error si autoplay falla
+      });
+    }
+  }
   modules: ModuleCard[] = [
     {
       title: 'Recorrido 360°',

@@ -21,8 +21,11 @@ export class App {
   private readonly router = inject(Router);
 
   constructor() {
-    // Estado inicial
-    this.isAdminRoute.set(this.isAdminOrDashboard(this.router.url));
+    // Estado inicial basado en la URL del navegador
+    if (this.isBrowser) {
+      const currentPath = window.location.pathname;
+      this.isAdminRoute.set(this.isAdminOrDashboard(currentPath));
+    }
     // Toggle clase en body para padding del header
     this.updateBodyClass();
     // Actualiza cuando cambia la ruta
