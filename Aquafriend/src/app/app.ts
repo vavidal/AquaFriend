@@ -22,16 +22,20 @@ export class App {
 
   constructor() {
     // Estado inicial
-    this.isAdminRoute.set(this.router.url.startsWith('/admin'));
+    this.isAdminRoute.set(this.isAdminOrDashboard(this.router.url));
     // Toggle clase en body para padding del header
     this.updateBodyClass();
     // Actualiza cuando cambia la ruta
     this.router.events
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
       .subscribe((e) => {
-        this.isAdminRoute.set(e.urlAfterRedirects.startsWith('/admin'));
+        this.isAdminRoute.set(this.isAdminOrDashboard(e.urlAfterRedirects));
         this.updateBodyClass();
       });
+  }
+
+  private isAdminOrDashboard(url: string): boolean {
+    return url.startsWith('/admin') || url.startsWith('/dashboard');
   }
 
   private updateBodyClass() {

@@ -8,7 +8,7 @@ export const ADMIN_ROUTES: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'login' },
       {
         path: 'home',
-        loadComponent: () => import('./shared/home/home').then(m => m.AdminHome)
+        loadComponent: () => import('./shared/home/home').then(m => m.Home)
       },
       {
         path: 'animales',

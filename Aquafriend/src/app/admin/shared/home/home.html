@@ -1,15 +1,14 @@
-<h2 class="h5 mb-3">Inicio del panel</h2>
-<div class="row g-3">
-  <div class="col-12 col-md-4" *ngFor="let c of cards">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <h5 class="card-title">{{ c.title }}</h5>
-        <p class="card-text small text-body-secondary">{{ c.desc }}</p>
-        <a class="btn btn-primary btn-sm" [routerLink]="c.route">Abrir</a>
-      </div>
-    </div>
+<section class="hero">
+  <div class="hero__bg">
+    <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="/logo_acuario.png">
+      <source src="/video_panel.mp4" type="video/mp4" />
+    </video>
   </div>
-  
-</div>
 
+  <div class="hero__overlay"></div>
 
+  <div class="hero__content">
+    <h1 class="hero__title">Bienvenido a AquaFriend Panel</h1>
+    <p class="hero__subtitle">Gestiona contenido, informacion del acuario .</p>
+  </div>
+</section>
