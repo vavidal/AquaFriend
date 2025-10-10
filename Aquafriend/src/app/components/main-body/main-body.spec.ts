@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { View360 } from './view360';
+import { MainBody } from './main-body';
 
-describe('View360', () => {
-  let component: View360;
-  let fixture: ComponentFixture<View360>;
+describe('MainBody', () => {
+  let component: MainBody;
+  let fixture: ComponentFixture<MainBody>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [View360]
+      imports: [MainBody]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(View360);
+    fixture = TestBed.createComponent(MainBody);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

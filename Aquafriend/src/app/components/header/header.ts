@@ -1,31 +1,36 @@
-import {
-  AfterViewInit, Component, ElementRef, Inject, PLATFORM_ID, ViewChild
-} from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, AfterViewInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterLink],
   templateUrl: './header.html',
-  styleUrl: './header.css'
+  styleUrls: ['./header.css']
 })
 export class Header implements AfterViewInit {
-  @ViewChild('navbar', { static: true }) navbar!: ElementRef<HTMLElement>;
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
-
-  ngAfterViewInit(): void {
-    // opcional: actualizar --nav-offset, etc.
+  
+  closeNav(): void {
+    // Cerrar navbar en móvil después de hacer clic
+    const navbarToggler = document.querySelector('.navbar-toggler') as HTMLElement;
+    const navbarCollapse = document.querySelector('.navbar-collapse') as HTMLElement;
+    
+    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+      navbarToggler?.click();
+    }
   }
 
-  /** Cierra el menú colapsado en móvil */
-  closeNav() {
-    if (!isPlatformBrowser(this.platformId)) return;
-    const el = document.getElementById('mainNav');
-    // Usa la instancia de Bootstrap 5
-    const bsCollapse = (window as any)?.bootstrap?.Collapse
-      ?.getOrCreateInstance(el!, { toggle: false });
-    bsCollapse?.hide();
+  ngAfterViewInit(): void {
+    this.updateNavOffset();
+  }
+
+  private updateNavOffset(): void {
+    // Actualizar variable CSS con altura del navbar
+    const navbar = document.querySelector('.navbar') as HTMLElement;
+    if (navbar) {
+      const height = navbar.offsetHeight;
+      document.documentElement.style.setProperty('--nav-offset', `${height}px`);
+    }
   }
 }

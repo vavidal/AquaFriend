@@ -7,3 +7,4 @@ export const routes: Routes = [
   { path: 'view360', component: View360Component }
 ];
 
+
