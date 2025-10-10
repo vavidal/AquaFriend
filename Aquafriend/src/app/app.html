@@ -1,12 +1,13 @@
 <!-- app.component.html -->
-<header>
+<header *ngIf="!isAdminRoute()">
   <app-header></app-header>
+  
 </header>
 
 <main class="flex-grow-1">
   <router-outlet></router-outlet>
 </main>
 
-<footer class="mt-auto">
+<footer class="mt-auto" *ngIf="!isAdminRoute()">
   <app-footer></app-footer>
 </footer>
