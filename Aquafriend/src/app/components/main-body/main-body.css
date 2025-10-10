@@ -1,3 +1,279 @@
-/* Ajustes mínimos de espaciado/escala */
-section + section { border-top: 1px solid rgba(0,0,0,.05); }
-.card .display-6 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+/* ====== Ajustes generales ====== */
+section + section { 
+    border-top: 1px solid rgba(0,0,0,.05); 
+    position: relative;
+  }
+  
+  section + section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+  }
+  
+  /* === TARJETAS MEJORADAS === */
+  .card {
+    border: 1px solid #195eb3;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    background: #fff;
+  }
+  
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  }
+  
+  .card-img-top {
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card:hover .card-img-top {
+    transform: scale(1.08);
+    filter: brightness(1.1) saturate(1.2);
+  }
+  
+  .card-img-top::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(25, 94, 179, 0.1), rgba(217, 95, 20, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .card:hover .card-img-top::after {
+    opacity: 1;
+  }
+  
+  /* Hover "enfocado" para la galería */
+  .gallery-card { 
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    will-change: transform;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  
+  .gallery-card img { 
+    transition: all 0.4s ease; 
+  }
+  
+  .gallery-card:hover,
+  .gallery-card:focus-within {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+  }
+  
+  .gallery-card:hover img,
+  .gallery-card:focus-within img {
+    transform: scale(1.1);
+    filter: saturate(1.2) brightness(1.1);
+  }
+  
+  
+  /* === TÍTULOS MEJORADOS === */
+  .titulo-exdestacadas,
+  .titulo-proeducativos,
+  .titulo-entradas { 
+    font-weight: 700; 
+    background: linear-gradient(135deg, var(--secondary-color), #ff6b35);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .titulo-exdestacadas::after,
+  .titulo-proeducativos::after,
+  .titulo-entradas::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--secondary-color), #ff6b35);
+    border-radius: 2px;
+  }
+  
+  .titulo-destino,
+  .titulo-contactanos { 
+    font-weight: 700; 
+    background: linear-gradient(135deg, var(--accent-color), #5cb85c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .titulo-destino::after,
+  .titulo-contactanos::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), #5cb85c);
+    border-radius: 2px;
+  }
+  
+  /* === BOTONES MEJORADOS === */
+  .btn-primary { 
+    background: linear-gradient(135deg, var(--primary-color), #2a5298);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .btn-primary:hover::before {
+    left: 100%;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(25, 94, 179, 0.3);
+    background: linear-gradient(135deg, #1c4c86, #1e3c72);
+  }
+  
+  .btn-outline-primary {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-outline-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+    z-index: -1;
+  }
+  
+  .btn-outline-primary:hover::before {
+    width: 100%;
+  }
+  
+  .btn-outline-primary:hover {
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(25, 94, 179, 0.2);
+  }
+  
+  /* ====== Modales + Carruseles (para los 3) ====== */
+  
+  /* 1) Modal más estrecho */
+  .modal-soft .modal-dialog.modal-xl { max-width: 960px; } /* ajusta: 820/900/1024 */
+  
+  /* 2) Fondo que deja ver la página con blur y opacidad */
+  .modal-backdrop.show {
+    opacity: .65; /* oscuridad del fondo */
+    backdrop-filter: blur(6px) saturate(1.05);
+    -webkit-backdrop-filter: blur(6px) saturate(1.05);
+  }
+  
+  /* 3) Contenedor del modal transparente (sin caja negra) */
+  .modal-soft .modal-content {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+  
+  /* Centrado del contenido dentro del modal */
+  .modal-soft .modal-body { min-height: 60vh; }
+  
+  /* Imagen a “tamaño foto” sin recortes */
+  .carousel-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    max-height: 82vh;    /* no sobrepasa la altura visible */
+    object-fit: contain; /* sin recortar */
+    background: transparent;
+  }
+  
+  /* Flechas más grandes y visibles */
+  .modal-soft .carousel-control-prev,
+  .modal-soft .carousel-control-next { width: 4.25rem; } /* área clickeable */
+  
+  .modal-soft .carousel-control-prev-icon,
+  .modal-soft .carousel-control-next-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-size: 100% 100%;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,.8)) brightness(1.2);
+  }
+  
+  /* X (cerrar) grande, circular y siempre encima */
+  .modal-soft .modal-soft-close {
+    position: absolute;
+    top: .75rem; right: .75rem;
+    width: 2.5rem; height: 2.5rem;
+    background-size: 1.4rem 1.4rem; /* tamaño del ícono */
+    border-radius: 50%;
+    padding: .65rem;
+    background-color: rgba(0,0,0,.55);
+    box-shadow: 0 4px 12px rgba(0,0,0,.4);
+    opacity: 1 !important;
+    z-index: 1058; /* por encima del carrusel */
+  }
+  
+  /* Hover/focus de la X */
+  .modal-soft .modal-soft-close:hover { background-color: rgba(0,0,0,.7); }
+  .modal-soft .modal-soft-close:focus {
+    outline: none;
+    box-shadow: 0 0 0 .2rem rgba(255,255,255,.25);
+  }
+  
