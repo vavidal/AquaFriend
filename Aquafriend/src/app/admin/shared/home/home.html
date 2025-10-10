@@ -1,0 +1,15 @@
+<h2 class="h5 mb-3">Inicio del panel</h2>
+<div class="row g-3">
+  <div class="col-12 col-md-4" *ngFor="let c of cards">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">{{ c.title }}</h5>
+        <p class="card-text small text-body-secondary">{{ c.desc }}</p>
+        <a class="btn btn-primary btn-sm" [routerLink]="c.route">Abrir</a>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+

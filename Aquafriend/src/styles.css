@@ -8,7 +8,8 @@ html { scroll-behavior: smooth; }
 :root { --nav-offset: 72px; }
 
 /* Empuja el contenido para que no quede debajo del navbar fijo */
-body { padding-top: var(--nav-offset); }
+body { padding-top: 0; }
+body.with-nav { padding-top: var(--nav-offset); }
 
 /* Ajusta las anclas para navegación con el nav fijo */
 section[id] { scroll-margin-top: var(--nav-offset); }
