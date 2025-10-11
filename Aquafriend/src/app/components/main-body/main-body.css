@@ -509,16 +509,19 @@ section + section {
   }
   
   /* === BOTONES MEJORADOS === */
-  .btn-primary { 
-    background: linear-gradient(135deg, var(--primary-color), #2a5298);
+  .btn-primary {
+    background: #195eb3 !important;
     border: none;
     border-radius: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    color: #ffffff !important;
+    opacity: 1 !important;
+    box-shadow: 0 4px 12px rgba(25, 94, 179, 0.3);
   }
-  
+
   .btn-primary::before {
     content: '';
     position: absolute;
@@ -526,18 +529,18 @@ section + section {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(172, 17, 17, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.5s ease;
   }
-  
+
   .btn-primary:hover::before {
     left: 100%;
   }
-  
+
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(25, 94, 179, 0.3);
-    background: linear-gradient(135deg, #1c4c86, #1e3c72);
+    box-shadow: 0 10px 25px rgba(25, 94, 179, 0.5);
+    background: #144a8f !important;
   }
   
   .btn-outline-primary {
