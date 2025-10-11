@@ -74,36 +74,396 @@ section + section {
     opacity: 1;
   }
   
-  /* Hover "enfocado" para la galería */
-  .gallery-card { 
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-    will-change: transform;
-    border-radius: 16px;
-    overflow: hidden;
+  /* === GALERÍA === */
+  .gallery-section {
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
   }
-  
-  .gallery-card img { 
-    transition: all 0.4s ease; 
+
+  .gallery-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #1a1a1a;
   }
-  
-  .gallery-card:hover,
-  .gallery-card:focus-within {
-    transform: translateY(-12px) scale(1.03);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 500px;
   }
-  
-  .gallery-card:hover img,
-  .gallery-card:focus-within img {
+
+  /* Navegación de la galería */
+  .gallery-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .gallery-nav-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #1a1a1a;
+  }
+
+  .gallery-nav-btn:hover:not(.disabled) {
+    background-color: #195eb3;
+    color: #ffffff;
     transform: scale(1.1);
-    filter: saturate(1.2) brightness(1.1);
+    box-shadow: 0 6px 16px rgba(25, 94, 179, 0.3);
+  }
+
+  .gallery-nav-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background-color: #e0e0e0;
+  }
+
+  .gallery-page-indicator {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+
+  .gallery-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 75%; /* Aspect ratio 4:3 */
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gallery-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(25, 94, 179, 0.7) 0%, rgba(0, 0, 0, 0.8) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-overlay-content {
+    text-align: center;
+    color: #ffffff;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-image-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .gallery-icon {
+    font-size: 2rem;
+    color: #ffffff;
+  }
+
+  .gallery-image-wrapper:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .gallery-image-wrapper:hover .gallery-image {
+    transform: scale(1.1);
+  }
+
+  .gallery-image-wrapper:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-image-wrapper:hover .gallery-overlay-content {
+    transform: translateY(0);
+  }
+
+  /* Responsive gallery */
+  @media (max-width: 992px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      min-height: 400px;
+    }
+
+    .gallery-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .gallery-nav-btn {
+      width: 45px;
+      height: 45px;
+    }
+
+    .gallery-navigation {
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      min-height: 300px;
+    }
+
+    .gallery-title {
+      font-size: 1.75rem;
+    }
+
+    .gallery-nav-btn {
+      width: 40px;
+      height: 40px;
+    }
+
+    .gallery-navigation {
+      gap: 1rem;
+    }
+
+    .gallery-page-indicator {
+      font-size: 0.9rem;
+    }
   }
   
   
+  /* === PROGRAMAS EDUCATIVOS === */
+  .programa-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+  }
+
+  .programa-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  }
+
+  .programa-card-1 {
+    border-color: #195eb3;
+  }
+
+  .programa-card-2 {
+    border-color: #ff8c42;
+  }
+
+  .programa-card-3 {
+    border-color: #6db3c5;
+  }
+
+  .programa-decoracion {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .programa-circulo {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+  }
+
+  /* Card 1 - Azul y Naranja */
+  .circulo-azul-1 {
+    width: 180px;
+    height: 180px;
+    background: #195eb3;
+    top: -60px;
+    right: -40px;
+  }
+
+  .circulo-naranja-1 {
+    width: 120px;
+    height: 120px;
+    background: #ff8c42;
+    bottom: -30px;
+    right: 30px;
+  }
+
+  /* Card 2 - Naranja y Celeste */
+  .circulo-naranja-2 {
+    width: 200px;
+    height: 200px;
+    background: #ff8c42;
+    top: -80px;
+    right: -60px;
+  }
+
+  .circulo-celeste-2 {
+    width: 100px;
+    height: 100px;
+    background: #6db3c5;
+    bottom: -20px;
+    right: 40px;
+  }
+
+  /* Card 3 - Celeste y Azul */
+  .circulo-celeste-3 {
+    width: 160px;
+    height: 160px;
+    background: #6db3c5;
+    top: -50px;
+    right: -30px;
+  }
+
+  .circulo-azul-3 {
+    width: 130px;
+    height: 130px;
+    background: #195eb3;
+    bottom: -40px;
+    right: 20px;
+  }
+
+  .programa-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .programa-numero {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+  }
+
+  .programa-card-1 .programa-numero {
+    color: #195eb3;
+  }
+
+  .programa-card-2 .programa-numero {
+    color: #ff8c42;
+  }
+
+  .programa-card-3 .programa-numero {
+    color: #6db3c5;
+  }
+
+  .programa-titulo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .programa-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .programa-lista li {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .programa-lista li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .programa-card-1 .programa-lista li::before {
+    color: #195eb3;
+  }
+
+  .programa-card-2 .programa-lista li::before {
+    color: #ff8c42;
+  }
+
+  .programa-card-3 .programa-lista li::before {
+    color: #6db3c5;
+  }
+
+  /* Responsive para programas */
+  @media (max-width: 768px) {
+    .programa-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .programa-titulo {
+      font-size: 1.5rem;
+    }
+
+    .programa-circulo {
+      opacity: 0.1;
+    }
+  }
+
   /* === TÍTULOS MEJORADOS === */
   .titulo-exdestacadas,
   .titulo-proeducativos,
-  .titulo-entradas { 
-    font-weight: 700; 
+  .titulo-entradas {
+    font-weight: 700;
     background: linear-gradient(135deg, var(--secondary-color), #ff6b35);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -166,7 +526,7 @@ section + section {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(172, 17, 17, 0.2), transparent);
     transition: left 0.5s ease;
   }
   
@@ -244,16 +604,49 @@ section + section {
     background: transparent;
   }
   
-  /* Flechas más grandes y visibles */
+  /* Botones de navegación del carrusel mejorados */
   .modal-soft .carousel-control-prev,
-  .modal-soft .carousel-control-next { width: 4.25rem; } /* área clickeable */
-  
+  .modal-soft .carousel-control-next {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    opacity: 0.85;
+    transition: all 0.3s ease;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .modal-soft .carousel-control-prev:hover,
+  .modal-soft .carousel-control-next:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .modal-soft .carousel-control-prev {
+    left: 20px;
+  }
+
+  .modal-soft .carousel-control-next {
+    right: 20px;
+  }
+
   .modal-soft .carousel-control-prev-icon,
   .modal-soft .carousel-control-next-icon {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 28px;
+    height: 28px;
     background-size: 100% 100%;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,.8)) brightness(1.2);
+    filter: invert(1) brightness(0) saturate(100%) contrast(100%);
+    opacity: 0.8;
+  }
+
+  .modal-soft .carousel-control-prev:hover .carousel-control-prev-icon,
+  .modal-soft .carousel-control-next:hover .carousel-control-next-icon {
+    opacity: 1;
+    filter: invert(1) brightness(0) saturate(100%) contrast(100%) drop-shadow(0 2px 4px rgba(0,0,0,0.2));
   }
   
   /* X (cerrar) grande, circular y siempre encima */
