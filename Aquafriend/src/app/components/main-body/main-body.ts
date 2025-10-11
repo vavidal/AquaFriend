@@ -38,6 +38,32 @@ export class MainBody {
 
   selectedIndex = 0;
 
+  // Paginación de galería
+  itemsPerPage = 6;
+  currentPage = 0;
+
+  get totalPages(): number {
+    return Math.ceil(this.images.length / this.itemsPerPage);
+  }
+
+  get visibleImages(): GalleryItem[] {
+    const start = this.currentPage * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    return this.images.slice(start, end);
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages - 1) {
+      this.currentPage++;
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+    }
+  }
+
   openGallery(index: number) {
     this.selectedIndex = index;
 

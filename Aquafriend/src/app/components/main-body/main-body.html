@@ -12,7 +12,7 @@
             alt="Acuario: ciclo de vida de las salmonídeas"
             class="card-img-top"
             loading="lazy"
-            style="height:180px;object-fit:cover;">
+            style="height:240px;object-fit:cover;">
           <div class="card-body">
             <h5 class="card-title">Acuario</h5>
             <p class="card-text small text-body-secondary">Descubre el ciclo de vida de las salmonídeas y otras especies nativas.</p>
@@ -31,7 +31,7 @@
             alt="Granja educativa: interacción responsable con animales"
             class="card-img-top"
             loading="lazy"
-            style="height:180px;object-fit:cover;">
+            style="height:240px;object-fit:cover;">
           <div class="card-body">
             <h5 class="card-title">Granja educativa</h5>
             <p class="card-text small text-body-secondary">Interacción responsable con animales de granja y aprendizaje guiado.</p>
@@ -48,7 +48,7 @@
             alt="Coto de pesca con devolución"
             class="card-img-top"
             loading="lazy"
-            style="height:180px;object-fit:cover;">
+            style="height:240px;object-fit:cover;">
           <div class="card-body">
             <h5 class="card-title">Coto de pesca</h5>
             <p class="card-text small text-body-secondary">Pesca deportiva responsable con devolución.</p>
@@ -157,13 +157,17 @@
       <h2 class="titulo-proeducativos">Programas Educativos</h2>
     </div>
 
-    <div class="row g-3">
+    <div class="row g-4">
       <div class="col-12 col-md-4">
-        <div class="card h-100 shadow-soft hover-lift fade-in-left">
-          <div class="card-body">
-            <h6 class="text-uppercase text-primary small mb-2">Programa N°1</h6>
-            <h5 class="card-title">Visita básica</h5>
-            <ul class="small text-body-secondary mb-0">
+        <div class="programa-card programa-card-1">
+          <div class="programa-decoracion">
+            <div class="programa-circulo circulo-azul-1"></div>
+            <div class="programa-circulo circulo-naranja-1"></div>
+          </div>
+          <div class="programa-content">
+            <h6 class="programa-numero">PROGRAMA N°1</h6>
+            <h5 class="programa-titulo">Visita básica</h5>
+            <ul class="programa-lista">
               <li>Recorrido por acuarios y granja con monitora.</li>
               <li>Juego didáctico e introducción al sistema de cuencas.</li>
               <li>30–45 min por grupo (máx. 35 pers.).</li>
@@ -173,11 +177,15 @@
       </div>
 
       <div class="col-12 col-md-4">
-        <div class="card h-100 shadow-soft hover-lift scale-in">
-          <div class="card-body">
-            <h6 class="text-uppercase text-primary small mb-2">Programa N°2</h6>
-            <h5 class="card-title">Visita académica</h5>
-            <ul class="small text-body-secondary mb-0">
+        <div class="programa-card programa-card-2">
+          <div class="programa-decoracion">
+            <div class="programa-circulo circulo-naranja-2"></div>
+            <div class="programa-circulo circulo-celeste-2"></div>
+          </div>
+          <div class="programa-content">
+            <h6 class="programa-numero">PROGRAMA N°2</h6>
+            <h5 class="programa-titulo">Visita académica</h5>
+            <ul class="programa-lista">
               <li>Profundización biológica, química y/o ingeniería.</li>
               <li>Diálogo con el equipo (biólogos, veterinaria).</li>
               <li>Orientado a 6° básico a 4° medio.</li>
@@ -188,11 +196,15 @@
       </div>
 
       <div class="col-12 col-md-4">
-        <div class="card h-100 shadow-soft hover-lift fade-in-right">
-          <div class="card-body">
-            <h6 class="text-uppercase text-primary small mb-2">Programa N°3</h6>
-            <h5 class="card-title">Taller aplicado</h5>
-            <ul class="small text-body-secondary mb-0">
+        <div class="programa-card programa-card-3">
+          <div class="programa-decoracion">
+            <div class="programa-circulo circulo-celeste-3"></div>
+            <div class="programa-circulo circulo-azul-3"></div>
+          </div>
+          <div class="programa-content">
+            <h6 class="programa-numero">PROGRAMA N°3</h6>
+            <h5 class="programa-titulo">Taller aplicado</h5>
+            <ul class="programa-lista">
               <li>Habilidades blandas con trabajos prácticos.</li>
               <li>Aprendizaje basado en proyectos.</li>
               <li>Orientado a 6° básico a 4° medio.</li>
@@ -277,21 +289,47 @@
 </section>
 
 <!-- ===================== GALERÍA ===================== -->
-<section id="galeria" class="py-5 bg-light">
+<section id="galeria" class="gallery-section py-5">
   <div class="container">
-    <h2 class="fw-bold mb-4">Galería</h2>
+    <h2 class="gallery-title">Galería</h2>
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-      <div class="col" *ngFor="let item of images; let i = index">
-        <div class="card gallery-card h-100 shadow-sm overflow-hidden position-relative">
-          <img [src]="item.src" [alt]="item.title" class="card-img-top" loading="lazy" style="height:180px;object-fit:cover;">
-          <div class="card-body">
-            <h6 class="card-title mb-1">{{ item.title }}</h6>
-            <p class="card-text small text-body-secondary mb-0" *ngIf="item.text">{{ item.text }}</p>
+    <div class="gallery-grid">
+      <div class="gallery-item" *ngFor="let item of visibleImages; let i = index">
+        <div class="gallery-image-wrapper" (click)="openGallery(currentPage * itemsPerPage + i)" data-bs-toggle="modal" data-bs-target="#galleryModal">
+          <img [src]="item.src" [alt]="item.title" class="gallery-image" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-content">
+              <h6 class="gallery-image-title">{{ item.title }}</h6>
+              <i class="bi bi-zoom-in gallery-icon"></i>
+            </div>
           </div>
-          <a class="stretched-link" role="button" (click)="openGallery(i)" data-bs-toggle="modal" data-bs-target="#galleryModal"></a>
         </div>
       </div>
+    </div>
+
+    <!-- Botones de navegación -->
+    <div class="gallery-navigation">
+      <button
+        class="gallery-nav-btn gallery-nav-prev"
+        (click)="prevPage()"
+        [disabled]="currentPage === 0"
+        [class.disabled]="currentPage === 0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+        </svg>
+      </button>
+
+      <span class="gallery-page-indicator">{{ currentPage + 1 }} / {{ totalPages }}</span>
+
+      <button
+        class="gallery-nav-btn gallery-nav-next"
+        (click)="nextPage()"
+        [disabled]="currentPage === totalPages - 1"
+        [class.disabled]="currentPage === totalPages - 1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+        </svg>
+      </button>
     </div>
   </div>
 </section>
