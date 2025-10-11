@@ -464,14 +464,12 @@ section + section {
   .titulo-proeducativos,
   .titulo-entradas {
     font-weight: 700;
-    background: linear-gradient(135deg, var(--secondary-color), #ff6b35);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #d95f14;
     position: relative;
     display: inline-block;
+    margin-bottom: 2rem;
   }
-  
+
   .titulo-exdestacadas::after,
   .titulo-proeducativos::after,
   .titulo-entradas::after {
@@ -481,21 +479,19 @@ section + section {
     left: 0;
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, var(--secondary-color), #ff6b35);
+    background: linear-gradient(90deg, #d95f14, #ff6b35);
     border-radius: 2px;
   }
-  
+
   .titulo-destino,
-  .titulo-contactanos { 
-    font-weight: 700; 
-    background: linear-gradient(135deg, var(--accent-color), #5cb85c);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .titulo-contactanos {
+    font-weight: 700;
+    color: #4d9447;
     position: relative;
     display: inline-block;
+    margin-bottom: 2rem;
   }
-  
+
   .titulo-destino::after,
   .titulo-contactanos::after {
     content: '';
@@ -504,7 +500,7 @@ section + section {
     left: 0;
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, var(--accent-color), #5cb85c);
+    background: linear-gradient(90deg, #4d9447, #5cb85c);
     border-radius: 2px;
   }
   
@@ -672,4 +668,3 @@ section + section {
     outline: none;
     box-shadow: 0 0 0 .2rem rgba(255,255,255,.25);
   }
-  
