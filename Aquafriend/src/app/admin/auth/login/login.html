@@ -13,15 +13,22 @@
         <h1 class="welcome">Bienvenido</h1>
         <p class="hint">Por favor inicia sesión para acceder al panel de administración.</p>
 
-        <label for="username">Usuario</label>
-        <input id="username" name="username" type="text" placeholder="Escribe tu usuario" required ngModel />
+        <!-- Mensaje de error -->
+        <div *ngIf="errorMessage" style="background:#fee;border:1px solid #c33;padding:12px;border-radius:8px;color:#c33;margin-bottom:16px;font-size:14px;">
+          {{ errorMessage }}
+        </div>
+
+        <label for="email">Usuario</label>
+        <input id="email" name="email" type="text" placeholder="admin" required ngModel />
 
         <label for="password">Contraseña</label>
         <input id="password" name="password" type="password" placeholder="••••••••" required ngModel />
 
         <div class="actions">
           <a class="link" href="#">¿Olvidaste tu contraseña?</a>
-          <button class="btn" type="submit">Entrar</button>
+          <button class="btn" type="submit" [disabled]="loading">
+            {{ loading ? 'Cargando...' : 'Entrar' }}
+          </button>
         </div>
       </form>
     </section>

@@ -63,3 +63,20 @@ INSERT INTO `reserva`
 VALUES
 (1, 1, '2025-11-20', '09:00:00', '12:00:00',
  30, 2, 165000.00, 31350.00, 196350.00, 1, 'Grupo de 5° básico - Primera visita');
+
+ -- 1. ESTADOS DE RESERVA (OBLIGATORIO)
+DELETE FROM reservas_estado;
+INSERT INTO reservas_estado (id_estado, nombre) VALUES
+(1, 'Pendiente'),
+(2, 'Confirmada'),
+(3, 'Cancelada'),
+(4, 'Completada');
+
+-- 2. PROGRAMAS EDUCATIVOS (OBLIGATORIO)
+DELETE FROM programas_educativos;
+INSERT INTO programas_educativos
+(nombre_plan, monto_por_persona, iva_porcentaje, min_estudiantes, max_estudiantes, tiempo_programa, descripcion, visible)
+VALUES
+('Visita básica', 5500.00, 19.00, 1, 35, '30-45 minutos', 'Recorrido por acuarios y granja con monitora', 1),
+('Visita académica', 7500.00, 19.00, 15, 35, '60-90 minutos', 'Profundización biológica y química', 1),
+('Taller aplicado', 9500.00, 19.00, 15, 35, '90-120 minutos', 'Habilidades blandas con trabajos prácticos', 1);
