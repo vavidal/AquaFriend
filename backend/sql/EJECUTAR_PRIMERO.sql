@@ -3,6 +3,12 @@
 -- Ejecutar este script en phpMyAdmin ANTES de iniciar el backend
 -- ================================================================
 
+--Para INICIAR LOS SERVIDORES DEL BACKEND DEBEN HACER EL SIGUIENTE COMANDO EN LA TERMINAL
+-- cd backend && node server.js
+
+
+
+-- ================================================================
 -- 1. Estados de reserva (OBLIGATORIO)
 INSERT INTO `reservas_estado` (`id_estado`, `nombre`) VALUES
 (1, 'Pendiente'),
