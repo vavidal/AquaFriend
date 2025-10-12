@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ContactService, ContactRequest } from '../../services/contact.service';
+import { ReservaService, ReservaRequest } from '../../services/reserva.service';
 
 declare const bootstrap: any; // API JS de Bootstrap 5
 
@@ -89,6 +90,7 @@ export class MainBody {
   // ===== INYECCIONES =====
   private fb = inject(FormBuilder);
   private contactSvc = inject(ContactService);
+  private reservaSvc = inject(ReservaService);
 
   // ===== FORMULARIO DE CONTACTO GENERAL =====
   contactForm = this.fb.group({
@@ -158,41 +160,31 @@ export class MainBody {
       return;
     }
 
-    // extraemos valores (pueden ser null según el tipo, por eso usamos ?? para asegurar strings/números)
-    const r = this.reservaForm.value as {
-      institucion: string | null;
-      correo: string | null;
-      programa: string | null;
-      fecha: string | null;
-      personas: number | null;
-      comentarios: string | null;
-    };
-
-    // mapeamos a la forma que espera ContactRequest
-    const payload: ContactRequest = {
-      name: r.institucion ?? 'Institución sin nombre',
-      email: r.correo ?? '',
-      date: r.fecha ?? '',
-      people: r.personas ?? 1,
-      message:
-        `Reserva educativa\nPrograma: ${r.programa ?? '-'}\n` +
-        `Fecha tentativa: ${r.fecha ?? '-'}\n` +
-        `Personas: ${r.personas ?? '-'}\n\n` +
-        `Comentarios:\n${r.comentarios ?? '-'}`,
+    const payload: ReservaRequest = {
+      institucion: this.reservaForm.value.institucion ?? '',
+      correo: this.reservaForm.value.correo ?? '',
+      programa: this.reservaForm.value.programa ?? '',
+      fecha: this.reservaForm.value.fecha ?? '',
+      personas: this.reservaForm.value.personas ?? 1,
+      comentarios: this.reservaForm.value.comentarios ?? ''
     };
 
     this.enviandoReserva = true;
 
-    this.contactSvc.sendRequest(payload).subscribe({
-      next: () => {
+    this.reservaSvc.crearReserva(payload).subscribe({
+      next: (response) => {
         this.enviandoReserva = false;
-        this.successReserva = 'Reserva enviada ✅ Te contactaremos para confirmar la fecha.';
-        this.reservaForm.reset({ personas: 1 });
+        if (response.success) {
+          this.successReserva = `Reserva creada exitosamente ✅ Total a pagar: $${response.data?.total_pagar}`;
+          this.reservaForm.reset({ personas: 1 });
+        } else {
+          this.errorReserva = response.message || 'Error al crear la reserva';
+        }
       },
       error: (err) => {
         console.error(err);
         this.enviandoReserva = false;
-        this.errorReserva = 'No pudimos enviar tu reserva. Intenta nuevamente más tarde.';
+        this.errorReserva = 'No pudimos procesar tu reserva. Verifica que el servidor esté corriendo.';
       },
     });
   }

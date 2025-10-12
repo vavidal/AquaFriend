@@ -15,9 +15,9 @@ export class AdminLogin {
 
   onSubmit(form: NgForm) {
     if (!form.valid) return;
-    // Mock login: guarda flag en localStorage y redirige al home del panel
+    // Mock login: guarda flag en localStorage y redirige al dashboard principal
     localStorage.setItem('admin_logged_in', '1');
-    this.router.navigate(['/admin/home']);
+    this.router.navigate(['/dashboard/home']);
   }
 }
 

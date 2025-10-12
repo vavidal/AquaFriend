@@ -36,6 +36,11 @@ export const dashboardRoutes: Routes = [
         loadChildren: () =>
           import('../features/drawer/drawer.routes').then(m => m.drawerRoutes),
       },
+      {
+        path: 'reservas',
+        loadChildren: () =>
+          import('../features/reservas/reservas.routes').then(m => m.reservasRoutes),
+      },
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ],
   },
