@@ -16,11 +16,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Importar rutas
 const reservaRoutes = require('./routes/reservaRoutes');
+const authRoutes = require('./routes/authRoutes');
 
-// Usar rutas
-app.use('/api/reservas', reservaRoutes);
-
-// Ruta de prueba
+// Ruta de prueba (debe ir ANTES de las rutas modulares)
 app.get('/api/health', (req, res) => {
   res.json({
     success: true,
@@ -28,6 +26,10 @@ app.get('/api/health', (req, res) => {
     timestamp: new Date()
   });
 });
+
+// Usar rutas (DESPUÉS de rutas específicas, ANTES del handler 404)
+app.use('/api/reservas', reservaRoutes);
+app.use('/api/auth', authRoutes);
 
 // Manejo de rutas no encontradas
 app.use((req, res) => {
