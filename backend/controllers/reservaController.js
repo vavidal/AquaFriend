@@ -1,4 +1,5 @@
 const db = require('../config/database');
+const emailService = require('../services/emailService');
 
 // Crear una nueva reserva educativa
 exports.crearReserva = async (req, res) => {
@@ -76,6 +77,23 @@ exports.crearReserva = async (req, res) => {
         comentarios || null
       ]
     );
+
+    // Preparar datos de la reserva para los emails
+    const reservaData = {
+      escuela: institucion,
+      email: correo,
+      programa: programa,
+      fecha: fecha,
+      cantidad: personas,
+      comentarios: comentarios,
+      total: total_pagar.toFixed(2)
+    };
+
+    // Enviar emails (no bloqueante - se ejecuta en background)
+    Promise.all([
+      emailService.enviarEmailNuevaReservaAdmin(reservaData),
+      emailService.enviarEmailConfirmacionReserva(reservaData)
+    ]).catch(err => console.error('⚠️  Error al enviar emails de reserva:', err));
 
     res.status(201).json({
       success: true,
