@@ -38,7 +38,7 @@ export class App {
   }
 
   private isAdminOrDashboard(url: string): boolean {
-    return url.startsWith('/admin') || url.startsWith('/dashboard');
+    return url.startsWith('/admin') || url.startsWith('/dashboard') || url.startsWith('/view360');
   }
 
   private updateBodyClass() {

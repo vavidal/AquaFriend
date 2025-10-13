@@ -2,7 +2,7 @@
   <div class="profile">
     <div class="avatar"></div>
     <div class="who">
-      <div class="name">{{ userName || 'John David' }}</div>
+      <div class="name">{{ userName || 'Admin' }}</div>
       <div class="role">AquaFriend</div>
     </div>
   </div>
@@ -32,6 +32,10 @@
 
   <a class="nav-item" routerLink="/dashboard/reservas" routerLinkActive="active" (click)="handleClick()">
     <span class="msr">checklist</span><span>Reservas</span>
+  </a>
+
+  <a class="nav-item" routerLink="/dashboard/contactos" routerLinkActive="active" (click)="handleClick()">
+    <span class="msr">mail</span><span>Contactos</span>
   </a>
 
   <div class="spacer"></div>

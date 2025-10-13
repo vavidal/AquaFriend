@@ -37,29 +37,59 @@
       <!-- Formulario de contacto compacto -->
       <div class="col-12 col-md-3">
         <h6 class="text-uppercase opacity-75">Contáctanos</h6>
-        <form action="https://formsubmit.co/jzmnmoraga@gmail.com" method="POST" class="small">
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="small">
           <div class="mb-2">
-            <input class="form-control form-control-sm" type="text" name="name" placeholder="Tu nombre" required>
+            <input
+              class="form-control form-control-sm"
+              type="text"
+              name="nombre"
+              [(ngModel)]="contacto.nombre"
+              placeholder="Tu nombre"
+              required
+              #nombreInput="ngModel">
           </div>
           <div class="mb-2">
-            <input class="form-control form-control-sm" type="email" name="email" placeholder="Correo" required>
+            <input
+              class="form-control form-control-sm"
+              type="email"
+              name="email"
+              [(ngModel)]="contacto.email"
+              placeholder="Correo"
+              required
+              email
+              #emailInput="ngModel">
           </div>
           <div class="mb-2">
-            <input class="form-control form-control-sm" type="tel" name="phone" placeholder="Teléfono" required>
+            <input
+              class="form-control form-control-sm"
+              type="tel"
+              name="telefono"
+              [(ngModel)]="contacto.telefono"
+              placeholder="Teléfono">
           </div>
           <div class="mb-2">
-            <textarea class="form-control form-control-sm" name="message" rows="2" placeholder="Mensaje" required></textarea>
+            <textarea
+              class="form-control form-control-sm"
+              name="mensaje"
+              [(ngModel)]="contacto.mensaje"
+              rows="2"
+              placeholder="Mensaje"></textarea>
           </div>
-          <button class="btn btn-outline-light btn-sm w-100" type="submit">Enviar</button>
-          
-          <!-- Campos ocultos -->
-          <input type="hidden" name="_next" value="http://localhost:4200/pages/gracias.html">
-          <input type="hidden" name="_subject" value="Nueva consulta - Parque Acuario Puyehue">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_autoresponse" value="¡Gracias! Recibimos tu mensaje y te contactaremos pronto. — Parque Acuario Puyehue">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_replyto" value="{email}">
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+          <!-- Mensajes de feedback -->
+          <div *ngIf="mensajeExito" class="alert alert-success alert-sm py-1 px-2 mb-2 small">
+            {{ mensajeExito }}
+          </div>
+          <div *ngIf="mensajeError" class="alert alert-danger alert-sm py-1 px-2 mb-2 small">
+            {{ mensajeError }}
+          </div>
+
+          <button
+            class="btn btn-outline-light btn-sm w-100"
+            type="submit"
+            [disabled]="enviando || !contactForm.valid">
+            {{ enviando ? 'Enviando...' : 'Enviar' }}
+          </button>
         </form>
       </div>
     </div>
