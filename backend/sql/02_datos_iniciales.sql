@@ -1,9 +1,12 @@
 -- ================================================================
 -- SCRIPT DE DATOS INICIALES PARA AQUAFRIENDS
 -- Ejecutar este script en phpMyAdmin ANTES de iniciar el backend
+-- RECORDAR QUE EN ÉSTA PARTE ES SOLO PARA INSERTAR DATOS 
+-- SI O SI DEBE HACERLO CON LOS QUE SON OBLIGATORIOS
+-- DE TODAS FORMAS EL SCRIPT aquafriends.sql contiene toda la información
 -- ================================================================
 
---Para INICIAR LOS SERVIDORES DEL BACKEND DEBEN HACER EL SIGUIENTE COMANDO EN LA TERMINAL
+-- Para INICIAR LOS SERVIDORES DEL BACKEND DEBEN HACER EL SIGUIENTE COMANDO EN LA TERMINAL
 -- cd backend && node server.js
 
 
