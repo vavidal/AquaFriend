@@ -3,7 +3,9 @@
     "allow": [
       "Bash(mkdir:*)",
       "Bash(cat:*)",
-      "Bash(npm install nodemailer)"
+      "Bash(npm install nodemailer)",
+      "Bash(npm install)",
+      "Bash(npm run build)"
     ],
     "deny": [],
     "ask": []
