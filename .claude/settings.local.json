@@ -3,7 +3,14 @@
     "allow": [
       "Bash(dir node_modules)",
       "Bash(npm install)",
-      "Bash(node server.js)"
+      "Bash(node server.js)",
+      "Bash(curl:*)",
+      "Bash(timeout 3 bash -c \"sleep 2 && curl -s http://localhost:3000/api/usuarios/roles/listar\")",
+      "Bash(node:*)",
+      "Bash(timeout:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)"
     ],
     "deny": [],
     "ask": []
