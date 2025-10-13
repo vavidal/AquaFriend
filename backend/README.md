@@ -1,6 +1,39 @@
 # Backend AquaFriend - API REST con Node.js + Express
 
-## 📋 Requisitos Previos
+(?) PARA INICIAR LOS SERVIDORES DEL BACKEND DEBEN HACER EL SIGUIENTE COMANDO EN LA TERMINAL:
+-- cd backend && node server.js
+
+# Pasos para iniciar el servidor Node.js (recuerda usar otra terminal no en la que inicias tu proyecto):
+1. Abrir una nueva terminal
+En VSCode: Terminal → Nueva Terminal (o Ctrl + Shift + ñ) o usar tu terminal de sistema (CMD, PowerShell, Git Bash)
+
+2. Navegar a la carpeta backend
+
+cd backend
+
+3. Verificar que tienes las dependencias instaladas
+
+npm install (Esto instalará Express, CORS, body-parser, dotenv, etc.)
+
+4. Iniciar el servidor
+node server.js o si tienes un script en el package.json:
+npm start
+
+5. Verificar que está corriendo
+Deberías ver en la terminal algo como:
+🚀 Servidor corriendo en http://localhost:3000
+📊 API disponible en http://localhost:3000/api
+🔗 Frontend esperado en http://localhost:4200
+
+6. Probar la API
+Abre en tu navegador: http://localhost:3000/api/health Deberías ver:
+{
+  "success": true,
+  "message": "API de AquaFriend funcionando correctamente",
+  "timestamp": "2025-10-12T..."
+}
+
+## 📋 Requisitos Previos para usar node.js + express + mysql
 
 1. **Node.js** (v16 o superior) - [Descargar aquí](https://nodejs.org/)
 2. **XAMPP** o **WAMP** con MySQL corriendo

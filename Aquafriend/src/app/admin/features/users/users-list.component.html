@@ -1,0 +1,127 @@
+<div class="users-container">
+  <div class="header">
+    <h1>Gestión de Usuarios</h1>
+    <div class="header-buttons">
+      <button class="btn-refresh" (click)="refrescarLista()" [disabled]="cargando" title="Refrescar lista">
+        <span>🔄 Actualizar</span>
+      </button>
+      <button class="btn-primary" (click)="nuevoUsuario()" [disabled]="cargando">
+        <span>+ Nuevo Usuario</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Buscar por nombre, apellido, email o rol..."
+      [(ngModel)]="busqueda"
+      (input)="filtrarUsuarios()"
+      class="search-input"
+    />
+  </div>
+
+  <div class="loading" *ngIf="cargando">
+    <p>Cargando usuarios...</p>
+  </div>
+
+  <div class="usuarios-table" *ngIf="!cargando && usuariosFiltrados.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Email</th>
+          <th>Rol</th>
+          <th>Estado</th>
+          <th>Fecha Creación</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuariosFiltrados">
+          <td>{{ usuario.id_usuario }}</td>
+          <td>{{ usuario.nombre }}</td>
+          <td>{{ usuario.apellido }}</td>
+          <td>{{ usuario.email }}</td>
+          <td>
+            <span class="badge badge-role">{{ usuario.role }}</span>
+          </td>
+          <td>
+            <span [class]="'badge badge-' + getEstadoBadge(usuario.activo)">
+              {{ getEstadoTexto(usuario.activo) }}
+            </span>
+          </td>
+          <td>{{ usuario.created_at | date: 'dd/MM/yyyy' }}</td>
+          <td class="actions">
+            <button
+              class="btn-edit"
+              (click)="editarUsuario(usuario)"
+              [disabled]="cargando"
+              title="Editar usuario"
+            >
+              ✏️
+            </button>
+            <button
+              class="btn-delete"
+              (click)="eliminarUsuario(usuario)"
+              [disabled]="cargando"
+              title="Eliminar usuario"
+            >
+              🗑️
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="no-results" *ngIf="!cargando && usuariosFiltrados.length === 0">
+    <p>No se encontraron usuarios</p>
+  </div>
+</div>
+
+<!-- Modal de Edición -->
+<div class="modal-overlay" *ngIf="mostrarModalEditar" (click)="cerrarModalEditar()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Editar Usuario</h2>
+      <button class="btn-close" (click)="cerrarModalEditar()">×</button>
+    </div>
+
+    <div class="modal-body" *ngIf="usuarioEditando">
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" [(ngModel)]="usuarioEditando.nombre" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label>Apellido</label>
+        <input type="text" [(ngModel)]="usuarioEditando.apellido" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="usuarioEditando.email" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label>Estado</label>
+        <select [(ngModel)]="usuarioEditando.activo" class="form-control">
+          <option [value]="1">Activo</option>
+          <option [value]="0">Inactivo</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-secondary" (click)="cerrarModalEditar()" [disabled]="cargando">
+        Cancelar
+      </button>
+      <button class="btn-primary" (click)="guardarEdicion()" [disabled]="cargando">
+        {{ cargando ? 'Guardando...' : 'Guardar Cambios' }}
+      </button>
+    </div>
+  </div>
+</div>

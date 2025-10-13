@@ -41,6 +41,11 @@ export const dashboardRoutes: Routes = [
         loadChildren: () =>
           import('../features/reservas/reservas.routes').then(m => m.reservasRoutes),
       },
+      {
+        path: 'contactos',
+        loadChildren: () =>
+          import('../features/contactos/contactos.routes').then(m => m.contactosRoutes),
+      },
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ],
   },
