@@ -1,3 +1,5 @@
+# DEBE CREAR ÉSTE ARCHIVO DENTRO DE LA CARPETA BACKEND, DE NINGUNA MÁS
+
 # Configuración de Base de Datos MySQL
 DB_HOST=localhost
 DB_USER=root
