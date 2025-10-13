@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2025 a las 17:33:55
+-- Tiempo de generación: 14-10-2025 a las 01:52:36
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -60,6 +60,13 @@ CREATE TABLE `contactos` (
   `leido` tinyint(1) DEFAULT 0 COMMENT 'Indica si fue revisado por el admin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Almacena las consultas del formulario de contacto';
 
+--
+-- Volcado de datos para la tabla `contactos`
+--
+
+INSERT INTO `contactos` (`id_contacto`, `nombre`, `email`, `telefono`, `mensaje`, `fecha_contacto`, `leido`) VALUES
+(1, 'yasmin', 'ya.santana@duocuc.cl', '+56945179119', 'HOLA', '2025-10-13 23:19:27', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -100,8 +107,7 @@ CREATE TABLE `escuelas` (
 --
 
 INSERT INTO `escuelas` (`id_escuela`, `nombre`, `tipo`, `comuna`, `region`, `email`, `telefono`, `created_at`) VALUES
-(1, 'COLEGIO TÉCNICO NACIONES UNIDAS', NULL, NULL, NULL, 'nacionesunidas@gmail.com', NULL, '2025-10-12 00:17:02'),
-(2, 'Colegio San José', 'Particular subvencionado', 'Río Bueno', 'Los Ríos', 'contacto@sanjose.cl', '+56912345678', '2025-10-13 15:28:47'),
+(6, 'INSTITUTO PROFESIONAL Duoc UC', NULL, NULL, NULL, 'ya.santana@duocuc.cl', NULL, '2025-10-13 23:10:14');
 
 -- --------------------------------------------------------
 
@@ -288,9 +294,9 @@ CREATE TABLE `programas_educativos` (
 --
 
 INSERT INTO `programas_educativos` (`id_plan`, `nombre_plan`, `monto_por_persona`, `iva_porcentaje`, `min_estudiantes`, `max_estudiantes`, `tiempo_programa`, `descripcion`, `visible`, `created_at`, `updated_at`) VALUES
-(1, 'Visita básica', 5500.00, 19.00, 1, 35, '30-45 minutos', 'Recorrido por acuarios y granja con monitora', 1, '2025-10-12 00:24:07', '2025-10-12 00:24:07'),
-(2, 'Visita académica', 7500.00, 19.00, 15, 35, '60-90 minutos', 'Profundización biológica y química', 1, '2025-10-12 00:24:07', '2025-10-12 00:24:07'),
-(3, 'Taller aplicado', 9500.00, 19.00, 15, 35, '90-120 minutos', 'Habilidades blandas con trabajos prácticos', 1, '2025-10-12 00:24:07', '2025-10-12 00:24:07');
+(1, 'Visita básica', 6500.00, 19.00, 1, 35, '30-45 minutos', 'Recorrido por acuarios y granja con monitora', 1, '2025-10-12 00:24:07', '2025-10-12 00:24:07'),
+(2, 'Visita académica', 9000.00, 19.00, 15, 35, '60-90 minutos', 'Profundización biológica y química', 1, '2025-10-12 00:24:07', '2025-10-12 00:24:07'),
+(3, 'Taller aplicado', 14000.00, 19.00, 15, 35, '90-120 minutos', 'Habilidades blandas con trabajos prácticos', 1, '2025-10-12 00:24:07', '2025-10-12 00:24:07');
 
 -- --------------------------------------------------------
 
@@ -322,10 +328,7 @@ CREATE TABLE `reserva` (
 --
 
 INSERT INTO `reserva` (`id_reserva`, `id_plan`, `escuela_id`, `profesor_id`, `fecha_reserva`, `hora_entrada`, `hora_termino`, `cantidad_estudiantes`, `cantidad_docentes`, `total_bruto`, `total_iva`, `total_pagar`, `estado_id`, `observaciones`, `created_at`, `updated_at`) VALUES
-(1, 2, 1, NULL, '2025-10-13', '09:00:00', '17:00:00', 30, 0, 225000.00, 42750.00, 267750.00, 1, 'Hola queremos visitar el acuario!', '2025-10-12 00:24:32', '2025-10-12 00:24:32'),
-(2, 1, 1, NULL, '2025-11-20', '09:00:00', '12:00:00', 30, 2, 165000.00, 31350.00, 196350.00, 1, 'Grupo de 5° básico - Primera visita', '2025-10-13 15:28:47', '2025-10-13 15:28:47'),
-(3, 1, 1, NULL, '2025-11-20', '09:00:00', '12:00:00', 30, 2, 165000.00, 31350.00, 196350.00, 1, 'Grupo de 5° básico - Primera visita', '2025-10-13 15:29:33', '2025-10-13 15:29:33'),
-(4, 1, 1, NULL, '2025-11-20', '09:00:00', '12:00:00', 30, 2, 165000.00, 31350.00, 196350.00, 1, 'Grupo de 5° básico - Primera visita', '2025-10-13 15:30:11', '2025-10-13 15:30:11');
+(7, 1, 6, NULL, '2025-10-13', '09:00:00', '17:00:00', 20, 0, 110000.00, 20900.00, 130900.00, 1, 'Hola', '2025-10-13 23:10:14', '2025-10-13 23:10:14');
 
 -- --------------------------------------------------------
 
@@ -403,7 +406,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `email`, `pass_hash`, `role_id`, `activo`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'AquaFriend', 'admin', 'administrator@2025', 1, 1, '2025-10-12 00:41:36', '2025-10-12 00:41:36');
+(1, 'Admin', 'AquaFriend', 'admin', 'administrator@2025', 1, 1, '2025-10-12 00:41:36', '2025-10-13 18:05:26');
 
 --
 -- Índices para tablas volcadas
@@ -558,7 +561,7 @@ ALTER TABLE `categorias_especie`
 -- AUTO_INCREMENT de la tabla `contactos`
 --
 ALTER TABLE `contactos`
-  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID único del contacto';
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID único del contacto', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `escenas_360`
@@ -570,7 +573,7 @@ ALTER TABLE `escenas_360`
 -- AUTO_INCREMENT de la tabla `escuelas`
 --
 ALTER TABLE `escuelas`
-  MODIFY `id_escuela` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_escuela` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `especies`
@@ -624,7 +627,7 @@ ALTER TABLE `programas_educativos`
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva_estudiante`
