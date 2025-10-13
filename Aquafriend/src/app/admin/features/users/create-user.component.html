@@ -61,32 +61,34 @@
         </div>
 
         <div class="field">
-          <span class="tag">Teléfono</span>
+          <span class="tag">Contraseña</span>
           <input
-            type="tel"
-            name="telefono"
-            placeholder="9 1234 5678"
-            [(ngModel)]="model.telefono"
+            type="password"
+            name="password"
+            placeholder="Mínimo 6 caracteres"
+            [(ngModel)]="model.password"
           />
         </div>
 
         <div class="field full select">
           <span class="tag">Rol</span>
-          <select name="rol" [(ngModel)]="model.rol">
-            <option value="Administrador">Administrador</option>
+          <select name="role_id" [(ngModel)]="model.role_id" (ngModelChange)="onRoleChange()">
+            <option *ngFor="let role of roles" [value]="role.id_role">
+              {{ role.nombre }}
+            </option>
           </select>
         </div>
       </div>
 
       <div class="actions">
-        <button type="button" class="btn ghost" (click)="cancelar()">Cancelar</button>
+        <button type="button" class="btn ghost" (click)="cancelar()" [disabled]="cargando">Cancelar</button>
         <button
           type="button"
           class="btn create"
           (click)="crear()"
-          [disabled]="!formValido()"
+          [disabled]="!formValido() || cargando"
         >
-          Crear usuario
+          {{ cargando ? 'Creando...' : 'Crear usuario' }}
         </button>
       </div>
     </section>
