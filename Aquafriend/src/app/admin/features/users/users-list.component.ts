@@ -38,9 +38,8 @@ export class UsersListComponent implements OnInit {
           this.usuariosFiltrados = this.usuarios;
         }
       },
-      error: (error) => {
+      error: () => {
         this.cargando = false;
-        console.error('Error al cargar usuarios:', error);
         alert('Error al cargar usuarios');
       }
     });
@@ -52,8 +51,7 @@ export class UsersListComponent implements OnInit {
       this.usuariosFiltrados = this.usuarios;
     } else {
       this.usuariosFiltrados = this.usuarios.filter(usuario =>
-        usuario.nombre.toLowerCase().includes(termino) ||
-        usuario.apellido.toLowerCase().includes(termino) ||
+        `${usuario.nombre} ${usuario.apellido}`.toLowerCase().includes(termino) ||
         usuario.email.toLowerCase().includes(termino) ||
         usuario.role.toLowerCase().includes(termino)
       );
@@ -71,7 +69,6 @@ export class UsersListComponent implements OnInit {
 
   guardarEdicion() {
     if (!this.usuarioEditando || !this.usuarioEditando.id_usuario) return;
-
     this.cargando = true;
     const datosActualizar: any = {
       nombre: this.usuarioEditando.nombre,
@@ -80,16 +77,14 @@ export class UsersListComponent implements OnInit {
       role_id: this.usuarioEditando.role_id,
       activo: this.usuarioEditando.activo
     };
-
     this.usuarioService.actualizar(this.usuarioEditando.id_usuario, datosActualizar).subscribe({
       next: (response) => {
-        this.cargando = false; // Siempre desactivar el cargando
+        this.cargando = false;
         if (response.success && response.data) {
-          // Actualizar el usuario en la lista local
           const index = this.usuarios.findIndex(u => u.id_usuario === response.data!.id_usuario);
           if (index !== -1) {
             this.usuarios[index] = response.data;
-            this.filtrarUsuarios(); // Reaplica el filtro
+            this.filtrarUsuarios();
           }
           alert('Usuario actualizado exitosamente');
           this.cerrarModalEditar();
@@ -99,27 +94,22 @@ export class UsersListComponent implements OnInit {
       },
       error: (error) => {
         this.cargando = false;
-        console.error('Error al actualizar usuario:', error);
         alert(error.error?.message || 'Error al actualizar usuario');
       }
     });
   }
 
-  // Nuevo método para refrescar la lista
   refrescarLista() {
-    this.busqueda = ''; // Limpiar búsqueda
+    this.busqueda = '';
     this.cargarUsuarios();
   }
 
   eliminarUsuario(usuario: Usuario) {
     if (!usuario.id_usuario) return;
-
     const confirmacion = confirm(
       `¿Está seguro de que desea eliminar al usuario ${usuario.nombre} ${usuario.apellido}?`
     );
-
     if (!confirmacion) return;
-
     this.cargando = true;
     this.usuarioService.eliminar(usuario.id_usuario).subscribe({
       next: (response) => {
@@ -131,9 +121,8 @@ export class UsersListComponent implements OnInit {
           alert(response.message || 'Error al eliminar usuario');
         }
       },
-      error: (error) => {
+      error: () => {
         this.cargando = false;
-        console.error('Error al eliminar usuario:', error);
         alert('Error al eliminar usuario');
       }
     });
