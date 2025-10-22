@@ -122,7 +122,7 @@ Dashboard Admin:
 ├── 🌐 Recorrido 360°
 ├── 🐟 Peces
 ├── 🐾 Animales
-├── 🐸 Anfibios
+├── 🐸 reptiles
 ├── 📋 Reservas
 └── 📬 CONTACTOS (NUEVO)
     ├── Filtro: Todos
