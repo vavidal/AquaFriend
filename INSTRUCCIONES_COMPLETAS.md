@@ -363,7 +363,7 @@ Una vez que todo funcione:
 
 1. ✅ Agregar autenticación real con JWT
 2. ✅ Implementar gestión de estados de reservas (confirmar, cancelar)
-3. ✅ Crear endpoints para Peces, Animales, Anfibios
+3. ✅ Crear endpoints para Peces, Animales, reptiles
 4. ✅ Subir imágenes de la galería desde el admin
 5. ✅ Deploy a producción (Railway, Render, etc.)
 
