@@ -1,24 +1,26 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
+import { Component, OnInit, Input, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-drawer-menu',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, MatDividerModule, MatListModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './drawer-menu.html',
   styleUrls: ['./drawer-menu.scss']
 })
-export class DrawerMenuComponent {
+export class DrawerMenuComponent implements OnInit {
   @Input() isMobile = false;
-  @Input() userName = 'John David';
-  @Input() avatarUrl: string | null = null;
+  user: { nombre?: string; apellido?: string; role?: string } | null = null;
 
-  @Output() itemClicked = new EventEmitter<void>();
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  handleClick() {
-    if (this.isMobile) this.itemClicked.emit();
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const raw = window.localStorage.getItem('admin_user');
+      this.user = raw ? JSON.parse(raw) : null;
+    }
   }
+
+  handleClick(): void {}
 }

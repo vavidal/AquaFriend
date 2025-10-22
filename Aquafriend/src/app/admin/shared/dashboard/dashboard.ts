@@ -17,15 +17,19 @@ import { DrawerMenuComponent } from '../drawer-menu/drawer-menu';
     MatButtonModule,
     MatTooltipModule,
     MatSidenavModule,
-    DrawerMenuComponent,
+    DrawerMenuComponent
   ],
   templateUrl: './dashboard.html',
-  styleUrls: ['./dashboard.scss'],
+  styleUrls: ['./dashboard.scss']
 })
 export class Dashboard {
   @ViewChild('drawer') drawer?: MatDrawer;
-  userName = 'John David';
 
-  isMobile(): boolean { return typeof window !== 'undefined' && window.innerWidth < 960; }
-  onNavigate(): void { if (this.isMobile()) this.drawer?.close(); }
+  isMobile(): boolean {
+    return typeof window !== 'undefined' && window.innerWidth < 960;
+  }
+
+  onNavigate(): void {
+    if (this.isMobile()) this.drawer?.close();
+  }
 }
