@@ -14,23 +14,20 @@ type Anfibio = {
 };
 
 @Component({
-  selector: 'app-anfibios',
+  selector: 'app-reptiles',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './anfibios.html',
-  styleUrl: './anfibios.scss',
+  templateUrl: './reptiles.html',
+  styleUrls: ['./reptiles.scss'],
 })
-export class Anfibios {
+export class ReptilesComponent {
   q = signal('');
   private data = signal<Anfibio[]>([]);
 
-  anfibiosFiltrados = computed(() => {
+  reptilesFiltrados = computed(() => {
     const term = this.q().toLowerCase().trim();
-    return this.data().filter((a) => {
-      const t =
-        (a.especie || '') + ' ' +
-        (a.alimentacion || '') + ' ' +
-        (a.descripcion || '');
+    return this.data().filter(a => {
+      const t = `${a.especie || ''} ${a.alimentacion || ''} ${a.descripcion || ''}`;
       return !term || t.toLowerCase().includes(term);
     });
   });
@@ -40,7 +37,7 @@ export class Anfibios {
   }
 
   onOpenFilters() {
-    console.log('Abrir filtros anfibios');
+    console.log('Abrir filtros reptiles');
   }
 
   onCreateAmphibian() {

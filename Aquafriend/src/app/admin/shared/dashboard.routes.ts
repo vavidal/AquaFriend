@@ -22,9 +22,9 @@ export const dashboardRoutes: Routes = [
           import('../features/animales/animales.routes').then(m => m.animalesRoutes),
       },
       {
-        path: 'anfibios',
+        path: 'reptiles',
         loadChildren: () =>
-          import('../features/anfibios/anfibios.routes').then(m => m.anfibiosRoutes),
+          import('../features/reptiles/reptiles.routes').then(m => m.default),
       },
       {
         path: 'user',
