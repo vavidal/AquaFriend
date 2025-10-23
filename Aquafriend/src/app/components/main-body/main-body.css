@@ -1,9 +1,9 @@
 /* ====== Ajustes generales ====== */
-section + section { 
-    border-top: 1px solid rgba(0,0,0,.05); 
+section + section {
+    border-top: 1px solid rgba(0,0,0,.05);
     position: relative;
   }
-  
+
   section + section::before {
     content: '';
     position: absolute;
@@ -15,7 +15,7 @@ section + section {
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
     border-radius: 2px;
   }
-  
+
   /* === TARJETAS MEJORADAS === */
   .card {
     border: 1px solid #195eb3;
@@ -25,7 +25,7 @@ section + section {
     position: relative;
     background: #fff;
   }
-  
+
   .card::before {
     content: '';
     position: absolute;
@@ -37,27 +37,27 @@ section + section {
     transform: scaleX(0);
     transition: transform 0.3s ease;
   }
-  
+
   .card:hover::before {
     transform: scaleX(1);
   }
-  
+
   .card:hover {
     transform: translateY(-12px) scale(1.02);
     box-shadow: 0 25px 50px rgba(0,0,0,0.15);
   }
-  
+
   .card-img-top {
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
   }
-  
+
   .card:hover .card-img-top {
     transform: scale(1.08);
     filter: brightness(1.1) saturate(1.2);
   }
-  
+
   .card-img-top::after {
     content: '';
     position: absolute;
@@ -69,11 +69,11 @@ section + section {
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   .card:hover .card-img-top::after {
     opacity: 1;
   }
-  
+
   /* === GALERÍA === */
   .gallery-section {
     background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
@@ -143,321 +143,83 @@ section + section {
     text-align: center;
   }
 
-  .gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    cursor: pointer;
-  }
+/* Ítems de galería */
+.gallery-item{ position:relative; overflow:hidden; border-radius:12px; cursor:pointer; }
+.gallery-image-wrapper{
+  position:relative; width:100%; padding-bottom:75%; overflow:hidden; border-radius:12px;
+  box-shadow:0 4px 15px rgba(0,0,0,.1); transition:all .4s cubic-bezier(.4,0,.2,1);
+}
+.gallery-image{ position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
+.gallery-overlay{
+  position:absolute; inset:0; background:linear-gradient(180deg, rgba(25,94,179,.7) 0%, rgba(0,0,0,.8) 100%);
+  opacity:0; transition:opacity .3s ease; display:flex; align-items:center; justify-content:center;
+}
+.gallery-overlay-content{ text-align:center; color:#fff; transform:translateY(20px); transition:transform .3s ease; }
+.gallery-image-title{ font-family:'Montserrat', sans-serif; font-size:1.1rem; font-weight:600; margin-bottom:.5rem; }
+.gallery-icon{ font-size:2rem; color:#fff; }
+.gallery-image-wrapper:hover{ transform:translateY(-8px); box-shadow:0 12px 30px rgba(0,0,0,.2); }
+.gallery-image-wrapper:hover .gallery-image{ transform:scale(1.1); }
+.gallery-image-wrapper:hover .gallery-overlay{ opacity:1; }
+.gallery-image-wrapper:hover .gallery-overlay-content{ transform:translateY(0); }
 
-  .gallery-image-wrapper {
-    position: relative;
-    width: 100%;
-    padding-bottom: 75%; /* Aspect ratio 4:3 */
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+/* Galería: responsive */
+@media (max-width: 992px){ .gallery-grid{ grid-template-columns: repeat(2,1fr); gap:1.2rem; } }
+@media (max-width: 768px){
+  .gallery-grid{ grid-template-columns: repeat(2,1fr); gap:1rem; min-height:400px; }
+  .gallery-title{ font-size:2rem; margin-bottom:2rem; }
+  .gallery-nav-btn{ width:45px; height:45px; }
+  .gallery-navigation{ gap:1.5rem; }
+}
+@media (max-width: 576px){
+  .gallery-grid{ grid-template-columns:1fr; gap:1rem; min-height:300px; }
+  .gallery-title{ font-size:1.75rem; }
+  .gallery-nav-btn{ width:40px; height:40px; }
+  .gallery-navigation{ gap:1rem; }
+  .gallery-page-indicator{ font-size:.9rem; }
+}
 
-  .gallery-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
+/* =========================================
+   PROGRAMAS EDUCATIVOS (Cards decoradas)
+========================================= */
+.programa-card{
+  position:relative; background:#fff; border-radius:20px; padding:2.5rem 2rem; height:100%; overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.08); transition:all .4s ease; border:2px solid transparent;
+}
+.programa-card:hover{ transform:translateY(-8px); box-shadow:0 12px 32px rgba(0,0,0,.15); }
+.programa-card-1{ border-color:#195eb3; }
+.programa-card-2{ border-color:#ff8c42; }
+.programa-card-3{ border-color:#6db3c5; }
+.programa-decoracion{ position:absolute; top:0; right:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:0; }
+.programa-circulo{ position:absolute; border-radius:50%; opacity:.15; }
+.circulo-azul-1{ width:180px; height:180px; background:#195eb3; top:-60px; right:-40px; }
+.circulo-naranja-1{ width:120px; height:120px; background:#ff8c42; bottom:-30px; right:30px; }
+.circulo-naranja-2{ width:200px; height:200px; background:#ff8c42; top:-80px; right:-60px; }
+.circulo-celeste-2{ width:100px; height:100px; background:#6db3c5; bottom:-20px; right:40px; }
+.circulo-celeste-3{ width:160px; height:160px; background:#6db3c5; top:-50px; right:-30px; }
+.circulo-azul-3{ width:130px; height:130px; background:#195eb3; bottom:-40px; right:20px; }
+.programa-content{ position:relative; z-index:1; }
 
-  .gallery-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, rgba(25, 94, 179, 0.7) 0%, rgba(0, 0, 0, 0.8) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.programa-numero{ font-family:'Montserrat', sans-serif; font-weight:700; font-size:.85rem; letter-spacing:1px; margin-bottom:.75rem; }
+.programa-card-1 .programa-numero{ color:#195eb3; }
+.programa-card-2 .programa-numero{ color:#ff8c42; }
+.programa-card-3 .programa-numero{ color:#6db3c5; }
 
-  .gallery-overlay-content {
-    text-align: center;
-    color: #ffffff;
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
-  }
+.programa-titulo{ font-family:'Montserrat', sans-serif; font-weight:700; font-size:1.75rem; color:#1a1a1a; margin-bottom:1.5rem; line-height:1.3; }
+.programa-lista{ list-style:none; padding:0; margin:0; }
+.programa-lista li{
+  font-family:'Montserrat', sans-serif; font-size:.95rem; color:#666; line-height:1.8;
+  margin-bottom:.75rem; padding-left:1.5rem; position:relative;
+}
+.programa-lista li::before{ content:'•'; position:absolute; left:0; font-size:1.5rem; line-height:1.2; }
+.programa-card-1 .programa-lista li::before{ color:#195eb3; }
+.programa-card-2 .programa-lista li::before{ color:#ff8c42; }
+.programa-card-3 .programa-lista li::before{ color:#6db3c5; }
 
-  .gallery-image-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-
-  .gallery-icon {
-    font-size: 2rem;
-    color: #ffffff;
-  }
-
-  .gallery-image-wrapper:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-  }
-
-  .gallery-image-wrapper:hover .gallery-image {
-    transform: scale(1.1);
-  }
-
-  .gallery-image-wrapper:hover .gallery-overlay {
-    opacity: 1;
-  }
-
-  .gallery-image-wrapper:hover .gallery-overlay-content {
-    transform: translateY(0);
-  }
-
-  /* Responsive gallery */
-  @media (max-width: 992px) {
-    .gallery-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.2rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .gallery-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      min-height: 400px;
-    }
-
-    .gallery-title {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .gallery-nav-btn {
-      width: 45px;
-      height: 45px;
-    }
-
-    .gallery-navigation {
-      gap: 1.5rem;
-    }
-  }
-
-  @media (max-width: 576px) {
-    .gallery-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      min-height: 300px;
-    }
-
-    .gallery-title {
-      font-size: 1.75rem;
-    }
-
-    .gallery-nav-btn {
-      width: 40px;
-      height: 40px;
-    }
-
-    .gallery-navigation {
-      gap: 1rem;
-    }
-
-    .gallery-page-indicator {
-      font-size: 0.9rem;
-    }
-  }
-  
-  
-  /* === PROGRAMAS EDUCATIVOS === */
-  .programa-card {
-    position: relative;
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 2.5rem 2rem;
-    height: 100%;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s ease;
-    border: 2px solid transparent;
-  }
-
-  .programa-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-  }
-
-  .programa-card-1 {
-    border-color: #195eb3;
-  }
-
-  .programa-card-2 {
-    border-color: #ff8c42;
-  }
-
-  .programa-card-3 {
-    border-color: #6db3c5;
-  }
-
-  .programa-decoracion {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 0;
-  }
-
-  .programa-circulo {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.15;
-  }
-
-  /* Card 1 - Azul y Naranja */
-  .circulo-azul-1 {
-    width: 180px;
-    height: 180px;
-    background: #195eb3;
-    top: -60px;
-    right: -40px;
-  }
-
-  .circulo-naranja-1 {
-    width: 120px;
-    height: 120px;
-    background: #ff8c42;
-    bottom: -30px;
-    right: 30px;
-  }
-
-  /* Card 2 - Naranja y Celeste */
-  .circulo-naranja-2 {
-    width: 200px;
-    height: 200px;
-    background: #ff8c42;
-    top: -80px;
-    right: -60px;
-  }
-
-  .circulo-celeste-2 {
-    width: 100px;
-    height: 100px;
-    background: #6db3c5;
-    bottom: -20px;
-    right: 40px;
-  }
-
-  /* Card 3 - Celeste y Azul */
-  .circulo-celeste-3 {
-    width: 160px;
-    height: 160px;
-    background: #6db3c5;
-    top: -50px;
-    right: -30px;
-  }
-
-  .circulo-azul-3 {
-    width: 130px;
-    height: 130px;
-    background: #195eb3;
-    bottom: -40px;
-    right: 20px;
-  }
-
-  .programa-content {
-    position: relative;
-    z-index: 1;
-  }
-
-  .programa-numero {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    margin-bottom: 0.75rem;
-  }
-
-  .programa-card-1 .programa-numero {
-    color: #195eb3;
-  }
-
-  .programa-card-2 .programa-numero {
-    color: #ff8c42;
-  }
-
-  .programa-card-3 .programa-numero {
-    color: #6db3c5;
-  }
-
-  .programa-titulo {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 1.75rem;
-    color: #1a1a1a;
-    margin-bottom: 1.5rem;
-    line-height: 1.3;
-  }
-
-  .programa-lista {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .programa-lista li {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.95rem;
-    color: #666;
-    line-height: 1.8;
-    margin-bottom: 0.75rem;
-    padding-left: 1.5rem;
-    position: relative;
-  }
-
-  .programa-lista li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    font-size: 1.5rem;
-    line-height: 1.2;
-  }
-
-  .programa-card-1 .programa-lista li::before {
-    color: #195eb3;
-  }
-
-  .programa-card-2 .programa-lista li::before {
-    color: #ff8c42;
-  }
-
-  .programa-card-3 .programa-lista li::before {
-    color: #6db3c5;
-  }
-
-  /* Responsive para programas */
-  @media (max-width: 768px) {
-    .programa-card {
-      padding: 2rem 1.5rem;
-    }
-
-    .programa-titulo {
-      font-size: 1.5rem;
-    }
-
-    .programa-circulo {
-      opacity: 0.1;
-    }
-  }
+@media (max-width: 768px){
+  .programa-card{ padding:2rem 1.5rem; }
+  .programa-titulo{ font-size:1.5rem; }
+  .programa-circulo{ opacity:.1; }
+}
 
   /* === TÍTULOS MEJORADOS === */
   .titulo-exdestacadas,
@@ -503,7 +265,7 @@ section + section {
     background: linear-gradient(90deg, #4d9447, #5cb85c);
     border-radius: 2px;
   }
-  
+
   /* === BOTONES MEJORADOS === */
   .btn-primary {
     background: #195eb3 !important;
@@ -538,7 +300,7 @@ section + section {
     box-shadow: 0 10px 25px rgba(25, 94, 179, 0.5);
     background: #144a8f !important;
   }
-  
+
   .btn-outline-primary {
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
@@ -548,7 +310,7 @@ section + section {
     position: relative;
     overflow: hidden;
   }
-  
+
   .btn-outline-primary::before {
     content: '';
     position: absolute;
@@ -560,39 +322,39 @@ section + section {
     transition: width 0.3s ease;
     z-index: -1;
   }
-  
+
   .btn-outline-primary:hover::before {
     width: 100%;
   }
-  
+
   .btn-outline-primary:hover {
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(25, 94, 179, 0.2);
   }
-  
+
   /* ====== Modales + Carruseles (para los 3) ====== */
-  
+
   /* 1) Modal más estrecho */
   .modal-soft .modal-dialog.modal-xl { max-width: 960px; } /* ajusta: 820/900/1024 */
-  
+
   /* 2) Fondo que deja ver la página con blur y opacidad */
   .modal-backdrop.show {
     opacity: .65; /* oscuridad del fondo */
     backdrop-filter: blur(6px) saturate(1.05);
     -webkit-backdrop-filter: blur(6px) saturate(1.05);
   }
-  
+
   /* 3) Contenedor del modal transparente (sin caja negra) */
   .modal-soft .modal-content {
     background: transparent;
     border: 0;
     box-shadow: none;
   }
-  
+
   /* Centrado del contenido dentro del modal */
   .modal-soft .modal-body { min-height: 60vh; }
-  
+
   /* Imagen a “tamaño foto” sin recortes */
   .carousel-img {
     display: block;
@@ -602,7 +364,7 @@ section + section {
     object-fit: contain; /* sin recortar */
     background: transparent;
   }
-  
+
   /* Botones de navegación del carrusel mejorados */
   .modal-soft .carousel-control-prev,
   .modal-soft .carousel-control-next {
@@ -647,7 +409,7 @@ section + section {
     opacity: 1;
     filter: invert(1) brightness(0) saturate(100%) contrast(100%) drop-shadow(0 2px 4px rgba(0,0,0,0.2));
   }
-  
+
   /* X (cerrar) grande, circular y siempre encima */
   .modal-soft .modal-soft-close {
     position: absolute;
@@ -661,7 +423,7 @@ section + section {
     opacity: 1 !important;
     z-index: 1058; /* por encima del carrusel */
   }
-  
+
   /* Hover/focus de la X */
   .modal-soft .modal-soft-close:hover { background-color: rgba(0,0,0,.7); }
   .modal-soft .modal-soft-close:focus {
