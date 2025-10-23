@@ -30,20 +30,17 @@
       <thead>
         <tr>
           <th>ID</th>
-          <th>Nombre</th>
-          <th>Apellido</th>
+          <th>Nombre Completo</th>
           <th>Email</th>
           <th>Rol</th>
           <th>Estado</th>
-          <th>Fecha Creación</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let usuario of usuariosFiltrados">
           <td>{{ usuario.id_usuario }}</td>
-          <td>{{ usuario.nombre }}</td>
-          <td>{{ usuario.apellido }}</td>
+          <td>{{ usuario.nombre }} {{ usuario.apellido }}</td>
           <td>{{ usuario.email }}</td>
           <td>
             <span class="badge badge-role">{{ usuario.role }}</span>
@@ -53,7 +50,6 @@
               {{ getEstadoTexto(usuario.activo) }}
             </span>
           </td>
-          <td>{{ usuario.created_at | date: 'dd/MM/yyyy' }}</td>
           <td class="actions">
             <button
               class="btn-edit"
@@ -82,7 +78,6 @@
   </div>
 </div>
 
-<!-- Modal de Edición -->
 <div class="modal-overlay" *ngIf="mostrarModalEditar" (click)="cerrarModalEditar()">
   <div class="modal-content" (click)="$event.stopPropagation()">
     <div class="modal-header">

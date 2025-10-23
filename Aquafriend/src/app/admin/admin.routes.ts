@@ -18,8 +18,8 @@ export const ADMIN_ROUTES: Routes = [
         canActivate: [authGuard]
       },
       {
-        path: 'anfibios',
-        loadChildren: () => import('./features/anfibios/anfibios.routes').then(m => m.anfibiosRoutes),
+        path: 'reptiles',
+        loadChildren: () => import('./features/reptiles/reptiles.routes').then(m => m.default),
         canActivate: [authGuard]
       },
       {
@@ -44,5 +44,3 @@ export const ADMIN_ROUTES: Routes = [
     ]
   }
 ];
-
-

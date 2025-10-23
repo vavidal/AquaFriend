@@ -1,8 +1,8 @@
 <section class="page">
   <header class="page-head">
     <div class="title">
-      <h1>Gestión de Anfibios</h1>
-      <p>Catálogo de especies de anfibios registradas en el acuario.</p>
+      <h1>Gestión de reptiles</h1>
+      <p>Catálogo de especies de reptiles registradas en el acuario.</p>
     </div>
 
     <div class="actions">
@@ -29,7 +29,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let a of anfibiosFiltrados()">
+        <tr *ngFor="let a of reptilesFiltrados()">
           <td class="col-especie">
             <div class="row-cell">
               <div class="avatar" [style.backgroundImage]="'url(' + img(a) + ')'"></div>
@@ -45,7 +45,7 @@
           <td>{{ a.fecha_registro | date: 'mediumDate' }}</td>
         </tr>
 
-        <tr class="empty" *ngIf="anfibiosFiltrados().length === 0">
+        <tr class="empty" *ngIf="reptilesFiltrados().length === 0">
           <td colspan="5">
             <span class="mi"></span>
             No hay información disponible.

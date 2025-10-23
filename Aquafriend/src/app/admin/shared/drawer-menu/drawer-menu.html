@@ -1,9 +1,8 @@
 <div class="sidebar">
   <div class="profile">
-    <div class="avatar"></div>
     <div class="who">
-      <div class="name">{{ userName || 'Admin' }}</div>
-      <div class="role">AquaFriend</div>
+      <div class="name">{{ (user?.nombre || '') + ' ' + (user?.apellido || '') }}</div>
+      <div class="role">{{ user?.role }}</div>
     </div>
   </div>
 
@@ -13,27 +12,21 @@
   <a class="nav-item" routerLink="/dashboard/user" routerLinkActive="active" (click)="handleClick()">
     <span class="msr">admin_panel_settings</span><span>Usuarios</span>
   </a>
-
   <a class="nav-item" routerLink="/dashboard/recorrido-360" routerLinkActive="active" (click)="handleClick()">
     <span class="msr">360</span><span>Recorrido 360°</span>
   </a>
-
   <a class="nav-item" routerLink="/dashboard/peces" routerLinkActive="active" (click)="handleClick()">
     <span class="msr">water_drop</span><span>Peces</span>
   </a>
-
   <a class="nav-item" routerLink="/dashboard/animales" routerLinkActive="active" (click)="handleClick()">
     <span class="msr">pets</span><span>Animales</span>
   </a>
-
-  <a class="nav-item" routerLink="/dashboard/anfibios" routerLinkActive="active" (click)="handleClick()">
-    <span class="msr">bug_report</span><span>Anfibios</span>
+  <a class="nav-item" routerLink="/dashboard/reptiles" routerLinkActive="active" (click)="handleClick()">
+    <span class="msr">bug_report</span><span>reptiles</span>
   </a>
-
   <a class="nav-item" routerLink="/dashboard/reservas" routerLinkActive="active" (click)="handleClick()">
     <span class="msr">checklist</span><span>Reservas</span>
   </a>
-
   <a class="nav-item" routerLink="/dashboard/contactos" routerLinkActive="active" (click)="handleClick()">
     <span class="msr">mail</span><span>Contactos</span>
   </a>
@@ -44,4 +37,3 @@
     <span class="msr">logout</span><span>Cerrar sesión</span>
   </a>
 </div>
-
