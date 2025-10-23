@@ -1,5 +1,6 @@
 /* ==================== HERO SECTION ==================== */
 .hero {
+  font-family: 'Montserrat', sans-serif;
   position: relative;
   height: 100vh;
   min-height: 600px;
