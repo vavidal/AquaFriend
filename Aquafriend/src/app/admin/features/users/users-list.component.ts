@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService, Usuario } from './usuario.service';
 
+type ApiResponse<T> = { success: boolean; data?: T; message?: string };
+
 @Component({
   selector: 'app-users-list',
   standalone: true,
@@ -15,7 +17,6 @@ export class UsersListComponent implements OnInit {
   usuarios: Usuario[] = [];
   usuariosFiltrados: Usuario[] = [];
   cargando = false;
-  busqueda = '';
   usuarioEditando: Usuario | null = null;
   mostrarModalEditar = false;
 
@@ -28,34 +29,37 @@ export class UsersListComponent implements OnInit {
     this.cargarUsuarios();
   }
 
+  private isApiResponseArray(payload: unknown): payload is ApiResponse<Usuario[]> {
+    return typeof payload === 'object' && payload !== null && 'success' in payload;
+  }
+
+  private isApiResponseOne(payload: unknown): payload is ApiResponse<Usuario> {
+    return typeof payload === 'object' && payload !== null && 'success' in payload;
+  }
+
   cargarUsuarios() {
     this.cargando = true;
     this.usuarioService.obtenerTodos().subscribe({
-      next: (response) => {
+      next: (resp: unknown) => {
         this.cargando = false;
-        if (response.success && response.data) {
-          this.usuarios = response.data;
-          this.usuariosFiltrados = this.usuarios;
+        if (Array.isArray(resp)) {
+          this.usuarios = resp;
+          this.usuariosFiltrados = resp;
+          return;
         }
+        if (this.isApiResponseArray(resp) && resp.success && Array.isArray(resp.data)) {
+          this.usuarios = resp.data;
+          this.usuariosFiltrados = resp.data;
+          return;
+        }
+        this.usuarios = [];
+        this.usuariosFiltrados = [];
       },
       error: () => {
         this.cargando = false;
         alert('Error al cargar usuarios');
       }
     });
-  }
-
-  filtrarUsuarios() {
-    const termino = this.busqueda.toLowerCase().trim();
-    if (termino === '') {
-      this.usuariosFiltrados = this.usuarios;
-    } else {
-      this.usuariosFiltrados = this.usuarios.filter(usuario =>
-        `${usuario.nombre} ${usuario.apellido}`.toLowerCase().includes(termino) ||
-        usuario.email.toLowerCase().includes(termino) ||
-        usuario.role.toLowerCase().includes(termino)
-      );
-    }
   }
 
   nuevoUsuario() {
@@ -70,7 +74,7 @@ export class UsersListComponent implements OnInit {
   guardarEdicion() {
     if (!this.usuarioEditando || !this.usuarioEditando.id_usuario) return;
     this.cargando = true;
-    const datosActualizar: any = {
+    const datosActualizar: Partial<Usuario> = {
       nombre: this.usuarioEditando.nombre,
       apellido: this.usuarioEditando.apellido,
       email: this.usuarioEditando.email,
@@ -78,47 +82,61 @@ export class UsersListComponent implements OnInit {
       activo: this.usuarioEditando.activo
     };
     this.usuarioService.actualizar(this.usuarioEditando.id_usuario, datosActualizar).subscribe({
-      next: (response) => {
+      next: (resp: unknown) => {
         this.cargando = false;
-        if (response.success && response.data) {
-          const index = this.usuarios.findIndex(u => u.id_usuario === response.data!.id_usuario);
-          if (index !== -1) {
-            this.usuarios[index] = response.data;
-            this.filtrarUsuarios();
-          }
+        if (this.isApiResponseOne(resp) && resp.success && resp.data) {
+          const idx = this.usuarios.findIndex(u => u.id_usuario === resp.data!.id_usuario);
+          if (idx !== -1) this.usuarios[idx] = resp.data!;
+          this.usuariosFiltrados = [...this.usuarios];
           alert('Usuario actualizado exitosamente');
           this.cerrarModalEditar();
-        } else {
-          alert(response.message || 'Error al actualizar usuario');
+          return;
         }
+        alert((this.isApiResponseOne(resp) && resp.message) || 'Error al actualizar usuario');
       },
       error: (error) => {
         this.cargando = false;
-        alert(error.error?.message || 'Error al actualizar usuario');
+        alert(error?.error?.message || 'Error al actualizar usuario');
       }
     });
   }
 
-  refrescarLista() {
-    this.busqueda = '';
-    this.cargarUsuarios();
+  changeEstado(usuario: Usuario, activo: boolean) {
+    if (!usuario.id_usuario) return;
+    const previo = usuario.activo;
+    usuario.activo = activo ? 1 : 0;
+    this.usuarioService.actualizar(usuario.id_usuario, { activo: usuario.activo } as Partial<Usuario>).subscribe({
+      next: (resp: unknown) => {
+        if (this.isApiResponseOne(resp) && resp.success && resp.data) {
+          const idx = this.usuarios.findIndex(u => u.id_usuario === resp.data!.id_usuario);
+          if (idx !== -1) this.usuarios[idx] = resp.data!;
+          this.usuariosFiltrados = [...this.usuarios];
+        } else {
+          usuario.activo = previo;
+          alert((this.isApiResponseOne(resp) && resp.message) || 'No se pudo cambiar el estado');
+        }
+      },
+      error: () => {
+        usuario.activo = previo;
+        alert('Error al cambiar el estado');
+      }
+    });
   }
 
   eliminarUsuario(usuario: Usuario) {
     if (!usuario.id_usuario) return;
-    const confirmacion = confirm(
-      `¿Está seguro de que desea eliminar al usuario ${usuario.nombre} ${usuario.apellido}?`
-    );
-    if (!confirmacion) return;
+    const ok = confirm(`¿Está seguro de eliminar a ${usuario.nombre} ${usuario.apellido}?`);
+    if (!ok) return;
     this.cargando = true;
     this.usuarioService.eliminar(usuario.id_usuario).subscribe({
-      next: (response) => {
+      next: (resp: unknown) => {
         this.cargando = false;
-        if (response.success) {
+        if ((this.isApiResponseOne(resp) && resp.success) || (typeof resp === 'object' && resp !== null && (resp as any).success)) {
+          this.usuarios = this.usuarios.filter(u => u.id_usuario !== usuario.id_usuario);
+          this.usuariosFiltrados = [...this.usuarios];
           alert('Usuario eliminado exitosamente');
-          this.cargarUsuarios();
         } else {
-          alert(response.message || 'Error al eliminar usuario');
+          alert((this.isApiResponseOne(resp) && resp.message) || 'Error al eliminar usuario');
         }
       },
       error: () => {
