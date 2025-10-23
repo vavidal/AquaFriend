@@ -2,30 +2,18 @@
   <div class="header">
     <h1>Gestión de Usuarios</h1>
     <div class="header-buttons">
-      <button class="btn-refresh" (click)="refrescarLista()" [disabled]="cargando" title="Refrescar lista">
-        <span>🔄 Actualizar</span>
-      </button>
-      <button class="btn-primary" (click)="nuevoUsuario()" [disabled]="cargando">
-        <span>+ Nuevo Usuario</span>
+      <button class="btn-primary" (click)="nuevoUsuario()" [disabled]="cargando" title="Crear usuario">
+        <i class="bi bi-plus-lg"></i>
+        <span>Nuevo Usuario</span>
       </button>
     </div>
-  </div>
-
-  <div class="search-bar">
-    <input
-      type="text"
-      placeholder="Buscar por nombre, apellido, email o rol..."
-      [(ngModel)]="busqueda"
-      (input)="filtrarUsuarios()"
-      class="search-input"
-    />
   </div>
 
   <div class="loading" *ngIf="cargando">
     <p>Cargando usuarios...</p>
   </div>
 
-  <div class="usuarios-table" *ngIf="!cargando && usuariosFiltrados.length > 0">
+  <div class="usuarios-table" *ngIf="!cargando">
     <table>
       <thead>
         <tr>
@@ -33,48 +21,48 @@
           <th>Nombre Completo</th>
           <th>Email</th>
           <th>Rol</th>
-          <th>Estado</th>
-          <th>Acciones</th>
+          <th class="th-actions">Acciones</th>
         </tr>
       </thead>
-      <tbody>
+
+      <tbody *ngIf="usuariosFiltrados.length > 0; else sinDatos">
         <tr *ngFor="let usuario of usuariosFiltrados">
           <td>{{ usuario.id_usuario }}</td>
           <td>{{ usuario.nombre }} {{ usuario.apellido }}</td>
           <td>{{ usuario.email }}</td>
-          <td>
-            <span class="badge badge-role">{{ usuario.role }}</span>
-          </td>
-          <td>
-            <span [class]="'badge badge-' + getEstadoBadge(usuario.activo)">
-              {{ getEstadoTexto(usuario.activo) }}
-            </span>
-          </td>
+          <td><span class="badge badge-role">{{ usuario.role }}</span></td>
           <td class="actions">
-            <button
-              class="btn-edit"
-              (click)="editarUsuario(usuario)"
-              [disabled]="cargando"
-              title="Editar usuario"
-            >
-              ✏️
+            <label class="toggle" [class.is-on]="usuario.activo === 1">
+              <input
+                type="checkbox"
+                [checked]="usuario.activo === 1"
+                (change)="changeEstado(usuario, $event.target.checked)"
+                aria-label="Cambiar estado de {{usuario.nombre}} {{usuario.apellido}}"
+              />
+              <span class="track"><span class="thumb"></span></span>
+            </label>
+
+            <button class="btn-icon btn-edit" (click)="editarUsuario(usuario)" [disabled]="cargando" title="Editar usuario">
+              <i class="bi bi-pencil-square"></i>
             </button>
-            <button
-              class="btn-delete"
-              (click)="eliminarUsuario(usuario)"
-              [disabled]="cargando"
-              title="Eliminar usuario"
-            >
-              🗑️
+            <button class="btn-icon btn-delete" (click)="eliminarUsuario(usuario)" [disabled]="cargando" title="Eliminar usuario">
+              <i class="bi bi-trash"></i>
             </button>
           </td>
         </tr>
       </tbody>
-    </table>
-  </div>
 
-  <div class="no-results" *ngIf="!cargando && usuariosFiltrados.length === 0">
-    <p>No se encontraron usuarios</p>
+      <ng-template #sinDatos>
+        <tbody>
+          <tr class="empty-row">
+            <td colspan="5">
+              <i class="bi bi-info-circle"></i>
+              <span>No hay información disponible.</span>
+            </td>
+          </tr>
+        </tbody>
+      </ng-template>
+    </table>
   </div>
 </div>
 
@@ -82,7 +70,9 @@
   <div class="modal-content" (click)="$event.stopPropagation()">
     <div class="modal-header">
       <h2>Editar Usuario</h2>
-      <button class="btn-close" (click)="cerrarModalEditar()">×</button>
+      <button class="btn-close" (click)="cerrarModalEditar()" title="Cerrar">
+        <i class="bi bi-x-lg"></i>
+      </button>
     </div>
 
     <div class="modal-body" *ngIf="usuarioEditando">
@@ -111,9 +101,7 @@
     </div>
 
     <div class="modal-footer">
-      <button class="btn-secondary" (click)="cerrarModalEditar()" [disabled]="cargando">
-        Cancelar
-      </button>
+      <button class="btn-secondary" (click)="cerrarModalEditar()" [disabled]="cargando">Cancelar</button>
       <button class="btn-primary" (click)="guardarEdicion()" [disabled]="cargando">
         {{ cargando ? 'Guardando...' : 'Guardar Cambios' }}
       </button>
