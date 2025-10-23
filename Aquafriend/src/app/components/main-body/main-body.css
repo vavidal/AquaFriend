@@ -2,9 +2,11 @@
 section + section {
     border-top: 1px solid rgba(0,0,0,.05);
     position: relative;
+    font-family: 'Montserrat', sans-serif;
   }
 
   section + section::before {
+    font-family: 'Montserrat', sans-serif;
     content: '';
     position: absolute;
     top: 0;
@@ -216,8 +218,9 @@ section + section {
 .programa-card-3 .programa-lista li::before{ color:#6db3c5; }
 
 @media (max-width: 768px){
+  
   .programa-card{ padding:2rem 1.5rem; }
-  .programa-titulo{ font-size:1.5rem; }
+  .programa-titulo{ font-family:'Montserrat', sans-serif;font-size:1.5rem; }
   .programa-circulo{ opacity:.1; }
 }
 
@@ -225,6 +228,7 @@ section + section {
   .titulo-exdestacadas,
   .titulo-proeducativos,
   .titulo-entradas {
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     color: #d95f14;
     position: relative;
@@ -247,6 +251,7 @@ section + section {
 
   .titulo-destino,
   .titulo-contactanos {
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     color: #4d9447;
     position: relative;
@@ -256,6 +261,7 @@ section + section {
 
   .titulo-destino::after,
   .titulo-contactanos::after {
+    font-family: 'Montserrat', sans-serif;
     content: '';
     position: absolute;
     bottom: -8px;
@@ -268,6 +274,7 @@ section + section {
 
   /* === BOTONES MEJORADOS === */
   .btn-primary {
+    font-family: 'Montserrat', sans-serif;
     background: #195eb3 !important;
     border: none;
     border-radius: 8px;
@@ -281,6 +288,7 @@ section + section {
   }
 
   .btn-primary::before {
+    font-family: 'Montserrat', sans-serif;
     content: '';
     position: absolute;
     top: 0;
@@ -302,6 +310,7 @@ section + section {
   }
 
   .btn-outline-primary {
+    font-family: 'Montserrat', sans-serif;
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
     border-radius: 8px;
@@ -328,6 +337,7 @@ section + section {
   }
 
   .btn-outline-primary:hover {
+    font-family: 'Montserrat', sans-serif;
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(25, 94, 179, 0.2);
@@ -368,6 +378,7 @@ section + section {
   /* Botones de navegación del carrusel mejorados */
   .modal-soft .carousel-control-prev,
   .modal-soft .carousel-control-next {
+    font-family: 'Montserrat', sans-serif;
     width: 60px;
     height: 60px;
     background-color: rgba(255, 255, 255, 0.9);
@@ -430,3 +441,36 @@ section + section {
     outline: none;
     box-shadow: 0 0 0 .2rem rgba(255,255,255,.25);
   }
+
+  /* ====== TÍTULOS DESTACADOS (highlight-title) ====== */
+.highlight-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: #d95f14; /* NARANJA PRINCIPAL */
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+
+
+/* Línea decorativa debajo del título */
+.highlight-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 70px;
+  height: 3px;
+  background: linear-gradient(90deg, #d95f14, #ff8c42);
+  border-radius: 2px;
+}
+
+/* Ajuste responsive */
+@media (max-width: 768px) {
+  .highlight-title {
+    font-size: 1.8rem;
+  }
+}
