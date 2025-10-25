@@ -36,11 +36,6 @@
             <small class="err" *ngIf="f.email.touched && f.email.invalid">Email inválido</small>
           </div>
 
-          <div class="cu-field cu-col-2" *ngIf="form.get('telefono')">
-            <label>Teléfono (opcional)</label>
-            <input type="text" formControlName="telefono" placeholder="+56 9 1234 5678" />
-          </div>
-
           <div class="cu-field cu-col-2">
             <label>Rol</label>
             <select formControlName="role">
