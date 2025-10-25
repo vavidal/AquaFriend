@@ -57,6 +57,18 @@
   <div class="container">
     <h2 class="titulo-exdestacadas">Exhibiciones destacadas</h2>
 
+    <div class="text-body-secondary mb-4" style="max-width: 920px;">
+      <p class="lead mb-2">
+        Recorre el acuario educativo de agua dulce del sur de Chile y vive una
+        experiencia guiada
+        que une ciencia, naturaleza y aprendizaje significativo. Conoce especies
+        nativas y
+        salmonídeas, participa en actividades de granja con enfoque responsable
+        y disfruta de un
+        coto de pesca recreativa con devolución.
+      </p>
+    </div>
+
     <div class="row g-3">
       <!-- Acuario -->
       <div class="col-12 col-md-4">
@@ -68,14 +80,21 @@
             loading="lazy"
             style="height:240px;object-fit:cover;">
           <div class="card-body">
-            <h5 class="card-title" style="font-family: 'Montserrat', sans-serif;">Acuario</h5>
-            <p class="card-text small text-body-secondary" style="font-family: 'Montserrat', sans-serif;">Descubre el ciclo de vida de las salmonídeas y otras especies nativas.</p>
-            <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalAcuario">Ver más</a>
+            <h5 class="card-title">Acuario</h5>
+            <p class="card-text small text-body-secondary">
+              Observa de cerca el ciclo de vida de las salmonídeas y especies
+              nativas que habitan
+              ríos y lagos del sur de Chile. Aprenderás sobre hábitos,
+              adaptaciones y el rol de
+              cada organismo en el ecosistema de agua dulce. Ideal para
+              complementar contenidos
+              de ciencias naturales y medioambiente.
+            </p>
+            <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+              data-bs-target="#modalAcuario">Ver más</a>
           </div>
         </div>
       </div>
-
-      
 
       <!-- Granja educativa -->
       <div class="col-12 col-md-4">
@@ -87,9 +106,18 @@
             loading="lazy"
             style="height:240px;object-fit:cover;">
           <div class="card-body">
-            <h5 class="card-title" style="font-family: 'Montserrat', sans-serif;">Granja educativa</h5>
-            <p class="card-text small text-body-secondary" style="font-family: 'Montserrat', sans-serif;">Interacción responsable con animales de granja y aprendizaje guiado.</p>
-            <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalGranja">Ver más</a>
+            <h5 class="card-title">Granja educativa</h5>
+            <p class="card-text small text-body-secondary">
+              Participa en una experiencia guiada con animales de granja bajo un
+              enfoque de
+              bienestar y respeto. Descubrirás tareas esenciales del cuidado
+              responsable,
+              alimentación y manejo básico, mientras relacionas estos
+              aprendizajes con
+              habilidades socioemocionales y vida rural.
+            </p>
+            <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+              data-bs-target="#modalGranja">Ver más</a>
           </div>
         </div>
       </div>
@@ -104,9 +132,17 @@
             loading="lazy"
             style="height:240px;object-fit:cover;">
           <div class="card-body">
-            <h5 class="card-title" style="font-family: 'Montserrat', sans-serif;">Coto de pesca</h5>
-            <p class="card-text small text-body-secondary" style="font-family: 'Montserrat', sans-serif;">Pesca deportiva responsable con devolución.</p>
-            <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCoto">Ver más</a>
+            <h5 class="card-title">Coto de pesca</h5>
+            <p class="card-text small text-body-secondary">
+              Practica pesca recreativa con devolución en un espacio preparado y
+              seguro. Recibirás
+              recomendaciones de buenas prácticas, nociones de conservación y
+              cuidado del recurso
+              hídrico, fomentando una actividad responsable y consciente con el
+              entorno natural.
+            </p>
+            <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+              data-bs-target="#modalCoto">Ver más</a>
           </div>
         </div>
       </div>
@@ -117,23 +153,30 @@
 <!-- ===================== MODALES (ÚNICOS) ===================== -->
 
 <!-- Modal: ACUARIO -->
-<div class="modal fade modal-soft" id="modalAcuario" tabindex="-1" aria-hidden="true" data-bs-keyboard="true">
+<div class="modal fade modal-soft" id="modalAcuario" tabindex="-1"
+  aria-hidden="true" data-bs-keyboard="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
-      <button type="button" class="btn-close btn-close-white modal-soft-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      <div class="modal-body p-0 d-flex justify-content-center align-items-center">
-        <div id="carouselAcuario" class="carousel slide" data-bs-interval="false">
+      <button type="button" class="btn-close btn-close-white modal-soft-close"
+        data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      <div
+        class="modal-body p-0 d-flex justify-content-center align-items-center">
+        <div id="carouselAcuario" class="carousel slide"
+          data-bs-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="assets/exhibiciones/peces_acuario.JPG" class="carousel-img" alt="Acuario 1">
+              <img src="assets/exhibiciones/peces_acuario.JPG"
+                class="carousel-img" alt="Acuario 1">
             </div>
             <!-- Más imágenes si quieres -->
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselAcuario" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button"
+            data-bs-target="#carouselAcuario" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Anterior</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselAcuario" data-bs-slide="next">
+          <button class="carousel-control-next" type="button"
+            data-bs-target="#carouselAcuario" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Siguiente</span>
           </button>
@@ -144,31 +187,41 @@
 </div>
 
 <!-- Modal: GRANJA -->
-<div class="modal fade modal-soft" id="modalGranja" tabindex="-1" aria-hidden="true" data-bs-keyboard="true">
+<div class="modal fade modal-soft" id="modalGranja" tabindex="-1"
+  aria-hidden="true" data-bs-keyboard="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
-      <button type="button" class="btn-close btn-close-white modal-soft-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      <div class="modal-body p-0 d-flex justify-content-center align-items-center">
-        <div id="carouselGranja" class="carousel slide" data-bs-interval="false">
+      <button type="button" class="btn-close btn-close-white modal-soft-close"
+        data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      <div
+        class="modal-body p-0 d-flex justify-content-center align-items-center">
+        <div id="carouselGranja" class="carousel slide"
+          data-bs-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="assets/exhibiciones/granja_1.jpg" class="carousel-img" alt="Granja 1">
+              <img src="assets/exhibiciones/granja_1.jpg" class="carousel-img"
+                alt="Granja 1">
             </div>
             <div class="carousel-item">
-              <img src="assets/exhibiciones/granja_2.jpg" class="carousel-img" alt="Granja 2">
+              <img src="assets/exhibiciones/granja_2.jpg" class="carousel-img"
+                alt="Granja 2">
             </div>
             <div class="carousel-item">
-              <img src="assets/exhibiciones/granja_3.jpg" class="carousel-img" alt="Granja 3">
+              <img src="assets/exhibiciones/granja_3.jpg" class="carousel-img"
+                alt="Granja 3">
             </div>
             <div class="carousel-item">
-              <img src="assets/exhibiciones/granja_4.jpg" class="carousel-img" alt="Granja 4">
+              <img src="assets/exhibiciones/granja_4.jpg" class="carousel-img"
+                alt="Granja 4">
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselGranja" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button"
+            data-bs-target="#carouselGranja" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Anterior</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselGranja" data-bs-slide="next">
+          <button class="carousel-control-next" type="button"
+            data-bs-target="#carouselGranja" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Siguiente</span>
           </button>
@@ -179,22 +232,28 @@
 </div>
 
 <!-- Modal: COTO -->
-<div class="modal fade modal-soft" id="modalCoto" tabindex="-1" aria-hidden="true" data-bs-keyboard="true">
+<div class="modal fade modal-soft" id="modalCoto" tabindex="-1"
+  aria-hidden="true" data-bs-keyboard="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
-      <button type="button" class="btn-close btn-close-white modal-soft-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      <div class="modal-body p-0 d-flex justify-content-center align-items-center">
+      <button type="button" class="btn-close btn-close-white modal-soft-close"
+        data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      <div
+        class="modal-body p-0 d-flex justify-content-center align-items-center">
         <div id="carouselCoto" class="carousel slide" data-bs-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="assets/exhibiciones/coto_pesca.jpg" class="carousel-img" alt="Coto 1">
+              <img src="assets/exhibiciones/coto_pesca.jpg" class="carousel-img"
+                alt="Coto 1">
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselCoto" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button"
+            data-bs-target="#carouselCoto" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Anterior</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselCoto" data-bs-slide="next">
+          <button class="carousel-control-next" type="button"
+            data-bs-target="#carouselCoto" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Siguiente</span>
           </button>
@@ -207,11 +266,23 @@
 <!-- ===================== PROGRAMAS EDUCATIVOS ===================== -->
 <section id="programas" class="py-5 bg-light fade-in-up">
   <div class="container">
-    <div class="d-flex align-items-center justify-content-between mb-3">
-      <h2 class="titulo-proeducativos">Programas Educativos</h2>
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2 class="titulo-proeducativos mb-0">Programas Educativos</h2>
+    </div>
+
+    <div class="text-body-secondary mb-4" style="max-width: 960px;">
+      <p class="lead mb-2">
+        Diseñamos experiencias pedagógicas guiadas para cursos y delegaciones,
+        con foco en
+        conservación, ciclo del agua y biodiversidad local. Cada programa
+        articula contenidos
+        curriculares con actividades vivenciales en el acuario y la granja
+        educativa.
+      </p>
     </div>
 
     <div class="row g-4">
+      <!-- Programa 1 -->
       <div class="col-12 col-md-4">
         <div class="programa-card programa-card-1">
           <div class="programa-decoracion">
@@ -221,15 +292,24 @@
           <div class="programa-content">
             <h6 class="programa-numero">PROGRAMA N°1</h6>
             <h5 class="programa-titulo">Visita básica</h5>
+            <p class="text-body-secondary mb-3">
+              Introducción al ecosistema de agua dulce y a la vida rural.
+              Recorrido guiado por
+              acuarios y granja con actividades breves para reconocer especies,
+              cuidados
+              fundamentales y el ciclo del agua.
+            </p>
             <ul class="programa-lista">
               <li>Recorrido por acuarios y granja con monitora.</li>
-              <li>Juego didáctico e introducción al sistema de cuencas.</li>
-              <li>30–45 min por grupo (máx. 35 pers.).</li>
+              <li>Juego didáctico e introducción a cuencas y hábitats.</li>
+              <li>Duración: 30–45 min por grupo (máx. 35 personas).</li>
+              <li>Sugerido: 1° a 5° básico y familias.</li>
             </ul>
           </div>
         </div>
       </div>
 
+      <!-- Programa 2 -->
       <div class="col-12 col-md-4">
         <div class="programa-card programa-card-2">
           <div class="programa-decoracion">
@@ -239,16 +319,24 @@
           <div class="programa-content">
             <h6 class="programa-numero">PROGRAMA N°2</h6>
             <h5 class="programa-titulo">Visita académica</h5>
+            <p class="text-body-secondary mb-3">
+              Profundización en biología, química del agua e ingeniería aplicada
+              a sistemas de
+              cultivo y recirculación. Conversatorio con el equipo (biólogos y
+              veterinaria) y
+              análisis de casos locales.
+            </p>
             <ul class="programa-lista">
-              <li>Profundización biológica, química y/o ingeniería.</li>
-              <li>Diálogo con el equipo (biólogos, veterinaria).</li>
-              <li>Orientado a 6° básico a 4° medio.</li>
-              <li>Duración 60–90 min por grupo.</li>
+              <li>Contenidos científicos y práctica de observación.</li>
+              <li>Diálogo con profesionales del acuario.</li>
+              <li>Duración: 60–90 min por grupo.</li>
+              <li>Sugerido: 6° básico a 4° medio.</li>
             </ul>
           </div>
         </div>
       </div>
 
+      <!-- Programa 3 -->
       <div class="col-12 col-md-4">
         <div class="programa-card programa-card-3">
           <div class="programa-decoracion">
@@ -258,19 +346,27 @@
           <div class="programa-content">
             <h6 class="programa-numero">PROGRAMA N°3</h6>
             <h5 class="programa-titulo">Taller aplicado</h5>
+            <p class="text-body-secondary mb-3">
+              Desarrollo de habilidades blandas y pensamiento científico
+              mediante proyectos
+              prácticos: medición de parámetros del agua, trazabilidad de
+              especies y acciones
+              de conservación en comunidad.
+            </p>
             <ul class="programa-lista">
-              <li>Habilidades blandas con trabajos prácticos.</li>
-              <li>Aprendizaje basado en proyectos.</li>
-              <li>Orientado a 6° básico a 4° medio.</li>
-              <li>Duración 90–120 min por grupo.</li>
+              <li>Aprendizaje basado en proyectos (ABP).</li>
+              <li>Instrumentos y registros en terreno.</li>
+              <li>Duración: 90–120 min por grupo.</li>
+              <li>Sugerido: 6° básico a 4° medio y TP.</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="alert alert-info mt-3 small mb-0" style="font-family: 'Montserrat', sans-serif;">
-      Reservas con mínimo 15 días de anticipación. Traslados y seguros son responsabilidad de la institución solicitante.
+    <div class="alert alert-info mt-3 small mb-0">
+      Reservas con mínimo 5 días de anticipación. Traslados y seguros son
+      responsabilidad de la institución solicitante.
     </div>
   </div>
 </section>
@@ -279,66 +375,189 @@
 <section id="entradas" class="py-5">
   <div class="container">
     <h2 class="titulo-entradas">Entradas &amp; Horarios</h2>
+
+    <!-- CTA -->
     <div class="d-flex align-items-center justify-content-between mb-3">
-      <a class="btn btn-outline-primary btn-sm" href="#contacto">Contactar ventas</a>
+      <span class="badge text-bg-success">Abierto vie–dom y festivos</span>
     </div>
 
+    <!-- Precios -->
     <div class="row g-3">
       <div class="col-12 col-md-4">
         <div class="card h-100 shadow-sm">
           <div class="card-body">
             <h5 class="card-title">Niños</h5>
             <div class="display-6 fw-bold">$5.500</div>
-            <p class="small text-body-secondary mb-0">2 a 12 años · Acompañados por un adulto</p>
+            <p class="small text-body-secondary mb-2">2 a 12 años · Acompañados
+              por un adulto</p>
+            <hr class="my-2">
+            <h6
+              class="small text-uppercase text-body-secondary mb-1">Incluye</h6>
+            <ul class="small mb-0 ps-3">
+              <li>Acuario de agua dulce</li>
+              <li>Granja educativa</li>
+              <li>Áreas de juego (tirolesa, pentágono, etc.)*</li>
+              <li>Mirador y espacios al aire libre</li>
+            </ul>
           </div>
         </div>
       </div>
-
       <div class="col-12 col-md-4">
         <div class="card h-100 shadow-sm position-relative">
-          <span class="badge bg-primary position-absolute top-0 end-0 m-2">Popular</span>
+          <span
+            class="badge bg-primary position-absolute top-0 end-0 m-2">Popular</span>
           <div class="card-body">
             <h5 class="card-title">Adultos</h5>
             <div class="display-6 fw-bold">$7.500</div>
-            <p class="small text-body-secondary mb-0">Entrada general · Acceso a todo el recinto</p>
+            <p class="small text-body-secondary mb-2">Entrada general · Acceso a
+              todo el recinto</p>
+            <hr class="my-2">
+            <h6
+              class="small text-uppercase text-body-secondary mb-1">Incluye</h6>
+            <ul class="small mb-0 ps-3">
+              <li>Acuario de agua dulce</li>
+              <li>Granja educativa</li>
+              <li>Áreas de juego (tirolesa, pentágono, etc.)*</li>
+              <li>Mirador y espacios al aire libre</li>
+            </ul>
           </div>
         </div>
       </div>
-
       <div class="col-12 col-md-4">
         <div class="card h-100 shadow-sm">
           <div class="card-body">
             <h5 class="card-title">Tercera Edad</h5>
             <div class="display-6 fw-bold">$5.500</div>
-            <p class="small text-body-secondary mb-0">Con cédula vigente · Acceso a todo el recinto</p>
+            <p class="small text-body-secondary mb-2">Con cédula vigente ·
+              Acceso a todo el recinto</p>
+            <hr class="my-2">
+            <h6
+              class="small text-uppercase text-body-secondary mb-1">Incluye</h6>
+            <ul class="small mb-0 ps-3">
+              <li>Acuario de agua dulce</li>
+              <li>Granja educativa</li>
+              <li>Áreas de juego (tirolesa, pentágono, etc.)*</li>
+              <li>Mirador y espacios al aire libre</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="accordion mt-3" id="entradasAccordion">
+    <!-- Horarios -->
+    <div class="row g-3 mt-3">
+      <div class="col-12">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h6 class="text-uppercase text-body-secondary mb-1">Horarios</h6>
+            <ul class="list-unstyled mb-0 small">
+              <li><strong>Verano (temporada alta):</strong> 11:00 a 19:00</li>
+              <li><strong>Invierno (temporada baja):</strong> sábados, domingos
+                y festivos 11:00 a 17:30</li>
+              <li><em>Último ingreso</em> recomendado: 60–90 min antes del
+                cierre</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Preguntas frecuentes ===== -->
+    <h3 class="mt-4">Preguntas frecuentes</h3>
+    <div class="accordion mt-2" id="faqEntradas" role="tablist">
       <div class="accordion-item">
-        <h2 class="accordion-header" id="faq1">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1c">
+        <h2 class="accordion-header" id="faq1-h">
+          <button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#faq1-c" aria-expanded="false"
+            aria-controls="faq1-c">
             ¿Se puede comprar entrada en el lugar?
           </button>
         </h2>
-        <div id="faq1c" class="accordion-collapse collapse" data-bs-parent="#entradasAccordion">
-          <div class="accordion-body small">Sí, sujeto a aforo. Recomendamos reservar visita pedagógica con anticipación.</div>
+        <div id="faq1-c" class="accordion-collapse collapse"
+          aria-labelledby="faq1-h" data-bs-parent="#faqEntradas">
+          <div class="accordion-body small">
+            Sí, sujeto a aforo. Para grupos y visitas pedagógicas recomendamos
+            reservar con anticipación.
+          </div>
         </div>
       </div>
 
       <div class="accordion-item">
-        <h2 class="accordion-header" id="faq2">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2c">
-            ¿Descuentos para instituciones?
+        <h2 class="accordion-header" id="faq2-h">
+          <button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#faq2-c" aria-expanded="false"
+            aria-controls="faq2-c">
+            ¿Cuánto dura la visita?
           </button>
         </h2>
-        <div id="faq2c" class="accordion-collapse collapse" data-bs-parent="#entradasAccordion">
-          <div class="accordion-body small">Contáctanos para cotizar visitas educativas o grupos.</div>
+        <div id="faq2-c" class="accordion-collapse collapse"
+          aria-labelledby="faq2-h" data-bs-parent="#faqEntradas">
+          <div class="accordion-body small">
+            Entre 1 y 2 horas, según ritmo y aforo.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq3-h">
+          <button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#faq3-c" aria-expanded="false"
+            aria-controls="faq3-c">
+            ¿Hay estacionamiento y baños?
+          </button>
+        </h2>
+        <div id="faq3-c" class="accordion-collapse collapse"
+          aria-labelledby="faq3-h" data-bs-parent="#faqEntradas">
+          <div class="accordion-body small">
+            Sí, el parque cuenta con estacionamiento y servicios básicos.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq4-h">
+          <button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#faq4-c" aria-expanded="false"
+            aria-controls="faq4-c">
+            ¿Se permite el ingreso con mascotas?
+          </button>
+        </h2>
+        <div id="faq4-c" class="accordion-collapse collapse"
+          aria-labelledby="faq4-h" data-bs-parent="#faqEntradas">
+          <div class="accordion-body small">
+            Por seguridad de fauna y visitantes, consulta previamente las
+            restricciones.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq5-h">
+          <button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#faq5-c" aria-expanded="false"
+            aria-controls="faq5-c">
+            ¿Qué llevar?
+          </button>
+        </h2>
+        <div id="faq5-c" class="accordion-collapse collapse"
+          aria-labelledby="faq5-h" data-bs-parent="#faqEntradas">
+          <div class="accordion-body small">
+            Ropa cómoda, agua y protección solar. En invierno, abrigo y capa de
+            lluvia.
+          </div>
         </div>
       </div>
     </div>
+
+    <p class="small text-body-secondary mt-3 mb-0">
+      *Actividades sujetas a operación y clima. Información referencial; puede
+      variar por temporada, clima o eventos.
+    </p>
   </div>
 </section>
 
@@ -348,9 +567,13 @@
     <h2 class="gallery-title">Galería</h2>
 
     <div class="gallery-grid">
-      <div class="gallery-item" *ngFor="let item of visibleImages; let i = index">
-        <div class="gallery-image-wrapper" (click)="openGallery(currentPage * itemsPerPage + i)" data-bs-toggle="modal" data-bs-target="#galleryModal">
-          <img [src]="item.src" [alt]="item.title" class="gallery-image" loading="lazy">
+      <div class="gallery-item"
+        *ngFor="let item of visibleImages; let i = index">
+        <div class="gallery-image-wrapper"
+          (click)="openGallery(currentPage * itemsPerPage + i)"
+          data-bs-toggle="modal" data-bs-target="#galleryModal">
+          <img [src]="item.src" [alt]="item.title" class="gallery-image"
+            loading="lazy">
           <div class="gallery-overlay">
             <div class="gallery-overlay-content">
               <h6 class="gallery-image-title">{{ item.title }}</h6>
@@ -368,20 +591,25 @@
         (click)="prevPage()"
         [disabled]="currentPage === 0"
         [class.disabled]="currentPage === 0">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
         </svg>
       </button>
 
-      <span class="gallery-page-indicator">{{ currentPage + 1 }} / {{ totalPages }}</span>
+      <span class="gallery-page-indicator">{{ currentPage + 1 }} / {{ totalPages
+        }}</span>
 
       <button
         class="gallery-nav-btn gallery-nav-next"
         (click)="nextPage()"
         [disabled]="currentPage === totalPages - 1"
         [class.disabled]="currentPage === totalPages - 1">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
         </svg>
       </button>
     </div>
@@ -389,22 +617,30 @@
 </section>
 
 <!-- Modal de la galería -->
-<div class="modal fade modal-soft" id="galleryModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade modal-soft" id="galleryModal" tabindex="-1"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
-      <button type="button" class="btn-close btn-close-white modal-soft-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      <div class="modal-body p-0 d-flex justify-content-center align-items-center">
-        <div id="galleryCarousel" class="carousel slide" data-bs-interval="false">
+      <button type="button" class="btn-close btn-close-white modal-soft-close"
+        data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      <div
+        class="modal-body p-0 d-flex justify-content-center align-items-center">
+        <div id="galleryCarousel" class="carousel slide"
+          data-bs-interval="false">
           <div class="carousel-inner">
-            <div class="carousel-item" *ngFor="let item of images; let i = index" [ngClass]="{'active': i === selectedIndex}">
+            <div class="carousel-item"
+              *ngFor="let item of images; let i = index"
+              [ngClass]="{'active': i === selectedIndex}">
               <img [src]="item.src" [alt]="item.title" class="carousel-img">
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button"
+            data-bs-target="#galleryCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Anterior</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+          <button class="carousel-control-next" type="button"
+            data-bs-target="#galleryCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Siguiente</span>
           </button>
@@ -414,113 +650,313 @@
   </div>
 </div>
 
-<!-- ===================== ¿CÓMO LLEGAR? + CONTACTO (ÚNICO) ===================== -->
-<section id="visitanos" class="py-5">
+<!-- ===================== RESERVA EDUCATIVA ===================== -->
+<section id="reserva-educativa" class="py-5 bg-light-subtle">
   <div class="container">
-    <div class="row g-4">
+    <div class="row g-4 align-items-start">
 
-      <!-- Columna Mapa -->
-      <div class="col-12 col-lg-4">
-        <h2 class="titulo-destino">¿Cómo llegar?</h2>
+      <!-- Formulario -->
+      <div class="col-12 col-lg-7">
+        <div class="card shadow-sm reserva-card">
+          <div class="card-body">
+            <h2 class="reserva-title text-center mb-3">Reserva educativa</h2>
 
-        <div class="ratio ratio-16x9 rounded overflow-hidden">
-          <iframe
-            title="Mapa"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Acuario%20Tem%C3%A1tico%20-%20CHISCAIHUE%20PC%201LT%206%20RIO%20BUENO%20CHISCAIHUE%20PC%201LT%206,%205240000%20R%C3%ADo%20Bueno,%20Los%20R%C3%ADos&z=16&output=embed">
-          </iframe>
-        </div>
+            <form class="reserva-form" [formGroup]="reservaForm"
+              (ngSubmit)="onReservaSubmit()">
+              <div class="reserva-fields mx-auto">
 
-        <div class="mt-2">
-          <a
-            class="btn btn-primary btn-sm d-inline-flex align-items-center gap-2"
-            href="https://www.google.com/maps/dir/?api=1&destination=Acuario%20Tem%C3%A1tico%20-%20CHISCAIHUE%20PC%201LT%206%20RIO%20BUENO%20CHISCAIHUE%20PC%201LT%206,%205240000%20R%C3%ADo%20Bueno,%20Los%20R%C3%ADos"
-            target="_blank"
-            rel="noopener"
-            aria-label="Abrir ubicación en Google Maps en una nueva pestaña">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16"
-                aria-hidden="true" focusable="false">
-              <path d="M12.166 8.94c-.524 1.062-1.2 2.12-1.87 3.016A31.58 31.58 0 0 1 8 14.58a31.58 31.58 0 0 1-2.296-2.624c-.67-.895-1.346-1.954-1.87-3.016C3.29 7.826 3 6.842 3 6a5 5 0 1 1 10 0c0 .842-.29 1.826-.834 2.94ZM8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
-            </svg>
-            Abrir en Google Maps
-          </a>
-        </div>
+                <div class="row g-3">
 
-        <!-- Info de contacto (debajo del mapa) -->
-        <div class="mt-3 small" style="font-family: 'Montserrat', sans-serif;">
-          <div><strong>Información de contacto</strong></div>
-          <div>📞 +56 9 8634 4271</div>
-          <div>✉️ acuariopuyehue@gmail.com</div>
-          <div>✉️ acb@acuariopuyehue.cl</div>
-          <div>✉️ plagos@acuariopuyehue.cl</div>
-          <div>IG: @acuariopuyehue</div>
+                  <div class="col-12 col-md-6">
+                    <label for="institucion" class="form-label">Nombre
+                      institución</label>
+                    <input id="institucion" type="text"
+                      formControlName="institucion"
+                      class="form-control"
+                      placeholder="Nombre del colegio o institución">
+                  </div>
+                </div>
+
+                <div class="mt-3">
+                  <label for="correo" class="form-label">Correo de
+                    contacto</label>
+                  <input id="correo" type="email" formControlName="correo"
+                    class="form-control" placeholder="correo@institucion.cl">
+                </div>
+
+                <div class="mt-3">
+                  <label for="programa" class="form-label">Programa
+                    educativo</label>
+                  <select id="programa" formControlName="programa"
+                    class="form-select">
+                    <option value>Seleccione...</option>
+                    <option value="Visita básica">Visita básica</option>
+                    <option value="Visita académica">Visita académica</option>
+                    <option value="Taller aplicado">Taller aplicado</option>
+                  </select>
+                </div>
+
+                <div class="row g-3 mt-1">
+                  <div class="col-12 col-md-6">
+                    <label for="fecha" class="form-label">Fecha para
+                      reservar</label>
+                    <input id="fecha" type="date" formControlName="fecha"
+                      class="form-control">
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="personas" class="form-label">Cantidad de
+                      personas</label>
+                    <input id="personas" type="number"
+                      formControlName="personas"
+                      class="form-control" min="1" placeholder="Ej: 30">
+                  </div>
+                </div>
+
+                <div class="mt-3">
+                  <label for="comentarios" class="form-label">Comentarios
+                    adicionales</label>
+                  <textarea id="comentarios" rows="3"
+                    formControlName="comentarios"
+                    class="form-control"
+                    placeholder="ingrese informacion adicional de la solicitud de reserva "></textarea>
+                </div>
+
+                <div *ngIf="successReserva"
+                  class="alert alert-success small mt-3">{{ successReserva
+                  }}</div>
+                <div *ngIf="errorReserva"
+                  class="alert alert-danger small mt-2">{{ errorReserva }}</div>
+
+                <div class="text-center mt-3">
+                  <button type="submit" class="btn btn-success btn-send"
+                    [disabled]="enviandoReserva">
+                    {{ enviandoReserva ? 'Enviando...' : 'Enviar solicitud' }}
+                  </button>
+                </div>
+
+              </div>
+            </form>
+
+          </div>
         </div>
       </div>
 
-  <!-- Columna Derecha: Contacto + Reserva educativa -->
-  <div class="col-12 col-lg-8" id="contacto">
-    <div class="row g-4">
-
-      <!-- Formulario: Reserva educativa -->
-      <div class="col-12">
-        <h3 class="fw-bold mb-3" style="color: #4d9447; font-family: 'Montserrat', sans-serif;">Reserva educativa</h3>
-
-        <form [formGroup]="reservaForm" (ngSubmit)="onReservaSubmit()">
-          <div class="mb-3">
-            <label for="institucion" class="form-label" style="font-family: 'Montserrat', sans-serif;">Nombre institución</label>
-            <input type="text" id="institucion" formControlName="institucion" class="form-control" style="font-family: 'Montserrat', sans-serif;"
-                  placeholder="Nombre del colegio o institución">
-          </div>
-
-          <div class="mb-3">
-            <label for="correo" class="form-label" style="font-family: 'Montserrat', sans-serif;">Correo de contacto</label>
-            <input type="email" id="correo" formControlName="correo" class="form-control" style="font-family: 'Montserrat', sans-serif;"
-                  placeholder="correo@institucion.cl">
-          </div>
-
-          <div class="mb-3">
-            <label for="programa" class="form-label" style="font-family: 'Montserrat', sans-serif;">Programa educativo</label>
-            <select id="programa" formControlName="programa" class="form-select" style="font-family: 'Montserrat', sans-serif;">
-              <option value="">Seleccione...</option>
-              <option value="Visita básica">Visita básica</option>
-              <option value="Visita académica">Visita académica</option>
-              <option value="Taller aplicado">Taller aplicado</option>
-            </select>
-          </div>
-
-          <div class="mb-3">
-            <label for="fecha" class="form-label" style="font-family: 'Montserrat', sans-serif;">Fecha para reservar</label>
-            <input type="date" id="fecha" formControlName="fecha" class="form-control" style="font-family: 'Montserrat', sans-serif;">
-          </div>
-
-          <div class="mb-3">
-            <label for="personas" class="form-label" style="font-family: 'Montserrat', sans-serif;">Cantidad de personas</label>
-            <input type="number" id="personas" formControlName="personas" class="form-control" style="font-family: 'Montserrat', sans-serif;"
-                  min="1" placeholder="Ej: 30">
-          </div>
-
-          <div class="mb-3">
-            <label for="comentarios" class="form-label" style="font-family: 'Montserrat', sans-serif;">Comentarios adicionales</label>
-            <textarea id="comentarios" formControlName="comentarios" rows="3"
-                      class="form-control" style="font-family: 'Montserrat', sans-serif;"
-                      placeholder="Requisitos o comentarios especiales"></textarea>
-          </div>
-
-          <!-- Feedback visual -->
-          <div *ngIf="successReserva" class="alert alert-success small">{{ successReserva }}</div>
-          <div *ngIf="errorReserva" class="alert alert-danger small">{{ errorReserva }}</div>
-
-          <button type="submit" class="btn btn-success w-100" [disabled]="enviandoReserva" style="font-family: 'Montserrat', sans-serif;">
-            {{ enviandoReserva ? 'Enviando...' : 'Enviar solicitud' }}
-          </button>
-        </form>
+      <!-- Recomendaciones -->
+      <div class="col-12 col-lg-5">
+        <aside class="reserva-info rounded-3 h-100">
+          <h3 class="h5 mb-2"
+            style="color:#d95f14;font-weight:700">Recomendaciones para tu
+            visita</h3>
+          <ul class="reserva-bullets">
+            <li>Reserva con <strong>al menos 5 días</strong> de
+              anticipación.</li>
+            <li>Grupos recomendados: <strong>hasta 35 personas por
+                turno</strong>.</li>
+            <li>Duración según programa: <strong>30 a 120 minutos</strong>.</li>
+            <li>Llega con tiempo para recorrer todas las áreas.</li>
+            <li>Pago en boletería: <strong>Transbank o efectivo</strong>.</li>
+          </ul>
+        </aside>
       </div>
-
 
     </div>
   </div>
+</section>
+
+<!-- =============== ¿CÓMO LLEGAR?  =============== -->
+<section id="como-llegar" class="py-5">
+  <div class="container">
+    <div class="row g-4 align-items-start">
+
+      <!-- Col: instrucciones (ACORDEÓN) -->
+      <div class="col-12 col-lg-5 order-2 order-lg-1">
+        <div class="accordion" id="comoLlegarAcc">
+
+          <!-- Auto -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="hdr-auto">
+              <button class="accordion-button" type="button"
+                data-bs-toggle="collapse" data-bs-target="#acc-auto"
+                aria-expanded="true" aria-controls="acc-auto">
+                <i class="bi bi-car-front me-2"></i>Auto desde Osorno
+              </button>
+            </h2>
+            <div id="acc-auto" class="accordion-collapse collapse show"
+              data-bs-parent="#comoLlegarAcc">
+              <div class="accordion-body">
+                <div class="meta mb-3">
+                  <span><i class="bi bi-clock me-1"></i>~60 min</span>
+                  <span class="ok"><i class="bi bi-check2-circle me-1"></i>Ruta
+                    recomendada</span>
+                </div>
+
+                <div class="step-card">
+                  <span class="badge-num">1</span>
+                  <div class="step-body">
+                    Toma <strong>Ruta CH-215</strong> hacia <strong>Entre
+                      Lagos</strong>.
+                  </div>
+                </div>
+                <div class="step-card">
+                  <span class="badge-num">2</span>
+                  <div class="step-body">
+                    Pasa el acceso a Entre Lagos y dobla hacia <strong>Ruta
+                      Interlagos T-981U</strong>.
+                  </div>
+                </div>
+                <div class="step-card">
+                  <span class="badge-num">3</span>
+                  <div class="step-body">
+                    Avanza hasta el <strong>km 3 (Chiscaihue)</strong>. Verás el
+                    acceso señalizado.
+                  </div>
+                </div>
+
+                <a class="btn btn-primary btn-sm mt-2" target="_blank"
+                  rel="noopener"
+                  href="https://www.google.com/maps/dir/Osorno,+Chile/Parque+Acuario+Puyehue,+T-981-U+KM+3,+R%C3%ADo+Bueno,+Los+R%C3%ADos">
+                  <i class="bi bi-compass me-1"></i>Ver ruta en Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="hdr-bus">
+              <button class="accordion-button collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#acc-bus"
+                aria-expanded="false" aria-controls="acc-bus">
+                <i class="bi bi-bus-front me-2"></i>Bus desde Osorno
+              </button>
+            </h2>
+            <div id="acc-bus" class="accordion-collapse collapse"
+              data-bs-parent="#comoLlegarAcc">
+              <div class="accordion-body">
+                <div class="meta mb-3">
+                  <span><i class="bi bi-people me-1"></i>Público</span>
+                  <span><i class="bi bi-clock me-1"></i>~50 min + 5 min</span>
+                </div>
+
+                <div class="step-card">
+                  <span class="badge-num">1</span>
+                  <div class="step-body">
+                    Desde el <strong>Terminal de Osorno</strong>, bus a
+                    <strong>Entre Lagos</strong> (≈50 min).
+                  </div>
+                </div>
+                <div class="step-card">
+                  <span class="badge-num">2</span>
+                  <div class="step-body">
+                    En Entre Lagos toma taxi/colectivo a <strong>T-981U km 3
+                      (Chiscaihue)</strong> (~5 min).
+                  </div>
+                </div>
+
+                <p class="small text-body-secondary mt-2"><i
+                    class="bi bi-info-circle me-1"></i>Confirma horarios según
+                  temporada.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="hdr-rb">
+              <button class="accordion-button collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#acc-rb"
+                aria-expanded="false" aria-controls="acc-rb">
+                <i class="bi bi-signpost-2 me-2"></i>Río Bueno / La Unión
+              </button>
+            </h2>
+            <div id="acc-rb" class="accordion-collapse collapse"
+              data-bs-parent="#comoLlegarAcc">
+              <div class="accordion-body">
+                <div class="step-card">
+                  <span class="badge-num">1</span>
+                  <div class="step-body">
+                    Toma rutas <strong>T-985 / T-981U</strong> hacia
+                    <strong>Entre Lagos</strong>.
+                  </div>
+                </div>
+                <div class="step-card">
+                  <span class="badge-num">2</span>
+                  <div class="step-body">
+                    Llega hasta el <strong>km 3</strong> de la
+                    <strong>T-981U</strong> (Chiscaihue).
+                  </div>
+                </div>
+
+                <div class="d-flex flex-wrap gap-2 mt-2">
+                  <a class="btn btn-outline-primary btn-sm" target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/R%C3%ADo+Bueno,+Los+R%C3%ADos/Parque+Acuario+Puyehue,+T-981-U+KM+3,+R%C3%ADo+Bueno,+Los+R%C3%ADos">
+                    <i class="bi bi-geo-alt me-1"></i>Ruta desde Río Bueno
+                  </a>
+                  <a class="btn btn-outline-primary btn-sm" target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/La+Uni%C3%B3n,+Chile/Parque+Acuario+Puyehue,+T-981-U+KM+3,+R%C3%ADo+Bueno,+Los+R%C3%ADos">
+                    <i class="bi bi-geo-alt me-1"></i>Ruta desde La Unión
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-7 order-1 order-lg-2">
+        <div class="mapa">
+          <div class="mapa-head"><i class="bi bi-map me-2"></i>Mapa y
+            dirección</div>
+          <div class="ratio ratio-16x9 overflow-hidden">
+            <iframe title="Mapa Parque Acuario Puyehue" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Parque%20Acuario%20Puyehue%20T-981U%20KM%203%20Chiscaihue&z=16&output=embed">
+            </iframe>
+          </div>
+          <div class="mapa-body">
+            <div class="small text-body-secondary">Dirección</div>
+            <div class="fw-semibold">Ruta Interlagos T-981U, km 3 — Sector
+              Chiscaihue</div>
+            <div class="small text-body-secondary">A 1,5 km antes de Entre Lagos
+              (comuna de Puyehue).</div>
+
+            <div class="d-flex gap-2 flex-wrap mt-2">
+              <a class="btn btn-primary btn-sm"
+                href="https://www.google.com/maps/dir/?api=1&destination=Parque%20Acuario%20Puyehue%20T-981U%20km%203%20Chiscaihue"
+                target="_blank" rel="noopener">
+                <i class="bi bi-route me-1"></i>Abrir en Google Maps
+              </a>
+              <a class="btn btn-outline-primary btn-sm"
+                href="https://www.google.com/maps/search/estacionamientos/@-40.68,-72.6,14z"
+                target="_blank" rel="noopener">
+                <i class="bi bi-p-square me-1"></i>Estacionamientos cercanos
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INFORMACIÓN DE CONTACTO ===================== -->
+<section id="contacto-info" class="py-5">
+  <div class="container">
+    <div class="row g-4 justify-content-center">
+      <div class="col-12 col-lg-8">
+        <div class="contact-box shadow-sm">
+
+          <!-- Cabecera -->
+          <div class="contact-box__header">
+            <h2 class="h5 mb-0 text-white text-center">Información de
+              contacto</h2>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 </section>
