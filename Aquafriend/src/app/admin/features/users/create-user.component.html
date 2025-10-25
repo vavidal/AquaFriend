@@ -9,9 +9,9 @@
             <path d="M18 4v4M16 6h4" />
           </svg>
         </div>
-
-        <h3>Creación de Nuevo Usuario</h3>
-        <p>Registra un nuevo usuario para AquaFriend.</p>
+        <h3>{{ title }}</h3>
+        <p *ngIf="!isEdit">Registra un nuevo usuario para AquaFriend.</p>
+        <p *ngIf="isEdit">Actualiza los datos del usuario seleccionado.</p>
       </div>
     </div>
 
@@ -21,32 +21,24 @@
           <div class="cu-field">
             <label>Nombre</label>
             <input type="text" formControlName="nombre" placeholder="Nombre" />
-            <small class="err"
-              *ngIf="f.nombre.touched && f.nombre.invalid">Requerido (mín.
-              2)</small>
+            <small class="err" *ngIf="f.nombre.touched && f.nombre.invalid">Requerido (mín. 2)</small>
           </div>
 
           <div class="cu-field">
             <label>Apellido</label>
-            <input type="text" formControlName="apellido"
-              placeholder="Apellido" />
-            <small class="err"
-              *ngIf="f.apellido.touched && f.apellido.invalid">Requerido (mín.
-              2)</small>
+            <input type="text" formControlName="apellido" placeholder="Apellido" />
+            <small class="err" *ngIf="f.apellido.touched && f.apellido.invalid">Requerido (mín. 2)</small>
           </div>
 
           <div class="cu-field cu-col-2">
             <label>Email</label>
-            <input type="email" formControlName="email"
-              placeholder="correo@dominio.com" />
-            <small class="err" *ngIf="f.email.touched && f.email.invalid">Email
-              inválido</small>
+            <input type="email" formControlName="email" placeholder="correo@dominio.com" />
+            <small class="err" *ngIf="f.email.touched && f.email.invalid">Email inválido</small>
           </div>
 
-          <div class="cu-field cu-col-2">
+          <div class="cu-field cu-col-2" *ngIf="form.get('telefono')">
             <label>Teléfono (opcional)</label>
-            <input type="text" formControlName="telefono"
-              placeholder="+56 9 1234 5678" />
+            <input type="text" formControlName="telefono" placeholder="+56 9 1234 5678" />
           </div>
 
           <div class="cu-field cu-col-2">
@@ -58,12 +50,8 @@
         </div>
 
         <div class="cu-actions">
-          <button type="button" class="btn ghost" (click)="cancelar()">
-            <span class="msr"></span> Cancelar
-          </button>
-          <button type="submit" class="btn danger">
-            <span class="msr"></span> Guardar
-          </button>
+          <button type="button" class="btn ghost" (click)="cancelar()">Cancelar</button>
+          <button type="submit" class="btn danger" [disabled]="processing">{{ actionLabel }}</button>
         </div>
       </form>
     </div>

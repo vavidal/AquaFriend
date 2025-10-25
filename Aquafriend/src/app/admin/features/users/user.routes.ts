@@ -13,6 +13,12 @@ export const userRoutes: Routes = [
     loadComponent: () =>
       import('./create-user.component').then(m => m.CreateUserComponent),
     title: 'Crear usuario'
+  },
+  {
+    path: ':id/editar',
+    loadComponent: () =>
+      import('./create-user.component').then(m => m.CreateUserComponent),
+    title: 'Editar usuario'
   }
 ];
 

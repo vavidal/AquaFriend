@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UsuarioService, Usuario } from './usuario.service';
-
-type ApiResponse<T> = { success: boolean; data?: T; message?: string };
+import { UsuarioService, Usuario, ApiResponse } from './users.service';
 
 @Component({
   selector: 'app-users-list',
@@ -14,148 +12,114 @@ type ApiResponse<T> = { success: boolean; data?: T; message?: string };
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
+  private usuarioService = inject(UsuarioService);
+  private router = inject(Router);
+
   usuarios: Usuario[] = [];
   usuariosFiltrados: Usuario[] = [];
   cargando = false;
-  usuarioEditando: Usuario | null = null;
+
   mostrarModalEditar = false;
+  usuarioEditando: Usuario | null = null;
 
-  constructor(
-    private usuarioService: UsuarioService,
-    private router: Router
-  ) {}
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.cargarUsuarios();
   }
 
-  private isApiResponseArray(payload: unknown): payload is ApiResponse<Usuario[]> {
-    return typeof payload === 'object' && payload !== null && 'success' in payload;
-  }
-
-  private isApiResponseOne(payload: unknown): payload is ApiResponse<Usuario> {
-    return typeof payload === 'object' && payload !== null && 'success' in payload;
-  }
-
-  cargarUsuarios() {
+  cargarUsuarios(): void {
     this.cargando = true;
     this.usuarioService.obtenerTodos().subscribe({
-      next: (resp: unknown) => {
+      next: (list: Usuario[]) => {
+        this.usuarios = list ?? [];
+        this.usuariosFiltrados = [...this.usuarios];
         this.cargando = false;
-        if (Array.isArray(resp)) {
-          this.usuarios = resp;
-          this.usuariosFiltrados = resp;
-          return;
-        }
-        if (this.isApiResponseArray(resp) && resp.success && Array.isArray(resp.data)) {
-          this.usuarios = resp.data;
-          this.usuariosFiltrados = resp.data;
-          return;
-        }
-        this.usuarios = [];
-        this.usuariosFiltrados = [];
       },
-      error: () => {
-        this.cargando = false;
-        alert('Error al cargar usuarios');
-      }
+      error: () => (this.cargando = false)
     });
   }
 
-  nuevoUsuario() {
+  trackById = (_: number, u: Usuario) => u.id_usuario ?? -1;
+
+  nuevoUsuario(): void {
     this.router.navigate(['/dashboard/user/crear']);
   }
 
-  editarUsuario(usuario: Usuario) {
-    this.usuarioEditando = { ...usuario };
-    this.mostrarModalEditar = true;
-  }
-
-  guardarEdicion() {
-    if (!this.usuarioEditando || !this.usuarioEditando.id_usuario) return;
-    this.cargando = true;
-    const datosActualizar: Partial<Usuario> = {
-      nombre: this.usuarioEditando.nombre,
-      apellido: this.usuarioEditando.apellido,
-      email: this.usuarioEditando.email,
-      role_id: this.usuarioEditando.role_id,
-      activo: this.usuarioEditando.activo
-    };
-    this.usuarioService.actualizar(this.usuarioEditando.id_usuario, datosActualizar).subscribe({
-      next: (resp: unknown) => {
-        this.cargando = false;
-        if (this.isApiResponseOne(resp) && resp.success && resp.data) {
-          const idx = this.usuarios.findIndex(u => u.id_usuario === resp.data!.id_usuario);
-          if (idx !== -1) this.usuarios[idx] = resp.data!;
-          this.usuariosFiltrados = [...this.usuarios];
-          alert('Usuario actualizado exitosamente');
-          this.cerrarModalEditar();
-          return;
-        }
-        alert((this.isApiResponseOne(resp) && resp.message) || 'Error al actualizar usuario');
-      },
-      error: (error) => {
-        this.cargando = false;
-        alert(error?.error?.message || 'Error al actualizar usuario');
-      }
-    });
-  }
-
-  changeEstado(usuario: Usuario, activo: boolean) {
+  changeEstado(usuario: Usuario, checked: boolean): void {
     if (!usuario.id_usuario) return;
     const previo = usuario.activo;
-    usuario.activo = activo ? 1 : 0;
-    this.usuarioService.actualizar(usuario.id_usuario, { activo: usuario.activo } as Partial<Usuario>).subscribe({
-      next: (resp: unknown) => {
-        if (this.isApiResponseOne(resp) && resp.success && resp.data) {
-          const idx = this.usuarios.findIndex(u => u.id_usuario === resp.data!.id_usuario);
-          if (idx !== -1) this.usuarios[idx] = resp.data!;
-          this.usuariosFiltrados = [...this.usuarios];
-        } else {
-          usuario.activo = previo;
-          alert((this.isApiResponseOne(resp) && resp.message) || 'No se pudo cambiar el estado');
-        }
+    usuario.activo = checked ? 1 : 0;
+
+    this.usuarioService.actualizar(usuario.id_usuario, { activo: usuario.activo }).subscribe({
+      next: (resp: ApiResponse<Usuario>) => {
+        if (!(resp?.success)) usuario.activo = previo;
       },
-      error: () => {
-        usuario.activo = previo;
-        alert('Error al cambiar el estado');
-      }
+      error: () => { usuario.activo = previo; }
     });
   }
 
-  eliminarUsuario(usuario: Usuario) {
+  editarUsuario(usuario: Usuario): void {
+  if (!usuario.id_usuario) return;
+  this.router.navigate(['/dashboard/user', usuario.id_usuario, 'editar']);
+}
+
+
+
+  eliminarUsuario(usuario: Usuario): void {
     if (!usuario.id_usuario) return;
-    const ok = confirm(`¿Está seguro de eliminar a ${usuario.nombre} ${usuario.apellido}?`);
-    if (!ok) return;
+    if (!confirm('¿Eliminar este usuario?')) return;
+
     this.cargando = true;
     this.usuarioService.eliminar(usuario.id_usuario).subscribe({
-      next: (resp: unknown) => {
-        this.cargando = false;
-        if ((this.isApiResponseOne(resp) && resp.success) || (typeof resp === 'object' && resp !== null && (resp as any).success)) {
+      next: (resp: ApiResponse<null>) => {
+        if (resp?.success) {
           this.usuarios = this.usuarios.filter(u => u.id_usuario !== usuario.id_usuario);
           this.usuariosFiltrados = [...this.usuarios];
-          alert('Usuario eliminado exitosamente');
-        } else {
-          alert((this.isApiResponseOne(resp) && resp.message) || 'Error al eliminar usuario');
         }
-      },
-      error: () => {
         this.cargando = false;
-        alert('Error al eliminar usuario');
-      }
+      },
+      error: () => { this.cargando = false; }
     });
   }
 
-  cerrarModalEditar() {
+  cerrarModalEditar(): void {
     this.mostrarModalEditar = false;
     this.usuarioEditando = null;
   }
 
-  getEstadoBadge(activo: number | undefined): string {
-    return activo ? 'activo' : 'inactivo';
+  guardarEdicion(): void {
+    if (!this.usuarioEditando?.id_usuario) return;
+
+    const id = this.usuarioEditando.id_usuario;
+    const data: Partial<Usuario> = {
+      nombre: this.usuarioEditando.nombre,
+      apellido: this.usuarioEditando.apellido,
+      email: this.usuarioEditando.email,
+      role: this.usuarioEditando.role,
+      role_id: this.usuarioEditando.role_id,
+      activo: this.usuarioEditando.activo
+    };
+
+    this.cargando = true;
+    this.usuarioService.actualizar(id, data).subscribe({
+      next: (resp: ApiResponse<Usuario>) => {
+        if (resp?.success && resp.data) {
+          const idx = this.usuarios.findIndex(x => x.id_usuario === id);
+          if (idx > -1) this.usuarios[idx] = { ...this.usuarios[idx], ...resp.data };
+          this.usuariosFiltrados = [...this.usuarios];
+        }
+        this.cerrarModalEditar();
+        this.cargando = false;
+      },
+      error: () => {
+        this.cargando = false;
+      }
+    });
   }
 
-  getEstadoTexto(activo: number | undefined): string {
-    return activo ? 'Activo' : 'Inactivo';
+  filtrar(term: string): void {
+    const t = (term ?? '').toLowerCase();
+    this.usuariosFiltrados = this.usuarios.filter(u =>
+      [u.nombre, u.apellido, u.email, u.role].some(v => (v ?? '').toLowerCase().includes(t))
+    );
   }
 }
