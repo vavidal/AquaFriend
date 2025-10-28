@@ -1,0 +1,50 @@
+:root{
+  --page:#f7f9fc;
+  --ink:#0f172a;
+  --muted:#64748b;
+  --card:#ffffff;
+  --line:#e5e7eb;
+  --primary:#0ea5e9;
+  --radius:18px;
+  --shadow:0 12px 30px rgba(2,6,23,.08);
+}
+
+.us-page{background:var(--page);min-height:100vh;color:var(--ink);}
+
+.block{max-width:1100px;margin:38px auto;padding:0 16px}
+.title{font-size:clamp(22px,3vw,32px);font-weight:900;margin:0 0 12px}
+.text{color:var(--muted);line-height:1.7;margin:0}
+.text--center{text-align:center}
+
+.block--media{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center}
+.block--media.reverse{grid-template-columns:.9fr 1.1fr}
+.block--media.reverse .media{order:2}
+.block--media.reverse .content{order:1}
+
+.media{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);min-height:280px;background:#0003}
+.media__cover{width:100%;height:100%;object-fit:cover;display:block}
+
+.content{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:22px}
+
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.card__icon{font-size:26px;margin-bottom:4px}
+.card__title{font-weight:800;margin:0 0 4px}
+.card__text{color:var(--muted);margin:0}
+
+.block--team{margin-top:10px}
+.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:18px}
+.team-card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:16px;text-align:center}
+.team-card__avatar{width:100%;height:180px;object-fit:cover;border-radius:12px;margin-bottom:10px}
+.team-card__name{font-weight:900;margin:0 0 2px}
+.team-card__role{color:#0369a1;font-weight:700;margin:0 0 6px}
+.team-card__bio{color:var(--muted);margin:0}
+
+@media (max-width:1024px){
+  .block--media,.block--media.reverse{grid-template-columns:1fr}
+  .pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .team{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .pillars,.team{grid-template-columns:1fr}
+}
