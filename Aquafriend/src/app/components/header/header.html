@@ -1,25 +1,31 @@
 <nav #navbar class="app-header navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container-fluid px-4">
     <a class="navbar-brand" routerLink="/" (click)="closeNav()">
-      <img src="/assets/icons/logo_acuario.png" alt="Aquarium" class="logo-aquarium">
+      <img src="/assets/icons/logo_acuario.png" alt="Aquarium"
+        class="logo-aquarium">
     </a>
 
     <button class="navbar-toggler navbar-toggler-orange" type="button"
-            data-bs-toggle="collapse" data-bs-target="#mainNav"
-            aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      data-bs-toggle="collapse" data-bs-target="#mainNav"
+      aria-controls="mainNav" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="mainNav" class="collapse navbar-collapse">
       <ul class="navbar-nav mx-auto gap-4">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" (click)="closeNav()">Inicio</a>
+          <a class="nav-link" routerLink="/"
+            [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active"
+            (click)="closeNav()">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/us" routerLinkActive="active" (click)="closeNav()">Sobre Nosotros</a>
+          <a class="nav-link" routerLink="/us" routerLinkActive="active"
+            (click)="closeNav()">Sobre Nosotros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#programas" (click)="closeNav()">Programas</a>
+          <a class="nav-link" routerLink="/reservas"
+            routerLinkActive="active">Reservas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#entradas" (click)="closeNav()">Entradas</a>
@@ -28,10 +34,12 @@
           <a class="nav-link" href="#galeria" (click)="closeNav()">Galería</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#visitanos" (click)="closeNav()">Visítanos</a>
+          <a class="nav-link" href="#visitanos"
+            (click)="closeNav()">Visítanos</a>
         </li>
         <li class="nav-item ms-lg-3">
-          <a class="btn btn-reservar btn-md" href="#contacto" (click)="closeNav()">Reservar</a>
+          <a class="btn btn-reservar btn-md" href="#contacto"
+            (click)="closeNav()">Reservar</a>
         </li>
       </ul>
     </div>

@@ -23,5 +23,11 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./components/us/us.routes').then(m => m.usRoutes)
   },
+  {
+    path: 'reservas',
+    loadChildren: () =>
+      import('./components/pedagogical-reservations/pedagogical-reservations.routes')
+        .then(m => m.pedagogicalReservationsRoutes)
+  },
   { path: '**', redirectTo: '' }
 ];
