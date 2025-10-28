@@ -23,7 +23,6 @@ export class ReservasComponent implements OnInit {
   cargarReservas() {
     this.loading = true;
     this.error = null;
-
     this.reservaSvc.obtenerReservas().subscribe({
       next: (response) => {
         this.loading = false;
@@ -33,52 +32,50 @@ export class ReservasComponent implements OnInit {
           this.error = response.message || 'Error al cargar reservas';
         }
       },
-      error: (err) => {
-        console.error('Error al cargar reservas:', err);
+      error: () => {
         this.loading = false;
         this.error = 'No se pudieron cargar las reservas. Verifica que el servidor esté corriendo.';
       }
     });
   }
 
+  verReserva(reserva: Reserva): void {
+    console.log('ver', reserva);
+  }
+
+  trackById(_: number, r: Reserva) {
+    return r?.id_reserva ?? _;
+  }
+
   getEstadoClass(estado: string): string {
-    const estadoLower = estado.toLowerCase();
-    if (estadoLower === 'pendiente') return 'badge bg-warning text-dark';
-    if (estadoLower === 'confirmada') return 'badge bg-success';
-    if (estadoLower === 'cancelada') return 'badge bg-danger';
-    if (estadoLower === 'completada') return 'badge bg-secondary';
+    const e = estado?.toLowerCase();
+    if (e === 'pendiente') return 'badge bg-warning text-dark';
+    if (e === 'confirmada') return 'badge bg-success';
+    if (e === 'cancelada') return 'badge bg-danger';
     return 'badge bg-info';
   }
 
   formatFecha(fecha: string): string {
-    return new Date(fecha).toLocaleDateString('es-CL', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
+    return new Date(fecha).toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
   formatMoneda(monto: number): string {
-    return new Intl.NumberFormat('es-CL', {
-      style: 'currency',
-      currency: 'CLP'
-    }).format(monto);
+    return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(monto);
   }
 
-  // Getters para estadísticas
   get totalReservas(): number {
     return this.reservas.length;
   }
 
   get reservasPendientes(): number {
-    return this.reservas.filter(r => r.estado.toLowerCase() === 'pendiente').length;
+    return this.reservas.filter(r => r.estado?.toLowerCase() === 'pendiente').length;
   }
 
   get reservasConfirmadas(): number {
-    return this.reservas.filter(r => r.estado.toLowerCase() === 'confirmada').length;
+    return this.reservas.filter(r => r.estado?.toLowerCase() === 'confirmada').length;
   }
 
   get totalEstudiantes(): number {
-    return this.reservas.reduce((sum, r) => sum + r.cantidad_estudiantes, 0);
+    return this.reservas.reduce((sum, r) => sum + (r.cantidad_estudiantes || 0), 0);
   }
 }

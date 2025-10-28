@@ -1,16 +1,47 @@
 <div class="container-fluid p-4">
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="mb-0">
-      <i class="bi bi-calendar-check me-2"></i>
-      Reservas Educativas
-    </h2>
+    <h2 class="mb-0">Reservas Educativas</h2>
     <button class="btn btn-primary" (click)="cargarReservas()">
       <i class="bi bi-arrow-clockwise me-1"></i>
       Actualizar
     </button>
   </div>
 
-  <!-- Loading -->
+    <div *ngIf="!loading && !error && reservas.length > 0" class="row mt-4 g-3">
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card text-center h-100">
+        <div class="card-body">
+          <h3 class="text-primary mb-1">{{ totalReservas }}</h3>
+          <p class="text-muted mb-0">Total Reservas</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card text-center h-100">
+        <div class="card-body">
+          <h3 class="text-warning mb-1">{{ reservasPendientes }}</h3>
+          <p class="text-muted mb-0">Pendientes</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card text-center h-100">
+        <div class="card-body">
+          <h3 class="text-success mb-1">{{ reservasConfirmadas }}</h3>
+          <p class="text-muted mb-0">Confirmadas</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card text-center h-100">
+        <div class="card-body">
+          <h3 class="text-info mb-1">{{ totalEstudiantes }}</h3>
+          <p class="text-muted mb-0">Total Estudiantes</p>
+        </div>
+      </div>
+    </div>
+  </div>
+   <br><br>
   <div *ngIf="loading" class="text-center py-5">
     <div class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Cargando...</span>
@@ -18,19 +49,16 @@
     <p class="mt-3 text-muted">Cargando reservas...</p>
   </div>
 
-  <!-- Error -->
   <div *ngIf="error && !loading" class="alert alert-danger" role="alert">
     <i class="bi bi-exclamation-triangle me-2"></i>
     {{ error }}
   </div>
 
-  <!-- Sin reservas -->
   <div *ngIf="!loading && !error && reservas.length === 0" class="alert alert-info" role="alert">
     <i class="bi bi-info-circle me-2"></i>
     No hay reservas registradas aún.
   </div>
 
-  <!-- Tabla de reservas -->
   <div *ngIf="!loading && !error && reservas.length > 0" class="card shadow-sm">
     <div class="card-body p-0">
       <div class="table-responsive">
@@ -45,70 +73,29 @@
               <th>Total</th>
               <th>Estado</th>
               <th>Creado</th>
+              <th class="text-end">Acciones</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let reserva of reservas">
               <td><strong>#{{ reserva.id_reserva }}</strong></td>
               <td>{{ reserva.escuela || 'Sin escuela' }}</td>
-              <td>
-                <span class="badge bg-info">{{ reserva.programa }}</span>
-              </td>
+              <td><span class="badge bg-info">{{ reserva.programa }}</span></td>
               <td>{{ formatFecha(reserva.fecha_reserva) }}</td>
+              <td>{{ reserva.cantidad_estudiantes }}</td>
+              <td><strong>{{ formatMoneda(reserva.total_pagar) }}</strong></td>
               <td>
-                <i class="bi bi-people me-1"></i>
-                {{ reserva.cantidad_estudiantes }}
+                <span [class]="getEstadoClass(reserva.estado)">{{ reserva.estado }}</span>
               </td>
-              <td>
-                <strong>{{ formatMoneda(reserva.total_pagar) }}</strong>
-              </td>
-              <td>
-                <span [className]="getEstadoClass(reserva.estado)">
-                  {{ reserva.estado }}
-                </span>
-              </td>
-              <td class="text-muted small">
-                {{ formatFecha(reserva.created_at) }}
+              <td class="text-muted small">{{ formatFecha(reserva.created_at) }}</td>
+              <td class="text-end">
+                <button class="btn btn-outline-primary btn-sm" (click)="verReserva(reserva)">
+                  <i class="bi bi-eye"></i>
+                </button>
               </td>
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- Estadísticas rápidas -->
-  <div *ngIf="!loading && !error && reservas.length > 0" class="row mt-4">
-    <div class="col-md-3">
-      <div class="card text-center">
-        <div class="card-body">
-          <h3 class="text-primary">{{ totalReservas }}</h3>
-          <p class="text-muted mb-0">Total Reservas</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card text-center">
-        <div class="card-body">
-          <h3 class="text-warning">{{ reservasPendientes }}</h3>
-          <p class="text-muted mb-0">Pendientes</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card text-center">
-        <div class="card-body">
-          <h3 class="text-success">{{ reservasConfirmadas }}</h3>
-          <p class="text-muted mb-0">Confirmadas</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card text-center">
-        <div class="card-body">
-          <h3 class="text-info">{{ totalEstudiantes }}</h3>
-          <p class="text-muted mb-0">Total Estudiantes</p>
-        </div>
       </div>
     </div>
   </div>
