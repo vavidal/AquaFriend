@@ -441,6 +441,20 @@ section + section::before{
 .modal-soft .modal-soft-close:focus{
   outline:none;box-shadow:0 0 0 .2rem rgba(255,255,255,.25);
 }
+.acuario-info{
+  background:#d7e6ea;
+  padding:48px 0;
+}
+.acuario-info p{
+  font-size:1.125rem;
+  line-height:1.9;
+  margin:0 0 1rem;
+  color:#0f172a;
+}
+@media (min-width:992px){
+  .acuario-info{ padding:64px 0; }
+}
+
 
 .highlight-title{
   font-family:'Montserrat',sans-serif;
