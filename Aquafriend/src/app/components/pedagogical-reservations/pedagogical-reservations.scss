@@ -1,15 +1,18 @@
 :root{
-  --azul-oscuro:#184f86;
+  --azul-oscuro:#0e3c66;
   --azul:#1f5eab;
   --celeste:#7bc2dd;
-  --naranjo:#f79057;
+  --turquesa:#1098ad;
+  --turquesa-osc:#0b7285;
+  --naranjo:#ff7b32;
+  --naranjo-osc:#e45a11;
   --blanco:#ffffff;
   --texto:#0f172a;
   --gris:#475569;
-  --borde:#dbe7f3;
-  --fondo:#f7f9fb;
+  --borde:#cfe0ef;
+  --fondo:#eef5fb;
   --radio:16px;
-  --sombra:0 12px 28px rgba(15,23,42,.08);
+  --sombra:0 14px 30px rgba(11,39,74,.12);
 }
 
 .hero-programas.reef-bg{
@@ -127,16 +130,16 @@
 }
 .programa-card:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(15,23,42,.12)}
 .programa-card-1{border-color:rgba(31,94,171,.6)}
-.programa-card-2{border-color:rgba(247,144,87,.6)}
-.programa-card-3{border-color:rgba(123,194,221,.7)}
+.programa-card-2{border-color:rgba(255,123,50,.55)}
+.programa-card-3{border-color:rgba(16,152,173,.55)}
 
 .programa-content{position:relative;z-index:2}
-.programa-numero{font-size:.78rem;letter-spacing:.12rem;color:#8aa3c6;font-weight:800;margin-bottom:.4rem;text-transform:uppercase}
-.programa-card-2 .programa-numero{color:#f2a77f}
-.programa-card-3 .programa-numero{color:#8fbfd9}
-.programa-titulo{font-size:1.6rem;font-weight:800;margin:0 0 .85rem;color:var(--texto)}
+.programa-numero{font-size:.78rem;letter-spacing:.12rem;color:#6a8fb8;font-weight:800;margin-bottom:.4rem;text-transform:uppercase}
+.programa-card-2 .programa-numero{color:#f39a6e}
+.programa-card-3 .programa-numero{color:#67c0cc}
+.programa-titulo{font-size:1.6rem;font-weight:900;margin:0 0 .85rem;color:var(--texto)}
 
-.programa-lista{margin:0;padding:0;list-style:none;display:grid;gap:.56rem;color:var(--gris)}
+.programa-lista{margin:0;padding:0;list-style:none;display:grid;gap:.56rem;color:#344256}
 .programa-lista li{position:relative;padding-left:1.15rem;line-height:1.52}
 .programa-lista li::before{content:"";position:absolute;left:0;top:.55rem;width:.46rem;height:.46rem;border-radius:999px;background:#cbd5e1}
 
@@ -169,115 +172,94 @@
   .info-image img{width:100%;max-width:360px;aspect-ratio:1/1}
 }
 
-#reserva-educativa{background:var(--fondo)}
+#reserva-educativa{
+  background:linear-gradient(180deg,#e7f0fb 0%,#e3efff 24%,#e6f6f2 100%);
+}
 #reserva-educativa .section-head .kicker{
-  display:inline-block;
-  font-weight:900;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--naranjo);
+  display:inline-block;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#0b7285
 }
 #reserva-educativa .section-head .title{
-  color:var(--azul-oscuro);
-  line-height:1.15;
-  margin-top:.25rem;
+  color:#0e3c66;line-height:1.15;margin-top:.25rem
 }
 #reserva-educativa .section-head .sub{
-  max-width:760px;
-  margin:.5rem auto 0;
-  color:#334155;
+  max-width:760px;margin:.5rem auto 0;color:#1d3347
 }
+
 #reserva-educativa .reserva-card{
-  border:2px solid rgba(31,94,171,.25);
-  border-radius:18px;
-  box-shadow:0 12px 30px rgba(31,94,171,.12);
-  background:#fff;
+  position:relative;
+  border:2px solid rgba(31,94,171,.55);
+  border-radius:24px;
+  background:
+    radial-gradient(140% 120% at 0% 0%, rgba(31,94,171,.10) 0%, rgba(31,94,171,0) 55%),
+    radial-gradient(140% 120% at 100% 100%, rgba(16,152,173,.12) 0%, rgba(16,152,173,0) 55%),
+    linear-gradient(180deg,#ffffff 0%,#f6fbff 100%);
+  box-shadow:0 26px 56px rgba(6,34,63,.20), 0 0 0 6px rgba(31,94,171,.08) inset;
+  overflow:hidden;
 }
+#reserva-educativa .reserva-card .card-body{position:relative;padding:2.2rem}
+#reserva-educativa .reserva-card .card-body::before{
+  content:"";position:absolute;left:0;top:0;width:100%;height:10px;border-top-left-radius:24px;border-top-right-radius:24px;background:linear-gradient(90deg,#1f5eab 0%,#0ea56f 100%)
+}
+#reserva-educativa .reserva-card::after{
+  content:"";position:absolute;right:-80px;bottom:-80px;width:220px;height:220px;border-radius:999px;background:radial-gradient(circle,#1f5eab1a 0,#1f5eab00 70%)
+}
+
 #reserva-educativa .reserva-title{
-  color:var(--azul);
-  font-weight:900;
+  color:#0b3d66;font-weight:1000;font-size:1.4rem;letter-spacing:.2px;text-align:center;margin-bottom:1rem
 }
+
 #reserva-educativa .reserva-form .form-label{
-  font-weight:800;
-  color:#1f2937;
-  margin-bottom:.35rem;
-}
-#reserva-educativa .reserva-form .form-control,
-#reserva-educativa .reserva-form .form-select,
-#reserva-educativa .reserva-info{
-  border-radius:12px;
+  font-weight:900;color:#08253d;margin-bottom:.38rem
 }
 #reserva-educativa .reserva-form .form-control,
 #reserva-educativa .reserva-form .form-select{
-  border:1.5px solid var(--borde);
-  padding:.78rem .95rem;
-  background:#fbfdff;
-  color:#0b172a;
-  transition:box-shadow .2s ease,border-color .2s ease,background .2s ease;
+  border:2px solid #c4d7eb;
+  padding:.9rem 1rem;
+  background:#ffffff;
+  color:#0a1f34;
+  border-radius:14px;
+  transition:border-color .18s ease, box-shadow .18s ease, transform .06s ease;
 }
-#reserva-educativa .reserva-form .form-control::placeholder{color:#74879c}
+#reserva-educativa .reserva-form .form-control::placeholder{color:#5f7c98}
 #reserva-educativa .reserva-form .form-control:focus,
 #reserva-educativa .reserva-form .form-select:focus{
-  border-color:#15a26b;
-  box-shadow:0 0 0 .25rem rgba(21,162,107,.18);
-  background:#fff;
+  border-color:#1f5eab;
+  box-shadow:0 0 0 .28rem rgba(31,94,171,.22);
+  transform:translateY(-1px)
 }
+
 #reserva-educativa .btn-brand{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:.5rem;
-  font-weight:900;
-  border:0;
-  padding:1rem 1.35rem;
-  border-radius:14px;
-  background-image:linear-gradient(135deg,#ff7b32,#e45a11);
-  color:#fff;
-  transition:transform .08s ease,box-shadow .2s ease;
-  box-shadow:0 10px 22px rgba(228,90,17,.32);
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-weight:900;border:0;padding:1rem 1.4rem;border-radius:14px;
+  background:#ff7b32;color:#fff;transition:transform .08s ease,filter .12s ease,background .15s ease;
+  box-shadow:0 10px 20px rgba(255,123,50,.28)
 }
-#reserva-educativa .btn-brand:disabled{
-  opacity:.7;
-  box-shadow:none;
-}
-#reserva-educativa .btn-brand:not(:disabled):hover{
-  transform:translateY(-1px);
-  box-shadow:0 14px 28px rgba(228,90,17,.36);
-}
-#reserva-educativa .btn-brand:not(:disabled):active{
-  transform:translateY(0);
-}
+#reserva-educativa .btn-brand:disabled{opacity:.75;box-shadow:none}
+#reserva-educativa .btn-brand:not(:disabled):hover{transform:translateY(-1px);background:#e45a11}
+#reserva-educativa .btn-brand:not(:disabled):active{transform:translateY(0)}
+
 #reserva-educativa .reserva-info{
-  border:1px solid rgba(21,162,107,.25);
-  background:linear-gradient(180deg,#f1fbf6,#fff);
+  border:0;border-radius:18px;
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(255,123,50,.08) 0%, rgba(255,123,50,0) 60%),
+    linear-gradient(180deg,#fff6ef,#fff);
+  box-shadow:0 16px 28px rgba(228,90,17,.14);
+  padding:26px
 }
 #reserva-educativa .side-title{
-  color:#15a26b;
-  font-weight:900;
+  color:#e45a11;font-weight:1000;letter-spacing:.2px;margin-bottom:.75rem
 }
 #reserva-educativa .reserva-bullets{
-  list-style:none;
-  padding-left:0;
-  display:grid;
-  gap:.65rem;
+  list-style:none;padding-left:0;display:grid;gap:.85rem
 }
 #reserva-educativa .reserva-bullets li{
-  position:relative;
-  padding-left:1.75rem;
-  color:#2b3a49;
-  font-weight:600;
+  position:relative;padding-left:2.1rem;color:#3a2419;font-weight:800;line-height:1.45
 }
 #reserva-educativa .reserva-bullets li::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:.25rem;
-  width:1.05rem;
-  height:1.05rem;
-  border-radius:999px;
-  background:radial-gradient(circle at 35% 35%, #fff 0 35%, transparent 36% 100%), linear-gradient(135deg, #15a26b, #1f5eab);
-  box-shadow:0 2px 6px rgba(13,132,176,.35);
+  content:"";position:absolute;left:0;top:.08rem;width:1.25rem;height:1.25rem;border-radius:50%;
+  background:linear-gradient(135deg,#ff7b32 0%,#e45a11 100%);box-shadow:0 2px 6px rgba(228,90,17,.35)
 }
+
 @media (min-width:992px){
-  #reserva-educativa .reserva-fields{max-width:720px}
+  #reserva-educativa .reserva-fields{max-width:800px}
 }
