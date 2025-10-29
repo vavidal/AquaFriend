@@ -388,120 +388,70 @@
     </div>
   </div>
 </div>
-
-<section id="como-llegar" class="py-5">
+<section id="como-llegar" class="arrival-section py-5">
   <div class="container">
+    <div class="section-head text-center mb-4">
+      <h2 class="section-title">Cómo llegar</h2>
+      <p class="section-sub">Ruta Interlagos T-981U, km 3 — Sector Chiscaihue, a 1,5 km antes de Entre Lagos.</p>
+    </div>
+
     <div class="row g-4 align-items-start">
-      <div class="col-12 col-lg-5 order-2 order-lg-1">
-        <div class="accordion" id="comoLlegarAcc">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="hdr-auto">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#acc-auto" aria-expanded="true" aria-controls="acc-auto">
-                <i class="bi bi-car-front me-2"></i>Auto desde Osorno
-              </button>
-            </h2>
-            <div id="acc-auto" class="accordion-collapse collapse show" data-bs-parent="#comoLlegarAcc">
-              <div class="accordion-body">
-                <div class="meta mb-3">
-                  <span><i class="bi bi-clock me-1"></i>~60 min</span>
-                  <span class="ok"><i class="bi bi-check2-circle me-1"></i>Ruta recomendada</span>
-                </div>
+      <div class="col-12 col-lg-5">
+        <ul class="nav nav-pills arrival-pills" id="arriveTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#arrive-auto" type="button" role="tab">
+              <i class="bi bi-car-front me-2"></i>Auto desde Osorno
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#arrive-bus" type="button" role="tab">
+              <i class="bi bi-bus-front me-2"></i>Bus desde Osorno
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#arrive-rb" type="button" role="tab">
+              <i class="bi bi-signpost-2 me-2"></i>Río Bueno / La Unión
+            </button>
+          </li>
+        </ul>
 
-                <div class="step-card">
-                  <span class="badge-num">1</span>
-                  <div class="step-body">
-                    Toma <strong>Ruta CH-215</strong> hacia <strong>Entre Lagos</strong>.
-                  </div>
-                </div>
-                <div class="step-card">
-                  <span class="badge-num">2</span>
-                  <div class="step-body">
-                    Pasa el acceso a Entre Lagos y dobla hacia <strong>Ruta Interlagos T-981U</strong>.
-                  </div>
-                </div>
-                <div class="step-card">
-                  <span class="badge-num">3</span>
-                  <div class="step-body">
-                    Avanza hasta el <strong>km 3 (Chiscaihue)</strong>. Verás el acceso señalizado.
-                  </div>
-                </div>
-
-                <a class="btn btn-primary btn-sm mt-2" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Osorno,+Chile/Parque+Acuario+Puyehue,+T-981-U+KM+3,+R%C3%ADo+Bueno,+Los+R%C3%ADos">
-                  <i class="bi bi-compass me-1"></i>Ver ruta en Google Maps
-                </a>
-              </div>
+        <div class="tab-content arrival-panels mt-3">
+          <div class="tab-pane fade show active" id="arrive-auto" role="tabpanel">
+            <div class="arrival-meta">
+              <span><i class="bi bi-clock me-1"></i>~60 min</span>
+              <span class="ok"><i class="bi bi-check2-circle me-1"></i>Ruta recomendada</span>
             </div>
+            <div class="step-card"><span class="badge-num">1</span><div class="step-body">Toma <strong>Ruta CH-215</strong> hacia <strong>Entre Lagos</strong>.</div></div>
+            <div class="step-card"><span class="badge-num">2</span><div class="step-body">Pasa el acceso a Entre Lagos y dobla hacia <strong>Ruta Interlagos T-981U</strong>.</div></div>
+            <div class="step-card"><span class="badge-num">3</span><div class="step-body">Avanza hasta el <strong>km 3 (Chiscaihue)</strong>. Verás el acceso señalizado.</div></div>
+            <a class="btn btn-primary btn-sm mt-2" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Osorno,+Chile/Parque+Acuario+Puyehue,+T-981-U+KM+3,+R%C3%ADo+Bueno,+Los+R%C3%ADos">
+              <i class="bi bi-compass me-1"></i>Ver ruta en Google Maps
+            </a>
           </div>
 
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="hdr-bus">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#acc-bus" aria-expanded="false" aria-controls="acc-bus">
-                <i class="bi bi-bus-front me-2"></i>Bus desde Osorno
-              </button>
-            </h2>
-            <div id="acc-bus" class="accordion-collapse collapse" data-bs-parent="#comoLlegarAcc">
-              <div class="accordion-body">
-                <div class="meta mb-3">
-                  <span><i class="bi bi-people me-1"></i>Público</span>
-                  <span><i class="bi bi-clock me-1"></i>~50 min + 5 min</span>
-                </div>
-
-                <div class="step-card">
-                  <span class="badge-num">1</span>
-                  <div class="step-body">
-                    Desde el <strong>Terminal de Osorno</strong>, bus a <strong>Entre Lagos</strong> (≈50 min).
-                  </div>
-                </div>
-                <div class="step-card">
-                  <span class="badge-num">2</span>
-                  <div class="step-body">
-                    En Entre Lagos toma taxi/colectivo a <strong>T-981U km 3 (Chiscaihue)</strong> (~5 min).
-                  </div>
-                </div>
-
-                <p class="small text-body-secondary mt-2"><i class="bi bi-info-circle me-1"></i>Confirma horarios según temporada.</p>
-              </div>
+          <div class="tab-pane fade" id="arrive-bus" role="tabpanel">
+            <div class="arrival-meta">
+              <span><i class="bi bi-people me-1"></i>Público</span>
+              <span><i class="bi bi-clock me-1"></i>~50 min + 5 min</span>
             </div>
+            <div class="step-card"><span class="badge-num">1</span><div class="step-body">Desde el <strong>Terminal de Osorno</strong>, bus a <strong>Entre Lagos</strong> (~50 min).</div></div>
+            <div class="step-card"><span class="badge-num">2</span><div class="step-body">En Entre Lagos toma taxi/colectivo a <strong>T-981U km 3 (Chiscaihue)</strong> (~5 min).</div></div>
+            <p class="small text-body-secondary mt-2"><i class="bi bi-info-circle me-1"></i>Confirma horarios según temporada.</p>
           </div>
 
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="hdr-rb">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#acc-rb" aria-expanded="false" aria-controls="acc-rb">
-                <i class="bi bi-signpost-2 me-2"></i>Río Bueno / La Unión
-              </button>
-            </h2>
-            <div id="acc-rb" class="accordion-collapse collapse" data-bs-parent="#comoLlegarAcc">
-              <div class="accordion-body">
-                <div class="step-card">
-                  <span class="badge-num">1</span>
-                  <div class="step-body">
-                    Toma rutas <strong>T-985 / T-981U</strong> hacia <strong>Entre Lagos</strong>.
-                  </div>
-                </div>
-                <div class="step-card">
-                  <span class="badge-num">2</span>
-                  <div class="step-body">
-                    Llega hasta el <strong>km 3</strong> de la <strong>T-981U</strong> (Chiscaihue).
-                  </div>
-                </div>
-
-                <div class="d-flex flex-wrap gap-2 mt-2">
-                  <a class="btn btn-outline-primary btn-sm" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/R%C3%ADo+Bueno,+Los+R%C3%ADos/Parque+Acuario+Puyehue,+T-981-U+KM+3,+R%C3%ADo+Bueno,+Los+R%C3%ADos">
-                    <i class="bi bi-geo-alt me-1"></i>Ruta desde Río Bueno
-                  </a>
-                  <a class="btn btn-outline-primary btn-sm" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/La+Uni%C3%B3n,+Chile/Parque+Acuario+Puyehue,+T-981-U+KM+3,+R%C3%ADo+Bueno,+Los+R%C3%ADos">
-                    <i class="bi bi-geo-alt me-1"></i>Ruta desde La Unión
-                  </a>
-                </div>
-              </div>
+          <div class="tab-pane fade" id="arrive-rb" role="tabpanel">
+            <div class="step-card"><span class="badge-num">1</span><div class="step-body">Toma rutas <strong>T-985 / T-981U</strong> hacia <strong>Entre Lagos</strong>.</div></div>
+            <div class="step-card"><span class="badge-num">2</span><div class="step-body">Llega hasta el <strong>km 3</strong> de la <strong>T-981U</strong> (Chiscaihue).</div></div>
+            <div class="d-flex flex-wrap gap-2 mt-2">
+              <a class="btn btn-outline-primary btn-sm" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/R%C3%ADo+Bueno,+Los+R%C3%ADos/Parque+Acuario+Puyehue,+T-981-U+KM+3,+R%C3%ADo+Bueno,+Los+R%C3%ADos"><i class="bi bi-geo-alt me-1"></i>Ruta desde Río Bueno</a>
+              <a class="btn btn-outline-primary btn-sm" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/La+Uni%C3%B3n,+Chile/Parque+Acuario+Puyehue,+T-981-U+KM+3,+R%C3%ADo+Bueno,+Los+R%C3%ADos"><i class="bi bi-geo-alt me-1"></i>Ruta desde La Unión</a>
             </div>
           </div>
-
         </div>
       </div>
 
-      <div class="col-12 col-lg-7 order-1 order-lg-2">
-        <div class="mapa">
+      <div class="col-12 col-lg-7">
+        <div class="mapa card shadow-sm border-0">
           <div class="mapa-head"><i class="bi bi-map me-2"></i>Mapa y dirección</div>
           <div class="ratio ratio-16x9 overflow-hidden">
             <iframe title="Mapa Parque Acuario Puyehue" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Parque%20Acuario%20Puyehue%20T-981U%20KM%203%20Chiscaihue&z=16&output=embed"></iframe>
@@ -510,30 +460,10 @@
             <div class="small text-body-secondary">Dirección</div>
             <div class="fw-semibold">Ruta Interlagos T-981U, km 3 — Sector Chiscaihue</div>
             <div class="small text-body-secondary">A 1,5 km antes de Entre Lagos (comuna de Puyehue).</div>
-
             <div class="d-flex gap-2 flex-wrap mt-2">
-              <a class="btn btn-primary btn-sm" href="https://www.google.com/maps/dir/?api=1&destination=Parque%20Acuario%20Puyehue%20T-981U%20km%203%20Chiscaihue" target="_blank" rel="noopener">
-                <i class="bi bi-route me-1"></i>Abrir en Google Maps
-              </a>
-              <a class="btn btn-outline-primary btn-sm" href="https://www.google.com/maps/search/estacionamientos/@-40.68,-72.6,14z" target="_blank" rel="noopener">
-                <i class="bi bi-p-square me-1"></i>Estacionamientos cercanos
-              </a>
+              <a class="btn btn-primary btn-sm" href="https://www.google.com/maps/dir/?api=1&destination=Parque%20Acuario%20Puyehue%20T-981U%20km%203%20Chiscaihue" target="_blank" rel="noopener"><i class="bi bi-route me-1"></i>Abrir en Google Maps</a>
+              <a class="btn btn-outline-primary btn-sm" href="https://www.google.com/maps/search/estacionamientos/@-40.68,-72.6,14z" target="_blank" rel="noopener"><i class="bi bi-p-square me-1"></i>Estacionamientos cercanos</a>
             </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="contacto-info" class="py-5">
-  <div class="container">
-    <div class="row g-4 justify-content-center">
-      <div class="col-12 col-lg-8">
-        <div class="contact-box shadow-sm">
-          <div class="contact-box__header">
-            <h2 class="h5 mb-0 text-white text-center">Información de contacto</h2>
           </div>
         </div>
       </div>
