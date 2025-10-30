@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService, Usuario, ApiResponse } from './users.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-create-user',
@@ -12,10 +13,13 @@ import { UsuarioService, Usuario, ApiResponse } from './users.service';
   styleUrls: ['./create-user.component.scss']
 })
 export class CreateUserComponent implements OnInit {
-  private fb = inject(FormBuilder);
-  private route = inject(ActivatedRoute);
-  private router = inject(Router);
-  private usuarios = inject(UsuarioService);
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private usuarios: UsuarioService,
+    private auth: AuthService
+  ) {}
 
   form!: FormGroup;
   idEdit: number | null = null;
@@ -68,17 +72,43 @@ export class CreateUserComponent implements OnInit {
     const payload: any = this.form.value;
     if (this.isEdit) delete payload.password;
 
-    const done = () => {
+    const goList = () => {
       this.processing = false;
       this.router.navigate(['/dashboard/user/lista']);
     };
 
     if (this.isEdit && this.idEdit) {
-      this.usuarios.actualizar(this.idEdit, payload as Partial<Usuario>)
-        .subscribe((resp: ApiResponse<Usuario>) => resp?.success ? done() : this.processing = false);
+      this.usuarios.actualizar(this.idEdit, payload as Partial<Usuario>).subscribe((resp: ApiResponse<Usuario>) => {
+        if (resp?.success) {
+          const curr = this.auth.currentUserValue;
+          const updated = resp.data as any;
+          const editedId = Number(updated?.id_usuario ?? updated?.id ?? this.idEdit);
+          const loggedId = Number(curr?.id);
+
+          if (curr && editedId === loggedId) {
+            this.auth.updateCurrentUserPartial({
+              nombre: updated?.nombre,
+              apellido: updated?.apellido,
+              email: updated?.email,
+              role: (updated?.role as any) ?? curr.role
+            });
+            this.auth.refreshCurrentUser().subscribe({ next: () => goList(), error: () => goList() });
+            return;
+          }
+
+          goList();
+        } else {
+          this.processing = false;
+        }
+      });
     } else {
-      this.usuarios.crear(payload as Usuario)
-        .subscribe((resp: ApiResponse<Usuario>) => resp?.success ? done() : this.processing = false);
+      this.usuarios.crear(payload as Usuario).subscribe((resp: ApiResponse<Usuario>) => {
+        if (resp?.success) {
+          goList();
+        } else {
+          this.processing = false;
+        }
+      });
     }
   }
 

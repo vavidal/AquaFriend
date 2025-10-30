@@ -1,6 +1,5 @@
-import 'zone.js/node'; // ← requerido por Angular Universal/SSR
-
-import { bootstrapApplication, BootstrapContext } from '@angular/platform-browser';
+import 'zone.js/node';
+import { bootstrapApplication, type BootstrapContext } from '@angular/platform-browser';
 import { App } from './app/app';
 import { config } from './app/app.config.server';
 

@@ -20,10 +20,7 @@
               "src/assets",
               { "glob": "**/*", "input": "public" }
             ],
-            "styles": ["src/styles.css"],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": { "entry": "src/server.ts" }
+            "styles": ["src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -44,7 +41,7 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "options": {
-            "proxyConfig": "proxy.conf.json" 
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {

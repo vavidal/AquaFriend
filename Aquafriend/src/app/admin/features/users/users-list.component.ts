@@ -3,6 +3,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService, Usuario, ApiResponse } from './users.service';
+import { AuthService } from '../../../services/auth.service';
+
 
 @Component({
   selector: 'app-users-list',
@@ -14,6 +16,7 @@ import { UsuarioService, Usuario, ApiResponse } from './users.service';
 export class UsersListComponent implements OnInit {
   private usuarioService = inject(UsuarioService);
   private router = inject(Router);
+  private auth = inject(AuthService);
 
   usuarios: Usuario[] = [];
   usuariosFiltrados: Usuario[] = [];
@@ -48,26 +51,24 @@ export class UsersListComponent implements OnInit {
     if (!usuario.id_usuario) return;
     const previo = usuario.activo;
     usuario.activo = checked ? 1 : 0;
-
     this.usuarioService.actualizar(usuario.id_usuario, { activo: usuario.activo }).subscribe({
       next: (resp: ApiResponse<Usuario>) => {
-        if (!(resp?.success)) usuario.activo = previo;
+        if (!resp?.success) usuario.activo = previo;
       },
-      error: () => { usuario.activo = previo; }
+      error: () => {
+        usuario.activo = previo;
+      }
     });
   }
 
   editarUsuario(usuario: Usuario): void {
-  if (!usuario.id_usuario) return;
-  this.router.navigate(['/dashboard/user', usuario.id_usuario, 'editar']);
-}
-
-
+    if (!usuario.id_usuario) return;
+    this.router.navigate(['/dashboard/user', usuario.id_usuario, 'editar']);
+  }
 
   eliminarUsuario(usuario: Usuario): void {
     if (!usuario.id_usuario) return;
     if (!confirm('¿Eliminar este usuario?')) return;
-
     this.cargando = true;
     this.usuarioService.eliminar(usuario.id_usuario).subscribe({
       next: (resp: ApiResponse<null>) => {
@@ -77,7 +78,9 @@ export class UsersListComponent implements OnInit {
         }
         this.cargando = false;
       },
-      error: () => { this.cargando = false; }
+      error: () => {
+        this.cargando = false;
+      }
     });
   }
 
@@ -88,7 +91,6 @@ export class UsersListComponent implements OnInit {
 
   guardarEdicion(): void {
     if (!this.usuarioEditando?.id_usuario) return;
-
     const id = this.usuarioEditando.id_usuario;
     const data: Partial<Usuario> = {
       nombre: this.usuarioEditando.nombre,
@@ -98,7 +100,6 @@ export class UsersListComponent implements OnInit {
       role_id: this.usuarioEditando.role_id,
       activo: this.usuarioEditando.activo
     };
-
     this.cargando = true;
     this.usuarioService.actualizar(id, data).subscribe({
       next: (resp: ApiResponse<Usuario>) => {
@@ -106,6 +107,15 @@ export class UsersListComponent implements OnInit {
           const idx = this.usuarios.findIndex(x => x.id_usuario === id);
           if (idx > -1) this.usuarios[idx] = { ...this.usuarios[idx], ...resp.data };
           this.usuariosFiltrados = [...this.usuarios];
+          const curr = this.auth.currentUserValue;
+          if (curr && curr.id === resp.data.id_usuario) {
+            this.auth.updateCurrentUserPartial({
+              nombre: resp.data.nombre,
+              apellido: resp.data.apellido,
+              email: resp.data.email,
+              role: resp.data.role as any
+            });
+          }
         }
         this.cerrarModalEditar();
         this.cargando = false;

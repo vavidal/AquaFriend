@@ -1,8 +1,8 @@
 <div class="sidebar">
   <div class="profile">
     <div class="who">
-      <div class="name">{{ (user?.nombre || '') + ' ' + (user?.apellido || '') }}</div>
-      <div class="role">{{ user?.role }}</div>
+      <div class="name">{{ displayName$ | async }}</div>
+      <div class="role">{{ role$ | async }}</div>
     </div>
   </div>
 
