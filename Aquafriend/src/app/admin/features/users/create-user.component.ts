@@ -1,142 +1,118 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UsuarioService, Role } from './usuario.service';
-
-type UserForm = {
-  nombre: string;
-  apellido: string;
-  email: string;
-  telefono: string;
-  password: string;
-  rol: string;
-  role_id: number;
-  avatarFile: File | null;
-  avatarUrl: string;
-  avatarLabel: string;
-};
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UsuarioService, Usuario, ApiResponse } from './users.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
-  selector: 'app-create-account',
+  selector: 'app-create-user',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.scss'],
+  styleUrls: ['./create-user.component.scss']
 })
-export class CreateAccountComponent implements OnInit {
-  roles: Role[] = [];
-  cargando = false;
-
+export class CreateUserComponent implements OnInit {
   constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
     private router: Router,
-    private usuarioService: UsuarioService
+    private usuarios: UsuarioService,
+    private auth: AuthService
   ) {}
 
-  model: UserForm = {
-    nombre: '',
-    apellido: '',
-    email: '',
-    telefono: '',
-    password: '',
-    rol: 'Administrador',
-    role_id: 1,
-    avatarFile: null,
-    avatarUrl: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Ccircle cx="100" cy="100" r="100" fill="%23ddd"/%3E%3Ccircle cx="100" cy="80" r="35" fill="%23999"/%3E%3Cpath d="M100 120 Q50 140 40 200 L160 200 Q150 140 100 120 Z" fill="%23999"/%3E%3C/svg%3E',
-    avatarLabel: '',
-  };
+  form!: FormGroup;
+  idEdit: number | null = null;
+  isEdit = false;
+  title = 'Creación de Nuevo Usuario';
+  processing = false;
 
-  ngOnInit() {
-    this.cargarRoles();
-  }
+  roles: string[] = ['Administrador', 'Editor', 'Viewer'];
 
-  cargarRoles() {
-    this.usuarioService.obtenerRoles().subscribe({
-      next: (response) => {
-        if (response.success && response.data) {
-          this.roles = response.data;
-          if (this.roles.length > 0) {
-            this.model.role_id = this.roles[0].id_role;
-            this.model.rol = this.roles[0].nombre;
-          }
-        }
-      },
-      error: (error) => {
-        console.error('Error al cargar roles:', error);
-        alert('Error al cargar los roles disponibles');
-      }
+  get actionLabel() { return this.isEdit ? 'Guardar Cambios' : 'Guardar'; }
+  get f() { return this.form.controls as any; }
+
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      nombre: ['', [Validators.required, Validators.minLength(2)]],
+      apellido: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.email]],
+      role: ['', Validators.required],
+      telefono: [''],
+      password: ['']
     });
-  }
 
-  onRoleChange() {
-    const roleSeleccionado = this.roles.find(r => r.id_role === this.model.role_id);
-    if (roleSeleccionado) {
-      this.model.rol = roleSeleccionado.nombre;
+    const idParam = this.route.snapshot.paramMap.get('id');
+    this.isEdit = !!idParam;
+
+    if (this.isEdit) {
+      this.idEdit = Number(idParam);
+      this.title = 'Editar Usuario';
+      this.usuarios.obtenerPorId(this.idEdit).subscribe((u: Usuario) => {
+        this.form.patchValue({
+          nombre: u.nombre,
+          apellido: u.apellido,
+          email: u.email,
+          role: u.role,
+          telefono: (u as any).telefono ?? ''
+        });
+        this.form.get('password')?.clearValidators();
+        this.form.get('password')?.updateValueAndValidity();
+      });
+    } else {
+      this.form.get('password')?.addValidators(Validators.required);
+      this.form.get('password')?.updateValueAndValidity();
     }
   }
 
-  onAvatarChange(ev: Event) {
-    const input = ev.target as HTMLInputElement;
-    const file = input.files && input.files[0] ? input.files[0] : null;
-    if (!file) return;
-    this.model.avatarFile = file;
-    this.model.avatarLabel = file.name;
-    const reader = new FileReader();
-    reader.onload = () => (this.model.avatarUrl = String(reader.result || this.model.avatarUrl));
-    reader.readAsDataURL(file);
-  }
+  submit(): void {
+    if (this.form.invalid || this.processing) return;
+    this.processing = true;
 
-  avatarPreview() {
-    return this.model.avatarUrl;
-  }
+    const payload: any = this.form.value;
+    if (this.isEdit) delete payload.password;
 
-  avatarName() {
-    return this.model.avatarLabel;
-  }
-
-  formValido() {
-    return (
-      this.model.nombre.trim().length > 0 &&
-      this.model.apellido.trim().length > 0 &&
-      /\S+@\S+\.\S+/.test(this.model.email) &&
-      this.model.password.trim().length >= 6 &&
-      this.model.role_id > 0
-    );
-  }
-
-  cancelar() {
-    this.router.navigate(['/dashboard/user']);
-  }
-
-  crear() {
-    if (!this.formValido() || this.cargando) return;
-
-    this.cargando = true;
-
-    const nuevoUsuario = {
-      nombre: this.model.nombre,
-      apellido: this.model.apellido,
-      email: this.model.email,
-      password: this.model.password,
-      role_id: this.model.role_id,
-      role: this.model.rol
+    const goList = () => {
+      this.processing = false;
+      this.router.navigate(['/dashboard/user/lista']);
     };
 
-    this.usuarioService.crear(nuevoUsuario).subscribe({
-      next: (response) => {
-        this.cargando = false;
-        if (response.success) {
-          alert('Usuario creado exitosamente');
-          this.router.navigate(['/dashboard/user']);
+    if (this.isEdit && this.idEdit) {
+      this.usuarios.actualizar(this.idEdit, payload as Partial<Usuario>).subscribe((resp: ApiResponse<Usuario>) => {
+        if (resp?.success) {
+          const curr = this.auth.currentUserValue;
+          const updated = resp.data as any;
+          const editedId = Number(updated?.id_usuario ?? updated?.id ?? this.idEdit);
+          const loggedId = Number(curr?.id);
+
+          if (curr && editedId === loggedId) {
+            this.auth.updateCurrentUserPartial({
+              nombre: updated?.nombre,
+              apellido: updated?.apellido,
+              email: updated?.email,
+              role: (updated?.role as any) ?? curr.role
+            });
+            this.auth.refreshCurrentUser().subscribe({ next: () => goList(), error: () => goList() });
+            return;
+          }
+
+          goList();
         } else {
-          alert(response.message || 'Error al crear usuario');
+          this.processing = false;
         }
-      },
-      error: (error) => {
-        this.cargando = false;
-        console.error('Error al crear usuario:', error);
-        alert(error.error?.message || 'Error al crear usuario. Por favor, intente nuevamente.');
-      }
-    });
+      });
+    } else {
+      this.usuarios.crear(payload as Usuario).subscribe((resp: ApiResponse<Usuario>) => {
+        if (resp?.success) {
+          goList();
+        } else {
+          this.processing = false;
+        }
+      });
+    }
+  }
+
+  cancelar(): void {
+    this.router.navigate(['/dashboard/user/lista']);
   }
 }

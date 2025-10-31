@@ -1,111 +1,94 @@
-<!-- ===================== INTRO | TEXTO INFORMATIVO ===================== -->
-<section class="py-5" style="background:#d9e8ec;">
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/assets/img/portada-acuario.jpg">
+    <source src="/assets/videos/video_vista_completa.MP4" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="container">
+      <h1 class="hero-title">AquaFriend - Recorrido Virtual 360°</h1>
+      <p class="hero-description">
+        Aprendizaje, biodiversidad y turismo educativo en el sur de Chile.
+        Descubre el ciclo de vida de las salmonídeas y otras especies nativas.
+        Interacción responsable con animales de granja y aprendizaje guiado.
+      </p>
+    </div>
+  </div>
+
+  <a routerLink="/view360" class="cta-360-btn" title="Ver recorrido 360°">
+    <div class="cta-icon-360">…</div>
+    <span class="cta-360-text">Recorrido 360° del Acuario</span>
+  </a>
+</section>
+
+
+<section class="acuario-info">
   <div class="container">
     <div class="row g-4">
-      <div class="col-12 col-md-6">
-        <p style="margin:0;font-size:1.125rem;line-height:1.9;font-family: 'Montserrat', sans-serif;">
-          Los acuarios son una muestra morfológica de los ríos y lagos, son
-          básicamente la exposición de especies hidrobiológicas presentes en
-          nuestro
-          territorio, con el propósito de generar aprendizaje empírico,
-          admiración,
-          respeto y cuidado de nuestro vulnerable medioambiente.
-          <br><br>
-          Aquí se dan a conocer la economía del sector, lo social y respeto por
-          el
-          medioambiente.
+      <div class="col-lg-6">
+        <p>
+          Los acuarios son una muestra morfológica de los ríos y lagos, son básicamente la exposición de especies hidrobiológicas presentes en nuestro territorio, con el propósito de generar aprendizaje empírico, admiración, respeto y cuidado de nuestro vulnerable medioambiente.
+        </p>
+        <p>
+          Aquí se dan a conocer la economía del sector, lo social y respeto por el medioambiente.
         </p>
       </div>
-      <div class="col-12 col-md-6">
-        <p style="margin:0;font-size:1.125rem;line-height:1.9;font-family: 'Montserrat', sans-serif;">
-          Todo comienza con un recorrido acompañado por los diferentes acuarios,
-          con el propósito de explicar el cuidado del agua, ciclo de vida de
-          especies,
-          variedades de peces de agua dulce como también diferentes aspecto de
-          la
-          vida acuática de los ríos y lagos del sur de chile.
+      <div class="col-lg-6">
+        <p>
+          Todo comienza con un recorrido acompañado por los diferentes acuarios, con el propósito de explicar el cuidado del agua, ciclo de vida de especies, variedades de peces de agua dulce como también diferentes aspecto de la vida acuática de los ríos y lagos del sur de chile.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- NUESTRA HISTORIA -->
-<div class="container my-section mt-5">
-  <h2 class="highlight-title">Nuestra Historia</h2>
-  <p class="section-text" style="font-family: 'Montserrat', sans-serif;">
-    El Acuario Puyehue, ícono de la Región de Los Ríos, nació en 2012 como el sueño de un proyecto familiar, 
-    para aportar a la educación, a la sociedad, al medioambiente y a la sostenibilidad; enfocados en la comunidad 
-    y el bienestar animal. Hoy, luego de 10 años, fruto del esfuerzo del equipo y acompañados siempre por los amigos 
-    del Acuario, junto con diversas instituciones, hemos ido materializando nuestro propósito: convertirnos en un parque 
-    que represente 100% el cariño, la entrega del equipo y el entorno del sur de Chile.
-  </p>
-</div>
 
-<!-- NUESTRO PROPÓSITO -->
-<div class="container my-section mt-5">
-  <h2 class="highlight-title">Nuestro Propósito</h2>
-  <p class="section-text" style="font-family: 'Montserrat', sans-serif;">
-    Convertirnos en un parque temático educativo, social y cultural, enfocado en representar de manera sostenible 
-    el ciclo productivo natural de los peces de la zona, acercando el mundo acuático a la comunidad con el fin de 
-    dar a conocer las distintas especies.
-  </p>
-</div>
-
-<!-- ===================== EXHIBICIONES DESTACADAS ===================== -->
 <section id="exhibiciones" class="py-5 fade-in-up">
   <div class="container">
     <h2 class="titulo-exdestacadas">Exhibiciones destacadas</h2>
 
+    <div class="text-body-secondary mb-4" style="max-width:920px;">
+      <p class="lead mb-2">
+        Recorre el acuario educativo de agua dulce del sur de Chile y vive una experiencia guiada que une ciencia, naturaleza y aprendizaje significativo. Conoce especies nativas y salmonídeas, participa en actividades de granja con enfoque responsable y disfruta de un coto de pesca recreativa con devolución.
+      </p>
+    </div>
+
     <div class="row g-3">
-      <!-- Acuario -->
       <div class="col-12 col-md-4">
         <div class="card h-100 shadow-soft hover-lift scale-in">
-          <img
-            src="assets/exhibiciones/peces_acuario.JPG"
-            alt="Acuario: ciclo de vida de las salmonídeas"
-            class="card-img-top"
-            loading="lazy"
-            style="height:240px;object-fit:cover;">
+          <img src="assets/exhibiciones/peces_acuario.JPG" alt="Acuario: ciclo de vida de las salmonídeas" class="card-img-top" loading="lazy" style="height:240px;object-fit:cover;">
           <div class="card-body">
-            <h5 class="card-title" style="font-family: 'Montserrat', sans-serif;">Acuario</h5>
-            <p class="card-text small text-body-secondary" style="font-family: 'Montserrat', sans-serif;">Descubre el ciclo de vida de las salmonídeas y otras especies nativas.</p>
+            <h5 class="card-title">Acuario</h5>
+            <p class="card-text small text-body-secondary">
+              Observa de cerca el ciclo de vida de las salmonídeas y especies nativas que habitan ríos y lagos del sur de Chile. Aprenderás sobre hábitos, adaptaciones y el rol de cada organismo en el ecosistema de agua dulce. Ideal para complementar contenidos de ciencias naturales y medioambiente.
+            </p>
             <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalAcuario">Ver más</a>
           </div>
         </div>
       </div>
 
-      
-
-      <!-- Granja educativa -->
       <div class="col-12 col-md-4">
         <div class="card h-100 shadow-soft hover-lift scale-in">
-          <img
-            src="assets/exhibiciones/granja_educativa.JPG"
-            alt="Granja educativa: interacción responsable con animales"
-            class="card-img-top"
-            loading="lazy"
-            style="height:240px;object-fit:cover;">
+          <img src="assets/exhibiciones/granja_educativa.JPG" alt="Granja educativa: interacción responsable con animales" class="card-img-top" loading="lazy" style="height:240px;object-fit:cover;">
           <div class="card-body">
-            <h5 class="card-title" style="font-family: 'Montserrat', sans-serif;">Granja educativa</h5>
-            <p class="card-text small text-body-secondary" style="font-family: 'Montserrat', sans-serif;">Interacción responsable con animales de granja y aprendizaje guiado.</p>
+            <h5 class="card-title">Granja educativa</h5>
+            <p class="card-text small text-body-secondary">
+              Participa en una experiencia guiada con animales de granja bajo un enfoque de bienestar y respeto. Descubrirás tareas esenciales del cuidado responsable, alimentación y manejo básico, mientras relacionas estos aprendizajes con habilidades socioemocionales y vida rural.
+            </p>
             <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalGranja">Ver más</a>
           </div>
         </div>
       </div>
 
-      <!-- Coto de pesca -->
       <div class="col-12 col-md-4">
         <div class="card h-100 shadow-soft hover-lift scale-in">
-          <img
-            src="assets/exhibiciones/coto_pesca.jpg"
-            alt="Coto de pesca con devolución"
-            class="card-img-top"
-            loading="lazy"
-            style="height:240px;object-fit:cover;">
+          <img src="assets/exhibiciones/coto_pesca.jpg" alt="Coto de pesca con devolución" class="card-img-top" loading="lazy" style="height:240px;object-fit:cover;">
           <div class="card-body">
-            <h5 class="card-title" style="font-family: 'Montserrat', sans-serif;">Coto de pesca</h5>
-            <p class="card-text small text-body-secondary" style="font-family: 'Montserrat', sans-serif;">Pesca deportiva responsable con devolución.</p>
+            <h5 class="card-title">Coto de pesca</h5>
+            <p class="card-text small text-body-secondary">
+              Practica pesca recreativa con devolución en un espacio preparado y seguro. Recibirás recomendaciones de buenas prácticas, nociones de conservación y cuidado del recurso hídrico, fomentando una actividad responsable y consciente con el entorno natural.
+            </p>
             <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCoto">Ver más</a>
           </div>
         </div>
@@ -114,9 +97,6 @@
   </div>
 </section>
 
-<!-- ===================== MODALES (ÚNICOS) ===================== -->
-
-<!-- Modal: ACUARIO -->
 <div class="modal fade modal-soft" id="modalAcuario" tabindex="-1" aria-hidden="true" data-bs-keyboard="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
@@ -127,7 +107,6 @@
             <div class="carousel-item active">
               <img src="assets/exhibiciones/peces_acuario.JPG" class="carousel-img" alt="Acuario 1">
             </div>
-            <!-- Más imágenes si quieres -->
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselAcuario" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -143,7 +122,6 @@
   </div>
 </div>
 
-<!-- Modal: GRANJA -->
 <div class="modal fade modal-soft" id="modalGranja" tabindex="-1" aria-hidden="true" data-bs-keyboard="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
@@ -178,7 +156,6 @@
   </div>
 </div>
 
-<!-- Modal: COTO -->
 <div class="modal fade modal-soft" id="modalCoto" tabindex="-1" aria-hidden="true" data-bs-keyboard="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
@@ -204,145 +181,153 @@
   </div>
 </div>
 
-<!-- ===================== PROGRAMAS EDUCATIVOS ===================== -->
-<section id="programas" class="py-5 bg-light fade-in-up">
+<section id="entradas" class="pricing-section py-5">
   <div class="container">
-    <div class="d-flex align-items-center justify-content-between mb-3">
-      <h2 class="titulo-proeducativos">Programas Educativos</h2>
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+      <h2 class="titulo-entradas m-0">Entradas y horarios</h2>
+      <span class="badge pricing-open">Abierto vie–dom y festivos</span>
     </div>
 
-    <div class="row g-4">
+    <div class="row g-4 align-items-stretch">
       <div class="col-12 col-md-4">
-        <div class="programa-card programa-card-1">
-          <div class="programa-decoracion">
-            <div class="programa-circulo circulo-azul-1"></div>
-            <div class="programa-circulo circulo-naranja-1"></div>
-          </div>
-          <div class="programa-content">
-            <h6 class="programa-numero">PROGRAMA N°1</h6>
-            <h5 class="programa-titulo">Visita básica</h5>
-            <ul class="programa-lista">
-              <li>Recorrido por acuarios y granja con monitora.</li>
-              <li>Juego didáctico e introducción al sistema de cuencas.</li>
-              <li>30–45 min por grupo (máx. 35 pers.).</li>
-            </ul>
-          </div>
-        </div>
+        <article class="pricing-card">
+          <header class="pricing-head">
+            <h5 class="pricing-title">Niños</h5>
+            <div class="pricing-price">$5.500</div>
+            <p class="pricing-sub">2 a 12 años · Acompañados por un adulto</p>
+          </header>
+          <ul class="pricing-features">
+            <li><i class="bi bi-check2-circle"></i>Acuario de agua dulce</li>
+            <li><i class="bi bi-check2-circle"></i>Granja educativa</li>
+            <li><i class="bi bi-check2-circle"></i>Áreas de juego (tirolesa, pentágono, etc.)*</li>
+            <li><i class="bi bi-check2-circle"></i>Mirador y espacios al aire libre</li>
+          </ul>
+        </article>
       </div>
 
       <div class="col-12 col-md-4">
-        <div class="programa-card programa-card-2">
-          <div class="programa-decoracion">
-            <div class="programa-circulo circulo-naranja-2"></div>
-            <div class="programa-circulo circulo-celeste-2"></div>
-          </div>
-          <div class="programa-content">
-            <h6 class="programa-numero">PROGRAMA N°2</h6>
-            <h5 class="programa-titulo">Visita académica</h5>
-            <ul class="programa-lista">
-              <li>Profundización biológica, química y/o ingeniería.</li>
-              <li>Diálogo con el equipo (biólogos, veterinaria).</li>
-              <li>Orientado a 6° básico a 4° medio.</li>
-              <li>Duración 60–90 min por grupo.</li>
-            </ul>
-          </div>
-        </div>
+        <article class="pricing-card pricing-card-popular position-relative">
+          <span class="pricing-chip">Popular</span>
+          <header class="pricing-head">
+            <h5 class="pricing-title">Adultos</h5>
+            <div class="pricing-price">$7.500</div>
+            <p class="pricing-sub">Entrada general · Acceso a todo el recinto</p>
+          </header>
+          <ul class="pricing-features">
+            <li><i class="bi bi-check2-circle"></i>Acuario de agua dulce</li>
+            <li><i class="bi bi-check2-circle"></i>Granja educativa</li>
+            <li><i class="bi bi-check2-circle"></i>Áreas de juego (tirolesa, pentágono, etc.)*</li>
+            <li><i class="bi bi-check2-circle"></i>Mirador y espacios al aire libre</li>
+          </ul>
+        </article>
       </div>
 
       <div class="col-12 col-md-4">
-        <div class="programa-card programa-card-3">
-          <div class="programa-decoracion">
-            <div class="programa-circulo circulo-celeste-3"></div>
-            <div class="programa-circulo circulo-azul-3"></div>
-          </div>
-          <div class="programa-content">
-            <h6 class="programa-numero">PROGRAMA N°3</h6>
-            <h5 class="programa-titulo">Taller aplicado</h5>
-            <ul class="programa-lista">
-              <li>Habilidades blandas con trabajos prácticos.</li>
-              <li>Aprendizaje basado en proyectos.</li>
-              <li>Orientado a 6° básico a 4° medio.</li>
-              <li>Duración 90–120 min por grupo.</li>
-            </ul>
-          </div>
-        </div>
+        <article class="pricing-card">
+          <header class="pricing-head">
+            <h5 class="pricing-title">Tercera Edad</h5>
+            <div class="pricing-price">$5.500</div>
+            <p class="pricing-sub">Con cédula vigente · Acceso a todo el recinto</p>
+          </header>
+          <ul class="pricing-features">
+            <li><i class="bi bi-check2-circle"></i>Acuario de agua dulce</li>
+            <li><i class="bi bi-check2-circle"></i>Granja educativa</li>
+            <li><i class="bi bi-check2-circle"></i>Áreas de juego (tirolesa, pentágono, etc.)*</li>
+            <li><i class="bi bi-check2-circle"></i>Mirador y espacios al aire libre</li>
+          </ul>
+        </article>
       </div>
     </div>
 
-    <div class="alert alert-info mt-3 small mb-0" style="font-family: 'Montserrat', sans-serif;">
-      Reservas con mínimo 15 días de anticipación. Traslados y seguros son responsabilidad de la institución solicitante.
-    </div>
-  </div>
-</section>
-
-<!-- ===================== ENTRADAS & HORARIOS ===================== -->
-<section id="entradas" class="py-5">
-  <div class="container">
-    <h2 class="titulo-entradas">Entradas &amp; Horarios</h2>
-    <div class="d-flex align-items-center justify-content-between mb-3">
-      <a class="btn btn-outline-primary btn-sm" href="#contacto">Contactar ventas</a>
-    </div>
-
-    <div class="row g-3">
-      <div class="col-12 col-md-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Niños</h5>
-            <div class="display-6 fw-bold">$5.500</div>
-            <p class="small text-body-secondary mb-0">2 a 12 años · Acompañados por un adulto</p>
+    <div class="schedule-band mt-4">
+      <div class="schedule-icon"><i class="bi bi-clock-history"></i></div>
+      <div class="schedule-body">
+        <div class="row g-2">
+          <div class="col-12 col-lg-4">
+            <div class="schedule-item">
+              <span class="schedule-label">Verano (alta)</span>
+              <span class="schedule-value">11:00 a 19:00</span>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-4">
-        <div class="card h-100 shadow-sm position-relative">
-          <span class="badge bg-primary position-absolute top-0 end-0 m-2">Popular</span>
-          <div class="card-body">
-            <h5 class="card-title">Adultos</h5>
-            <div class="display-6 fw-bold">$7.500</div>
-            <p class="small text-body-secondary mb-0">Entrada general · Acceso a todo el recinto</p>
+          <div class="col-12 col-lg-5">
+            <div class="schedule-item">
+              <span class="schedule-label">Invierno (baja)</span>
+              <span class="schedule-value">sábados, domingos y festivos 11:00 a 17:30</span>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Tercera Edad</h5>
-            <div class="display-6 fw-bold">$5.500</div>
-            <p class="small text-body-secondary mb-0">Con cédula vigente · Acceso a todo el recinto</p>
+          <div class="col-12 col-lg-3">
+            <div class="schedule-item">
+              <span class="schedule-label">Último ingreso</span>
+              <span class="schedule-value">40–60 minutos antes del cierre</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="accordion mt-3" id="entradasAccordion">
+    <h3 class="mt-4 mb-2">Preguntas frecuentes</h3>
+    <div class="accordion faq-accordion" id="faqEntradas">
       <div class="accordion-item">
-        <h2 class="accordion-header" id="faq1">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1c">
+        <h2 class="accordion-header" id="f1">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c1" aria-expanded="false" aria-controls="c1">
             ¿Se puede comprar entrada en el lugar?
           </button>
         </h2>
-        <div id="faq1c" class="accordion-collapse collapse" data-bs-parent="#entradasAccordion">
-          <div class="accordion-body small">Sí, sujeto a aforo. Recomendamos reservar visita pedagógica con anticipación.</div>
+        <div id="c1" class="accordion-collapse collapse" aria-labelledby="f1" data-bs-parent="#faqEntradas">
+          <div class="accordion-body small">Sí, sujeto a aforo. Para grupos y visitas pedagógicas recomendamos reservar con anticipación.</div>
         </div>
       </div>
 
       <div class="accordion-item">
-        <h2 class="accordion-header" id="faq2">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2c">
-            ¿Descuentos para instituciones?
+        <h2 class="accordion-header" id="f2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c2" aria-expanded="false" aria-controls="c2">
+            ¿Cuánto dura la visita?
           </button>
         </h2>
-        <div id="faq2c" class="accordion-collapse collapse" data-bs-parent="#entradasAccordion">
-          <div class="accordion-body small">Contáctanos para cotizar visitas educativas o grupos.</div>
+        <div id="c2" class="accordion-collapse collapse" aria-labelledby="f2" data-bs-parent="#faqEntradas">
+          <div class="accordion-body small">Entre 1 y 2 horas, según ritmo y aforo.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="f3">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c3" aria-expanded="false" aria-controls="c3">
+            ¿Hay estacionamiento y baños?
+          </button>
+        </h2>
+        <div id="c3" class="accordion-collapse collapse" aria-labelledby="f3" data-bs-parent="#faqEntradas">
+          <div class="accordion-body small">Sí, el parque cuenta con estacionamiento y servicios básicos.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="f4">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c4" aria-expanded="false" aria-controls="c4">
+            ¿Se permite el ingreso con mascotas?
+          </button>
+        </h2>
+        <div id="c4" class="accordion-collapse collapse" aria-labelledby="f4" data-bs-parent="#faqEntradas">
+          <div class="accordion-body small">Por seguridad de fauna y visitantes, consulta previamente las restricciones.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="f5">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c5" aria-expanded="false" aria-controls="c5">
+            ¿Qué llevar?
+          </button>
+        </h2>
+        <div id="c5" class="accordion-collapse collapse" aria-labelledby="f5" data-bs-parent="#faqEntradas">
+          <div class="accordion-body small">Ropa cómoda, agua y protección solar. En invierno, abrigo y capa de lluvia.</div>
         </div>
       </div>
     </div>
+
+    <p class="small text-body-secondary mt-3 mb-0">*Actividades sujetas a operación y clima. Información referencial; puede variar por temporada, clima o eventos.</p>
   </div>
 </section>
 
-<!-- ===================== GALERÍA ===================== -->
+
 <section id="galeria" class="gallery-section py-5">
   <div class="container">
     <h2 class="gallery-title">Galería</h2>
@@ -361,13 +346,8 @@
       </div>
     </div>
 
-    <!-- Botones de navegación -->
     <div class="gallery-navigation">
-      <button
-        class="gallery-nav-btn gallery-nav-prev"
-        (click)="prevPage()"
-        [disabled]="currentPage === 0"
-        [class.disabled]="currentPage === 0">
+      <button class="gallery-nav-btn gallery-nav-prev" (click)="prevPage()" [disabled]="currentPage === 0" [class.disabled]="currentPage === 0">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
         </svg>
@@ -375,11 +355,7 @@
 
       <span class="gallery-page-indicator">{{ currentPage + 1 }} / {{ totalPages }}</span>
 
-      <button
-        class="gallery-nav-btn gallery-nav-next"
-        (click)="nextPage()"
-        [disabled]="currentPage === totalPages - 1"
-        [class.disabled]="currentPage === totalPages - 1">
+      <button class="gallery-nav-btn gallery-nav-next" (click)="nextPage()" [disabled]="currentPage === totalPages - 1" [class.disabled]="currentPage === totalPages - 1">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
         </svg>
@@ -388,7 +364,6 @@
   </div>
 </section>
 
-<!-- Modal de la galería -->
 <div class="modal fade modal-soft" id="galleryModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
@@ -414,113 +389,195 @@
   </div>
 </div>
 
-<!-- ===================== ¿CÓMO LLEGAR? + CONTACTO (ÚNICO) ===================== -->
-<section id="visitanos" class="py-5">
+
+
+<section id="como-llegar" class="arrival-section py-5">
   <div class="container">
-    <div class="row g-4">
-
-      <!-- Columna Mapa -->
-      <div class="col-12 col-lg-4">
-        <h2 class="titulo-destino">¿Cómo llegar?</h2>
-
-        <div class="ratio ratio-16x9 rounded overflow-hidden">
-          <iframe
-            title="Mapa"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Acuario%20Tem%C3%A1tico%20-%20CHISCAIHUE%20PC%201LT%206%20RIO%20BUENO%20CHISCAIHUE%20PC%201LT%206,%205240000%20R%C3%ADo%20Bueno,%20Los%20R%C3%ADos&z=16&output=embed">
-          </iframe>
-        </div>
-
-        <div class="mt-2">
-          <a
-            class="btn btn-primary btn-sm d-inline-flex align-items-center gap-2"
-            href="https://www.google.com/maps/dir/?api=1&destination=Acuario%20Tem%C3%A1tico%20-%20CHISCAIHUE%20PC%201LT%206%20RIO%20BUENO%20CHISCAIHUE%20PC%201LT%206,%205240000%20R%C3%ADo%20Bueno,%20Los%20R%C3%ADos"
-            target="_blank"
-            rel="noopener"
-            aria-label="Abrir ubicación en Google Maps en una nueva pestaña">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16"
-                aria-hidden="true" focusable="false">
-              <path d="M12.166 8.94c-.524 1.062-1.2 2.12-1.87 3.016A31.58 31.58 0 0 1 8 14.58a31.58 31.58 0 0 1-2.296-2.624c-.67-.895-1.346-1.954-1.87-3.016C3.29 7.826 3 6.842 3 6a5 5 0 1 1 10 0c0 .842-.29 1.826-.834 2.94ZM8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
-            </svg>
-            Abrir en Google Maps
-          </a>
-        </div>
-
-        <!-- Info de contacto (debajo del mapa) -->
-        <div class="mt-3 small" style="font-family: 'Montserrat', sans-serif;">
-          <div><strong>Información de contacto</strong></div>
-          <div>📞 +56 9 8634 4271</div>
-          <div>✉️ acuariopuyehue@gmail.com</div>
-          <div>✉️ acb@acuariopuyehue.cl</div>
-          <div>✉️ plagos@acuariopuyehue.cl</div>
-          <div>IG: @acuariopuyehue</div>
-        </div>
-      </div>
-
-  <!-- Columna Derecha: Contacto + Reserva educativa -->
-  <div class="col-12 col-lg-8" id="contacto">
-    <div class="row g-4">
-
-      <!-- Formulario: Reserva educativa -->
-      <div class="col-12">
-        <h3 class="fw-bold mb-3" style="color: #4d9447; font-family: 'Montserrat', sans-serif;">Reserva educativa</h3>
-
-        <form [formGroup]="reservaForm" (ngSubmit)="onReservaSubmit()">
-          <div class="mb-3">
-            <label for="institucion" class="form-label" style="font-family: 'Montserrat', sans-serif;">Nombre institución</label>
-            <input type="text" id="institucion" formControlName="institucion" class="form-control" style="font-family: 'Montserrat', sans-serif;"
-                  placeholder="Nombre del colegio o institución">
-          </div>
-
-          <div class="mb-3">
-            <label for="correo" class="form-label" style="font-family: 'Montserrat', sans-serif;">Correo de contacto</label>
-            <input type="email" id="correo" formControlName="correo" class="form-control" style="font-family: 'Montserrat', sans-serif;"
-                  placeholder="correo@institucion.cl">
-          </div>
-
-          <div class="mb-3">
-            <label for="programa" class="form-label" style="font-family: 'Montserrat', sans-serif;">Programa educativo</label>
-            <select id="programa" formControlName="programa" class="form-select" style="font-family: 'Montserrat', sans-serif;">
-              <option value="">Seleccione...</option>
-              <option value="Visita básica">Visita básica</option>
-              <option value="Visita académica">Visita académica</option>
-              <option value="Taller aplicado">Taller aplicado</option>
-            </select>
-          </div>
-
-          <div class="mb-3">
-            <label for="fecha" class="form-label" style="font-family: 'Montserrat', sans-serif;">Fecha para reservar</label>
-            <input type="date" id="fecha" formControlName="fecha" class="form-control" style="font-family: 'Montserrat', sans-serif;">
-          </div>
-
-          <div class="mb-3">
-            <label for="personas" class="form-label" style="font-family: 'Montserrat', sans-serif;">Cantidad de personas</label>
-            <input type="number" id="personas" formControlName="personas" class="form-control" style="font-family: 'Montserrat', sans-serif;"
-                  min="1" placeholder="Ej: 30">
-          </div>
-
-          <div class="mb-3">
-            <label for="comentarios" class="form-label" style="font-family: 'Montserrat', sans-serif;">Comentarios adicionales</label>
-            <textarea id="comentarios" formControlName="comentarios" rows="3"
-                      class="form-control" style="font-family: 'Montserrat', sans-serif;"
-                      placeholder="Requisitos o comentarios especiales"></textarea>
-          </div>
-
-          <!-- Feedback visual -->
-          <div *ngIf="successReserva" class="alert alert-success small">{{ successReserva }}</div>
-          <div *ngIf="errorReserva" class="alert alert-danger small">{{ errorReserva }}</div>
-
-          <button type="submit" class="btn btn-success w-100" [disabled]="enviandoReserva" style="font-family: 'Montserrat', sans-serif;">
-            {{ enviandoReserva ? 'Enviando...' : 'Enviar solicitud' }}
-          </button>
-        </form>
-      </div>
-
-
+    <div class="section-head text-center mb-4">
+      <h2 class="section-title">Cómo llegar</h2>
+      <p class="section-sub">Ruta Interlagos T-981U, km 3 — Sector Chiscaihue, a 1,5 km antes de Entre Lagos.</p>
     </div>
-  </div>
+
+    <div class="row g-4 align-items-start">
+      <div class="col-12 col-lg-5">
+        <ul class="nav nav-pills arrival-pills" id="arriveTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#arrive-auto" type="button" role="tab">
+              <i class="bi bi-car-front me-2"></i>Auto desde Osorno
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#arrive-bus" type="button" role="tab">
+              <i class="bi bi-bus-front me-2"></i>Bus desde Osorno
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#arrive-rb" type="button" role="tab">
+              <i class="bi bi-signpost-2 me-2"></i>Río Bueno / La Unión
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content arrival-panels mt-3">
+          <div class="tab-pane fade show active" id="arrive-auto" role="tabpanel">
+            <div class="arrival-meta">
+              <span><i class="bi bi-clock me-1"></i>~60 min</span>
+              <span class="ok"><i class="bi bi-check2-circle me-1"></i>Ruta recomendada</span>
+            </div>
+            <div class="step-card"><span class="badge-num">1</span><div class="step-body">Toma <strong>Ruta CH-215</strong> hacia <strong>Entre Lagos</strong>.</div></div>
+            <div class="step-card"><span class="badge-num">2</span><div class="step-body">Pasa el acceso a Entre Lagos y dobla hacia <strong>Ruta Interlagos T-981U</strong>.</div></div>
+            <div class="step-card"><span class="badge-num">3</span><div class="step-body">Avanza hasta el <strong>km 3 (Chiscaihue)</strong>. Verás el acceso señalizado.</div></div>
+            <a class="btn btn-primary btn-sm mt-2" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Osorno,+Chile/Parque+Acuario+Puyehue,+T-981-U+KM+3,+R%C3%ADo+Bueno,+Los+R%C3%ADos">
+              <i class="bi bi-compass me-1"></i>Ver ruta en Google Maps
+            </a>
+          </div>
+
+          <div class="tab-pane fade" id="arrive-bus" role="tabpanel">
+            <div class="arrival-meta">
+              <span><i class="bi bi-people me-1"></i>Público</span>
+              <span><i class="bi bi-clock me-1"></i>~50 min + 5 min</span>
+            </div>
+            <div class="step-card"><span class="badge-num">1</span><div class="step-body">Desde el <strong>Terminal de Osorno</strong>, bus a <strong>Entre Lagos</strong> (~50 min).</div></div>
+            <div class="step-card"><span class="badge-num">2</span><div class="step-body">En Entre Lagos toma taxi/colectivo a <strong>T-981U km 3 (Chiscaihue)</strong> (~5 min).</div></div>
+            <p class="small text-body-secondary mt-2"><i class="bi bi-info-circle me-1"></i>Confirma horarios según temporada.</p>
+          </div>
+
+          <div class="tab-pane fade" id="arrive-rb" role="tabpanel">
+            <div class="step-card"><span class="badge-num">1</span><div class="step-body">Toma rutas <strong>T-985 / T-981U</strong> hacia <strong>Entre Lagos</strong>.</div></div>
+            <div class="step-card"><span class="badge-num">2</span><div class="step-body">Llega hasta el <strong>km 3</strong> de la <strong>T-981U</strong> (Chiscaihue).</div></div>
+            <div class="d-flex flex-wrap gap-2 mt-2">
+              <a class="btn btn-outline-primary btn-sm" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/R%C3%ADo+Bueno,+Los+R%C3%ADos/Parque+Acuario+Puyehue,+T-981-U+KM+3,+R%C3%ADo+Bueno,+Los+R%C3%ADos"><i class="bi bi-geo-alt me-1"></i>Ruta desde Río Bueno</a>
+              <a class="btn btn-outline-primary btn-sm" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/La+Uni%C3%B3n,+Chile/Parque+Acuario+Puyehue,+T-981-U+KM+3,+R%C3%ADo+Bueno,+Los+R%C3%ADos"><i class="bi bi-geo-alt me-1"></i>Ruta desde La Unión</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-7">
+        <div class="mapa card shadow-sm border-0">
+          <div class="mapa-head"><i class="bi bi-map me-2"></i>Mapa y dirección</div>
+          <div class="ratio ratio-16x9 overflow-hidden">
+            <iframe title="Mapa Parque Acuario Puyehue" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Parque%20Acuario%20Puyehue%20T-981U%20KM%203%20Chiscaihue&z=16&output=embed"></iframe>
+          </div>
+          <div class="mapa-body">
+            <div class="small text-body-secondary">Dirección</div>
+            <div class="fw-semibold">Ruta Interlagos T-981U, km 3 — Sector Chiscaihue</div>
+            <div class="small text-body-secondary">A 1,5 km antes de Entre Lagos (comuna de Puyehue).</div>
+            <div class="d-flex gap-2 flex-wrap mt-2">
+              <a class="btn btn-primary btn-sm" href="https://www.google.com/maps/dir/?api=1&destination=Parque%20Acuario%20Puyehue%20T-981U%20km%203%20Chiscaihue" target="_blank" rel="noopener"><i class="bi bi-route me-1"></i>Abrir en Google Maps</a>
+              <a class="btn btn-outline-primary btn-sm" href="https://www.google.com/maps/search/estacionamientos/@-40.68,-72.6,14z" target="_blank" rel="noopener"><i class="bi bi-p-square me-1"></i>Estacionamientos cercanos</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+
+
+
+
+<section id="contacto" class="contact-section py-5">
+  <div class="container">
+    <div class="d-flex flex-column gap-1 mb-4">
+      <h2 class="contact-title text-start">Contáctanos</h2>
+      <p class="contact-sub text-start">Estamos disponibles para reservas, visitas pedagógicas y consultas generales.</p>
+    </div>
+
+    <div class="row g-4 align-items-stretch">
+      <div class="col-12 col-lg-5">
+        <div class="contact-card h-100">
+          <div class="contact-card__head">
+            <i class="bi bi-chat-dots"></i>
+            <span>Información de contacto</span>
+          </div>
+
+          <div class="contact-list">
+            <div class="ci">
+              <div class="ci-ico"><i class="bi bi-geo-alt"></i></div>
+              <div class="ci-body">
+                <div class="ci-label">Dirección</div>
+                <div class="ci-text">Ruta Interlagos T-981U, km 3 — Sector Chiscaihue, Puyehue</div>
+              </div>
+            </div>
+            <div class="ci">
+              <div class="ci-ico"><i class="bi bi-telephone"></i></div>
+              <div class="ci-body">
+                <div class="ci-label">Teléfono</div>
+                <a href="tel:+56912345678" class="ci-link">+56 9 1234 5678</a>
+              </div>
+            </div>
+            <div class="ci">
+              <div class="ci-ico"><i class="bi bi-whatsapp"></i></div>
+              <div class="ci-body">
+                <div class="ci-label">WhatsApp</div>
+                <a href="https://wa.me/56912345678" target="_blank" rel="noopener" class="ci-link">+56 9 1234 5678</a>
+              </div>
+            </div>
+            <div class="ci">
+              <div class="ci-ico"><i class="bi bi-envelope"></i></div>
+              <div class="ci-body">
+                <div class="ci-label">Correo</div>
+                <a href="mailto:contacto@acuariopuyehue.cl" class="ci-link">contacto@acuariopuyehue.cl</a>
+              </div>
+            </div>
+            <div class="ci">
+              <div class="ci-ico"><i class="bi bi-clock"></i></div>
+              <div class="ci-body">
+                <div class="ci-label">Horario</div>
+                <div class="ci-text">Vie–Dom y festivos 11:00 a 19:00</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-actions">
+            <a class="btn btn-wa" href="https://wa.me/56912345678" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2"></i>Escríbenos por WhatsApp</a>
+            <div class="d-flex gap-2 flex-wrap">
+              <a class="btn btn-outline-primary" href="tel:+56912345678"><i class="bi bi-telephone me-2"></i>Llamar</a>
+              <a class="btn btn-outline-primary" href="mailto:contacto@acuariopuyehue.cl"><i class="bi bi-envelope me-2"></i>Email</a>
+              <a class="btn btn-outline-primary" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Parque%20Acuario%20Puyehue%20T-981U%20km%203%20Chiscaihue"><i class="bi bi-geo me-2"></i>Cómo llegar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-7">
+        <div class="contact-social h-100">
+          <div class="social-grid">
+            <a class="social-tile st-wa" href="https://wa.me/56912345678" target="_blank" rel="noopener">
+              <i class="bi bi-whatsapp"></i><span>WhatsApp</span>
+            </a>
+            <a class="social-tile st-fb" href="https://facebook.com/acuariopuyehue" target="_blank" rel="noopener">
+              <i class="bi bi-facebook"></i><span>Facebook</span>
+            </a>
+            <a class="social-tile st-ig" href="https://instagram.com/acuariopuyehue" target="_blank" rel="noopener">
+              <i class="bi bi-instagram"></i><span>Instagram</span>
+            </a>
+            <a class="social-tile st-yt" href="https://youtube.com" target="_blank" rel="noopener">
+              <i class="bi bi-youtube"></i><span>YouTube</span>
+            </a>
+            <a class="social-tile st-mail" href="mailto:contacto@acuariopuyehue.cl">
+              <i class="bi bi-envelope"></i><span>Gmail</span>
+            </a>
+            <a class="social-tile st-wp" href="https://wa.me/?text=Hola%20Acuario%20Puyehue" target="_blank" rel="noopener">
+              <i class="bi bi-share"></i><span>Compartir</span>
+            </a>
+          </div>
+
+          <div class="contact-banner">
+            <div class="cb-left">
+              <i class="bi bi-stars"></i>
+              <div>
+                <div class="cb-title">¿Tienes dudas rápidas?</div>
+                <div class="cb-sub">Escríbenos y te respondemos a la brevedad.</div>
+              </div>
+            </div>
+            <a class="btn btn-primary btn-sm" href="https://wa.me/56912345678" target="_blank" rel="noopener">Abrir WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

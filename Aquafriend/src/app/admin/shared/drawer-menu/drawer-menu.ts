@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, Inject, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, Input, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { map } from 'rxjs';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-drawer-menu',
@@ -9,18 +11,18 @@ import { RouterModule } from '@angular/router';
   templateUrl: './drawer-menu.html',
   styleUrls: ['./drawer-menu.scss']
 })
-export class DrawerMenuComponent implements OnInit {
+export class DrawerMenuComponent {
   @Input() isMobile = false;
-  user: { nombre?: string; apellido?: string; role?: string } | null = null;
+  private auth = inject(AuthService);
+  user$ = this.auth.currentUser$;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  private fullName = (u: any): string => {
+    const n1 = [u?.nombre, u?.apellido].filter(Boolean).join(' ').trim();
+    const n2 = u?.nombre_completo ?? u?.full_name ?? u?.name ?? '';
+    return (n1 || n2 || u?.email || '').trim();
+  };
 
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const raw = window.localStorage.getItem('admin_user');
-      this.user = raw ? JSON.parse(raw) : null;
-    }
-  }
-
+  displayName$ = this.user$.pipe(map(u => u ? this.fullName(u) : ''));
+  role$ = this.user$.pipe(map(u => (u?.role ?? '').toString()));
   handleClick(): void {}
 }
