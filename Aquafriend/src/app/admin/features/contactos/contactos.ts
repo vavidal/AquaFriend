@@ -8,7 +8,7 @@ interface Contacto {
   email: string;
   telefono?: string;
   mensaje?: string;
-  fecha_contacto: string; // ISO string
+  fecha_contacto: string;
   leido: boolean;
 }
 
@@ -32,6 +32,8 @@ export class ContactosComponent implements OnInit {
   loading = false;
   error = '';
   filtro: 'todos' | 'leidos' | 'no-leidos' = 'todos';
+  selected: Contacto | null = null;
+  detalleAbierto = false;
 
   ngOnInit(): void {
     this.cargarContactos();
@@ -40,7 +42,6 @@ export class ContactosComponent implements OnInit {
   cargarContactos(): void {
     this.loading = true;
     this.error = '';
-
     this.http.get<ContactosResponse>(this.apiUrl).subscribe({
       next: (response) => {
         this.loading = false;
@@ -50,10 +51,9 @@ export class ContactosComponent implements OnInit {
           this.error = 'Respuesta inesperada del servidor.';
         }
       },
-      error: (err) => {
+      error: () => {
         this.loading = false;
         this.error = 'Error al cargar los contactos. Verifica que el servidor esté corriendo.';
-        console.error('Error al cargar contactos:', err);
       },
     });
   }
@@ -64,26 +64,43 @@ export class ContactosComponent implements OnInit {
         const c = this.contactos.find((x) => x.id_contacto === id);
         if (c) c.leido = true;
       },
-      error: (err) => {
-        console.error('Error al marcar como leído:', err);
+      error: () => {
         this.error = 'Error al marcar el contacto como leído.';
       },
     });
   }
 
-  cambiarFiltro(filtro: 'todos' | 'leidos' | 'no-leidos'): void {
-    this.filtro = filtro;
+  verDetalle(c: Contacto): void {
+    this.selected = c;
+    this.detalleAbierto = true;
+  }
+
+  cerrarDetalle(): void {
+    this.detalleAbierto = false;
+    this.selected = null;
+  }
+
+  eliminar(c: Contacto): void {
+    const id = c.id_contacto;
+    this.http.delete(`${this.apiUrl}/${id}`).subscribe({
+      next: () => {
+        this.contactos = this.contactos.filter((x) => x.id_contacto !== id);
+        if (this.selected?.id_contacto === id) this.cerrarDetalle();
+      },
+      error: () => {
+        this.error = 'Error al eliminar el contacto.';
+      },
+    });
+  }
+
+  cambiarFiltro(f: 'todos' | 'leidos' | 'no-leidos'): void {
+    this.filtro = f;
   }
 
   get contactosFiltrados(): Contacto[] {
-    switch (this.filtro) {
-      case 'leidos':
-        return this.contactos.filter((c) => c.leido);
-      case 'no-leidos':
-        return this.contactos.filter((c) => !c.leido);
-      default:
-        return this.contactos;
-    }
+    if (this.filtro === 'leidos') return this.contactos.filter((c) => c.leido);
+    if (this.filtro === 'no-leidos') return this.contactos.filter((c) => !c.leido);
+    return this.contactos;
   }
 
   get contactosLeidos(): Contacto[] {
