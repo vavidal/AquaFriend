@@ -1,0 +1,54 @@
+<div class="cu-page">
+  <div class="cu-card">
+    <div class="cu-left">
+      <div class="cu-left-inner">
+        <div class="cu-avatar" aria-hidden="true">
+          <svg class="icon-userplus" viewBox="0 0 24 24">
+            <circle cx="12" cy="9" r="3.2" />
+            <path d="M5 20a7 7 0 0 1 14 0" />
+            <path d="M18 4v4M16 6h4" />
+          </svg>
+        </div>
+        <h3>{{ title }}</h3>
+        <p *ngIf="!isEdit">Registra un nuevo usuario para AquaFriend.</p>
+        <p *ngIf="isEdit">Actualiza los datos del usuario seleccionado.</p>
+      </div>
+    </div>
+
+    <div class="cu-right">
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div class="cu-grid">
+          <div class="cu-field">
+            <label>Nombre</label>
+            <input type="text" formControlName="nombre" placeholder="Nombre" />
+            <small class="err" *ngIf="f.nombre.touched && f.nombre.invalid">Requerido (mín. 2)</small>
+          </div>
+
+          <div class="cu-field">
+            <label>Apellido</label>
+            <input type="text" formControlName="apellido" placeholder="Apellido" />
+            <small class="err" *ngIf="f.apellido.touched && f.apellido.invalid">Requerido (mín. 2)</small>
+          </div>
+
+          <div class="cu-field cu-col-2">
+            <label>Email</label>
+            <input type="email" formControlName="email" placeholder="correo@dominio.com" />
+            <small class="err" *ngIf="f.email.touched && f.email.invalid">Email inválido</small>
+          </div>
+
+          <div class="cu-field cu-col-2">
+            <label>Rol</label>
+            <select formControlName="role">
+              <option *ngFor="let r of roles" [ngValue]="r">{{ r }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="cu-actions">
+          <button type="button" class="btn ghost" (click)="cancelar()">Cancelar</button>
+          <button type="submit" class="btn danger" [disabled]="processing">{{ actionLabel }}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

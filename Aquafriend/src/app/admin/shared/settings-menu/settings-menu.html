@@ -1,0 +1,36 @@
+<button
+  matIconButton
+  [matMenuTriggerFor]="menu"
+  aria-label="Example icon-button with a menu"
+  matTooltip="Settings"
+  matTooltipPosition="below"
+>
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>person</mat-icon>
+    <span>Cesar Sebastian</span>
+  </button>
+
+  <button mat-menu-item routerLink="/dashboard/settings/profile">
+    <mat-icon>info</mat-icon>
+    <span>Profile</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>pie_chart</mat-icon>
+    <span>Analytics</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications</mat-icon>
+    <span>Notifications</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>settings</mat-icon>
+    <span>Settings</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>
