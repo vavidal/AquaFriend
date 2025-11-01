@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
+import { ContactosComponent } from './contactos'; 
 
-export const contactosRoutes: Routes = [
-  {
-    path: '',
-    loadComponent: () => import('./contactos.component').then(m => m.ContactosComponent)
-  }
-];
+export default [
+  { path: '', component: ContactosComponent, title: 'Solicitudes de Reserva' }
+] as Routes;
