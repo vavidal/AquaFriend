@@ -3,6 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface ReservaRequest {
+  // Datos de contacto (opcional)
+  nombre?: string;
+  apellido?: string;
+  telefono?: string;
   institucion: string;
   correo: string;
   programa: string;
@@ -30,6 +34,10 @@ export interface Reserva {
   programa: string;
   estado: string;
   created_at: string;
+  // Contacto asociado (si existe)
+  profesor_nombre?: string;
+  profesor_apellido?: string;
+  profesor_telefono?: string;
 }
 
 export interface ReservasListResponse {
@@ -60,5 +68,15 @@ export class ReservaService {
   // Obtener programas educativos disponibles
   obtenerProgramas(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/programas`);
+  }
+
+  // Actualizar estado de una reserva
+  actualizarEstado(id: number, estado: 'pendiente' | 'confirmada' | 'cancelada'): Observable<ReservaResponse> {
+    return this.http.patch<ReservaResponse>(`${this.apiUrl}/${id}/estado`, { estado });
+  }
+
+  // Eliminar una reserva
+  eliminarReserva(id: number): Observable<ReservaResponse> {
+    return this.http.delete<ReservaResponse>(`${this.apiUrl}/${id}`);
   }
 }

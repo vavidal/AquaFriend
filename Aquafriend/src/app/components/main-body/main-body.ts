@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+﻿import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ContactService, ContactRequest } from '../../services/contact.service';
@@ -85,6 +85,46 @@ export class MainBody {
       });
       carousel.to(index);
     }, 50);
+  }
+
+  // ===== HERO VIDEO (lazy load) =====
+  ngAfterViewInit() {
+    // Evitar ejecutar en SSR
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
+
+    const video = document.getElementById('heroVideo') as HTMLVideoElement | null;
+    if (!video) return;
+
+    const source = video.querySelector('source') as HTMLSourceElement | null;
+    if (!source) return;
+
+    const loadVideo = () => {
+      if (!source.src) {
+        const ds = (source as any).dataset?.src as string | undefined;
+        if (ds) source.src = ds;
+      }
+      // Forzar carga y reproducción cuando esté listo
+      video.load();
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.then === 'function') {
+        playPromise.catch(() => {/* algunos navegadores bloquean, ignorar */});
+      }
+    };
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            loadVideo();
+            obs.disconnect();
+          }
+        });
+      }, { rootMargin: '200px 0px' });
+      io.observe(video);
+    } else {
+      // Fallback
+      loadVideo();
+    }
   }
 
   // ===== INYECCIONES =====
@@ -175,7 +215,7 @@ export class MainBody {
       next: (response) => {
         this.enviandoReserva = false;
         if (response.success) {
-          this.successReserva = `Reserva creada exitosamente ✅ Total a pagar: $${response.data?.total_pagar}`;
+          this.successReserva = 'Solicitud enviada correctamente. Te contactaremos por correo para coordinar tu visita.';
           this.reservaForm.reset({ personas: 1 });
         } else {
           this.errorReserva = response.message || 'Error al crear la reserva';
@@ -189,3 +229,6 @@ export class MainBody {
     });
   }
 }
+
+
+

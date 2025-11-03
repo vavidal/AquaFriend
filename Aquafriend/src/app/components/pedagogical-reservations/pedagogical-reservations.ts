@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ReservaService, ReservaRequest, ReservaResponse } from '../../services/reserva.service';
 
 @Component({
   selector: 'app-pedagogical-reservations',
@@ -33,6 +34,8 @@ export class PedagogicalReservationsComponent implements OnInit {
     'Magallanes y de la Antártica Chilena'
   ];
 
+  private readonly reservaSvc = inject(ReservaService);
+
   constructor(private fb: FormBuilder) {
     this.reservaForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.maxLength(60)]],
@@ -52,17 +55,43 @@ export class PedagogicalReservationsComponent implements OnInit {
   ngOnInit(): void {}
 
   onReservaSubmit(): void {
+    this.successReserva = '';
+    this.errorReserva = '';
+
     if (this.reservaForm.invalid) {
       this.errorReserva = 'Completa los campos requeridos.';
-      this.successReserva = '';
       return;
     }
+
+    const payload: ReservaRequest = {
+      nombre: this.reservaForm.value.nombre,
+      apellido: this.reservaForm.value.apellido,
+      telefono: this.reservaForm.value.telefono,
+      institucion: this.reservaForm.value.institucion,
+      correo: this.reservaForm.value.correo,
+      programa: this.reservaForm.value.programa,
+      fecha: this.reservaForm.value.fecha,
+      personas: this.reservaForm.value.personas,
+      comentarios: this.reservaForm.value.comentarios || ''
+    } as ReservaRequest;
+
     this.enviandoReserva = true;
-    this.errorReserva = '';
-    setTimeout(() => {
-      this.enviandoReserva = false;
-      this.successReserva = 'Solicitud enviada. Te contactaremos por correo.';
-      this.reservaForm.reset();
-    }, 1000);
+
+    this.reservaSvc.crearReserva(payload).subscribe({
+      next: (res: ReservaResponse) => {
+        this.enviandoReserva = false;
+        if (res?.success) {
+          this.successReserva = 'Solicitud enviada correctamente. Te contactaremos por correo para coordinar tu visita.';
+          this.reservaForm.reset();
+        } else {
+          this.errorReserva = res?.message || 'No fue posible crear la reserva.';
+        }
+      },
+      error: (err) => {
+        console.error('Error al crear reserva', err);
+        this.enviandoReserva = false;
+        this.errorReserva = 'Error de conexión. Verifica que el servidor esté corriendo.';
+      }
+    });
   }
 }
