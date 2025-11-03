@@ -64,6 +64,9 @@ export class PedagogicalReservationsComponent implements OnInit {
     }
 
     const payload: ReservaRequest = {
+      nombre: this.reservaForm.value.nombre,
+      apellido: this.reservaForm.value.apellido,
+      telefono: this.reservaForm.value.telefono,
       institucion: this.reservaForm.value.institucion,
       correo: this.reservaForm.value.correo,
       programa: this.reservaForm.value.programa,
@@ -78,10 +81,7 @@ export class PedagogicalReservationsComponent implements OnInit {
       next: (res: ReservaResponse) => {
         this.enviandoReserva = false;
         if (res?.success) {
-          const total = res?.data?.total_pagar ?? '';
-          this.successReserva = total
-            ? `Reserva creada correctamente. Total estimado: $${total}.`
-            : 'Reserva creada correctamente.';
+          this.successReserva = 'Solicitud enviada correctamente. Te contactaremos por correo para coordinar tu visita.';
           this.reservaForm.reset();
         } else {
           this.errorReserva = res?.message || 'No fue posible crear la reserva.';

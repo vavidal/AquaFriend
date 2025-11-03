@@ -15,6 +15,8 @@ export class ReservasComponent implements OnInit {
   reservas: Reserva[] = [];
   loading = true;
   error: string | null = null;
+  selected: Reserva | null = null;
+  saving = false;
 
   ngOnInit() {
     this.cargarReservas();
@@ -40,7 +42,52 @@ export class ReservasComponent implements OnInit {
   }
 
   verReserva(reserva: Reserva): void {
-    console.log('ver', reserva);
+    this.selected = reserva;
+  }
+
+  cerrarDetalle(): void {
+    this.selected = null;
+  }
+
+  actualizarEstado(estado: 'pendiente' | 'confirmada' | 'cancelada') {
+    if (!this.selected) return;
+    this.saving = true;
+    this.reservaSvc.actualizarEstado(this.selected.id_reserva, estado).subscribe({
+      next: (res) => {
+        this.saving = false;
+        if (res?.success) {
+          // Actualizar en memoria y recargar métricas
+          this.selected!.estado = estado.charAt(0).toUpperCase() + estado.slice(1);
+        } else {
+          this.error = res?.message || 'No se pudo actualizar el estado';
+        }
+      },
+      error: () => {
+        this.saving = false;
+        this.error = 'Error al actualizar el estado.';
+      }
+    });
+  }
+
+  eliminarSeleccionada() {
+    if (!this.selected) return;
+    const id = this.selected.id_reserva;
+    this.saving = true;
+    this.reservaSvc.eliminarReserva(id).subscribe({
+      next: (res) => {
+        this.saving = false;
+        if (res?.success) {
+          this.reservas = this.reservas.filter(r => r.id_reserva !== id);
+          this.cerrarDetalle();
+        } else {
+          this.error = res?.message || 'No se pudo eliminar la reserva';
+        }
+      },
+      error: () => {
+        this.saving = false;
+        this.error = 'Error al eliminar la reserva.';
+      }
+    });
   }
 
   trackById(_: number, r: Reserva) {

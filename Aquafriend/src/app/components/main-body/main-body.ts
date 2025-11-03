@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+﻿import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ContactService, ContactRequest } from '../../services/contact.service';
@@ -215,7 +215,7 @@ export class MainBody {
       next: (response) => {
         this.enviandoReserva = false;
         if (response.success) {
-          this.successReserva = `Reserva creada exitosamente ✅ Total a pagar: $${response.data?.total_pagar}`;
+          this.successReserva = 'Solicitud enviada correctamente. Te contactaremos por correo para coordinar tu visita.';
           this.reservaForm.reset({ personas: 1 });
         } else {
           this.errorReserva = response.message || 'Error al crear la reserva';
@@ -229,3 +229,6 @@ export class MainBody {
     });
   }
 }
+
+
+
