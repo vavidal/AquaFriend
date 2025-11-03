@@ -1,35 +1,49 @@
+
 const db = require('../config/database');
 
-// Obtener todos los peces
 exports.getPeces = async (req, res) => {
   try {
-    const [rows] = await db.query('SELECT * FROM peces ORDER BY fecha_registro DESC');
+    const [rows] = await db.query(
+      'SELECT id_especie, nombre_comun, nombre_cientifico, id_categoria, id_habitat, alimentacion, tamano_promedio, estado_conservacion, descripcion, imagen_principal, fecha_registro FROM especies WHERE id_categoria = 1 ORDER BY fecha_registro DESC'
+    );
     res.json(rows);
   } catch (error) {
-    console.error('Error al obtener peces:', error);
     res.status(500).json({ message: 'Error al obtener peces' });
   }
 };
 
-// Crear un nuevo pez
 exports.createPez = async (req, res) => {
   try {
-    const { especie, habitat, alimentacion, tamano_promedio, descripcion, imagen_referencial } = req.body;
-
-    if (!especie || !habitat) {
-      return res.status(400).json({ message: 'Faltan datos obligatorios' });
-    }
+    const {
+      nombre_comun,
+      nombre_cientifico,
+      id_habitat,
+      alimentacion,
+      tamano_promedio,
+      estado_conservacion,
+      descripcion,
+      imagen_principal
+    } = req.body;
 
     const sql = `
-      INSERT INTO peces (especie, habitat, alimentacion, tamano_promedio, descripcion, imagen_referencial)
-      VALUES (?, ?, ?, ?, ?, ?)
+      INSERT INTO especies
+      (nombre_comun, nombre_cientifico, id_categoria, id_habitat, alimentacion, tamano_promedio, estado_conservacion, descripcion, imagen_principal)
+      VALUES (?, ?, 1, ?, ?, ?, ?, ?, ?)
     `;
 
-    await db.query(sql, [especie, habitat, alimentacion, tamano_promedio, descripcion, imagen_referencial]);
+    await db.query(sql, [
+      nombre_comun || '',
+      nombre_cientifico || '',
+      id_habitat || null,
+      alimentacion || '',
+      tamano_promedio || '',
+      estado_conservacion || '',
+      descripcion || '',
+      imagen_principal || ''
+    ]);
 
     res.status(201).json({ message: 'Pez creado exitosamente' });
   } catch (error) {
-    console.error('Error al crear pez:', error);
     res.status(500).json({ message: 'Error al crear pez' });
   }
 };

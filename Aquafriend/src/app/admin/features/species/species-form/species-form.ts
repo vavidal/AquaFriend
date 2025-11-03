@@ -1,7 +1,8 @@
-import { Component, inject, signal, computed } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SpeciesService, Category } from './species.service';
 
 @Component({
   selector: 'species-form',
@@ -14,14 +15,13 @@ export class SpeciesForm {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+  private api = inject(SpeciesService);
 
-  isEdit = !!this.route.snapshot.paramMap.get('id');
+  category = this.route.snapshot.data['category'] as Category;
+  idParam = this.route.snapshot.paramMap.get('id');
+  isEdit = !!this.idParam;
+
   submitting = signal(false);
-
-  openA = signal(true);
-  openB = signal(true);
-  openC = signal(false);
-
   preview = signal<string | null>(null);
 
   form = this.fb.group({
@@ -30,33 +30,49 @@ export class SpeciesForm {
     alimentacion: [''],
     tamano_promedio: [''],
     descripcion: [''],
-    imagen_principal: [''],
+    imagen_referencial: ['']
   });
 
-  pageTitle = () => this.route.snapshot.data['title'] || (this.isEdit ? 'Editar' : 'Crear');
-
-  toggle(which: 'A'|'B'|'C') {
-    if (which === 'A') this.openA.set(!this.openA());
-    if (which === 'B') this.openB.set(!this.openB());
-    if (which === 'C') this.openC.set(!this.openC());
+  constructor() {
+    if (this.isEdit && this.idParam) {
+      const id = Number(this.idParam);
+      this.api.getOne(this.category, id).subscribe(d => {
+        this.form.patchValue({
+          especie: d.especie ?? '',
+          habitat: d.habitat ?? '',
+          alimentacion: d.alimentacion ?? '',
+          tamano_promedio: d.tamano_promedio ?? '',
+          descripcion: d.descripcion ?? '',
+          imagen_referencial: d.imagen_referencial ?? ''
+        });
+        if (d.imagen_referencial) this.preview.set(d.imagen_referencial);
+      });
+    }
   }
 
-  onPick(e: Event) {
-    const input = e.target as HTMLInputElement;
-    const file = input.files?.[0];
+  onPick(ev: Event) {
+    const input = ev.target as HTMLInputElement;
+    const file = input.files && input.files[0];
     if (!file) return;
-    const url = URL.createObjectURL(file);
-    this.preview.set(url);
+    const reader = new FileReader();
+    reader.onload = () => this.preview.set(reader.result as string);
+    reader.readAsDataURL(file);
   }
 
-  goBack() { this.router.navigate(['../'], { relativeTo: this.route }); }
+  goBack() {
+    this.router.navigate(['../'], { relativeTo: this.route });
+  }
 
   submit() {
     if (this.form.invalid) return;
     this.submitting.set(true);
-    setTimeout(() => {
-      this.submitting.set(false);
-      this.goBack();
-    }, 800);
+    const payload = this.form.value;
+    const obs = this.isEdit && this.idParam
+      ? this.api.update(this.category, Number(this.idParam), payload)
+      : this.api.create(this.category, payload);
+    obs.subscribe({
+      next: () => this.goBack(),
+      error: () => this.submitting.set(false)
+    });
   }
 }

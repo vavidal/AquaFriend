@@ -1,5 +1,4 @@
 <form class="sheet" [formGroup]="form" (ngSubmit)="submit()" novalidate>
-
   <aside class="info-panel">
     <div class="avatar">
       <img *ngIf="preview(); else noimg" [src]="preview()!" alt="Imagen" />
@@ -7,10 +6,8 @@
         <div class="ph"></div>
       </ng-template>
     </div>
-
     <h3>Registro de nueva especie</h3>
     <p>Completa los campos para registrar un pez, animal o anfibio. Mantén la información precisa y actualizada para un catálogo confiable.</p>
-
     <label class="upload">
       <input type="file" accept="image/*" (change)="onPick($event)" />
       Subir imagen
@@ -18,7 +15,6 @@
   </aside>
 
   <main class="form-panel">
-
     <div class="card open">
       <div class="card-head">
         <span>Datos de la especie</span>
@@ -49,7 +45,7 @@
 
     <div class="card open">
       <div class="card-head">
-        <span>Descripción </span>
+        <span>Descripción</span>
       </div>
       <div class="card-body">
         <div class="field">
@@ -61,11 +57,7 @@
 
     <footer class="actions">
       <button type="button" class="btn ghost" (click)="goBack()">Cancelar</button>
-      <button type="submit" class="btn primary" [disabled]="form.invalid || submitting()">
-        {{ isEdit ? 'Guardar' : 'Crear' }}
-      </button>
+      <button type="submit" class="btn primary" [disabled]="form.invalid || submitting()">Crear</button>
     </footer>
-
   </main>
-
 </form>
