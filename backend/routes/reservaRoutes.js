@@ -11,4 +11,10 @@ router.get('/', reservaController.obtenerReservas);
 // Ruta para obtener programas educativos disponibles
 router.get('/programas', reservaController.obtenerProgramas);
 
+// Actualizar estado de una reserva
+router.patch('/:id/estado', reservaController.actualizarEstadoReserva);
+
+// Eliminar una reserva
+router.delete('/:id', reservaController.eliminarReserva);
+
 module.exports = router;

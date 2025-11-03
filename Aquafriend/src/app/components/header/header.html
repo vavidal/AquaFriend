@@ -1,8 +1,7 @@
 <nav #navbar class="app-header navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container-fluid px-4">
     <a class="navbar-brand" routerLink="/" (click)="closeNav()">
-      <img src="/assets/icons/logo_acuario.png" alt="Aquarium"
-        class="logo-aquarium">
+      <img src="/assets/icons/logo_acuario.png" alt="Aquarium" class="logo-aquarium">
     </a>
 
     <button class="navbar-toggler navbar-toggler-orange" type="button"
@@ -24,8 +23,7 @@
             (click)="closeNav()">Sobre Nosotros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/reservas"
-            routerLinkActive="active">Reservas</a>
+          <a class="nav-link" routerLink="/reservas" routerLinkActive="active">Reservas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#entradas" (click)="closeNav()">Entradas</a>
@@ -34,12 +32,7 @@
           <a class="nav-link" href="#galeria" (click)="closeNav()">Galería</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#visitanos"
-            (click)="closeNav()">Visítanos</a>
-        </li>
-        <li class="nav-item ms-lg-3">
-          <a class="btn btn-reservar btn-md" href="#contacto"
-            (click)="closeNav()">Reservar</a>
+          <a class="nav-link" [routerLink]="['/']" fragment="contacto" (click)="closeNav()">Visítanos</a>
         </li>
       </ul>
     </div>

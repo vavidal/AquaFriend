@@ -24,6 +24,20 @@ transporter.verify((error, success) => {
 });
 
 // ================================================================
+// UTILIDADES
+// ================================================================
+
+function formatCLP(value) {
+  const n = typeof value === 'number' ? value : parseFloat(String(value).replace(/[^0-9.-]/g, ''));
+  if (isNaN(n)) return '$0';
+  return new Intl.NumberFormat('es-CL', {
+    style: 'currency',
+    currency: 'CLP',
+    maximumFractionDigits: 0,
+  }).format(n);
+}
+
+// ================================================================
 // FUNCIONES PARA ENVIAR EMAILS
 // ================================================================
 
@@ -248,7 +262,7 @@ async function enviarEmailNuevaReservaAdmin(reserva) {
             ` : ''}
 
             <div class="total">
-              💰 Total a Pagar: $${reserva.total}
+              💰 Total estimado: ${formatCLP(reserva.total)}
             </div>
 
             <p style="margin-top: 20px;">
@@ -283,7 +297,7 @@ async function enviarEmailConfirmacionReserva(reserva) {
   const mailOptions = {
     from: `"Parque Acuario Puyehue" <${process.env.EMAIL_USER}>`,
     to: reserva.email,
-    subject: `✅ Reserva Confirmada - ${reserva.programa}`,
+    subject: `📩 Solicitud de reserva recibida - ${reserva.programa}`,
     html: `
       <!DOCTYPE html>
       <html>
@@ -300,14 +314,14 @@ async function enviarEmailConfirmacionReserva(reserva) {
       </head>
       <body>
         <div class="container">
-          <div class="header">
-            <h1 style="margin: 0;">✅ ¡Reserva Confirmada!</h1>
+          <div class="header" style="background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);">
+            <h1 style="margin: 0;">📩 Solicitud de reserva recibida</h1>
             <p style="margin: 10px 0 0 0;">Parque Acuario Puyehue</p>
           </div>
           <div class="content">
             <p>Estimados de <strong>${reserva.escuela}</strong>,</p>
 
-            <p>¡Excelente noticia! Hemos recibido su solicitud de reserva educativa y está siendo procesada.</p>
+            <p>Hemos recibido su solicitud de reserva educativa y está siendo procesada.</p>
 
             <div class="details">
               <h3 style="margin-top: 0; color: #4CAF50;">📋 Detalles de su Reserva:</h3>
@@ -317,15 +331,21 @@ async function enviarEmailConfirmacionReserva(reserva) {
               ${reserva.comentarios ? `<p><strong>Observaciones:</strong> ${reserva.comentarios}</p>` : ''}
             </div>
 
-            <div class="total">
-              💰 Total a Pagar: $${reserva.total}
+            <div class="total" style="background:#1e88e5;">
+              💰 Total estimado a pagar: ${formatCLP(reserva.total)}
             </div>
+
+            <p style="margin: 12px 0 0 0;">
+              Para confirmar su visita, por favor contacte directamente con el dueño del acuario
+              al <strong>+56 9 8634 4271</strong> o escriba a
+              <a href="mailto:acuariopuyehue@gmail.com">acuariopuyehue@gmail.com</a>.
+              La fecha y disponibilidad serán coordinadas por ese medio.
+            </p>
 
             <p><strong>📞 Próximos pasos:</strong></p>
             <ul>
-              <li>Nos pondremos en contacto con usted en las próximas 24-48 horas</li>
               <li>Confirmaremos disponibilidad y detalles finales</li>
-              <li>Le enviaremos la información de pago</li>
+              <li>Se informarán instrucciones de pago directamente con el dueño</li>
             </ul>
 
             <p><strong>📧 Información de contacto:</strong></p>
