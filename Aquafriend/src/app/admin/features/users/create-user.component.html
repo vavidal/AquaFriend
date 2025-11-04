@@ -38,15 +38,27 @@
 
           <div class="cu-field cu-col-2">
             <label>Rol</label>
-            <select formControlName="role">
-              <option *ngFor="let r of roles" [ngValue]="r">{{ r }}</option>
+            <select formControlName="role_id">
+              <option *ngFor="let r of roles" [ngValue]="r.id_role">{{ r.nombre }}</option>
             </select>
+          </div>
+
+          <div class="cu-field cu-col-2" *ngIf="!isEdit">
+            <label>Contraseña</label>
+            <div class="pw-wrap">
+              <input [type]="showPass ? 'text' : 'password'" formControlName="password" placeholder="********" autocomplete="new-password" />
+              <button type="button" class="pw-eye" (click)="showPass = !showPass" aria-label="Mostrar/Ocultar">
+                <svg *ngIf="!showPass" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 5c-7.633 0-10 7-10 7s2.367 7 10 7 10-7 10-7-2.367-7-10-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/></svg>
+                <svg *ngIf="showPass" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M3 3l18 18-1.41 1.41-3.03-3.03C15.9 21.08 14.02 22 12 22 4.37 22 2 15 2 15s1.03-3.06 3.74-5.58L1.59 4.41 3 3z"/></svg>
+              </button>
+            </div>
+            <small class="err" *ngIf="f.password.touched && f.password.invalid">Mínimo 6 caracteres</small>
           </div>
         </div>
 
         <div class="cu-actions">
           <button type="button" class="btn ghost" (click)="cancelar()">Cancelar</button>
-          <button type="submit" class="btn danger" [disabled]="processing">{{ actionLabel }}</button>
+          <button type="submit" class="btn danger" [disabled]="processing || form.invalid">{{ actionLabel }}</button>
         </div>
       </form>
     </div>

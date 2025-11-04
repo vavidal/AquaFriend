@@ -2,9 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UsuarioService, Usuario, ApiResponse } from './users.service';
+import { UsuarioService, Usuario } from './users.service';
 import { AuthService } from '../../../services/auth.service';
-
 
 @Component({
   selector: 'app-users-list',
@@ -52,7 +51,7 @@ export class UsersListComponent implements OnInit {
     const previo = usuario.activo;
     usuario.activo = checked ? 1 : 0;
     this.usuarioService.actualizar(usuario.id_usuario, { activo: usuario.activo }).subscribe({
-      next: (resp: ApiResponse<Usuario>) => {
+      next: (resp) => {
         if (!resp?.success) usuario.activo = previo;
       },
       error: () => {
@@ -71,12 +70,8 @@ export class UsersListComponent implements OnInit {
     if (!confirm('¿Eliminar este usuario?')) return;
     this.cargando = true;
     this.usuarioService.eliminar(usuario.id_usuario).subscribe({
-      next: (resp: ApiResponse<null>) => {
-        if (resp?.success) {
-          this.usuarios = this.usuarios.filter(u => u.id_usuario !== usuario.id_usuario);
-          this.usuariosFiltrados = [...this.usuarios];
-        }
-        this.cargando = false;
+      next: () => {
+        this.cargarUsuarios();
       },
       error: () => {
         this.cargando = false;
@@ -102,7 +97,7 @@ export class UsersListComponent implements OnInit {
     };
     this.cargando = true;
     this.usuarioService.actualizar(id, data).subscribe({
-      next: (resp: ApiResponse<Usuario>) => {
+      next: (resp) => {
         if (resp?.success && resp.data) {
           const idx = this.usuarios.findIndex(x => x.id_usuario === id);
           if (idx > -1) this.usuarios[idx] = { ...this.usuarios[idx], ...resp.data };

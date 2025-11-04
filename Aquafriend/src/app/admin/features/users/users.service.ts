@@ -1,12 +1,18 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of, catchError } from 'rxjs';
 
 export interface ApiResponse<T> {
   success: boolean;
   message?: string;
   data?: T;
-  usuarios?: T; // por si el backend usa esta clave
+  usuarios?: T;
+}
+
+export interface Role {
+  id_role: number;
+  nombre: string;
 }
 
 export interface Usuario {
@@ -17,7 +23,7 @@ export interface Usuario {
   role: string;
   role_id?: number;
   password?: string;
-  activo: number; // 1/0
+  activo: number;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -26,7 +32,6 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) {}
 
-  // Devuelve siempre Usuario[] aunque el backend cambie el formato
   listar(): Observable<Usuario[]> {
     return this.http.get<any>(this.apiUrl).pipe(
       map((resp: any) => {
@@ -38,7 +43,6 @@ export class UsuarioService {
     );
   }
 
-  // Alias por compatibilidad con tu componente
   obtenerTodos(): Observable<Usuario[]> {
     return this.listar();
   }
@@ -59,5 +63,16 @@ export class UsuarioService {
 
   eliminar(id: number): Observable<ApiResponse<null>> {
     return this.http.delete<ApiResponse<null>>(`${this.apiUrl}/${id}`);
+  }
+
+  obtenerRoles(): Observable<Role[]> {
+    return this.http.get<any>(`${this.apiUrl}/roles`).pipe(
+      map((resp: any) => {
+        if (Array.isArray(resp?.data)) return resp.data as Role[];
+        if (Array.isArray(resp)) return resp as Role[];
+        return [];
+      }),
+      catchError(() => of([{ id_role: 1, nombre: 'Administrador' }]))
+    );
   }
 }
