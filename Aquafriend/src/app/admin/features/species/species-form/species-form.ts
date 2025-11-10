@@ -55,7 +55,12 @@ export class SpeciesForm {
     const file = input.files && input.files[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onload = () => this.preview.set(reader.result as string);
+    reader.onload = () => {
+      const dataUrl = reader.result as string;
+      this.preview.set(dataUrl);
+      // guardar en el form para enviar al backend
+      this.form.patchValue({ imagen_referencial: dataUrl });
+    };
     reader.readAsDataURL(file);
   }
 
@@ -66,13 +71,24 @@ export class SpeciesForm {
   submit() {
     if (this.form.invalid) return;
     this.submitting.set(true);
-    const payload = this.form.value;
+    const payload = { ...this.form.value } as any;
+    // si tiene preview pero el control quedó vacío, usamos el preview
+    if (!payload.imagen_referencial && this.preview()) {
+      payload.imagen_referencial = this.preview();
+    }
     const obs = this.isEdit && this.idParam
       ? this.api.update(this.category, Number(this.idParam), payload)
       : this.api.create(this.category, payload);
     obs.subscribe({
       next: () => this.goBack(),
-      error: () => this.submitting.set(false)
+      error: (err) => {
+        console.error('Error al guardar pez', err);
+        this.submitting.set(false);
+        try {
+          const msg = err?.error?.message || err?.message || 'Error desconocido';
+          alert('No se pudo guardar el pez: ' + msg);
+        } catch { /* noop */ }
+      }
     });
   }
 }

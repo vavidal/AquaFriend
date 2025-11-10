@@ -13,8 +13,12 @@ app.use(cors({
   origin: 'http://localhost:4200', // URL del frontend Angular
   credentials: true
 }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// Nota: algunos parsers de rutas no aceptan '*' como path.
+// Si necesitas preflight específico, habilita por prefijo:
+// app.options('/api/*', cors());
+// Aceptar payloads con imágenes base64 (hasta 5MB)
+app.use(bodyParser.json({ limit: '5mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '5mb' }));
 
 // ===============================
 // Importar rutas

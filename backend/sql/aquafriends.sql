@@ -193,7 +193,7 @@ CREATE TABLE `peces` (
   `alimentacion` VARCHAR(200) DEFAULT NULL,
   `tamano_promedio` VARCHAR(50) DEFAULT NULL,
   `descripcion` VARCHAR(800) DEFAULT NULL,
-  `imagen_referencial` VARCHAR(300) DEFAULT NULL,
+  `imagen_referencial` MEDIUMTEXT DEFAULT NULL,
   `fecha_registro` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

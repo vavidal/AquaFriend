@@ -60,10 +60,16 @@
 .col-especie{ width:36%; min-width:360px; }
 
 .fish-cell{ display:flex; align-items:center; gap:12px; min-width:260px; }
-.avatar{
-  width:44px; height:44px; border-radius:10px; background:#e5edf4 center/cover no-repeat;
-  border:1px solid var(--line);
+.avatar{ width:44px; height:44px; border-radius:10px; overflow:hidden; border:1px solid var(--line); background:#e5edf4; }
+.avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+.row-actions{ display:flex; gap:8px; }
+.row-actions .icon{
+  width:36px; height:36px; display:inline-grid; place-items:center;
+  border-radius:10px; border:1px solid var(--line); background:#fff; cursor:pointer;
 }
+.row-actions .icon .mi{ font-size:18px; }
+.row-actions .icon.edit{ color:#0ea5e9; border-color:#cfe8f6; background:#eef7fd; }
+.row-actions .icon.danger{ color:#ef4444; border-color:#f3c1bf; background:#fff6f6; }
 .info .name{ font-weight:700; }
 .info .sub{ color:#8b99aa; font-size:12px; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:42ch; }
 

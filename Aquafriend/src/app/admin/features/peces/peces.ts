@@ -44,9 +44,24 @@ export class Peces {
   }
 
   img(p: Pez) {
-    return p.imagen_referencial || 'assets/placeholder.jpg';
+    return p.imagen_referencial || 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44"><rect width="100%" height="100%" fill="%23e5edf4"/></svg>';
   }
 
   onOpenFilters() {}
   goCreate() { this.router.navigate(['/dashboard/peces/crear']); }
+  goEdit(id: number) { this.router.navigate(['/dashboard/peces/editar', id]); }
+
+  onDelete(p: Pez) {
+    const ok = confirm(`¿Eliminar "${p.especie}"? Esta acción no se puede deshacer.`);
+    if (!ok) return;
+    this.http.delete(`http://localhost:3000/api/peces/${p.id}`, { observe: 'response' }).subscribe({
+      next: () => this.cargar(),
+      error: (err) => {
+        const status = err?.status;
+        const msg = err?.error?.message || err?.message || 'Error desconocido';
+        console.error('Error al eliminar pez', status, msg, err);
+        alert(`No se pudo eliminar el pez. [${status}] ${msg}`);
+      }
+    });
+  }
 }
