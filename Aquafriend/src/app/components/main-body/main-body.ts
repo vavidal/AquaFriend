@@ -4,7 +4,7 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ContactService, ContactRequest } from '../../services/contact.service';
 import { ReservaService, ReservaRequest } from '../../services/reserva.service';
 
-declare const bootstrap: any; // API JS de Bootstrap 5
+declare const bootstrap: any;
 
 type GalleryItem = { src: string; title: string; text?: string };
 
@@ -13,33 +13,41 @@ type GalleryItem = { src: string; title: string; text?: string };
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './main-body.html',
-  styleUrl: './main-body.css'
+  styleUrls: ['./main-body.css']
 })
 export class MainBody {
-  // ===== GALERÍA =====
-  private readonly nums = [1, 2, 3, 4, 5, 10, 13, 15, 16, 17, 19, 20, 21];
-
-  private readonly titles: Record<number, string> = {
-    1: 'Vista Barco del Acuario',
-    2: 'Puesto de Comida',
-    3: 'Entrada al Acuario',
-    4: 'Vista al Lago',
-    5: 'Estación Meteorológica',
-    10:'Molino de Agua',
-    13:'Vista Barco del Acuario',
-    15:'Camping',
-    16:'Lago Artificial (Coto de Pesca)',
-    17:'Criadero de Peces',
-  };
-
-  images: GalleryItem[] = this.nums.map((n) => ({
-    src: `assets/img/${n}.jpg`,
-    title: this.titles[n] || `Imagen ${n}`,
-  }));
+  images: GalleryItem[] = [
+    { src: 'assets/img/_DSC5200.JPG', title: 'Pez en acuario' },
+    { src: 'assets/img/_DSC5247.JPG', title: 'Interaccion' },
+    { src: 'assets/img/_DSC6185.jpg', title: 'Visita jardin infaltil' },
+    { src: 'assets/img/_DSC6217.jpg', title: 'Visita jardin infaltil' },
+    { src: 'assets/img/_DSC6353.jpg', title: 'Visita jardin infaltil' },
+    { src: 'assets/img/_DSC7319.JPG', title: 'Familia en barco' },
+    { src: 'assets/img/_DSC7416.JPG', title: 'Pareja con bebe ' },
+    { src: 'assets/img/_DSC7529.JPG', title: 'Dueño acuriario con estudiantes' },
+    { src: 'assets/img/_DSC7581.JPG', title: 'Pareja con bebe' },
+    { src: 'assets/img/_DSC7810.JPG', title: 'Vista estudiantes de Basica' },
+    { src: 'assets/img/_DSC8299.JPG', title: 'Interaccion alumnos con tortuga' },
+    { src: 'assets/img/_DSC8311.JPG', title: 'Granja conejo y aves' },
+    { src: 'assets/img/_DSC8314.JPG', title: 'Gansos' },
+    { src: 'assets/img/_DSC8338.JPG', title: 'Peces pequeños ' },
+    { src: 'assets/img/_DSC8349.JPG', title: 'Visita educativa' },
+    { src: 'assets/img/3.jpg', title: 'Vista acuario 2025' },
+    { src: 'assets/img/4.jpg', title: 'Pesca recreativa' },
+    { src: 'assets/img/5.jpg', title: 'Entrada acuario' },
+    { src: 'assets/img/6.jpg', title: 'Interior acuario' },
+    { src: 'assets/img/7.jpg', title: 'Chivos' },
+    { src: 'assets/img/8.jpg', title: 'Molino de agua y pato' },
+    { src: 'assets/img/9.jpg', title: 'Coto de pesca' },
+    { src: 'assets/img/10.jpg', title: 'Molino de agua' },
+    { src: 'assets/img/17.jpg', title: 'Criadero de peces' },
+    { src: 'assets/img/19.jpg', title: 'Barco' },
+    { src: 'assets/img/20.jpg', title: 'Moai' },
+    { src: 'assets/img/21.jpg', title: 'Timon' },
+    { src: 'assets/img/nh.png', title: 'Dueño del acuario con ternero' }
+  ];
 
   selectedIndex = 0;
-
-  // Paginación de galería
   itemsPerPage = 6;
   currentPage = 0;
 
@@ -53,64 +61,43 @@ export class MainBody {
     return this.images.slice(start, end);
   }
 
-  nextPage() {
-    if (this.currentPage < this.totalPages - 1) {
-      this.currentPage++;
-    }
+  nextPage(): void {
+    if (this.currentPage < this.totalPages - 1) this.currentPage++;
   }
 
-  prevPage() {
-    if (this.currentPage > 0) {
-      this.currentPage--;
-    }
+  prevPage(): void {
+    if (this.currentPage > 0) this.currentPage--;
   }
 
-  openGallery(index: number) {
+  openGallery(index: number): void {
     this.selectedIndex = index;
-
     const modalEl = document.getElementById('galleryModal');
     if (!modalEl) return;
-
     const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
     modal.show();
-
     setTimeout(() => {
       const carouselEl = document.getElementById('galleryCarousel');
       if (!carouselEl) return;
-
-      const carousel = bootstrap.Carousel.getOrCreateInstance(carouselEl, {
-        interval: false,
-        ride: false,
-        wrap: true,
-      });
+      const carousel = bootstrap.Carousel.getOrCreateInstance(carouselEl, { interval: false, ride: false, wrap: true });
       carousel.to(index);
     }, 50);
   }
 
-  // ===== HERO VIDEO (lazy load) =====
-  ngAfterViewInit() {
-    // Evitar ejecutar en SSR
+  ngAfterViewInit(): void {
     if (typeof window === 'undefined' || typeof document === 'undefined') return;
-
     const video = document.getElementById('heroVideo') as HTMLVideoElement | null;
     if (!video) return;
-
     const source = video.querySelector('source') as HTMLSourceElement | null;
     if (!source) return;
-
     const loadVideo = () => {
       if (!source.src) {
         const ds = (source as any).dataset?.src as string | undefined;
         if (ds) source.src = ds;
       }
-      // Forzar carga y reproducción cuando esté listo
       video.load();
       const playPromise = video.play();
-      if (playPromise && typeof playPromise.then === 'function') {
-        playPromise.catch(() => {/* algunos navegadores bloquean, ignorar */});
-      }
+      if (playPromise && typeof playPromise.then === 'function') playPromise.catch(() => {});
     };
-
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries, obs) => {
         entries.forEach(e => {
@@ -122,23 +109,20 @@ export class MainBody {
       }, { rootMargin: '200px 0px' });
       io.observe(video);
     } else {
-      // Fallback
       loadVideo();
     }
   }
 
-  // ===== INYECCIONES =====
   private fb = inject(FormBuilder);
   private contactSvc = inject(ContactService);
   private reservaSvc = inject(ReservaService);
 
-  // ===== FORMULARIO DE CONTACTO GENERAL =====
   contactForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
     email: ['', [Validators.required, Validators.email]],
     date: [''],
     people: [2, [Validators.min(1)]],
-    message: [''],
+    message: ['']
   });
 
   sending = false;
@@ -149,39 +133,34 @@ export class MainBody {
     return this.contactForm.controls;
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.success = this.error = null;
-
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
       return;
     }
-
     const payload = this.contactForm.value as ContactRequest;
     this.sending = true;
-
     this.contactSvc.sendRequest(payload).subscribe({
       next: () => {
         this.sending = false;
         this.success = 'Solicitud enviada ✅ Revisa tu correo, te avisaremos pronto.';
         this.contactForm.reset({ people: 2 });
       },
-      error: (err) => {
-        console.error(err);
+      error: () => {
         this.sending = false;
         this.error = 'No pudimos enviar tu solicitud. Intenta nuevamente más tarde.';
-      },
+      }
     });
   }
 
-  // ===== FORMULARIO DE RESERVA EDUCATIVA =====
   reservaForm = this.fb.group({
     institucion: ['', [Validators.required, Validators.minLength(2)]],
     correo: ['', [Validators.required, Validators.email]],
     programa: ['', Validators.required],
     fecha: ['', Validators.required],
     personas: [1, [Validators.required, Validators.min(1)]],
-    comentarios: [''],
+    comentarios: ['']
   });
 
   enviandoReserva = false;
@@ -192,14 +171,12 @@ export class MainBody {
     return this.reservaForm.controls;
   }
 
-  onReservaSubmit() {
+  onReservaSubmit(): void {
     this.successReserva = this.errorReserva = null;
-
     if (this.reservaForm.invalid) {
       this.reservaForm.markAllAsTouched();
       return;
     }
-
     const payload: ReservaRequest = {
       institucion: this.reservaForm.value.institucion ?? '',
       correo: this.reservaForm.value.correo ?? '',
@@ -208,9 +185,7 @@ export class MainBody {
       personas: this.reservaForm.value.personas ?? 1,
       comentarios: this.reservaForm.value.comentarios ?? ''
     };
-
     this.enviandoReserva = true;
-
     this.reservaSvc.crearReserva(payload).subscribe({
       next: (response) => {
         this.enviandoReserva = false;
@@ -221,14 +196,10 @@ export class MainBody {
           this.errorReserva = response.message || 'Error al crear la reserva';
         }
       },
-      error: (err) => {
-        console.error(err);
+      error: () => {
         this.enviandoReserva = false;
         this.errorReserva = 'No pudimos procesar tu reserva. Verifica que el servidor esté corriendo.';
-      },
+      }
     });
   }
 }
-
-
-
