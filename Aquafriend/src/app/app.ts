@@ -10,25 +10,21 @@ import { filter } from 'rxjs/operators';
   standalone: true,
   imports: [RouterOutlet, NgIf, Header, Footer],
   templateUrl: './app.html',
-  styleUrl: './app.css',
+  styleUrls: ['./app.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class App {
   protected readonly title = signal('AquaFriend');
   protected readonly isAdminRoute = signal(false);
   private readonly isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
-
   private readonly router = inject(Router);
 
   constructor() {
-    // Estado inicial basado en la URL del navegador
     if (this.isBrowser) {
       const currentPath = window.location.pathname;
       this.isAdminRoute.set(this.isAdminOrDashboard(currentPath));
     }
-    // Toggle clase en body para padding del header
     this.updateBodyClass();
-    // Actualiza cuando cambia la ruta
     this.router.events
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
       .subscribe((e) => {

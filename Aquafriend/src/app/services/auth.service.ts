@@ -41,7 +41,6 @@ export class AuthService {
     const full = (u.nombre_completo ?? u.full_name ?? u.name ?? '').toString().trim();
     let nombre = (u.nombre ?? '').toString().trim();
     let apellido = (u.apellido ?? '').toString().trim();
-
     if ((!nombre || !apellido) && full) {
       const parts = full.split(' ').filter(Boolean);
       if (!nombre && parts.length) nombre = parts[0];
