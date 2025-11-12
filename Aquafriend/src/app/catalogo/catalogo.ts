@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf, NgClass } from '@angular/common';
 
 type Categoria = 'Animales' | 'Aves' | 'Peces' | 'Reptiles';
 
@@ -17,7 +17,7 @@ interface FichaFauna {
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor, NgIf, NgClass],
   templateUrl: './catalogo.html',
   styleUrl: './catalogo.scss'
 })
@@ -30,7 +30,6 @@ export class CatalogoComponent {
     { categoria: 'Animales', nombre: 'Vaquilla (Ganado Jersey)', cientifico: 'Bos taurus', descripcion: 'Raza lechera de alta producción y docilidad.', habitat: 'Praderas de la zona sur de Chile.', alimentacion: 'Pastos y forrajes.', reproduccion: 'Gestación ~283 días; vida 15–20 años.', imagen: 'assets/img/granja/vaquilla.jpg' },
     { categoria: 'Animales', nombre: 'Ovejas', cientifico: 'Ovis aries', descripcion: 'Rumiantes domesticados desde hace ~9000 años.', habitat: 'Climas templados, praderas y montañas.', alimentacion: 'Herbívoras.', reproduccion: 'Gestación ~5 meses; vida 6–10 años.', imagen: 'assets/img/granja/oveja.jpg' },
     { categoria: 'Animales', nombre: 'Cabras', cientifico: 'Capra aegagrus hircus', descripcion: 'Domesticadas por carne y leche; muy adaptables.', habitat: 'Zonas con pendiente y suelos pobres.', alimentacion: 'Herbívoras; también malezas y zarzas.', reproduccion: 'Gestación ~150 días; vida 15–18 años.', imagen: 'assets/img/granja/cabra.png' },
-
     { categoria: 'Aves', nombre: 'Faisán', cientifico: 'Phasianus colchicus', descripcion: 'Originario del sur de Asia; plumaje vistoso.', habitat: 'Domesticado; presente en Chile centro-sur.', alimentacion: 'Granos, frutas, semillas y pasto.', reproduccion: 'Ovípara; incubación ~21 días.', imagen: 'assets/img/granja/faisan.jpg' },
     { categoria: 'Aves', nombre: 'Gallina Trintre (Plumas al revés)', cientifico: 'Gallus gallus domesticus', descripcion: 'Criada por pueblos mapuche; doble propósito.', habitat: 'Ave domesticada en Chile.', alimentacion: 'Granos, frutas, semillas y hierbas.', reproduccion: 'Ovípara; incubación ~21 días; vida 5–10 años.', imagen: 'assets/img/granja/gallina_trintre.jpg' },
     { categoria: 'Aves', nombre: 'Gallina Brahma', cientifico: 'Gallus gallus domesticus', descripcion: 'Raza asiática, de las más grandes; rústica.', habitat: 'Ave domesticada.', alimentacion: 'Granos, frutas, semillas y hierbas.', reproduccion: 'Ovípara; incubación ~21 días; vida 5–10 años.', imagen: 'assets/img/granja/gallina_brahma.webp' },
@@ -47,7 +46,6 @@ export class CatalogoComponent {
     { categoria: 'Aves', nombre: 'Pato Carolina (Joyuyo)', cientifico: 'Aix sponsa', descripcion: 'Macho de plumaje brillante; hembra parda.', habitat: 'Lagunas, lagos y pantanos.', alimentacion: 'Granos, frutas, semillas, hierbas y algas.', reproduccion: 'Ovípara; incubación ~28–32 días; vida 9–12 años.', imagen: 'assets/img/granja/pato_carolina.jpeg' },
     { categoria: 'Aves', nombre: 'Pato Pingüino (Corredor indio)', cientifico: 'Anas platyrhynchos domesticus', descripcion: 'Porte vertical característico; doméstico.', habitat: 'Lagunas, lagos y esteros.', alimentacion: 'Granos, frutas, semillas, hierbas y algas.', reproduccion: 'Ovípara; incubación ~28 días; vida 5–10 años.', imagen: 'assets/img/granja/pato_pinguino.jpg' },
     { categoria: 'Aves', nombre: 'Pato Negro (Rey/Picazo)', cientifico: 'Netta peposaca', descripcion: 'Plumaje negro con marcas blancas; macho con bulto en el pico.', habitat: 'Humedales de agua dulce y salobre con vegetación.', alimentacion: 'Omnívora con plantas acuáticas, frutos e invertebrados.', reproduccion: 'Ovípara; incubación ~29–30 días.', imagen: 'assets/img/granja/pato_negro.jpg' },
-
     { categoria: 'Reptiles', nombre: 'Tortuga de Orejas Rojas', cientifico: 'Trachemys scripta', descripcion: 'Semiacuática e invasora; prohibida en Chile en medio natural.', habitat: 'Lagos, ríos y arroyos.', alimentacion: 'Omnívora.', reproduccion: 'Postura ~2 meses; eclosión 80–85 días; vida 15–30 años.', imagen: 'assets/img/granja/Tortuga_orejas_rojas.png' }
   ];
 
@@ -62,7 +60,6 @@ export class CatalogoComponent {
     this.abierto.update(s => ({ ...s, [cat]: !s[cat] }));
   }
 
-
   porCategoria(cat: Categoria) {
     return this.fichas.filter(f => f.categoria === cat);
   }
@@ -74,8 +71,8 @@ export class CatalogoComponent {
   onImgError(ev: Event) {
     (ev.target as HTMLImageElement).src = this.defaultSrc;
   }
-  onLogoError(ev: Event) {
-  (ev.target as HTMLImageElement).style.display = 'none';
-}
 
+  onLogoError(ev: Event) {
+    (ev.target as HTMLImageElement).style.display = 'none';
+  }
 }

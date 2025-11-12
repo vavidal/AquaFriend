@@ -1,22 +1,24 @@
 :root{
-  --azul:#1b4f91;
-  --naranjo:#f47b36;
-  --verde:#3b7050;
-  --celeste:#f2f7fb;
+  --azul:#184f86;
+  --azul2:#123a66;
+  --naranjo:#f27a3a;
+  --verde:#2f7a5c;
+  --cielo:#eaf2fb;
+  --blanco:#fff;
   --texto:#0f172a;
 }
 
 .fauna{
-  background:var(--celeste);
+  background:linear-gradient(180deg,var(--cielo) 0%,#f8fbff 100%);
   padding:40px 0 64px;
 }
 
 .titulo{
+  margin:0 0 22px;
   text-align:center;
-  font-size:clamp(28px,3vw,36px);
   color:var(--azul);
-  font-weight:800;
-  margin-bottom:24px;
+  font-weight:900;
+  font-size:clamp(28px,3vw,36px);
 }
 
 .acordeon{
@@ -26,16 +28,21 @@
 
 .cabecera{
   width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
   background:#fff;
   border:none;
   border-radius:14px;
   padding:14px 18px;
-  box-shadow:0 4px 14px rgba(0,0,0,.08);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  box-shadow:0 12px 28px rgba(16,40,80,.08);
   cursor:pointer;
-  margin-bottom:10px;
+}
+.cabecera__chip{
+  width:10px;
+  height:26px;
+  border-radius:8px;
+  background:linear-gradient(180deg,var(--azul),var(--azul2));
 }
 .cabecera__titulo{
   color:var(--azul);
@@ -43,110 +50,183 @@
   text-transform:uppercase;
 }
 .cabecera__badge{
-  background:var(--naranjo);
+  margin-left:auto;
+  margin-right:8px;
+  background:linear-gradient(180deg,var(--naranjo),#ff995e);
   color:#fff;
   border-radius:999px;
-  padding:4px 10px;
-  font-weight:700;
+  padding:4px 12px;
+  font-weight:800;
 }
-.cabecera__icono{transition:transform .2s ease;}
-.cabecera__icono.abierto{transform:rotate(180deg);}
-.panel{padding-top:10px;}
+.cabecera__icono{
+  font-size:20px;
+  color:var(--azul2);
+}
+.panel{
+  padding-top:14px;
+}
 
 .grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:28px;
+  gap:26px;
 }
-@media(max-width:900px){.grid{grid-template-columns:1fr;}}
+@media (max-width:900px){
+  .grid{grid-template-columns:1fr;}
+}
 
-/* --- DISEÑO DE TARJETA --- */
-.ficha-flyer{
+.flyer{
   position:relative;
-  background:#fff;
-  border-radius:16px;
-  overflow:hidden;
-  padding:40px 32px;
-  display:flex;
+  display:grid;
+  grid-template-columns:220px 1fr;
   align-items:center;
-  gap:40px;
-  box-shadow:0 8px 26px rgba(0,0,0,.1);
+  gap:22px;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 10px 24px rgba(13,41,78,.12);
+  overflow:hidden;
+  padding:26px 24px;
+  min-height:320px;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.flyer:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 36px rgba(13,41,78,.16);
+}
+@media (max-width:900px){
+  .flyer{grid-template-columns:1fr;padding:24px 20px;}
 }
 
-@media(max-width:800px){
-  .ficha-flyer{flex-direction:column; padding:30px 20px;}
-}
-
-/* Curva superior */
-.ficha-flyer::before{
-  content:"";
+.curve{
   position:absolute;
   top:0;
   left:0;
-  right:0;
-  height:90px;
-  background:linear-gradient(to right,#fff 20%,var(--celeste) 80%);
-  border-bottom-right-radius:50% 40%;
+  width:100%;
+  height:86px;
+  background:linear-gradient(90deg,#dfeaf7 0%,#e8f2ff 60%,#dfeaf7 100%);
+  clip-path:path("M0,0 L100%,0 L100%,60 Q60%,86 20%,60 L0,86 Z");
+  opacity:.55;
+  z-index:1;
 }
 
-/* Círculos decorativos */
-.ficha-flyer__decoracion{
+.leaf{
   position:absolute;
+  left:-50px;
+  top:-10px;
+  width:130px;
+  height:130px;
+  background:var(--verde);
+  border-radius:60% 40% 70% 30% / 50% 70% 30% 50%;
+  transform:rotate(-18deg);
+  opacity:.9;
+  z-index:2;
+}
+
+.blob{
+  position:absolute;
+  right:-40px;
+  bottom:-30px;
   width:120px;
   height:120px;
-  border-radius:50%;
-  z-index:0;
-}
-.decoracion--izq{
-  left:-60px; bottom:10px; background:var(--azul);
-}
-.decoracion--der{
-  right:-70px; bottom:-40px; background:var(--naranjo);
+  background:var(--azul2);
+  border-radius:60% 40% 70% 30% / 50% 70% 30% 50%;
+  transform:rotate(12deg);
+  opacity:.8;
+  z-index:2;
 }
 
-/* Imagen ovalada */
-.ficha-flyer__img{
+.sun{
+  position:absolute;
+  right:-60px;
+  bottom:-60px;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:var(--naranjo);
+  filter:drop-shadow(0 10px 22px rgba(242,122,58,.3));
+  opacity:.9;
+  z-index:2;
+}
+
+.flyer__img{
   position:relative;
-  width:280px;
-  min-width:260px;
-  aspect-ratio:4/5;
-  border-radius:50% / 45%;
+  z-index:3;
+  width:200px;
+  height:220px;
+  border-radius:50% / 46%;
   overflow:hidden;
   border:6px solid var(--azul);
-  z-index:1;
   background:#fff;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+  margin:0;
+  justify-self:center;
 }
-.ficha-flyer__img img{
+.flyer__img img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
 
-/* Contenido */
-.ficha-flyer__contenido{
+.flyer__body{
   position:relative;
-  z-index:2;
+  z-index:3;
   color:var(--texto);
+  width:100%;
 }
-.ficha-flyer__titulo{
+.flyer__title{
+  margin:0 0 6px 0;
   color:var(--azul);
-  font-size:clamp(22px,2.6vw,26px);
   font-weight:900;
   text-transform:uppercase;
-  margin-bottom:4px;
+  letter-spacing:.5px;
+  font-size:clamp(20px,2.2vw,26px);
 }
-.ficha-flyer__cientifico{
+.flyer__sci{
+  margin:4px 0 12px;
+  color:#3a567a;
+  font-style:italic;
   font-size:15px;
-  color:#555;
-  margin-bottom:14px;
+}
+.flyer__body p{
+  margin:8px 0;
+  font-size:15px;
+  line-height:1.6;
+}
+.flyer__body p span{
+  color:var(--azul);
+  font-weight:900;
 }
 
-.ficha-flyer__contenido p{
-  font-size:16px;
-  line-height:1.6;
-  margin:6px 0;
+.flyer::after{
+  content:"";
+  position:absolute;
+  top:12px;
+  left:16px;
+  width:120px;
+  height:26px;
+  pointer-events:none;
+  z-index:4;
+  background:
+    radial-gradient(circle at 13px 13px, var(--azul) 0 8px, transparent 9px),
+    radial-gradient(circle at 43px 13px, var(--naranjo) 0 8px, transparent 9px),
+    radial-gradient(circle at 73px 13px, var(--verde) 0 8px, transparent 9px),
+    radial-gradient(circle at 103px 13px, #7bc2dd 0 8px, transparent 9px);
+  opacity:.95;
 }
-.ficha-flyer__contenido p span{
-  font-weight:800;
-  color:var(--azul);
+
+.flyer::before{
+  content:"";
+  position:absolute;
+  right:16px;
+  bottom:16px;
+  width:96px;
+  height:22px;
+  pointer-events:none;
+  z-index:4;
+  background:
+    radial-gradient(circle at 12px 11px, #7bc2dd 0 7px, transparent 8px),
+    radial-gradient(circle at 38px 11px, var(--verde) 0 7px, transparent 8px),
+    radial-gradient(circle at 64px 11px, var(--naranjo) 0 7px, transparent 8px),
+    radial-gradient(circle at 90px 11px, var(--azul) 0 7px, transparent 8px);
+  opacity:.9;
 }

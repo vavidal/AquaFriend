@@ -3,24 +3,27 @@
 
   <div class="acordeon" *ngFor="let cat of categorias">
     <button class="cabecera" (click)="toggle(cat)" [attr.aria-expanded]="abierto()[cat]">
+      <span class="cabecera__chip"></span>
       <span class="cabecera__titulo">{{ cat }}</span>
       <span class="cabecera__badge">{{ porCategoria(cat).length }}</span>
-      <span class="cabecera__icono" [class.abierto]="abierto()[cat]">⌄</span>
+      <i class="cabecera__icono bi" [class.bi-chevron-up]="abierto()[cat]" [class.bi-chevron-down]="!abierto()[cat]"></i>
     </button>
 
     <div class="panel" *ngIf="abierto()[cat]">
       <div class="grid">
-        <article class="ficha-flyer" *ngFor="let f of porCategoria(cat)">
-          <div class="ficha-flyer__decoracion decoracion--izq"></div>
-          <div class="ficha-flyer__decoracion decoracion--der"></div>
+        <article class="flyer" *ngFor="let f of porCategoria(cat)">
+          <div class="leaf"></div>
+          <div class="blob"></div>
+          <div class="sun"></div>
+          <div class="curve"></div>
 
-          <div class="ficha-flyer__img">
+          <div class="flyer__img">
             <img [src]="imgDe(f)" [alt]="f.nombre" loading="lazy" (error)="onImgError($event)">
           </div>
 
-          <div class="ficha-flyer__contenido">
-            <h2 class="ficha-flyer__titulo">{{ f.nombre }}</h2>
-            <p class="ficha-flyer__cientifico"><i>{{ f.cientifico }}</i></p>
+          <div class="flyer__body">
+            <h2 class="flyer__title">{{ f.nombre }}</h2>
+            <p class="flyer__sci" *ngIf="f.cientifico"><i>{{ f.cientifico }}</i></p>
 
             <p><span>Descripción:</span> {{ f.descripcion }}</p>
             <p><span>Hábitat:</span> {{ f.habitat }}</p>
