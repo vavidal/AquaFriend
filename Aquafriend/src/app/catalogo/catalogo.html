@@ -1,0 +1,57 @@
+<section class="fauna">
+  <h1 class="titulo">Catálogo de Fauna</h1>
+
+  <div class="acordeon" *ngFor="let cat of categorias">
+    <button class="cabecera" (click)="toggle(cat)" [attr.aria-expanded]="abierto()[cat]">
+      <span class="cabecera__titulo">{{ cat }}</span>
+      <span class="cabecera__badge">{{ porCategoria(cat).length }}</span>
+      <span class="cabecera__icono" [class.abierto]="abierto()[cat]">⌄</span>
+    </button>
+
+    <div class="panel" *ngIf="abierto()[cat]">
+      <div class="grid">
+        <article class="card card--split" *ngFor="let f of porCategoria(cat)">
+          <aside class="card__side">
+            <div class="brand">
+              <img
+                src="assets/icon_acuario.png"
+                alt="Parque Acuario Puyehue"
+                (error)="onLogoError($event)"
+              />
+              <span class="brand__name">parque<br>acuario<br>puyehue</span>
+            </div>
+            <div class="photo">
+              <img [src]="imgDe(f)" [alt]="f.nombre" loading="lazy" (error)="onImgError($event)">
+            </div>
+          </aside>
+
+          <div class="card__main">
+            <header class="head">
+              <h3 class="head__title">{{ f.nombre }}</h3>
+              <p class="head__sci" *ngIf="f.cientifico">{{ f.cientifico }}</p>
+            </header>
+
+            <dl class="ficha">
+              <div class="row">
+                <dt>Descripción</dt>
+                <dd>{{ f.descripcion }}</dd>
+              </div>
+              <div class="row">
+                <dt>Hábitat</dt>
+                <dd>{{ f.habitat }}</dd>
+              </div>
+              <div class="row">
+                <dt>Alimentación</dt>
+                <dd>{{ f.alimentacion }}</dd>
+              </div>
+              <div class="row" *ngIf="f.reproduccion">
+                <dt>Reproducción</dt>
+                <dd>{{ f.reproduccion }}</dd>
+              </div>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>

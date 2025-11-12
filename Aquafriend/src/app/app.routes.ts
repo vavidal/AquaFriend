@@ -8,6 +8,8 @@ export const routes: Routes = [
     loadChildren: () =>
       import('../app/view360/view360.routes').then(m => m.VIEW360_ROUTES)
   },
+  { path: 'catalogo', loadComponent: () => import('../app/catalogo/catalogo').then(m => m.CatalogoComponent) },
+
   {
     path: 'dashboard',
     loadChildren: () =>
