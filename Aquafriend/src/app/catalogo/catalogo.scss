@@ -1,238 +1,152 @@
 :root{
-  --azul:#195eb3;
-  --azul-oscuro:#174a8a;
-  --celeste:#e8f1fb;
-  --naranjo:#f79057;
-  --gris:#475569;
+  --azul:#1b4f91;
+  --naranjo:#f47b36;
+  --verde:#3b7050;
+  --celeste:#f2f7fb;
   --texto:#0f172a;
-  --fondo:#f7f9fb;
-  --radius:20px;
-  --shadow:0 10px 26px rgba(16,24,40,.08);
 }
 
 .fauna{
+  background:var(--celeste);
   padding:40px 0 64px;
-  background:var(--fondo);
 }
 
 .titulo{
-  margin:0 0 24px;
-  font-size:clamp(28px,3vw,36px);
-  line-height:1.15;
-  color:var(--azul);
   text-align:center;
+  font-size:clamp(28px,3vw,36px);
+  color:var(--azul);
   font-weight:800;
+  margin-bottom:24px;
 }
 
 .acordeon{
-  margin:16px auto 32px;
   max-width:1200px;
+  margin:0 auto;
 }
 
 .cabecera{
   width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
   background:#fff;
   border:none;
   border-radius:14px;
-  padding:16px 18px;
-  box-shadow:var(--shadow);
+  padding:14px 18px;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   cursor:pointer;
+  margin-bottom:10px;
 }
-
 .cabecera__titulo{
   color:var(--azul);
-  font-weight:800;
-  font-size:18px;
+  font-weight:900;
   text-transform:uppercase;
-  letter-spacing:.5px;
 }
-
 .cabecera__badge{
   background:var(--naranjo);
   color:#fff;
   border-radius:999px;
   padding:4px 10px;
   font-weight:700;
-  font-size:13px;
 }
-
-.cabecera__icono{
-  margin-left:auto;
-  transition:transform .2s ease;
-}
-.cabecera__icono.abierto{ transform:rotate(180deg); }
-
-.panel{ padding:20px 6px 0; }
+.cabecera__icono{transition:transform .2s ease;}
+.cabecera__icono.abierto{transform:rotate(180deg);}
+.panel{padding-top:10px;}
 
 .grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:22px;
+  gap:28px;
 }
+@media(max-width:900px){.grid{grid-template-columns:1fr;}}
 
-@media (max-width:900px){
-  .grid{ grid-template-columns:1fr; }
-}
-
-/* Tarjeta estilo “ficha” del ejemplo */
-.card{
+/* --- DISEÑO DE TARJETA --- */
+.ficha-flyer{
   position:relative;
   background:#fff;
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
+  border-radius:16px;
   overflow:hidden;
-  min-height:260px;
-}
-
-.card--split{
-  display:flex;
-  gap:0;
-}
-
-.card__side{
-  position:relative;
-  width:38%;
-  min-width:280px;
-  background:linear-gradient(180deg, var(--celeste) 0%, #fff 100%);
-  padding:18px 18px 26px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-}
-
-.brand{
+  padding:40px 32px;
   display:flex;
   align-items:center;
-  gap:10px;
-  margin-bottom:18px;
-}
-.brand img{
-  width:42px;
-  height:42px;
-  object-fit:contain;
-}
-.brand__name{
-  text-transform:lowercase;
-  line-height:1.05;
-  font-weight:800;
-  color:var(--azul);
-  font-size:12px;
+  gap:40px;
+  box-shadow:0 8px 26px rgba(0,0,0,.1);
 }
 
-.photo{
-  position:relative;
-  width:min(220px,72%);
-  aspect-ratio:1/1;
-  border-radius:999px;
-  display:grid;
-  place-items:center;
-  background:#fff;
-  box-shadow:0 10px 24px rgba(10,54,94,.18) inset;
+@media(max-width:800px){
+  .ficha-flyer{flex-direction:column; padding:30px 20px;}
 }
-.photo::before{
+
+/* Curva superior */
+.ficha-flyer::before{
   content:"";
   position:absolute;
-  inset:-8px;
-  border-radius:999px;
-  background:
-    radial-gradient(closest-side, rgba(0,0,0,.08), transparent 70%),
-    conic-gradient(from 0deg, var(--naranjo) 0 120deg, transparent 120deg 360deg);
+  top:0;
+  left:0;
+  right:0;
+  height:90px;
+  background:linear-gradient(to right,#fff 20%,var(--celeste) 80%);
+  border-bottom-right-radius:50% 40%;
+}
+
+/* Círculos decorativos */
+.ficha-flyer__decoracion{
+  position:absolute;
+  width:120px;
+  height:120px;
+  border-radius:50%;
   z-index:0;
 }
-.photo img{
+.decoracion--izq{
+  left:-60px; bottom:10px; background:var(--azul);
+}
+.decoracion--der{
+  right:-70px; bottom:-40px; background:var(--naranjo);
+}
+
+/* Imagen ovalada */
+.ficha-flyer__img{
   position:relative;
+  width:280px;
+  min-width:260px;
+  aspect-ratio:4/5;
+  border-radius:50% / 45%;
+  overflow:hidden;
+  border:6px solid var(--azul);
   z-index:1;
-  width:92%;
-  height:92%;
+  background:#fff;
+}
+.ficha-flyer__img img{
+  width:100%;
+  height:100%;
   object-fit:cover;
-  border-radius:999px;
-  box-shadow:0 8px 18px rgba(0,0,0,.14);
-  background:#fafafa;
 }
 
-/* Adorno naranja recortado como el flyer */
-.card::after{
-  content:"";
-  position:absolute;
-  right:-80px;
-  top:-40px;
-  width:220px;
-  height:220px;
-  background:var(--naranjo);
-  border-radius:50%;
-  filter:drop-shadow(0 10px 24px rgba(247,144,87,.35));
-  opacity:.9;
-}
-
-.card__main{
+/* Contenido */
+.ficha-flyer__contenido{
   position:relative;
-  flex:1;
-  padding:22px 26px 22px 20px;
-}
-
-.head{
-  margin-bottom:10px;
-}
-.head__title{
-  margin:0;
-  color:var(--azul);
-  font-weight:900;
-  letter-spacing:.3px;
-  font-size:clamp(18px,2.2vw,22px);
-  text-transform:uppercase;
-}
-.head__sci{
-  margin:2px 0 0;
-  font-style:italic;
-  color:#3a536f;
-  font-size:14px;
-}
-
-/* Ficha tipo DL con dos columnas: etiqueta y valor */
-.ficha{
-  margin:14px 0 0;
-  display:grid;
-  gap:10px;
-}
-.row{
-  display:grid;
-  grid-template-columns:140px 1fr;
-  gap:12px;
-  align-items:start;
-}
-.row dt{
-  color:var(--azul-oscuro);
-  font-weight:800;
-  font-size:14px;
-}
-.row dd{
-  margin:0;
+  z-index:2;
   color:var(--texto);
+}
+.ficha-flyer__titulo{
+  color:var(--azul);
+  font-size:clamp(22px,2.6vw,26px);
+  font-weight:900;
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+.ficha-flyer__cientifico{
   font-size:15px;
-  line-height:1.45;
+  color:#555;
+  margin-bottom:14px;
 }
 
-/* Responsivo de la tarjeta */
-@media (max-width:1100px){
-  .card__side{ min-width:240px; }
-  .row{ grid-template-columns:124px 1fr; }
+.ficha-flyer__contenido p{
+  font-size:16px;
+  line-height:1.6;
+  margin:6px 0;
 }
-@media (max-width:720px){
-  .card--split{ flex-direction:column; }
-  .card__side{
-    width:100%;
-    min-width:auto;
-    padding-bottom:18px;
-  }
-  .card::after{
-    right:-60px;
-    top:-60px;
-    width:180px;
-    height:180px;
-  }
+.ficha-flyer__contenido p span{
+  font-weight:800;
+  color:var(--azul);
 }
