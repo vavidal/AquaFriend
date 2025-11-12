@@ -1,108 +1,140 @@
-:root{ --header-h:88px; }
-@media (max-width:991.98px){ :root{ --header-h:72px; } }
-
-.app-header{
-  position:fixed;
-  top:0; left:0; right:0;
-  z-index:9999;
-  background:rgba(255,255,255,.88) !important;
-  backdrop-filter:blur(10px);
-  box-shadow:0 2px 15px rgba(0,0,0,.12) !important;
+:root {
+  --header-h: 88px;
 }
-
-.navbar{
-  padding:1.25rem 0;
-  transition:all .3s ease;
+@media (max-width: 991.98px) {
+  :root {
+    --header-h: 72px;
+  }
 }
-.navbar .container-fluid{ max-width:1400px; }
-
-.navbar-toggler-orange{
-  background-color:#ff8c42;
-  border:2px solid #ff8c42;
-  border-radius:8px;
-  padding:.5rem .75rem;
-  transition:all .3s ease;
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.12) !important;
 }
-.navbar-toggler-orange:hover{ background-color:#d95f14; border-color:#d95f14; }
-.navbar-toggler-orange:focus{ box-shadow:0 0 0 .2rem rgba(255,140,66,.5); outline:none; }
-.navbar-toggler-orange .navbar-toggler-icon{
-  background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+.navbar {
+  padding: 1.25rem 0;
+  transition: all 0.3s ease;
 }
-
-.logo-aquarium{
-  height:60px;
-  width:auto;
-  filter:brightness(1.1);
-  transition:transform .3s ease;
+.navbar .container-fluid {
+  max-width: 1400px;
 }
-.logo-aquarium:hover{ transform:scale(1.05); }
-
-#mainNav{ justify-content:center; }
-#mainNav .navbar-nav{
-  margin-left:auto;
-  margin-right:auto;
-  align-items:center;
-  text-align:center;
-  font-family:'Montserrat',sans-serif;
-  font-weight:600;
-  letter-spacing:.5px;
+.navbar-toggler-orange {
+  background-color: #ff8c42;
+  border: 2px solid #ff8c42;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.3s ease;
 }
-.navbar-nav .nav-link{
-  background:#195eb3;
-  color:#fff !important;
-  font-size:.95rem;
-  text-transform:capitalize;
-  padding:.75rem 1.5rem;
-  border-radius:30px;
-  transition:background .3s ease;
+.navbar-toggler-orange:hover {
+  background-color: #d95f14;
+  border-color: #d95f14;
 }
-.navbar-nav .nav-link:hover{ background:#ff7a28; }
-
-.btn-reservar{
-  text-transform:none;
-  font-size:inherit;
-  position:relative;
-  text-decoration:none;
-  padding:.6em 1.4em;
-  display:inline-block;
-  cursor:pointer;
-  border-radius:2.2rem;
-  border:none;
-  font-family:'Montserrat',sans-serif;
-  font-weight:600;
-  color:#fff;
-  background-color:#ff8c42;
-  transition:transform .2s, box-shadow .2s, background-color .2s, color .2s;
+.navbar-toggler-orange:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 140, 66, 0.5);
+  outline: none;
 }
-.btn-reservar:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 20px rgba(0,0,0,.18);
-  background-color:#195eb3;
+.navbar-toggler-orange .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
-.btn-reservar:active{
-  transform:translateY(-1px);
-  box-shadow:0 5px 10px rgba(0,0,0,.18);
-  background-color:#143a67;
+.logo-aquarium {
+  height: 60px;
+  width: auto;
+  filter: brightness(1.1);
+  transition: transform 0.3s ease;
 }
-.btn-reservar::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:100px;
-  background-color:#fff;
-  opacity:.15;
-  transition:transform .4s, opacity .4s;
-  z-index:-1;
+.logo-aquarium:hover {
+  transform: scale(1.05);
 }
-.btn-reservar:hover::after{ transform:scaleX(1.4) scaleY(1.6); opacity:0; }
-.btn-reservar:focus-visible{ outline:none; box-shadow:0 0 0 .2rem rgba(24,64,112,.35); }
-
-@media (max-width:991.98px){
-  .app-header{ background:rgba(0,40,70,.95) !important; }
-  .navbar-nav{ padding:1rem 0; text-align:center; }
-  .navbar-nav .nav-link{ margin:.5rem 0; }
-  .logo-aquarium{ height:50px; }
+#mainNav {
+  justify-content: center;
 }
-@media (max-width:575.98px){
-  .logo-aquarium{ height:40px; }
+#mainNav .navbar-nav {
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.navbar-nav .nav-link {
+  background: #195eb3;
+  color: #fff !important;
+  font-size: 0.95rem;
+  text-transform: capitalize;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+}
+.navbar-nav .nav-link:hover {
+  background: #ff7a28;
+}
+.btn-reservar {
+  text-transform: none;
+  font-size: inherit;
+  position: relative;
+  text-decoration: none;
+  padding: 0.6em 1.4em;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 2.2rem;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #fff;
+  background-color: #ff8c42;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s, color 0.2s;
+}
+.btn-reservar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+  background-color: #195eb3;
+}
+.btn-reservar:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.18);
+  background-color: #143a67;
+}
+.btn-reservar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 100px;
+  background-color: #fff;
+  opacity: 0.15;
+  transition: transform 0.4s, opacity 0.4s;
+  z-index: -1;
+}
+.btn-reservar:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+.btn-reservar:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(24, 64, 112, 0.35);
+}
+@media (max-width: 991.98px) {
+  .app-header {
+    background: rgba(0, 40, 70, 0.95) !important;
+  }
+  .navbar-nav {
+    padding: 1rem 0;
+    text-align: center;
+  }
+  .navbar-nav .nav-link {
+    margin: 0.5rem 0;
+  }
+  .logo-aquarium {
+    height: 50px;
+  }
+}
+@media (max-width: 575.98px) {
+  .logo-aquarium {
+    height: 40px;
+  }
 }

@@ -3,27 +3,19 @@
     <a class="navbar-brand" routerLink="/" (click)="closeNav()">
       <img src="/assets/icons/logo_acuario.png" alt="Aquarium" class="logo-aquarium">
     </a>
-
-    <button class="navbar-toggler navbar-toggler-orange" type="button"
-      data-bs-toggle="collapse" data-bs-target="#mainNav"
-      aria-controls="mainNav" aria-expanded="false"
-      aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-orange" type="button" (click)="toggleMenu()" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div id="mainNav" class="collapse navbar-collapse">
+    <div id="mainNav" class="collapse navbar-collapse" [class.show]="menuOpen">
       <ul class="navbar-nav mx-auto gap-4">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/"
-            [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active"
-            (click)="closeNav()">Inicio</a>
+          <a class="nav-link" routerLink="/" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" (click)="closeNav()">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/us" routerLinkActive="active"
-            (click)="closeNav()">Sobre Nosotros</a>
+          <a class="nav-link" routerLink="/us" routerLinkActive="active" (click)="closeNav()">Sobre Nosotros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/reservas" routerLinkActive="active">Reservas</a>
+          <a class="nav-link" routerLink="/reservas" routerLinkActive="active" (click)="closeNav()">Reservas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#entradas" (click)="closeNav()">Entradas</a>

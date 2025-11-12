@@ -1,5 +1,5 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, AfterViewInit, HostListener, inject } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,19 +10,29 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./header.css']
 })
 export class Header implements AfterViewInit {
+  menuOpen = false;
+  private readonly router = inject(Router);
   private readonly isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
 
+  constructor() {
+    this.router.events.subscribe(() => (this.menuOpen = false));
+  }
+
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
   closeNav(): void {
-    if (!this.isBrowser) return;
-    const navbarToggler = document.querySelector('.navbar-toggler') as HTMLElement | null;
-    const navbarCollapse = document.querySelector('.navbar-collapse') as HTMLElement | null;
-    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-      navbarToggler?.dispatchEvent(new Event('click'));
-    }
+    this.menuOpen = false;
   }
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
+    this.updateNavOffset();
+  }
+
+  @HostListener('window:resize')
+  onResize(): void {
     this.updateNavOffset();
   }
 
