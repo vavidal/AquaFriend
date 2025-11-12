@@ -1,6 +1,7 @@
-﻿import { Component, inject } from '@angular/core';
+﻿import { Component, AfterViewInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { ContactService, ContactRequest } from '../../services/contact.service';
 import { ReservaService, ReservaRequest } from '../../services/reserva.service';
 
@@ -11,11 +12,11 @@ type GalleryItem = { src: string; title: string; text?: string };
 @Component({
   selector: 'app-main-body',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './main-body.html',
   styleUrls: ['./main-body.css']
 })
-export class MainBody {
+export class MainBody implements AfterViewInit {
   images: GalleryItem[] = [
     { src: 'assets/img/_DSC5200.JPG', title: 'Pez en acuario' },
     { src: 'assets/img/_DSC5247.JPG', title: 'Interaccion' },
@@ -187,7 +188,7 @@ export class MainBody {
     };
     this.enviandoReserva = true;
     this.reservaSvc.crearReserva(payload).subscribe({
-      next: (response) => {
+      next: response => {
         this.enviandoReserva = false;
         if (response.success) {
           this.successReserva = 'Solicitud enviada correctamente. Te contactaremos por correo para coordinar tu visita.';

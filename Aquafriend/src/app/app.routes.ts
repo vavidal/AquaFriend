@@ -6,7 +6,7 @@ export const routes: Routes = [
   {
     path: 'view360',
     loadChildren: () =>
-      import('./view360/view360.routes').then(m => m.VIEW360_ROUTES)
+      import('../app/view360/view360.routes').then(m => m.VIEW360_ROUTES)
   },
   {
     path: 'dashboard',
