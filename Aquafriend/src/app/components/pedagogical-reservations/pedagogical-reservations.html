@@ -1,148 +1,379 @@
-<section id="reserva-educativa" class="py-5 bg-light-subtle">
+<section id="hero-programas" class="hero-programas reef-bg">
+  <div class="hero-wrap">
+    <h1 class="hero-title" style="font-family:'Montserrat',sans-serif;">
+      <span class="k1">Programas Pedagógicos</span>
+    </h1>
+    <p class="hero-sub" style="font-family:'Montserrat',sans-serif;">
+      Aprendizaje vivencial en acuario y granja educativa, con foco en
+      conservación y biodiversidad local.
+    </p>
+  </div>
+</section>
+
+<section id="info-programas" class="py-5 bg-light">
   <div class="container" style="font-family:'Montserrat',sans-serif;">
-    <div class="section-head text-center mb-4">
-      <h2 class="display-6 fw-bold title">Haz tu reserva educativa</h2>
-      <p class="sub">
-        Coordina tu visita guiada al Parque Acuario Puyehue y recibe confirmación por correo.
+    <div class="row g-4 align-items-center">
+      <div class="col-12 col-lg-6">
+        <h2 class="section-title accent">Recorre y aprende</h2>
+        <p class="section-lead">
+          Recorre el acuario educativo de agua dulce del sur de Chile y vive una
+          experiencia guiada que une ciencia,
+          naturaleza y aprendizaje significativo. Conoce especies nativas y
+          salmonídeas, participa en actividades de
+          granja con enfoque responsable y disfruta de un coto de pesca
+          recreativa con devolución.
+        </p>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="info-image">
+          <img src="assets/img/_DSC5247.JPG" alt="Actividades pedagógicas">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="carrusel-programas" class="py-3">
+  <div class="container">
+    <div id="carouselProg" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner rounded-4 overflow-hidden shadow-sm">
+        <div class="carousel-item active">
+          <img src="assets/img/1.jpg" class="d-block w-100" alt="Visita guiada">
+        </div>
+        <div class="carousel-item">
+          <img src="assets/img/1.jpg" class="d-block w-100"
+            alt="Taller práctico">
+        </div>
+        <div class="carousel-item">
+          <img src="assets/img/1.jpg" class="d-block w-100"
+            alt="Laboratorio de agua">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button"
+        data-bs-target="#carouselProg" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button"
+        data-bs-target="#carouselProg" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="programas" class="py-5 bg-light">
+  <div class="container" style="font-family:'Montserrat',sans-serif;">
+    <div class="text-center mb-4">
+      <p class="lead m-0 text-body-secondary">
+        Elige el programa que mejor se adapte a tu grupo. Todos incluyen
+        orientación previa y recomendaciones de seguridad.
       </p>
+      <div class="precio-educativo mt-3">
+        <strong class="precio-educativo-titulo">Importante sobre
+          precios</strong>
+        <p class="precio-educativo-texto m-0">
+          Los programas educativos/pedagógicos poseen un <strong>precio
+            diferente</strong> al valor general de entrada al público.
+          La información de precios será enviada por <strong>WhatsApp o
+            correo</strong> según el medio que registres en tu solicitud de
+          reserva.
+        </p>
+      </div>
     </div>
 
-    <div class="row g-4 align-items-start">
-      <div class="col-12 col-lg-7">
-        <div class="card shadow-sm reserva-card">
-          <div class="card-body p-4 p-md-5">
-            <h3 class="reserva-title text-center mb-4">Formulario de solicitud</h3>
-
-            <form class="reserva-form" [formGroup]="reservaForm" (ngSubmit)="onReservaSubmit()">
-              <div class="reserva-fields mx-auto">
-                <div class="row g-3">
-                  <div class="col-12 col-md-6">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input id="nombre" type="text" formControlName="nombre" class="form-control" placeholder="Nombre">
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <label for="apellido" class="form-label">Apellido</label>
-                    <input id="apellido" type="text" formControlName="apellido" class="form-control" placeholder="Apellido">
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <label for="telefono" class="form-label">Teléfono</label>
-                    <input id="telefono" type="tel" formControlName="telefono" class="form-control" placeholder="+56 9 1234 5678">
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <label for="institucion" class="form-label">Nombre institución</label>
-                    <input id="institucion" type="text" formControlName="institucion" class="form-control" placeholder="Nombre del colegio o institución">
-                  </div>
-                  <div class="col-12">
-                    <label for="direccion" class="form-label">Dirección</label>
-                    <input id="direccion" type="text" formControlName="direccion" class="form-control" placeholder="Calle, número, comuna">
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <label for="region" class="form-label">Región</label>
-                    <select id="region" formControlName="region" class="form-select">
-                      <option value="">Seleccione...</option>
-                      <option *ngFor="let r of regiones" [value]="r">{{ r }}</option>
-                    </select>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <label for="correo" class="form-label">Correo de contacto</label>
-                    <input id="correo" type="email" formControlName="correo" class="form-control" placeholder="correo@institucion.cl">
-                  </div>
-                </div>
-
-                <div class="row g-3 mt-1">
-                  <div class="col-12">
-                    <label for="programa" class="form-label">Programa educativo</label>
-                    <select id="programa" formControlName="programa" class="form-select">
-                      <option value="">Seleccione...</option>
-                      <option value="Visita básica">Visita básica</option>
-                      <option value="Visita académica">Visita académica</option>
-                      <option value="Taller aplicado">Taller aplicado</option>
-                    </select>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <label for="fecha" class="form-label">Fecha para reservar</label>
-                    <input id="fecha" type="date" formControlName="fecha" class="form-control">
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <label for="personas" class="form-label">Cantidad de personas</label>
-                    <input id="personas" type="number" formControlName="personas" class="form-control" min="1" placeholder="Ej: 30">
-                  </div>
-                </div>
-
-                <div class="mt-3">
-                  <label for="comentarios" class="form-label">Comentarios adicionales</label>
-                  <textarea
-                    id="comentarios"
-                    rows="3"
-                    formControlName="comentarios"
-                    class="form-control"
-                    placeholder="Ingresa información adicional de la solicitud de reserva para poder contactarnos"
-                  ></textarea>
-                </div>
-
-                <div *ngIf="successReserva" class="alert alert-success small mt-3">
-                  {{ successReserva }}
-                </div>
-                <div *ngIf="errorReserva" class="alert alert-danger small mt-2">
-                  {{ errorReserva }}
-                </div>
-
-                <div class="text-center mt-4">
-                  <button type="submit" class="btn btn-brand btn-send" [disabled]="enviandoReserva">
-                    {{ enviandoReserva ? 'Enviando...' : 'Enviar solicitud' }}
-                  </button>
-                </div>
-              </div>
-            </form>
-
+    <div class="row g-4">
+      <div class="col-12 col-md-4">
+        <div class="programa-card programa-card-1">
+          <div class="programa-decoracion">
+            <div class="programa-circulo circulo-azul-1"></div>
+            <div class="programa-circulo circulo-naranja-1"></div>
+          </div>
+          <div class="programa-content">
+            <h6 class="programa-numero">PROGRAMA N°1</h6>
+            <h5 class="programa-titulo">Visita básica</h5>
+            <p class="text-body-secondary mb-3">
+              Introducción al ecosistema de agua dulce y a la vida rural.
+              Recorrido guiado por acuarios y granja con
+              actividades breves para reconocer especies, cuidados fundamentales
+              y el ciclo del agua.
+            </p>
+            <ul class="programa-lista">
+              <li>Recorrido por acuarios y granja con monitora.</li>
+              <li>Juego didáctico e introducción a cuencas y hábitats.</li>
+              <li>Duración: 30–45 min por grupo (máx. 35 personas).</li>
+              <li>Sugerido: 1° a 5° básico y familias.</li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <div class="col-12 col-lg-5">
-        <aside class="reserva-info rounded-3 h-100 p-4">
-          <h3 class="h5 mb-3 side-title">Recomendaciones para tu visita</h3>
-          <ul class="reserva-bullets m-0 mt-3">
-            <li>Este formulario es para fines de <strong>reservas pedagógicas</strong>.</li>
-            <li>Reserva con <strong>al menos 5 días</strong> de anticipación.</li>
-            <li>Grupos recomendados: <strong>hasta 35 personas por turno</strong>.</li>
-            <li>Llega con tiempo para recorrer todas las áreas.</li>
-            <li>
-              El precio para reservas educativas es <strong>reservado</strong>. Completa el formulario y accede a coordinación de visita y precios.
-            </li>
-          </ul>
-
-        </aside>
-
-        <div class="reserva-contacto">
-            <p class="reserva-contacto-label">Comunícate con nosotros por:</p>
-            <div class="reserva-contacto-links">
-              <a
-                href="https://wa.me/56986344271"
-                target="_blank"
-                rel="noopener"
-                class="contacto-link"
-              >
-                <span class="contacto-icon">
-                  <i class="bi bi-whatsapp"></i>
-                </span>
-                <span class="contacto-text">WhatsApp</span>
-              </a>
-
-              <a
-                href="mailto:acuariopuyehue@gmail.com"
-                class="contacto-link"
-              >
-                <span class="contacto-icon mail-icon">
-                  <i class="bi bi-envelope"></i>
-                </span>
-                <span class="contacto-text">Correo electrónico</span>
-              </a>
-            </div>
+      <div class="col-12 col-md-4">
+        <div class="programa-card programa-card-2">
+          <div class="programa-decoracion">
+            <div class="programa-circulo circulo-naranja-2"></div>
+            <div class="programa-circulo circulo-celeste-2"></div>
           </div>
+          <div class="programa-content">
+            <h6 class="programa-numero">PROGRAMA N°2</h6>
+            <h5 class="programa-titulo">Visita académica</h5>
+            <p class="text-body-secondary mb-3">
+              Profundización en biología, química del agua e ingeniería aplicada
+              a sistemas de cultivo y recirculación.
+              Conversatorio con el equipo y análisis de casos locales.
+            </p>
+            <ul class="programa-lista">
+              <li>Contenidos científicos y práctica de observación.</li>
+              <li>Diálogo con profesionales del acuario.</li>
+              <li>Duración: 60–90 min por grupo.</li>
+              <li>Sugerido: 6° básico a 4° medio.</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
+      <div class="col-12 col-md-4">
+        <div class="programa-card programa-card-3">
+          <div class="programa-decoracion">
+            <div class="programa-circulo circulo-celeste-3"></div>
+            <div class="programa-circulo circulo-azul-3"></div>
+          </div>
+          <div class="programa-content">
+            <h6 class="programa-numero">PROGRAMA N°3</h6>
+            <h5 class="programa-titulo">Taller aplicado</h5>
+            <p class="text-body-secondary mb-3">
+              Proyectos prácticos: medición de parámetros del agua, trazabilidad
+              de especies y acciones de conservación en comunidad.
+            </p>
+            <ul class="programa-lista">
+              <li>Aprendizaje basado en proyectos (ABP).</li>
+              <li>Instrumentos y registros en terreno.</li>
+              <li>Duración: 90–120 min por grupo.</li>
+              <li>Sugerido: 6° básico a 4° medio y TP.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="alert alert-info mt-3 small mb-0">
+      Reservas con mínimo 5 días de anticipación. Traslados y seguros son
+      responsabilidad de la institución solicitante.
     </div>
   </div>
 </section>
+
+<section id="galeria-programas" class="py-5">
+  <div class="container">
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <div class="gal-img">
+          <img src="assets/img/_DSC7810.JPG" alt>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="gal-img">
+          <img src="assets/img/_DSC7529.JPG" alt>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="gal-img">
+          <img src="assets/img/_DSC6353.jpg" alt>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="gal-img">
+          <img src="assets/img/_DSC6217.jpg" alt>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reserva-educativa" class="py-5 bg-light-subtle">
+  <div class="container" style="font-family:'Montserrat',sans-serif;">
+    <div class="section-head text-center mb-4">
+      <h2 class="display-6 fw-bold title">Haz tu reserva pedagógica</h2>
+      <p class="sub">
+        Coordina la visita educativa de tu curso al Parque Acuario Puyehue y
+        recibe la confirmación por correo.
+      </p>
+    </div>
+    <section id="reserva-educativa" class="py-5 bg-light-subtle">
+      <div class="container" style="font-family:'Montserrat',sans-serif;">
+
+        <div class="row g-4 align-items-start">
+          <div class="col-12 col-lg-7">
+            <div class="card shadow-sm reserva-card">
+              <div class="card-body p-4 p-md-5">
+                <h3 class="reserva-title text-center mb-4">Formulario de
+                  solicitud</h3>
+
+                <form class="reserva-form" [formGroup]="reservaForm"
+                  (ngSubmit)="onReservaSubmit()">
+                  <div class="reserva-fields mx-auto">
+                    <div class="row g-3">
+                      <div class="col-12 col-md-6">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input id="nombre" type="text" formControlName="nombre"
+                          class="form-control" placeholder="Nombre">
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label for="apellido"
+                          class="form-label">Apellido</label>
+                        <input id="apellido" type="text"
+                          formControlName="apellido" class="form-control"
+                          placeholder="Apellido">
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label for="telefono"
+                          class="form-label">Teléfono</label>
+                        <input id="telefono" type="tel"
+                          formControlName="telefono" class="form-control"
+                          placeholder="+56 9 1234 5678">
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label for="institucion" class="form-label">Nombre
+                          institución</label>
+                        <input id="institucion" type="text"
+                          formControlName="institucion" class="form-control"
+                          placeholder="Nombre del colegio o institución">
+                      </div>
+                      <div class="col-12">
+                        <label for="direccion"
+                          class="form-label">Dirección</label>
+                        <input id="direccion" type="text"
+                          formControlName="direccion" class="form-control"
+                          placeholder="Calle, número, comuna">
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label for="region" class="form-label">Región</label>
+                        <select id="region" formControlName="region"
+                          class="form-select">
+                          <option value>Seleccione...</option>
+                          <option *ngFor="let r of regiones" [value]="r">{{ r
+                            }}</option>
+                        </select>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label for="correo" class="form-label">Correo de
+                          contacto</label>
+                        <input id="correo" type="email" formControlName="correo"
+                          class="form-control"
+                          placeholder="correo@institucion.cl">
+                      </div>
+                    </div>
+
+                    <div class="row g-3 mt-1">
+                      <div class="col-12">
+                        <label for="programa" class="form-label">Programa
+                          educativo</label>
+                        <select id="programa" formControlName="programa"
+                          class="form-select">
+                          <option value>Seleccione...</option>
+                          <option value="Visita básica">Visita básica</option>
+                          <option value="Visita académica">Visita
+                            académica</option>
+                          <option value="Taller aplicado">Taller
+                            aplicado</option>
+                        </select>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label for="fecha" class="form-label">Fecha para
+                          reservar</label>
+                        <input id="fecha" type="date" formControlName="fecha"
+                          class="form-control">
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label for="personas" class="form-label">Cantidad de
+                          personas</label>
+                        <input id="personas" type="number"
+                          formControlName="personas" class="form-control"
+                          min="1" placeholder="Ej: 30">
+                      </div>
+                    </div>
+
+                    <div class="mt-3">
+                      <label for="comentarios" class="form-label">Comentarios
+                        adicionales</label>
+                      <textarea
+                        id="comentarios"
+                        rows="3"
+                        formControlName="comentarios"
+                        class="form-control"
+                        placeholder="Ingresa información adicional de la solicitud de reserva para poder contactarnos"></textarea>
+                    </div>
+
+                    <div *ngIf="successReserva"
+                      class="alert alert-success small mt-3">
+                      {{ successReserva }}
+                    </div>
+                    <div *ngIf="errorReserva"
+                      class="alert alert-danger small mt-2">
+                      {{ errorReserva }}
+                    </div>
+
+                    <div class="text-center mt-4">
+                      <button type="submit" class="btn btn-brand btn-send"
+                        [disabled]="enviandoReserva">
+                        {{ enviandoReserva ? 'Enviando...' : 'Enviar solicitud'
+                        }}
+                      </button>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-5">
+            <aside class="reserva-info rounded-3 h-100 p-4">
+              <h3 class="h5 mb-3 side-title">Recomendaciones para tu visita</h3>
+              <ul class="reserva-bullets m-0 mt-3">
+                <li>Este formulario es para fines de <strong>reservas
+                    pedagógicas</strong>.</li>
+                <li>Reserva con <strong>al menos 5 días</strong> de
+                  anticipación.</li>
+                <li>Grupos recomendados: <strong>hasta 35 personas por
+                    turno</strong>.</li>
+                <li>Llega con tiempo para recorrer todas las áreas.</li>
+                <li>
+                  El precio para reservas educativas es
+                  <strong>reservado</strong>. Completa el formulario y accede a
+                  coordinación de visita y precios.
+                </li>
+              </ul>
+
+            </aside>
+
+            <div class="reserva-contacto">
+              <p class="reserva-contacto-label">Comunícate con nosotros por:</p>
+              <div class="reserva-contacto-links">
+                <a
+                  href="https://wa.me/56986344271"
+                  target="_blank"
+                  rel="noopener"
+                  class="contacto-link">
+                  <span class="contacto-icon">
+                    <i class="bi bi-whatsapp"></i>
+                  </span>
+                  <span class="contacto-text">WhatsApp</span>
+                </a>
+
+                <a
+                  href="mailto:acuariopuyehue@gmail.com"
+                  class="contacto-link">
+                  <span class="contacto-icon mail-icon">
+                    <i class="bi bi-envelope"></i>
+                  </span>
+                  <span class="contacto-text">Correo electrónico</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>

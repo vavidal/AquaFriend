@@ -60,6 +60,7 @@
   font-weight:1000;
   font-size:clamp(42px,6vw,72px);
   letter-spacing:.2px;
+  color:#ed7607;
 }
 
 .hero-title .k1{
@@ -67,7 +68,7 @@
 }
 
 .hero-title .k2{
-  color:#fff;
+  color:#ed7607;
 }
 
 .hero-sub{
@@ -78,11 +79,15 @@
   opacity:.97;
 }
 
+.section-title.accent{
+  color:#ea8417;
+}
+
 #info-programas .section-title{
   margin:0 0 .75rem 0;
+  color:#ea8417;
   font-weight:900;
   line-height:1.1;
-  color:var(--naranjo) !important;
   font-size:clamp(28px,3.2vw,40px);
   letter-spacing:.2px;
 }
@@ -93,7 +98,7 @@
   width:68px;
   height:6px;
   border-radius:4px;
-  background:var(--naranjo);
+  color:#ea8417;
   margin-top:.5rem;
 }
 
