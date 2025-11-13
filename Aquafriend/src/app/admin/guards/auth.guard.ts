@@ -1,24 +1,25 @@
-import { inject, PLATFORM_ID } from '@angular/core';
-import { Router, CanActivateFn } from '@angular/router';
+﻿import { inject, PLATFORM_ID } from '@angular/core';
+import { Router, CanActivateFn, UrlTree } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const platformId = inject(PLATFORM_ID);
+  const auth = inject(AuthService);
 
-  // Solo verificar localStorage en el navegador
   if (isPlatformBrowser(platformId)) {
-    const isLoggedIn = localStorage.getItem('admin_logged_in') === '1';
-
-    if (!isLoggedIn) {
-      // Redirigir al login si no está autenticado
-      router.navigate(['/admin/login']);
-      return false;
+    if (auth.isLoggedIn()) {
+      return true;
     }
 
-    return true;
+    auth.logout();
+    const tree: UrlTree = router.createUrlTree(['/admin/login'], {
+      queryParams: state.url && state.url !== '/' ? { returnUrl: state.url } : undefined
+    });
+    return tree;
   }
 
-  // En el servidor, permitir la navegación (será verificado en el cliente)
+  // En el servidor delegamos esta validacion al cliente
   return true;
 };
