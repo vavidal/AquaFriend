@@ -82,7 +82,7 @@
   margin:0 0 .75rem 0;
   font-weight:900;
   line-height:1.1;
-  color:var(--naranjo);
+  color:var(--naranjo) !important;
   font-size:clamp(28px,3.2vw,40px);
   letter-spacing:.2px;
 }
@@ -514,7 +514,7 @@
 }
 
 #reserva-educativa .side-title{
-  color:#e45a11;
+  color:#000;
   font-weight:1000;
   letter-spacing:.2px;
   margin-bottom:.75rem;
@@ -530,7 +530,7 @@
 #reserva-educativa .reserva-bullets li{
   position:relative;
   padding-left:2.1rem;
-  color:#3a2419;
+  color:#000;
   font-weight:800;
   line-height:1.45;
 }
@@ -545,6 +545,67 @@
   border-radius:50%;
   background:linear-gradient(135deg,#ff7b32 0%,#e45a11 100%);
   box-shadow:0 2px 6px rgba(228,90,17,.35);
+}
+
+#reserva-educativa .reserva-contacto{
+  margin-top:1.5rem;
+}
+
+#reserva-educativa .reserva-contacto-label{
+  margin:0 0 .6rem;
+  font-weight:900;
+  color:#000;
+  font-size:.98rem;
+}
+
+#reserva-educativa .reserva-contacto-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.75rem;
+}
+
+#reserva-educativa .contacto-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  padding:.55rem 1rem;
+  border-radius:999px;
+  background:#ffffff;
+  border:1px solid rgba(228,90,17,.32);
+  text-decoration:none;
+  font-weight:800;
+  font-size:.9rem;
+  color:#000;
+  box-shadow:0 4px 12px rgba(228,90,17,.18);
+}
+
+#reserva-educativa .contacto-link:hover{
+  background:#ffe1cf;
+  color:#000;
+}
+
+#reserva-educativa .contacto-icon{
+  width:1.6rem;
+  height:1.6rem;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:#ffffff;
+  border:2px solid #25d366;
+}
+
+#reserva-educativa .mail-icon{
+  border-color:#ff7b32;
+}
+
+#reserva-educativa .contacto-icon i{
+  font-size:.95rem;
+  color:#25d366;
+}
+
+#reserva-educativa .mail-icon i{
+  color:#ff7b32;
 }
 
 @media (min-width:992px){
