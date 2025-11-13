@@ -3,7 +3,8 @@ import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
-import { filter } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class App {
   protected readonly isAdminRoute = signal(false);
   private readonly isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
   private readonly router = inject(Router);
+  private readonly titleService = inject(Title);
 
   constructor() {
     if (this.isBrowser) {
@@ -27,10 +29,23 @@ export class App {
     this.updateBodyClass();
     this.router.events
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
-      .subscribe((e) => {
+      .subscribe(e => {
         this.isAdminRoute.set(this.isAdminOrDashboard(e.urlAfterRedirects));
         this.updateBodyClass();
       });
+
+    this.router.events
+      .pipe(
+        filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+        map(() => this.router.routerState.root),
+        map(route => {
+          while (route.firstChild) {
+            route = route.firstChild;
+          }
+          return route.snapshot.data?.['title'] ?? 'AquaFriend';
+        })
+      )
+      .subscribe(pageTitle => this.titleService.setTitle(pageTitle));
   }
 
   private isAdminOrDashboard(url: string): boolean {

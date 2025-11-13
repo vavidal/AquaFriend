@@ -17,7 +17,7 @@ interface FichaFauna {
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [NgFor, NgIf, NgClass],
+  imports: [NgFor, NgIf],
   templateUrl: './catalogo.html',
   styleUrl: './catalogo.scss'
 })
