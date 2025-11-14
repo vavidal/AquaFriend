@@ -1,6 +1,7 @@
 const db = require('../config/database');
+const bcrypt = require('bcrypt');
 
-// Login simple (sin encriptación por ahora)
+// Login con verificación usando bcrypt
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -40,8 +41,9 @@ exports.login = async (req, res) => {
       });
     }
 
-    // Verificar la contraseña (por ahora en texto plano)
-    if (usuario.pass_hash !== password) {
+    // Verificar la contraseña usando bcrypt
+    const passwordValida = await bcrypt.compare(password, usuario.pass_hash);
+    if (!passwordValida) {
       return res.status(401).json({
         success: false,
         message: 'Credenciales incorrectas'

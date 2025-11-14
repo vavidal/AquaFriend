@@ -1,4 +1,5 @@
 const db = require('../config/database');
+const bcrypt = require('bcrypt');
 
 exports.obtenerTodos = async (req, res) => {
   try {
@@ -45,10 +46,11 @@ exports.crear = async (req, res) => {
     if (usuariosExistentes.length > 0) {
       return res.status(400).json({ success: false, message: 'El email ya está registrado' });
     }
+    const hashedPassword = await bcrypt.hash(password, 12);
     const [resultado] = await db.query(
       `INSERT INTO usuarios (nombre, apellido, email, pass_hash, role_id, activo)
        VALUES (?, ?, ?, ?, ?, 1)`,
-      [nombre, apellido, email, password, role_id]
+      [nombre, apellido, email, hashedPassword, role_id]
     );
     const [nuevoUsuario] = await db.query(
       `SELECT u.id_usuario, u.nombre, u.apellido, u.email, u.activo,
@@ -87,7 +89,11 @@ exports.actualizar = async (req, res) => {
     if (nombre !== undefined) { campos.push('nombre = ?'); valores.push(nombre); }
     if (apellido !== undefined) { campos.push('apellido = ?'); valores.push(apellido); }
     if (email !== undefined) { campos.push('email = ?'); valores.push(email); }
-    if (password !== undefined && password !== '') { campos.push('pass_hash = ?'); valores.push(password); }
+    if (password !== undefined && password !== '') {
+      const hashedPassword = await bcrypt.hash(password, 12);
+      campos.push('pass_hash = ?');
+      valores.push(hashedPassword);
+    }
     if (role_id !== undefined) { campos.push('role_id = ?'); valores.push(role_id); }
     if (activo !== undefined) { campos.push('activo = ?'); valores.push(activo); }
     if (campos.length === 0) {
