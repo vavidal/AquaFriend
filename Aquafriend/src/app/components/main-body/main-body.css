@@ -151,6 +151,24 @@ section + section::before{
   transform:scale(1.08);
   filter:brightness(1.1) saturate(1.2);
 }
+.exhibicion-card{
+  min-height:500px;
+  display:flex;
+  flex-direction:column;
+}
+.exhibicion-card .card-title{
+  font-weight:700;
+}
+.exhibicion-card .card-body{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+  padding:2rem;
+}
+.exhibicion-card .card-text{
+  flex:1;
+}
 
 .gallery-section{background:linear-gradient(180deg,#f8f9fa 0%,#ffffff 100%)}
 .gallery-title{
@@ -436,10 +454,17 @@ section + section::before{
   width:2.5rem;height:2.5rem;background-size:1.4rem 1.4rem;
   border-radius:50%;padding:.65rem;background:rgba(0,0,0,.55);
   box-shadow:0 4px 12px rgba(0,0,0,.4);opacity:1 !important;z-index:1058;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1.5rem;font-weight:700;border:none;
 }
 .modal-soft .modal-soft-close:hover{background:rgba(0,0,0,.7)}
 .modal-soft .modal-soft-close:focus{
   outline:none;box-shadow:0 0 0 .2rem rgba(255,255,255,.25);
+}
+.gallery-close span{
+  display:block;
+  line-height:1;
+  font-size:1.4rem;
 }
 .acuario-info{
   background:#d7e6ea;
@@ -530,6 +555,7 @@ section + section::before{
   gap:1rem;
   align-items:flex-start;
   box-shadow:0 14px 36px rgba(0,0,0,.18);
+  margin-bottom:1.5rem;
 }
 .schedule-icon{
   width:48px;height:48px;border-radius:12px;
