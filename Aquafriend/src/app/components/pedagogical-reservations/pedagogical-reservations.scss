@@ -25,7 +25,7 @@
   background:
     radial-gradient(120% 70% at 50% 100%, rgba(24,79,134,.55) 0%, rgba(24,79,134,.15) 60%, rgba(24,79,134,0) 100%),
     linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.20)),
-    url('/assets/img/4.jpg') center/cover no-repeat fixed;
+    url('/assets/img/coto_pesca_perspectiva.JPG') center/cover no-repeat fixed;
   overflow:hidden;
 }
 
@@ -148,10 +148,51 @@
   box-shadow:var(--sombra);
 }
 
-#carrusel-programas .carousel-item img{
+#carrusel-programas{
+  position:relative;
   width:100%;
-  height:440px;
-  object-fit:cover;
+  min-height:320px;
+  padding:120px 16px;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.25)),
+    url('/assets/img/img_gato.JPG') center/cover no-repeat fixed;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+}
+
+#carrusel-programas .cta-content{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  align-items:center;
+  color:#fff;
+  text-shadow:0 4px 16px rgba(0,0,0,.45);
+}
+
+#carrusel-programas .cta-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:12px 26px;
+  border-radius:999px;
+  background:rgba(255,255,255,.92);
+  color:#0f172a;
+  font-weight:900;
+  font-size:1.05rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  box-shadow:0 12px 26px rgba(0,0,0,.25);
+}
+
+#carrusel-programas .cta-description{
+  margin:0;
+  font-size:clamp(20px,2vw,28px);
+  font-weight:700;
 }
 
 #programas{
@@ -357,11 +398,20 @@
     background:
       radial-gradient(120% 70% at 50% 100%, rgba(24,79,134,.55) 0%, rgba(24,79,134,.15) 60%, rgba(24,79,134,0) 100%),
       linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.20)),
-      url('/assets/img/10.jpg') center/cover no-repeat;
+      url('/assets/img/coto_pesca_perspectiva.JPG') center/cover no-repeat;
   }
 
-  #carrusel-programas .carousel-item img{
-    height:300px;
+  #carrusel-programas{
+    min-height:240px;
+    padding:90px 12px;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,.4), rgba(0,0,0,.3)),
+      url('/assets/img/img_gato.JPG') center/cover no-repeat;
+  }
+
+  #carrusel-programas .cta-chip{
+    font-size:.95rem;
+    padding:10px 20px;
   }
 
   .programa-card{
