@@ -1,0 +1,1 @@
+import{Ab as n,Tb as o,bb as a,zb as s}from"./chunk-QBEFWKYD.js";import"./chunk-7CGTOI24.js";var i=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=a({type:t,selectors:[["app-tabs"]],decls:2,vars:0,template:function(e,m){e&1&&(s(0,"p"),o(1,"tabs works!"),n())},encapsulation:2})};export{i as Tabs};

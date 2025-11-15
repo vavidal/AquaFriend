@@ -1,0 +1,1 @@
+import{d as e}from"./chunk-XW6C4BFY.js";import{s as o}from"./chunk-JO5SKNO5.js";import{Y as t,wa as r}from"./chunk-QBEFWKYD.js";var d=(i,m)=>{let n=t(e),a=t(r);return o(a)?localStorage.getItem("admin_logged_in")==="1"?!0:(n.navigate(["/admin/login"]),!1):!0};export{d as a};

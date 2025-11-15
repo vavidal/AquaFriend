@@ -1,0 +1,1 @@
+html{scroll-behavior:smooth}:root{--nav-offset: 72px}body{padding-top:0}body.with-nav{padding-top:var(--nav-offset)}section[id]{scroll-margin-top:var(--nav-offset)}
