@@ -18,6 +18,16 @@ mat-toolbar.aquafriend-toolbar {
 .aquafriend-toolbar .material-symbols-rounded { font-size: 28px; color: #ffffff; }
 .brand-logo { height: 56px; width: auto; margin-left: 12px; display: block; }
 .example-spacer { flex: 1 1 auto; }
+.main-site-link {
+  color: #ffffff;
+  border-color: #38bdf8;
+  text-transform: none;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.main-site-link:hover {
+  background: rgba(56, 189, 248, 0.15);
+}
 
 .user-area { display: flex; align-items: center; gap: 10px; }
 .toolbar-icon .bi { font-size: 30px; color: #ffffff; }

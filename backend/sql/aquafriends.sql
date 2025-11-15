@@ -252,6 +252,6 @@ INSERT INTO `roles` (`id_role`,`nombre`) VALUES
 (1,'Administrador'),(2,'Editor'),(3,'Visitante');
 
 INSERT INTO `usuarios` (`id_usuario`,`nombre`,`apellido`,`email`,`pass_hash`,`role_id`,`activo`,`created_at`,`updated_at`) VALUES
-(1,'Admin','AquaFriend','admin','administrator@2025',1,1,'2025-10-12 00:41:36','2025-10-13 18:05:26');
+(1,'Admin','AquaFriend','admin','$2b$12$gw7TiHS.yUNnEQsMQF..wul60dZJXGJjHJER8AtsOxphP7AQ9LdJi',1,1,'2025-10-12 00:41:36','2025-10-13 18:05:26');
 
 COMMIT;
