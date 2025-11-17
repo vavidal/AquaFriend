@@ -44,12 +44,47 @@ export class Peces {
   }
 
   img(p: Pez) {
-    return p.imagen_referencial || 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44"><rect width="100%" height="100%" fill="%23e5edf4"/></svg>';
+    return p.imagen_referencial || 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="88" height="88"><rect width="100%" height="100%" fill="%23e5edf4"/></svg>';
   }
 
   onOpenFilters() {}
   goCreate() { this.router.navigate(['/dashboard/peces/crear']); }
   goEdit(id: number) { this.router.navigate(['/dashboard/peces/editar', id]); }
+
+  descargarExcel() {
+    const rows = this.peces();
+    if (!rows.length) {
+      alert('No hay datos para exportar.');
+      return;
+    }
+    const escapeCell = (value?: string | number | null) =>
+      value === undefined || value === null ? '' : String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+    const header = ['Especie', 'Descripción', 'Hábitat', 'Alimentación', 'Tamaño', 'Registro'];
+    const thead = `<tr>${header.map(h => `<th>${h}</th>`).join('')}</tr>`;
+    const tbody = rows.map(p => {
+      const fecha = p.fecha_registro ? new Date(p.fecha_registro).toLocaleDateString('es-CL') : '';
+      return `<tr>
+        <td>${escapeCell(p.especie)}</td>
+        <td>${escapeCell(p.descripcion)}</td>
+        <td>${escapeCell(p.habitat)}</td>
+        <td>${escapeCell(p.alimentacion)}</td>
+        <td>${escapeCell(p.tamano_promedio)}</td>
+        <td>${escapeCell(fecha)}</td>
+      </tr>`;
+    }).join('');
+
+    const table = `<table><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
+    const blob = new Blob(['\ufeff' + table], { type: 'application/vnd.ms-excel;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `peces_${new Date().toISOString().split('T')[0]}.xls`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
 
   onDelete(p: Pez) {
     const ok = confirm(`¿Eliminar "${p.especie}"? Esta acción no se puede deshacer.`);

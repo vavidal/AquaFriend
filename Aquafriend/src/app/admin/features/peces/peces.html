@@ -5,6 +5,12 @@
       <p>Catálogo de especies registradas en el acuario.</p>
     </div>
     <div class="actions">
+      <button class="btn download" type="button" (click)="descargarExcel()">
+        <span class="icon" aria-hidden="true">
+          <img src="/icons/download.svg" alt="" />
+        </span>
+        <span>Descargar en archivo Excel</span>
+      </button>
       <button class="btn ghost" (click)="onOpenFilters()">Filtros</button>
       <button class="btn primary" (click)="goCreate()">Crear pez</button>
     </div>
