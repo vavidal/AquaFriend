@@ -4,16 +4,15 @@
       <h1>Gestión de Animales</h1>
       <p>Catálogo de especies terrestres registradas en el acuario.</p>
     </div>
-
     <div class="actions">
-      <button class="btn ghost" (click)="onOpenFilters()">
-        <span class="mi"></span>
-        Filtros
+      <button class="btn download" type="button" (click)="descargarExcel()">
+        <span class="icon" aria-hidden="true">
+          <img src="/icons/download.svg" alt="" />
+        </span>
+        <span>Descargar en archivo Excel</span>
       </button>
-      <button class="btn primary" (click)="onCreateAnimal()">
-        <span class="mi"></span>
-        Crear animal
-      </button>
+      <button class="btn ghost" (click)="onOpenFilters()">Filtros</button>
+      <button class="btn primary" (click)="goCreate()">Crear animal</button>
     </div>
   </header>
 
@@ -21,35 +20,52 @@
     <table class="table">
       <thead>
         <tr>
-          <th class="col-especie">Especie</th>
+          <th>Imagen de referencia</th>
+          <th>Especie</th>
           <th>Hábitat</th>
           <th>Alimentación</th>
           <th>Tamaño</th>
           <th>Registro</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let a of animalesFiltrados()">
-          <td class="col-especie">
-            <div class="animal-cell">
-              <div class="avatar" [style.backgroundImage]="'url(' + img(a) + ')'"></div>
-              <div class="info">
-                <div class="name">{{ a.especie }}</div>
-                <div class="sub" *ngIf="a.descripcion">{{ a.descripcion }}</div>
-              </div>
-            </div>
-          </td>
-          <td>{{ a.habitat || '—' }}</td>
-          <td>{{ a.alimentacion || '—' }}</td>
-          <td>{{ a.tamano_promedio || '—' }}</td>
-          <td>{{ a.fecha_registro | date: 'mediumDate' }}</td>
+        <tr *ngIf="cargando()">
+          <td colspan="7">Cargando...</td>
         </tr>
 
-        <tr class="empty" *ngIf="animalesFiltrados().length === 0">
-          <td colspan="5">
-            <span class="mi"></span>
-            No hay información disponible.
+        <tr *ngFor="let p of animales()">
+          <td>
+            <div class="avatar">
+              <img [src]="img(p)" alt="Imagen referencial" />
+            </div>
           </td>
+          <td>
+            <div class="name">{{ p.especie }}</div>
+            <div class="sub" *ngIf="p.descripcion">{{ p.descripcion }}</div>
+          </td>
+          <td>{{ p.habitat || '—' }}</td>
+          <td>{{ p.alimentacion || '—' }}</td>
+          <td>{{ p.tamano_promedio || '—' }}</td>
+          <td>{{ p.fecha_registro | date:'dd-MM-yyyy' }}</td>
+          <td>
+            <div class="row-actions">
+              <button class="icon edit" title="Editar" aria-label="Editar" (click)="goEdit(p.id)">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92 1.33l-.5-.5 9.9-9.9.5.5-9.9 9.9zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                </svg>
+              </button>
+              <button class="icon danger" title="Eliminar" aria-label="Eliminar" (click)="onDelete(p)">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                  <path d="M6 7h12v2H6V7zm2 3h8l-.8 9.6c-.07.82-.76 1.4-1.58 1.4H10.4c-.82 0-1.51-.58-1.58-1.4L8 10zm3-5h2l1 1h4v2H6V6h4l1-1z"/>
+                </svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="empty" *ngIf="!cargando() && animales().length === 0">
+          <td colspan="7">No hay información disponible.</td>
         </tr>
       </tbody>
     </table>

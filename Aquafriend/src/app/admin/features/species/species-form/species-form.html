@@ -57,7 +57,9 @@
 
     <footer class="actions">
       <button type="button" class="btn ghost" (click)="goBack()">Cancelar</button>
-      <button type="submit" class="btn primary" [disabled]="form.invalid || submitting()">Crear</button>
+      <button type="submit" class="btn primary" [disabled]="form.invalid || submitting()">
+        {{ isEdit ? 'Guardar cambios' : 'Crear' }}
+      </button>
     </footer>
   </main>
 </form>

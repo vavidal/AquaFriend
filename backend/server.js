@@ -27,7 +27,9 @@ const reservaRoutes = require('./routes/reservaRoutes');
 const authRoutes = require('./routes/authRoutes');
 const contactoRoutes = require('./routes/contactoRoutes');
 const usuarioRoutes = require('./routes/usuarioRoutes');
-const pecesRoutes = require('./routes/pecesRoutes'); // ✅ NUEVA RUTA agregada
+const pecesRoutes = require('./routes/pecesRoutes'); // ruta peces
+const animalesRoutes = require('./routes/animalesRoutes');
+const reptilesRoutes = require('./routes/reptilesRoutes');
 
 // ===============================
 //  Ruta de prueba (debe ir antes de las rutas modulares)
@@ -47,7 +49,9 @@ app.use('/api/reservas', reservaRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/contactos', contactoRoutes);
 app.use('/api/usuarios', usuarioRoutes);
-app.use('/api/peces', pecesRoutes); // ✅ NUEVA RUTA agregada
+app.use('/api/peces', pecesRoutes);
+app.use('/api/animales', animalesRoutes);
+app.use('/api/reptiles', reptilesRoutes);
 
 // ===============================
 // Manejo de rutas no encontradas
@@ -68,3 +72,4 @@ app.listen(PORT, () => {
   console.log(`🔗 Frontend esperado en http://localhost:4200`);
   console.log(`🐠 Endpoint peces: http://localhost:${PORT}/api/peces\n`);
 });
+

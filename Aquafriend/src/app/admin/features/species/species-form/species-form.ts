@@ -65,7 +65,16 @@ export class SpeciesForm {
   }
 
   goBack() {
-    this.router.navigate(['../'], { relativeTo: this.route });
+    this.router.navigate(this.resolveListRoute());
+  }
+
+  private resolveListRoute(): string[] {
+    switch (this.category) {
+      case 'animal': return ['/dashboard/animales'];
+      case 'reptil': return ['/dashboard/reptiles'];
+      case 'pez': return ['/dashboard/peces'];
+      default: return ['/dashboard'];
+    }
   }
 
   submit() {

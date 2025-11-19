@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export type Category = 'pez' | 'animal' | 'anfibio';
+export type Category = 'pez' | 'animal' | 'anfibio' | 'reptil';
 
 @Injectable({ providedIn: 'root' })
 export class SpeciesService {
@@ -13,6 +13,7 @@ export class SpeciesService {
     switch (cat) {
       case 'pez': return 'peces';
       case 'animal': return 'animales';
+      case 'reptil': return 'reptiles';
       case 'anfibio': return 'anfibios';
       default: return `${cat}s`;
     }
