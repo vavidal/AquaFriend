@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { VisorMarzipano } from './visor-marzipano';
 
 describe('VisorMarzipano', () => {
