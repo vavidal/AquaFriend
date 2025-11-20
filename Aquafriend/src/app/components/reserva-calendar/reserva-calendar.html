@@ -1,0 +1,55 @@
+<div class="calendar-wrapper">
+  <button type="button" class="calendar-input" (click)="togglePanel()">
+    <div class="label">
+      {{ value ? (value | date:'EEEE d \'de\' MMMM':'es-CL') : 'Selecciona una fecha' }}
+    </div>
+    <span class="chevron" [class.open]="open">⌄</span>
+  </button>
+  <div
+    class="calendar-panel"
+    *ngIf="open"
+    [ngStyle]="panelStyles"
+    [style.max-height.px]="panelMaxHeight"
+    [style.overflow]="panelMaxHeight ? 'auto' : 'visible'">
+    <div class="calendar" role="group">
+      <div class="calendar-nav">
+        <button type="button" class="nav-btn" (click)="prevMonth()" [disabled]="isPrevDisabled()">
+          <span aria-hidden="true">‹</span>
+          <span class="sr-only">Mes anterior</span>
+        </button>
+        <button type="button" class="nav-btn" (click)="nextMonth()">
+          <span aria-hidden="true">›</span>
+          <span class="sr-only">Mes siguiente</span>
+        </button>
+      </div>
+      <div class="month-grid">
+        <div class="month" *ngFor="let month of months">
+          <div class="month-head">{{ month.label | titlecase }}</div>
+          <div class="week-labels">
+            <span *ngFor="let d of ['dom','lun','mar','mié','jue','vie','sáb']">{{ d }}</span>
+          </div>
+          <div class="weeks">
+            <div class="week" *ngFor="let week of month.weeks">
+              <button
+                type="button"
+                class="day"
+            *ngFor="let day of week"
+            [class.outside]="!day.sameMonth"
+            [class.past]="day.isPast"
+            [class.busy]="day.busy"
+            [class.selected]="day.selected"
+            [class.available]="day.available"
+            (click)="select(day)">
+            {{ day.label }}
+          </button>
+        </div>
+      </div>
+        </div>
+      </div>
+      <div class="legend">
+        <span><i class="dot available"></i>Disponible</span>
+        <span><i class="dot busy"></i>Ocupado</span>
+      </div>
+    </div>
+  </div>
+</div>

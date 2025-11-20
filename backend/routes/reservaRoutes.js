@@ -11,6 +11,9 @@ router.get('/', reservaController.obtenerReservas);
 // Ruta para obtener programas educativos disponibles
 router.get('/programas', reservaController.obtenerProgramas);
 
+// Fechas ocupadas para el calendario público
+router.get('/fechas', reservaController.obtenerFechasOcupadas);
+
 // Actualizar estado de una reserva
 router.patch('/:id/estado', reservaController.actualizarEstadoReserva);
 

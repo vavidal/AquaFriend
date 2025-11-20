@@ -2,11 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ReservaService, ReservaRequest, ReservaResponse } from '../../services/reserva.service';
+import { ReservaCalendarComponent } from '../reserva-calendar/reserva-calendar';
 
 @Component({
   selector: 'app-pedagogical-reservations',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ReservaCalendarComponent],
   templateUrl: './pedagogical-reservations.html',
   styleUrls: ['./pedagogical-reservations.scss']
 })
@@ -35,6 +36,7 @@ export class PedagogicalReservationsComponent implements OnInit {
   ];
 
   private readonly reservaSvc = inject(ReservaService);
+  fechasOcupadas: string[] = [];
 
   constructor(private fb: FormBuilder) {
     this.reservaForm = this.fb.group({
@@ -52,7 +54,16 @@ export class PedagogicalReservationsComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.reservaSvc.obtenerFechasOcupadas().subscribe({
+      next: resp => {
+        this.fechasOcupadas = resp?.data ?? [];
+      },
+      error: err => {
+        console.warn('No se pudieron obtener las fechas ocupadas', err);
+      }
+    });
+  }
 
   onReservaSubmit(): void {
     this.successReserva = '';

@@ -259,8 +259,11 @@
                       <div class="col-12 col-md-6">
                         <label for="fecha" class="form-label">Fecha para
                           reservar</label>
-                        <input id="fecha" type="date" formControlName="fecha"
-                          class="form-control">
+                        <app-reserva-calendar
+                          id="fecha"
+                          formControlName="fecha"
+                          [busyDates]="fechasOcupadas">
+                        </app-reserva-calendar>
                       </div>
                       <div class="col-12 col-md-6">
                         <label for="personas" class="form-label">Cantidad de

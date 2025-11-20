@@ -47,6 +47,12 @@ export interface ReservasListResponse {
   error?: string;
 }
 
+export interface FechasOcupadasResponse {
+  success: boolean;
+  data: string[];
+  message?: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -68,6 +74,11 @@ export class ReservaService {
   // Obtener programas educativos disponibles
   obtenerProgramas(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/programas`);
+  }
+
+  // Obtener fechas ya ocupadas
+  obtenerFechasOcupadas(): Observable<FechasOcupadasResponse> {
+    return this.http.get<FechasOcupadasResponse>(`${this.apiUrl}/fechas`);
   }
 
   // Actualizar estado de una reserva

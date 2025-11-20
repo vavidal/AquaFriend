@@ -249,3 +249,28 @@ exports.eliminarReserva = async (req, res) => {
     res.status(500).json({ success: false, message: 'Error al eliminar reserva', error: error.message });
   }
 };
+
+// Obtener fechas ocupadas (para deshabilitar en el calendario público)
+exports.obtenerFechasOcupadas = async (_req, res) => {
+  try {
+    const [rows] = await db.query(`
+      SELECT fecha_reserva
+      FROM reserva
+      GROUP BY fecha_reserva
+      HAVING COUNT(*) >= 1
+      ORDER BY fecha_reserva ASC
+    `);
+    const fechas = rows.map(r => {
+      const d = new Date(r.fecha_reserva);
+      return d.toISOString().split('T')[0];
+    });
+    res.json({ success: true, data: fechas });
+  } catch (error) {
+    console.error('Error al obtener fechas ocupadas:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error al obtener fechas ocupadas',
+      error: error.message
+    });
+  }
+};
