@@ -1,0 +1,14 @@
+/* src/app/visor-marzipano/visor-marzipano.css */
+
+.btn-volver-360 {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Asegura que esté sobre el visor 360 */
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}

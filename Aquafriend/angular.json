@@ -25,6 +25,12 @@
             ],
             "styles": [
               "src/styles.css"
+            ],
+            "scripts":[
+              "public/assets/tour360/vendor/bowser.min.js",
+              "public/assets/tour360/vendor/marzipano.js",
+              "public/assets/tour360/vendor/screenfull.min.js",
+              "public/assets/tour360/data.js"
             ]
           },
           "configurations": {
