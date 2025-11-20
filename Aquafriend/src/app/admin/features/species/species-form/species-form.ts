@@ -4,6 +4,45 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SpeciesService, Category } from './species.service';
 
+type PlaceholderSet = {
+  especie: string;
+  habitat: string;
+  alimentacion: string;
+  tamano_promedio: string;
+  descripcion: string;
+};
+
+const PLACEHOLDERS: Record<Category, PlaceholderSet> = {
+  pez: {
+    especie: 'Ej. Trucha arcoíris',
+    habitat: 'Lago, río templado, estuario',
+    alimentacion: 'Omnívora, zooplanctívora...',
+    tamano_promedio: '25-35 cm',
+    descripcion: 'Breve descripción del pez...',
+  },
+  animal: {
+    especie: 'Ej. Nutria de río',
+    habitat: 'Bosque templado, humedales, ribera',
+    alimentacion: 'Carnívora, insectívora...',
+    tamano_promedio: '45-60 cm',
+    descripcion: 'Rasgos del animal y conducta...',
+  },
+  reptil: {
+    especie: 'Ej. Lagarto chileno',
+    habitat: 'Rocas soleadas, matorrales áridos',
+    alimentacion: 'Insectívora, carnívora...',
+    tamano_promedio: '30-40 cm',
+    descripcion: 'Comportamiento del reptil...',
+  },
+  anfibio: {
+    especie: 'Ej. Sapo de Atacama',
+    habitat: 'Humedales altoandinos, lagunas',
+    alimentacion: 'Insectívora, carnívora...',
+    tamano_promedio: '7-9 cm',
+    descripcion: 'Características del anfibio...',
+  },
+};
+
 @Component({
   selector: 'species-form',
   standalone: true,
@@ -18,6 +57,7 @@ export class SpeciesForm {
   private api = inject(SpeciesService);
 
   category = this.route.snapshot.data['category'] as Category;
+  placeholders = this.resolvePlaceholders();
   idParam = this.route.snapshot.paramMap.get('id');
   isEdit = !!this.idParam;
 
@@ -75,6 +115,10 @@ export class SpeciesForm {
       case 'pez': return ['/dashboard/peces'];
       default: return ['/dashboard'];
     }
+  }
+
+  private resolvePlaceholders(): PlaceholderSet {
+    return PLACEHOLDERS[this.category] ?? PLACEHOLDERS['pez'];
   }
 
   submit() {

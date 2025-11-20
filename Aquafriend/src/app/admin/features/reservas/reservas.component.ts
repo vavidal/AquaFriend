@@ -125,4 +125,56 @@ export class ReservasComponent implements OnInit {
   get totalEstudiantes(): number {
     return this.reservas.reduce((sum, r) => sum + (r.cantidad_estudiantes || 0), 0);
   }
+
+  descargarExcel() {
+    if (!this.reservas.length) {
+      alert('No hay reservas para exportar.');
+      return;
+    }
+
+    const escapeCell = (value?: string | number | null) =>
+      value === undefined || value === null
+        ? ''
+        : String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+    const header = [
+      'ID',
+      'Escuela',
+      'Programa',
+      'Fecha',
+      'Estudiantes',
+      'Total',
+      'Estado',
+      'Profesor',
+      'Teléfono'
+    ];
+
+    const thead = `<tr>${header.map(h => `<th>${h}</th>`).join('')}</tr>`;
+    const tbody = this.reservas.map(r => {
+      const fecha = r.fecha_reserva ? new Date(r.fecha_reserva).toLocaleDateString('es-CL') : '';
+      const profesor = [r.profesor_nombre, r.profesor_apellido].filter(Boolean).join(' ').trim();
+      return `<tr>
+        <td>${escapeCell(r.id_reserva)}</td>
+        <td>${escapeCell(r.escuela)}</td>
+        <td>${escapeCell(r.programa)}</td>
+        <td>${escapeCell(fecha)}</td>
+        <td>${escapeCell(r.cantidad_estudiantes)}</td>
+        <td>${escapeCell(this.formatMoneda(r.total_pagar))}</td>
+        <td>${escapeCell(r.estado)}</td>
+        <td>${escapeCell(profesor)}</td>
+        <td>${escapeCell(r.profesor_telefono)}</td>
+      </tr>`;
+    }).join('');
+
+    const table = `<table><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
+    const blob = new Blob(['\ufeff' + table], { type: 'application/vnd.ms-excel;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `reservas_${new Date().toISOString().split('T')[0]}.xls`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
 }

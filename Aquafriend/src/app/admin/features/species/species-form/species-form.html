@@ -23,21 +23,21 @@
         <div class="grid two">
           <div class="field">
             <label>Especie *</label>
-            <input type="text" formControlName="especie" placeholder="Ej. Trucha arcoíris" />
+            <input type="text" formControlName="especie" [placeholder]="placeholders.especie" />
           </div>
           <div class="field">
             <label>Hábitat</label>
-            <input type="text" formControlName="habitat" placeholder="Lago, Río, Mar…" />
+            <input type="text" formControlName="habitat" [placeholder]="placeholders.habitat" />
           </div>
         </div>
         <div class="grid two">
           <div class="field">
             <label>Alimentación</label>
-            <input type="text" formControlName="alimentacion" placeholder="Omnívora, Herbívora…" />
+            <input type="text" formControlName="alimentacion" [placeholder]="placeholders.alimentacion" />
           </div>
           <div class="field">
             <label>Tamaño promedio</label>
-            <input type="text" formControlName="tamano_promedio" placeholder="25–35 cm" />
+            <input type="text" formControlName="tamano_promedio" [placeholder]="placeholders.tamano_promedio" />
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@
       <div class="card-body">
         <div class="field">
           <label>Descripción</label>
-          <textarea rows="6" formControlName="descripcion" placeholder="Breve descripción…"></textarea>
+          <textarea rows="6" formControlName="descripcion" [placeholder]="placeholders.descripcion"></textarea>
         </div>
       </div>
     </div>
