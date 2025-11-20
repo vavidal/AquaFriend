@@ -117,3 +117,12 @@
     padding: 14px;
   }
 }
+
+.title-xl {
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: #c65311;
+}

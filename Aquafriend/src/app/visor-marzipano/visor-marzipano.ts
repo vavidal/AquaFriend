@@ -19,7 +19,7 @@ export class VisorMarzipanoComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private el: ElementRef) {}
 
   ngOnInit(): void {
-
+  
     this.route.paramMap.subscribe(params => {
       this.tourName = params.get('tourName');
       if (this.tourName) {
