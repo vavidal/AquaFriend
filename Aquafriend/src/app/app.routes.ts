@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { MainBody } from './components/main-body/main-body';
+// 1. IMPORTACIÓN NECESARIA: Componente para el visor 360
+import { VisorMarzipanoComponent } from './visor-marzipano/visor-marzipano';
 
 export const routes: Routes = [
   {
@@ -12,6 +14,12 @@ export const routes: Routes = [
     loadChildren: () =>
       import('../app/view360/view360.routes').then(m => m.VIEW360_ROUTES),
     data: { title: 'Recorrido 360° | Acuario Puyehue' }
+  },
+  // 2. RUTA PARAMÉTRICA FALTANTE: Carga el Visor 360
+  {
+    path: 'tour/:tourName',
+    component: VisorMarzipanoComponent,
+    data: { title: 'Visor 360° | Acuario Puyehue'}
   },
   {
     path: 'catalogo',

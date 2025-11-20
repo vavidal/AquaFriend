@@ -3,7 +3,7 @@
 import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-// ⚠️ Declaraciones para que TypeScript reconozca las variables globales
+
 declare const Marzipano: any;
 declare const APP_DATA: any; 
 
@@ -19,7 +19,7 @@ export class VisorMarzipanoComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private el: ElementRef) {}
 
   ngOnInit(): void {
-    // Obtiene el nombre del tour desde el parámetro de la URL
+
     this.route.paramMap.subscribe(params => {
       this.tourName = params.get('tourName');
       if (this.tourName) {
