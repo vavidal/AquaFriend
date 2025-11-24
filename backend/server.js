@@ -30,6 +30,7 @@ const usuarioRoutes = require('./routes/usuarioRoutes');
 const pecesRoutes = require('./routes/pecesRoutes'); // ruta peces
 const animalesRoutes = require('./routes/animalesRoutes');
 const reptilesRoutes = require('./routes/reptilesRoutes');
+const especiesRoutes = require('./routes/especiesRoutes');
 
 // ===============================
 //  Ruta de prueba (debe ir antes de las rutas modulares)
@@ -52,6 +53,7 @@ app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/peces', pecesRoutes);
 app.use('/api/animales', animalesRoutes);
 app.use('/api/reptiles', reptilesRoutes);
+app.use('/api/especies', especiesRoutes);
 
 // ===============================
 // Manejo de rutas no encontradas
