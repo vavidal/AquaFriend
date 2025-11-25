@@ -4,7 +4,7 @@ const especiesController = require('../controllers/pecesController');
 
 // middleware para setear el tipo de especie antes de llegar al controlador
 router.use((req, _res, next) => {
-  req.especieTipo = 'animal';
+  req.especieTipo = 'mamifero';
   next();
 });
 

@@ -31,14 +31,3 @@ DROP TABLE IF EXISTS `usuarios`;
 DROP TABLE IF EXISTS `roles`;
 
 SET FOREIGN_KEY_CHECKS = @old_fk_checks;
-
--- Tras ejecutar este archivo, importar backend/sql/aquafriends.sql
--- Si necesitas ajustar una base existente sin recrear todo el esquema,
--- puedes ejecutar estas sentencias para añadir la columna `tipo` a `especies`
--- (así se maneja peces/animales/reptiles en la misma tabla) y rellenar datos antiguos.
---ALTER TABLE `especies`
---  ADD COLUMN `tipo` VARCHAR(20) NOT NULL DEFAULT 'pez',
---  ADD KEY `idx_especies_tipo` (`tipo`);
---UPDATE `especies`
---  SET `tipo` = 'pez'
---  WHERE `tipo` = '' OR `tipo` IS NULL;

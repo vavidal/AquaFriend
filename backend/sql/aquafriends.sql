@@ -205,4 +205,41 @@ INSERT INTO `especies`
 (1,'pez','Salmon Coho','Salmo salar','Lago','Omnivoro','25 cm',NULL,'Salmon Coho de lago',NULL,'2025-10-11 16:16:49'),
 (2,'pez','Trucha','Oncorhynchus mykiss','Lago','Omnivoro','25 cm',NULL,'Pez Trucha',NULL,'2025-10-11 16:13:24');
 
+
+
+-- =========================================================
+-- 🔥 20 NUEVAS ESPECIES (peces, mamíferos, aves, reptiles)
+-- =========================================================
+
+INSERT INTO `especies`
+(`tipo`,`nombre_comun`,`nombre_cientifico`,`habitat`,`alimentacion`,`tamano_promedio`,`estado_conservacion`,`descripcion`)
+VALUES
+-- PECES
+('pez','Puye','Galaxias maculatus','Río y lago','Insectívoro','10-15 cm','Preocupación menor','Pez nativo muy común en el sur de Chile.'),
+('pez','Pejerrey chileno','Basilichthys australis','Lago y río','Omnívoro','15-20 cm','Preocupación menor','Presente en la cuenca del lago Puyehue.'),
+('pez','Bagre de río','Trichomycterus areolatus','Fondos de ríos','Bentófago','12-18 cm','Preocupación menor','Habita fondos rocosos.'),
+('pez','Perca trucha','Percichthys trucha','Lagos','Piscívoro','25-35 cm','Preocupación menor','Depredador de lagos sureños.'),
+('pez','Carpa común','Cyprinus carpio','Lagos y estanques','Omnívoro','30-40 cm','Introducida','Especie introducida resistente.'),
+('pez','Chorito de agua dulce','Diplodon chilensis','Ríos y lagos','Filtrador','4-6 cm','Vulnerable','Molusco filtrador de agua dulce.'),
+('pez','Alevín arcoíris','Oncorhynchus mykiss juvenil','Ríos fríos','Insectívoro','5-7 cm','Introducida','Etapa juvenil de trucha arcoíris.'),
+('pez','Carmelita de río','Trichomycterus chiltoni','Ríos','Insectívoro','8-10 cm','Preocupación menor','Especie nativa endémica de Chile.'),
+('pez','Tollo de agua dulce','Diplomystes nahuelbutaensis','Ríos profundos','Carnívoro','20-25 cm','Vulnerable','Un bagre nativo poco común.'),
+('pez','Chanchito','Australoheros facetus','Estanques','Omnívoro','12-15 cm','Introducida','Pez muy adaptable y territorial.'),
+
+-- MAMÍFEROS
+('mamifero','Oveja de campo','Ovis aries','Pradera','Herbívoro','60-80 cm','Doméstica','Usada en experiencias educativas.'),
+('mamifero','Vaca lechera','Bos taurus','Prado','Herbívoro','1.2-1.5 m','Doméstica','Ejemplar para educación agrícola.'),
+('mamifero','Cabra doméstica','Capra hircus','Pendiente y corral','Herbívoro','50-70 cm','Doméstica','Animal dócil para interacción.'),
+('mamifero','Conejo de granja','Oryctolagus cuniculus','Corral','Herbívoro','25-35 cm','Doméstica','Conejo usado en actividades infantiles.'),
+('mamifero','Cerdito','Sus scrofa domesticus','Granja','Omnívoro','40-70 cm','Doméstica','Muy usado en educación rural.'),
+
+-- AVES
+('ave','Gallina de campo','Gallus gallus domesticus','Gallinero','Omnívoro','30-40 cm','Doméstica','Aves para educación básica.'),
+('ave','Pato doméstico','Anas platyrhynchos domesticus','Estanque','Omnívoro','40-50 cm','Doméstica','Pato común en granjas.'),
+('ave','Ganso doméstico','Anser anser domesticus','Estanque y pradera','Herbívoro','60-90 cm','Doméstica','Ave grande de granja.'),
+
+-- REPTILES
+('reptil','Tortuga de orejas rojas','Trachemys scripta elegans','Estanque','Omnívoro','20-30 cm','Introducida','Reptil común en centros educativos.'),
+('reptil','Iguana verde','Iguana iguana','Selva y terrarios','Herbívoro','1.0-1.5 m','CITES II','Ejemplar educativo sobre reptiles.');
+
 COMMIT;

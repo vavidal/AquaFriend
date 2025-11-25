@@ -12,3 +12,146 @@
     <p class="hero__subtitle">Gestiona contenido, informacion del acuario .</p>
   </div>
 </section>
+
+<section class="species-dashboard">
+  <div class="dashboard__header">
+    <div>
+      <p class="eyebrow">Análisis de datos</p>
+      <h2>Monitoreo en vivo de especies</h2>
+      <p class="muted">
+        KPIs, tendencias y registros conectados directamente a la tabla <code>especies</code>.
+        <span *ngIf="lastUpdated() as updated">
+          Última actualización: {{ updated | date:'short' }}
+        </span>
+      </p>
+    </div>
+    <button class="refresh-btn" type="button" (click)="loadDashboard()" [disabled]="loading()">
+      <span *ngIf="!loading(); else refreshing">Actualizar</span>
+      <ng-template #refreshing>Actualizando...</ng-template>
+    </button>
+  </div>
+
+  <div *ngIf="error()" class="dashboard__alert">
+    {{ error() }}
+  </div>
+
+  <div class="kpi-grid" *ngIf="dashboard() as data">
+    <article class="kpi-card kpi-card--primary">
+      <span class="kpi-label">Total de especies</span>
+      <strong class="kpi-value">{{ data.totals.overall }}</strong>
+      <p class="kpi-desc">Registros activos en la base.</p>
+    </article>
+
+    <article class="kpi-card">
+      <span class="kpi-label">Últimos 30 días</span>
+      <strong class="kpi-value">{{ data.totals.recent30 }}</strong>
+      <p class="kpi-desc">Nuevas altas recientes.</p>
+    </article>
+
+    <article class="kpi-card">
+      <span class="kpi-label">Hábitats distintos</span>
+      <strong class="kpi-value">{{ data.totals.habitats }}</strong>
+      <p class="kpi-desc">Variedad de ecosistemas registrados.</p>
+    </article>
+
+    <article
+      class="kpi-card kpi-card--type"
+      *ngFor="let card of typeCards"
+      [style.--kpi-color]="card.color">
+      <span class="kpi-label">{{ card.label }}</span>
+      <strong class="kpi-value">{{ typeCount(card.key) }}</strong>
+      <p class="kpi-desc">Tipo {{ card.key }}</p>
+    </article>
+  </div>
+
+  <div class="charts-grid">
+    <article class="chart-card">
+      <header>
+        <h3>Distribución por tipo</h3>
+        <p>Relación entre peces, mamíferos, aves y reptiles.</p>
+      </header>
+      <ng-container *ngIf="pieChartData().labels?.length; else noTypeData">
+        <canvas
+          baseChart
+          [data]="pieChartData()"
+          [options]="pieChartOptions"
+          [type]="'doughnut'">
+        </canvas>
+      </ng-container>
+      <ng-template #noTypeData>
+        <p class="empty-state">Sin datos de tipos para graficar.</p>
+      </ng-template>
+    </article>
+
+    <article class="chart-card">
+      <header>
+        <h3>Especies por hábitat</h3>
+        <p>Comparativa de entornos registrados.</p>
+      </header>
+      <ng-container *ngIf="barChartData().labels?.length; else noHabitatData">
+        <canvas
+          baseChart
+          [data]="barChartData()"
+          [options]="barChartOptions"
+          [type]="'bar'">
+        </canvas>
+      </ng-container>
+      <ng-template #noHabitatData>
+        <p class="empty-state">Aún no hay hábitats asociados.</p>
+      </ng-template>
+    </article>
+
+    <article class="chart-card chart-card--wide">
+      <header>
+        <h3>Evolución mensual</h3>
+        <p>Altas de especies registradas por mes.</p>
+      </header>
+      <ng-container *ngIf="lineChartData().labels?.length; else noMonthlyData">
+        <canvas
+          baseChart
+          [data]="lineChartData()"
+          [options]="lineChartOptions"
+          [type]="'line'">
+        </canvas>
+      </ng-container>
+      <ng-template #noMonthlyData>
+        <p class="empty-state">No hay historial mensual para mostrar.</p>
+      </ng-template>
+    </article>
+  </div>
+
+  <article class="table-card" *ngIf="dashboard() as dataList">
+    <header>
+      <div>
+        <p class="eyebrow">Listado base</p>
+        <h3>Especies recientes</h3>
+      </div>
+    </header>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre común</th>
+            <th>Tipo</th>
+            <th>Hábitat</th>
+            <th>Conservación</th>
+            <th>Registro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let especie of dataList.list; trackBy: trackSpecies">
+            <td>{{ especie.nombre_comun }}</td>
+            <td>{{ mapTypeLabel(especie.tipo) }}</td>
+            <td>{{ especie.habitat }}</td>
+            <td>{{ especie.estado_conservacion }}</td>
+            <td>{{ especie.fecha_registro | date:'dd/MM/yyyy HH:mm' }}</td>
+          </tr>
+          <tr *ngIf="!dataList.list.length">
+            <td colspan="5" class="empty-state">No hay especies registradas.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+</section>
