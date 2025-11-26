@@ -1,7 +1,9 @@
 // src/app/visor-marzipano/visor-marzipano.component.ts
 
 import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { NgFor, NgIf } from '@angular/common';
+import { TourOption, TOUR_OPTIONS } from '../view360/tour-options';
 
 
 declare const Marzipano: any;
@@ -9,12 +11,16 @@ declare const APP_DATA: any;
 
 @Component({
   selector: 'app-visor-marzipano',
+  standalone: true,
+  imports: [RouterLink, NgIf, NgFor],
   templateUrl: './visor-marzipano.html',
   styleUrls: ['./visor-marzipano.css']
 })
 export class VisorMarzipanoComponent implements OnInit, OnDestroy {
   private viewer: any;
   private tourName: string | null = null;
+  protected currentTour?: TourOption;
+  protected readonly tours = TOUR_OPTIONS;
 
   constructor(private route: ActivatedRoute, private el: ElementRef) {}
 
@@ -22,6 +28,7 @@ export class VisorMarzipanoComponent implements OnInit, OnDestroy {
   
     this.route.paramMap.subscribe(params => {
       this.tourName = params.get('tourName');
+      this.currentTour = this.tours.find(t => t.id === this.tourName);
       if (this.tourName) {
         // Ejecutar la carga del tour
         setTimeout(() => this.loadTour(), 10); 

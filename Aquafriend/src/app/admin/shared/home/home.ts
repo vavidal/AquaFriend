@@ -351,12 +351,6 @@ export class Home implements OnInit, AfterViewInit {
 
   modules: ModuleCard[] = [
     {
-      title: 'Recorrido 360°',
-      description: 'Explora los hábitats del acuario en primera persona.',
-      traits: ['tour', 'inmersivo', 'multimedia'],
-      route: '/dashboard/recorrido-360',
-    },
-    {
       title: 'Especies',
       description: 'Fichas con fotos, audio y datos clave.',
       traits: ['peces', 'invertebrados', 'plantas'],

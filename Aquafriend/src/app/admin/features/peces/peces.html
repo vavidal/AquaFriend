@@ -41,8 +41,10 @@
             </div>
           </td>
           <td>
-            <div class="name">{{ p.especie }}</div>
-            <div class="sub" *ngIf="p.descripcion">{{ p.descripcion }}</div>
+            <div class="info">
+              <div class="name">{{ p.especie }}</div>
+              <div class="sub" *ngIf="p.descripcion">{{ p.descripcion }}</div>
+            </div>
           </td>
           <td>{{ p.habitat || '—' }}</td>
           <td>{{ p.alimentacion || '—' }}</td>

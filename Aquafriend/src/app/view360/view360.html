@@ -1,35 +1,75 @@
-<div class="hero-wrap" style="font-family:'Montserrat',sans-serif;" >
-      <h1 class="title-xl"> Vista 360° del Acuario</h1>
+<section class="view360-hero">
+  <div class="hero-content">
+    <p class="eyebrow">Recorrido virtual</p>
+    <h1>Explora el acuario en 360°</h1>
+    <p>
+      Selecciona una experiencia inmersiva y muévete libremente por los distintos ambientes del Parque
+      Acuario Puyehue. Ideal para planificar visitas, clases o simplemente volver a recorrer tus rincones favoritos.
+    </p>
+    <div class="hero-actions">
+      <a routerLink="/" class="btn ghost">Volver al inicio</a>
+      <a routerLink="/reservas" class="btn primary">Reservar una visita</a>
     </div>
-<div class="row g-3 mt-3">
-
-
-    <div class="col-12 col-md-6 d-grid">
-        <a [routerLink]="['/tour', 'interior_acuario']" class="btn btn-cta">Interior del Acuario</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-value">6</span>
+      <span class="stat-label">Recorridos 360°</span>
     </div>
-
-    <div class="col-12 col-md-6 d-grid">
-        <a [routerLink]="['/tour', 'mirador_tres_volcanes']" class="btn btn-cta">Mirador de los tres volcanes</a>
+    <div class="stat">
+      <span class="stat-value">+12</span>
+      <span class="stat-label">Puntos interactivos</span>
     </div>
-
-    <div class="col-12 col-md-6 d-grid">
-        <a [routerLink]="['/tour', 'granja']" class="btn btn-cta">Granja Educativa</a>
+    <div class="stat">
+      <span class="stat-value">Multimedia</span>
+      <span class="stat-label">Videos, fichas y audio</span>
     </div>
+  </div>
+</section>
 
-    <div class="col-12 col-md-6 d-grid">
-        <a [routerLink]="['/tour', 'entrada_acuario']" class="btn btn-cta">Vista Exterior del Acuario</a>
+<section class="tour-selection">
+  <header class="tour-selection__head">
+    <div>
+      <p class="eyebrow">Elige un ambiente</p>
+      <h2>Recorridos disponibles</h2>
+      <p class="muted">
+        Cada tarjeta te muestra una vista previa, duración sugerida y los puntos destacados del recorrido.
+        Haz clic para entrar al tour o visita el catálogo interactivo.
+      </p>
     </div>
-
-    <div class="col-12 col-md-6 d-grid">
-        <a [routerLink]="['/tour', 'exterior_granja']" class="btn btn-cta">Exterior de la Granja</a>
+    <div class="legend">
+      <span class="legend-pill">360°</span>
+      <span class="legend-pill legend-pill--catalogo">Recursos</span>
     </div>
+  </header>
 
-    <div class="col-12 col-md-6 d-grid">
-        <a [routerLink]="['/tour', 'vista_exterior']" class="btn btn-cta">Vista Exterior 2</a>
-    </div>
-    <div class="col-12 col-md-6 d-grid">
-  <a [routerLink]="['/catalogo']" class="btn btn-cta">Catálogo</a>
-</div>
-
-
-</div>
+  <div class="tour-grid">
+    <article
+      class="tour-card"
+      *ngFor="let tour of tours; trackBy: trackById"
+      [class.tour-card--catalog]="isCatalog(tour)"
+    >
+      <div class="tour-card__media" [style.backgroundImage]="'url(' + tour.image + ')'">
+        <span class="tour-card__badge">{{ tour.category }}</span>
+      </div>
+      <div class="tour-card__body">
+        <h3>{{ tour.title }}</h3>
+        <p>{{ tour.description }}</p>
+        <div class="tour-card__meta">
+          <span>{{ tour.duration }}</span>
+          <span *ngIf="!isCatalog(tour)">360° interactivo</span>
+          <span *ngIf="isCatalog(tour)">Recursos digitales</span>
+        </div>
+        <div class="tour-card__tags">
+          <span *ngFor="let tag of tour.highlights">{{ tag }}</span>
+        </div>
+      </div>
+      <a
+        class="tour-card__action"
+        [routerLink]="tour.route"
+      >
+        {{ isCatalog(tour) ? 'Ir al catálogo' : 'Iniciar recorrido' }}
+      </a>
+    </article>
+  </div>
+</section>

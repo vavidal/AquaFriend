@@ -1,6 +1,18 @@
-<div id="marzipano-viewer" style="width: 100%; height: 100vh;">
+<header class="tour-toolbar">
+  <div class="tour-toolbar__main">
+    <a routerLink="/view360" class="back-button">
+      <span aria-hidden="true">←</span>
+      <span>Volver a la selección</span>
+    </a>
+    <div class="tour-toolbar__info">
+      <p class="eyebrow">{{ currentTour?.category || 'Recorrido 360°' }}</p>
+      <h1>{{ currentTour?.title || 'Exploración virtual' }}</h1>
+      <p *ngIf="currentTour?.description">{{ currentTour?.description }}</p>
     </div>
+  </div>
+  <div class="tour-toolbar__tags" *ngIf="currentTour?.highlights?.length">
+    <span *ngFor="let tag of currentTour?.highlights">{{ tag }}</span>
+  </div>
+</header>
 
-<a routerLink="/view360" class="btn btn-primary btn-volver-360">
-    Volver a la selección
-</a>
+<div id="marzipano-viewer" class="tour-viewer"></div>
