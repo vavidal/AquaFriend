@@ -9,17 +9,163 @@
 
   <div class="hero__content">
     <h1 class="hero__title">Bienvenido a AquaFriend Panel</h1>
-    <p class="hero__subtitle">Gestiona contenido, informacion del acuario .</p>
+    <p class="hero__subtitle">Gestiona contenido, información operativa y la oferta educativa.</p>
   </div>
 </section>
 
-<section class="species-dashboard">
+<section class="dashboard-section reservations-dashboard">
+  <div class="dashboard__header">
+    <div>
+      <p class="eyebrow">Operación diaria</p>
+      <h2>Monitoreo de reservas educativas</h2>
+      <p class="muted">
+        Métricas conectadas a la tabla <code>reserva</code>.
+        <span *ngIf="reservationsUpdated() as updated">
+          Última actualización: {{ updated | date:'short' }}
+        </span>
+      </p>
+    </div>
+    <button class="refresh-btn" type="button" (click)="loadReservationsDashboard()" [disabled]="reservationsLoading()">
+      <span *ngIf="!reservationsLoading(); else refreshRes">Actualizar</span>
+      <ng-template #refreshRes>Cargando...</ng-template>
+    </button>
+  </div>
+
+  <div *ngIf="reservationsError()" class="dashboard__alert">
+    {{ reservationsError() }}
+  </div>
+
+  <div class="kpi-grid" *ngIf="reservationsDashboard() as reservas">
+    <article class="kpi-card kpi-card--primary">
+      <span class="kpi-label">Total de reservas</span>
+      <strong class="kpi-value">{{ reservas.totals.overall }}</strong>
+      <p class="kpi-desc">Registros acumulados.</p>
+    </article>
+    <article class="kpi-card">
+      <span class="kpi-label">Reservas del mes</span>
+      <strong class="kpi-value">{{ reservas.totals.currentMonth }}</strong>
+      <p class="kpi-desc">Según fecha reservada.</p>
+    </article>
+    <article class="kpi-card">
+      <span class="kpi-label">Facturado del mes</span>
+      <strong class="kpi-value">{{ reservas.totals.revenueMonth | currency:'CLP':'symbol':'1.0-0' }}</strong>
+      <p class="kpi-desc">Total estimado (bruto + IVA).</p>
+    </article>
+    <article class="kpi-card">
+      <span class="kpi-label">Estudiantes inscritos</span>
+      <strong class="kpi-value">{{ reservas.totals.studentsMonth }}</strong>
+      <p class="kpi-desc">Mes en curso.</p>
+    </article>
+  </div>
+
+  <div class="status-list" *ngIf="reservationsDashboard()?.status?.length">
+    <div class="status-pill" *ngFor="let estado of reservationsDashboard()?.status">
+      <span class="status-pill__label">{{ estado.estado }}</span>
+      <strong>{{ estado.total }}</strong>
+    </div>
+  </div>
+
+  <div class="charts-grid">
+    <article class="chart-card">
+      <header>
+        <h3>Reservas por estado</h3>
+        <p>Distribución de solicitudes activas.</p>
+      </header>
+      <ng-container *ngIf="reservationStatusChartData().labels?.length; else noStatusData">
+        <canvas
+          baseChart
+          [data]="reservationStatusChartData()"
+          [options]="pieChartOptions"
+          [type]="'doughnut'">
+        </canvas>
+      </ng-container>
+      <ng-template #noStatusData>
+        <p class="empty-state">Sin datos suficientes para graficar.</p>
+      </ng-template>
+    </article>
+
+    <article class="chart-card">
+      <header>
+        <h3>Reservas por mes</h3>
+        <p>Evolución de los últimos 6 meses.</p>
+      </header>
+      <ng-container *ngIf="reservationMonthlyChartData().labels?.length; else noMonthlyRes">
+        <canvas
+          baseChart
+          [data]="reservationMonthlyChartData()"
+          [options]="reservationMonthlyOptions"
+          [type]="'line'">
+        </canvas>
+      </ng-container>
+      <ng-template #noMonthlyRes>
+        <p class="empty-state">No existen registros recientes.</p>
+      </ng-template>
+    </article>
+
+    <article class="chart-card chart-card--wide">
+      <header>
+        <h3>Ingresos proyectados</h3>
+        <p>Total facturado por mes (CLP).</p>
+      </header>
+      <ng-container *ngIf="reservationRevenueChartData().labels?.length; else noRevenue">
+        <canvas
+          baseChart
+          [data]="reservationRevenueChartData()"
+          [options]="revenueChartOptions"
+          [type]="'bar'">
+        </canvas>
+      </ng-container>
+      <ng-template #noRevenue>
+        <p class="empty-state">Aún no hay información de ingresos.</p>
+      </ng-template>
+    </article>
+  </div>
+
+  <article class="table-card" *ngIf="reservationsDashboard() as reservasTable">
+    <header>
+      <div>
+        <p class="eyebrow">Seguimiento rápido</p>
+        <h3>Reservas recientes</h3>
+      </div>
+    </header>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Escuela</th>
+            <th>Programa</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Estudiantes</th>
+            <th>Monto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reserva of reservasTable.recent; trackBy: trackReservation">
+            <td>{{ reserva.escuela }}</td>
+            <td>{{ reserva.programa }}</td>
+            <td>{{ reserva.fecha_reserva | date:'dd/MM/yyyy' }}</td>
+            <td>{{ reserva.estado }}</td>
+            <td>{{ reserva.cantidad_estudiantes }}</td>
+            <td>{{ reserva.total_pagar | currency:'CLP':'symbol':'1.0-0' }}</td>
+          </tr>
+          <tr *ngIf="!reservasTable.recent.length">
+            <td colspan="6" class="empty-state">No hay movimientos recientes.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+</section>
+
+<section class="dashboard-section species-dashboard">
   <div class="dashboard__header">
     <div>
       <p class="eyebrow">Análisis de datos</p>
       <h2>Monitoreo en vivo de especies</h2>
       <p class="muted">
-        KPIs, tendencias y registros conectados directamente a la tabla <code>especies</code>.
+        KPIs conectadas directamente a la tabla <code>especies</code>.
         <span *ngIf="lastUpdated() as updated">
           Última actualización: {{ updated | date:'short' }}
         </span>
@@ -88,11 +234,11 @@
         <h3>Especies por hábitat</h3>
         <p>Comparativa de entornos registrados.</p>
       </header>
-      <ng-container *ngIf="barChartData().labels?.length; else noHabitatData">
+      <ng-container *ngIf="habitatChartData().labels?.length; else noHabitatData">
         <canvas
           baseChart
-          [data]="barChartData()"
-          [options]="barChartOptions"
+          [data]="habitatChartData()"
+          [options]="habitatChartOptions"
           [type]="'bar'">
         </canvas>
       </ng-container>
@@ -106,11 +252,11 @@
         <h3>Evolución mensual</h3>
         <p>Altas de especies registradas por mes.</p>
       </header>
-      <ng-container *ngIf="lineChartData().labels?.length; else noMonthlyData">
+      <ng-container *ngIf="speciesMonthlyChartData().labels?.length; else noMonthlyData">
         <canvas
           baseChart
-          [data]="lineChartData()"
-          [options]="lineChartOptions"
+          [data]="speciesMonthlyChartData()"
+          [options]="speciesMonthlyOptions"
           [type]="'line'">
         </canvas>
       </ng-container>

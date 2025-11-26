@@ -61,7 +61,7 @@
   max-width: 980px;
 }
 
-.species-dashboard {
+.dashboard-section {
   margin: 24px;
   padding: clamp(16px, 4vw, 32px);
   border-radius: 18px;
@@ -276,11 +276,38 @@ code {
 
 @media (max-width: 768px) {
   .hero,
-  .species-dashboard {
+  .dashboard-section {
     margin: 12px;
   }
 
   .chart-card--wide {
     grid-column: span 1;
+  }
+}
+.reservations-dashboard {
+  background: #f0f5ff;
+}
+
+.status-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.status-pill {
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 18px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-weight: 600;
+
+  .status-pill__label {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #475569;
+    letter-spacing: .8px;
   }
 }
