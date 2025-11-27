@@ -14,7 +14,7 @@ export const TOUR_OPTIONS: TourOption[] = [
   {
     id: 'interior_acuario',
     title: 'Interior del Acuario',
-    description: 'Ingreso principal, recepción interactiva y detalles del museo del mar.',
+    description: 'Vista del ingreso principal del acuario, con detalles de la recepción y elementos representativos del Acuario.',
     category: 'Interior',
     image: '/assets/img/_DSC5200.JPG',
     duration: '4 min recomendados',
@@ -25,7 +25,7 @@ export const TOUR_OPTIONS: TourOption[] = [
   {
     id: 'mirador_tres_volcanes',
     title: 'Mirador de los Tres Volcanes',
-    description: 'Un paseo panorámico con vista privilegiada a la cordillera.',
+    description: 'Vista panorámica del mirador con una perspectiva privilegiada hacia la cordillera y sus volcanes.',
     category: 'Exterior',
     image: '/assets/img/17.jpg',
     duration: '3 min recomendados',
@@ -36,7 +36,7 @@ export const TOUR_OPTIONS: TourOption[] = [
   {
     id: 'granja',
     title: 'Granja Educativa',
-    description: 'Zona interactiva para conocer la fauna que rodea al parque.',
+    description: 'Vista de la zona de granja donde se aprecia parte de la fauna que forma parte del parque.',
     category: 'Granja',
     image: '/assets/img/_DSC8311.JPG',
     duration: '4 min recomendados',
@@ -47,7 +47,7 @@ export const TOUR_OPTIONS: TourOption[] = [
   {
     id: 'entrada_acuario',
     title: 'Vista Exterior del Acuario',
-    description: 'Recorrido por los accesos principales y señalética del parque.',
+    description: 'Vista del acceso principal del acuario junto con elementos de señalética y ambientación exterior del parque.',
     category: 'Exterior',
     image: '/assets/img/5.jpg',
     duration: '2 min recomendados',

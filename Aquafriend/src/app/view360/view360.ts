@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { TOUR_OPTIONS, TourOption } from './tour-options';
 
 @Component({
   selector: 'app-view360',
   standalone: true,
-  imports: [RouterLink, NgFor],
+  imports: [RouterLink, CommonModule],
   templateUrl: './view360.html',
   styleUrls: ['./view360.css']
 })

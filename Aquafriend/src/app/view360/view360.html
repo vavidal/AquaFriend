@@ -1,6 +1,6 @@
 <section class="view360-hero">
   <div class="hero-content">
-    <p class="eyebrow">Recorrido virtual</p>
+    <p class="eyebrow" style="font-family:'Montserrat',sans-serif;"> Vistas de 360°</p>
     <h1>Explora el acuario en 360°</h1>
     <p>
       Selecciona una experiencia inmersiva y muévete libremente por los distintos ambientes del Parque
@@ -13,8 +13,8 @@
   </div>
   <div class="hero-stats">
     <div class="stat">
-      <span class="stat-value">6</span>
-      <span class="stat-label">Recorridos 360°</span>
+      <span class="stat-value" >6</span>
+      <span class="stat-label">Vistas 360°</span>
     </div>
     <div class="stat">
       <span class="stat-value">+12</span>
@@ -31,7 +31,7 @@
   <header class="tour-selection__head">
     <div>
       <p class="eyebrow">Elige un ambiente</p>
-      <h2>Recorridos disponibles</h2>
+      <h2>Vistas disponibles</h2>
       <p class="muted">
         Cada tarjeta te muestra una vista previa, duración sugerida y los puntos destacados del recorrido.
         Haz clic para entrar al tour o visita el catálogo interactivo.
@@ -68,7 +68,7 @@
         class="tour-card__action"
         [routerLink]="tour.route"
       >
-        {{ isCatalog(tour) ? 'Ir al catálogo' : 'Iniciar recorrido' }}
+        {{ isCatalog(tour) ? 'Ir al catálogo' : 'Visualizar Vista' }}
       </a>
     </article>
   </div>
