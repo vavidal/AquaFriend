@@ -11,6 +11,7 @@
 .fauna{
   background:linear-gradient(180deg,var(--cielo) 0%,#f8fbff 100%);
   padding:40px 0 64px;
+  font-family:'Montserrat',sans-serif;
 }
 
 .titulo{
@@ -19,6 +20,7 @@
   color:var(--azul);
   font-weight:900;
   font-size:clamp(28px,3vw,36px);
+  font-family:'Montserrat',sans-serif;
 }
 
 .acordeon{
@@ -37,8 +39,10 @@
   padding:14px 18px;
   box-shadow:0 12px 28px rgba(16,40,80,.08);
   cursor:pointer;
+  font-family:'Montserrat',sans-serif;
 }
 .cabecera__chip{
+  font-family:'Montserrat',sans-serif;
   width:10px;
   height:26px;
   border-radius:8px;
