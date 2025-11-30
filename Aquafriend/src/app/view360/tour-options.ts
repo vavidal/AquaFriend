@@ -80,11 +80,11 @@ export const TOUR_OPTIONS: TourOption[] = [
   {
     id: 'catalogo',
     title: 'Catálogo multimedia',
-    description: 'Consulta fichas de especies, audios y recursos descargables.',
+    description: 'Visualiza ficha educativas de nuestros aniamales,peces y aves.',
     category: 'Recursos',
     image: '/assets/img/_DSC8338.JPG',
     duration: 'Explora a tu ritmo',
-    highlights: ['Fichas', 'Audio', 'Descargas'],
+    highlights: ['Fichas'],
     route: '/catalogo',
     type: 'catalog',
   },
