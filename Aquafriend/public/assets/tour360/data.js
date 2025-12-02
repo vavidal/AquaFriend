@@ -130,7 +130,7 @@ var APP_DATA = {
     },
     {
       "id": "exterior_granja", // <-- ID CORREGIDO
-      "name": "Coto de pesca", // <-- Nombre legible
+      "name": "Exterior granja", // <-- Nombre legible
       "type": "cubemap",
       "faceSize": 2048,
       "levels": [
@@ -161,8 +161,8 @@ var APP_DATA = {
       "infoHotspots": []
     },
     {
-      "id": "vista_exterior", // <-- ID CORREGIDO
-      "name": "Acuario pequeño 2", // <-- Nombre legible
+      "id": "coto_pesca", // <-- ID CORREGIDO
+      "name": "Coto de Pesca", // <-- Nombre legible
       "type": "cubemap",
       "faceSize": 2048,
       "levels": [
