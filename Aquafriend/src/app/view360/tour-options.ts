@@ -46,7 +46,7 @@ export const TOUR_OPTIONS: TourOption[] = [
   },
   {
     id: 'entrada_acuario',
-    title: 'Entrada hacia el Acuario',
+    title: 'Entrada al Acuario',
     description: 'Vista del acceso principal hacia el acuario ',
     category: 'Exterior',
     image: '/assets/img/entrada_acuario.jpg',
@@ -67,29 +67,6 @@ export const TOUR_OPTIONS: TourOption[] = [
     type: 'tour',
   },
 
-  {
-    id: 'coto_pesca',
-    title: 'Coto de Pesca',
-    description: 'Una vista al coto de pesca, donde pueden hacer pesca deportiva',
-    category: 'Exterior',
-    image: '/assets/img/coto_pesca_perspectiva.JPG',
-    duration: '2 min recomendados',
-    highlights: ['Detalles', 'Señalética', 'Recorridos'],
-    route: '/tour/vista_exterior',
-    type: 'tour',
-  },
-  
-  {
-    id: 'coto_pesca',
-    title: 'Coto de Pesca',
-    description: 'Una vista al coto de pesca, donde pueden hacer pesca deportiva',
-    category: 'Exterior',
-    image: '/assets/img/coto_pesca_perspectiva.JPG',
-    duration: '2 min recomendados',
-    highlights: ['Detalles', 'Señalética', 'Recorridos'],
-    route: '/tour/vista_exterior',
-    type: 'tour',
-  },
   
   {
     id: 'catalogo',

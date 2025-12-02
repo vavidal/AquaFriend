@@ -3,8 +3,8 @@ var APP_DATA = {
     {
       "id": "interior_acuario", // <-- ID CORREGIDO
       "name": "Interior del Acuario", // <-- Nombre legible
-      "type": "cubemap", // Necesario para la carga
-      "faceSize": 2048, // Mantiene el tamaño original de la escena 0
+      "type": "cubemap", // Necesario para la carga
+      "faceSize": 2048, // Mantiene el tamaño original de la escena 0
       "levels": [
         {
           "tileSize": 256,
@@ -35,8 +35,8 @@ var APP_DATA = {
     {
       "id": "mirador_tres_volcanes", // <-- ID CORREGIDO
       "name": "Mirador de los tres volcanes", // <-- Nombre legible
-      "type": "cubemap",
-      "faceSize": 2048,
+      "type": "cubemap",
+      "faceSize": 2048,
       "levels": [
         {
           "tileSize": 256,
@@ -67,8 +67,8 @@ var APP_DATA = {
     {
       "id": "granja", // <-- ID CORREGIDO
       "name": "Granja Educativa", // <-- Nombre legible
-      "type": "cubemap",
-      "faceSize": 2048,
+      "type": "cubemap",
+      "faceSize": 2048,
       "levels": [
         {
           "tileSize": 256,
@@ -99,8 +99,8 @@ var APP_DATA = {
     {
       "id": "entrada_acuario", // <-- ID CORREGIDO
       "name": "Acuario pequeño 1", // <-- Nombre legible
-      "type": "cubemap",
-      "faceSize": 2048,
+      "type": "cubemap",
+      "faceSize": 2048,
       "levels": [
         {
           "tileSize": 256,
@@ -131,8 +131,8 @@ var APP_DATA = {
     {
       "id": "exterior_granja", // <-- ID CORREGIDO
       "name": "Exterior granja", // <-- Nombre legible
-      "type": "cubemap",
-      "faceSize": 2048,
+      "type": "cubemap",
+      "faceSize": 2048,
       "levels": [
         {
           "tileSize": 256,
@@ -161,16 +161,13 @@ var APP_DATA = {
       "infoHotspots": []
     },
     {
-      "id": "coto_pesca", // <-- ID CORREGIDO
-      "name": "Coto de Pesca", // <-- Nombre legible
-      "type": "cubemap",
-      "faceSize": 2048,
+      "id": "coto_pesca", // <-- ESCENA CORREGIDA
+      "name": "Coto de Pesca",
+      "type": "cubemap",
+      "faceSize": 2048,
       "levels": [
-        {
-          "tileSize": 256,
-          "size": 256,
-          "fallbackOnly": true
-        },
+        // Se eliminó el Nivel 0 (fallbackOnly) porque la carpeta 0/ no existe.
+        // La carga comenzará desde la carpeta 1/ (size: 512)
         {
           "tileSize": 512,
           "size": 512
@@ -195,8 +192,8 @@ var APP_DATA = {
     {
       "id": "acuario_pequeno_3", // Le di un nombre descriptivo al último ID que quedaba
       "name": "Acuario pequeño 3",
-      "type": "cubemap",
-      "faceSize": 2048,
+      "type": "cubemap",
+      "faceSize": 2048,
       "levels": [
         {
           "tileSize": 256,
