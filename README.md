@@ -13,6 +13,7 @@ Además, la enseñanza de temáticas ambientales aún presenta barreras de acces
 **3. ¿QUÉ OFRECE LA PLATAFORMA AQUAFRIEND?**
 
 **Zonas disponibles en la experiencia 360°**
+
 - Recepcion Acuario
 - Entrada al acuario
 - Mirador de los 3 volcanes 
@@ -20,11 +21,12 @@ Además, la enseñanza de temáticas ambientales aún presenta barreras de acces
 - Exterior de la Granja
 
 **Características principales**
-Vistas en 360° desde navegador web
-Información contextual integrada
-Diseño responsive (compatible con PC, tablet y móvil)
-Panel administrativo para gestionar imágenes, contenido y usuarios
-Formulario de contacto y agenda para establecimientos educacionales
+
+- Vistas en 360° desde navegador web
+- Información contextual integrada
+- Diseño responsive (compatible con PC, tablet y móvil)
+- Panel administrativo para gestionar imágenes, contenido y usuarios
+- Formulario de contacto y agenda para establecimientos educacionales
 
 **4. REQUISITOS PARA EJECUTAR LA PLATAFORMA**
    
