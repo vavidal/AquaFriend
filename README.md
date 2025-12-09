@@ -1,14 +1,17 @@
 INTRODUCCIÓN A ESTE PROYECTO
+
 Aquafriend un proyecto académico de innovación digital el cual busca conjugar tecnología web y accesibilidad mediante el desarrollo de un sistema interactivo e inmersivo para el Acuario de Puyehue y su Granja Educativa.
 
 Este sistema permitirá a estudiantes, familias, docentes y público general visualizar los espacios del acuario y la granja en 360°, además de eso acceder a información e historia del Acuario Puyehue. También se le permitirá a los diferentes colegios que quieran reservar una visita, poder contactarse directamente mediante un formulario a la coordinación del acuario.
 
 ¿QUÉ PROBLEMA BUSCAMOS RESOLVER?
+
 Hoy en día, muchas personas, especialmente niños, niñas y adultos mayores, no pueden acceder físicamente a espacios como acuarios o centros educativos rurales debido a la distancia geográfica, recursos económicos limitados o condiciones de discapacidad.
 
 Además, la enseñanza de temáticas ambientales aún presenta barreras de acceso y métodos poco interactivos, lo que dificulta su comprensión y motivación por parte de los estudiantes.
 
 ¿QUÉ OFRECE LA PLATAFORMA AQUAFRIEND?
+
 Zonas disponibles en la experiencia 360°
 Recepcion Acuario
 Entrada al acuario
@@ -23,7 +26,8 @@ Diseño responsive (compatible con PC, tablet y móvil)
 Panel administrativo para gestionar imágenes, contenido y usuarios
 Formulario de contacto y agenda para establecimientos educacionales
 
-4. REQUISITOS PARA EJECUTAR LA PLATAFORMA 
+4. REQUISITOS PARA EJECUTAR LA PLATAFORMA
+   
 Requisitos mínimos
 Node.js 18+
 Angular 17+ (Frontend)
@@ -38,6 +42,7 @@ GitHub para sincronizar el repositorio
 
 
 5. ESTRUCTURA DEL PROYECTO
+   
 A continuación se explica la estructura del Frontend y Backend:
 
 Frontend – Aplicación Angular
