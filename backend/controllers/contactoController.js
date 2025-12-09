@@ -165,3 +165,47 @@ exports.obtenerContactosNoLeidos = async (req, res) => {
     });
   }
 };
+
+// ================================================================
+// ELIMINAR CONTACTO
+// ================================================================
+exports.eliminarContacto = async (req, res) => {
+  const rawId =
+    (req.params && req.params.id) ??
+    (req.body && (req.body.id ?? req.body.id_contacto));
+  const id = Number(rawId);
+
+  if (!Number.isInteger(id) || id <= 0) {
+    return res.status(400).json({
+      success: false,
+      message: 'ID de contacto invalido',
+    });
+  }
+
+  try {
+    const [result] = await db.query(
+      'DELETE FROM contactos WHERE id_contacto = ?',
+      [id]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Contacto no encontrado'
+      });
+    }
+
+    res.json({
+      success: true,
+      message: 'Contacto eliminado correctamente'
+    });
+
+  } catch (error) {
+    console.error('ƒ?O Error al eliminar contacto:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error al eliminar el contacto',
+      error: error.message
+    });
+  }
+};

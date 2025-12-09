@@ -11,10 +11,10 @@
       Todos <span class="pill">{{ contactos.length }}</span>
     </button>
     <button class="tab warn" [class.active]="filtro==='no-leidos'" (click)="cambiarFiltro('no-leidos')">
-      No leídos <span class="pill">{{ contactosNoLeidos.length }}</span>
+      No leidos <span class="pill">{{ contactosNoLeidos.length }}</span>
     </button>
     <button class="tab ok" [class.active]="filtro==='leidos'" (click)="cambiarFiltro('leidos')">
-      Leídos <span class="pill">{{ contactosLeidos.length }}</span>
+      Leidos <span class="pill">{{ contactosLeidos.length }}</span>
     </button>
   </div>
 
@@ -29,7 +29,7 @@
           <th>ID</th>
           <th>NOMBRE</th>
           <th>EMAIL</th>
-          <th>TELÉFONO</th>
+          <th>TELEFONO</th>
           <th>FECHA</th>
           <th>ESTADO</th>
           <th class="acciones">ACCIONES</th>
@@ -41,40 +41,42 @@
           <td>
             <div class="title">{{ c.nombre }}</div>
             <div class="muted" *ngIf="c.mensaje as m" [title]="m">
-              {{ m | slice:0:60 }}<ng-container *ngIf="m.length>60">…</ng-container>
+              {{ m | slice:0:60 }}<ng-container *ngIf="m.length>60">...</ng-container>
             </div>
           </td>
           <td><a [href]="'mailto:'+c.email">{{ c.email }}</a></td>
           <td>
             <a *ngIf="c.telefono" [href]="'tel:'+c.telefono">{{ c.telefono }}</a>
-            <span *ngIf="!c.telefono" class="muted">—</span>
+            <span *ngIf="!c.telefono" class="muted">--</span>
           </td>
           <td>{{ c.fecha_contacto | date:'dd/MM/yyyy HH:mm' }}</td>
           <td>
             <span class="badge" [class.badge-ok]="c.leido" [class.badge-warn]="!c.leido">
-              {{ c.leido ? 'Leído' : 'Nuevo' }}
+              {{ c.leido ? 'Leido' : 'Nuevo' }}
             </span>
           </td>
           <td class="acciones">
-            <button class="icon" title="Ver detalle" (click)="verDetalle(c)">
+            <button class="icon" type="button" title="Ver detalle" (click)="verDetalle(c)">
               <i class="bi bi-eye"></i>
             </button>
-            <button class="icon" title="Marcar leído" (click)="marcarComoLeido(c.id_contacto)" [disabled]="c.leido">
+            <button
+              class="icon"
+              type="button"
+              title="Marcar como leido"
+              (click)="marcarComoLeido(c.id_contacto)"
+              [disabled]="c.leido"
+            >
               <i class="bi bi-check2-circle"></i>
             </button>
-            <button class="icon danger" title="Eliminar" (click)="eliminar(c)">
+            <button class="icon danger" type="button" title="Eliminar" (click)="eliminar(c)">
               <i class="bi bi-trash"></i>
             </button>
-            <label class="switch" title="Activo">
-              <input type="checkbox" [checked]="c.leido" (change)="marcarComoLeido(c.id_contacto)" />
-              <span class="slider"></span>
-            </label>
           </td>
         </tr>
 
         <tr *ngIf="!contactosFiltrados.length">
           <td colspan="7" class="empty">
-            No hay contactos {{ filtro==='no-leidos' ? 'pendientes' : filtro==='leidos' ? 'leídos' : '' }}.
+            No hay contactos {{ filtro==='no-leidos' ? 'pendientes' : filtro==='leidos' ? 'leidos' : '' }}.
           </td>
         </tr>
       </tbody>
@@ -82,4 +84,64 @@
   </div>
 
   <div *ngIf="error" class="alerta">{{ error }}</div>
+
+  <ng-container *ngIf="detalleAbierto && selected as detalle">
+    <div class="detalle-overlay">
+      <div class="detalle-backdrop" (click)="cerrarDetalle()"></div>
+      <div class="detalle-panel">
+        <div class="detalle-header">
+          <div>
+            <p class="muted">Contacto #{{ detalle.id_contacto }}</p>
+            <h2>{{ detalle.nombre }}</h2>
+            <p class="muted">Recibido el {{ detalle.fecha_contacto | date:'dd/MM/yyyy HH:mm' }}</p>
+          </div>
+          <button class="close" type="button" (click)="cerrarDetalle()" aria-label="Cerrar detalle">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+
+        <div class="detalle-body">
+          <div class="detalle-row">
+            <span class="label">Email</span>
+            <a class="value link" [href]="'mailto:'+detalle.email">{{ detalle.email }}</a>
+          </div>
+          <div class="detalle-row">
+            <span class="label">Telefono</span>
+            <ng-container *ngIf="detalle.telefono; else detalleSinTelefono">
+              <a class="value link" [href]="'tel:'+detalle.telefono">{{ detalle.telefono }}</a>
+            </ng-container>
+            <ng-template #detalleSinTelefono>
+              <span class="value muted">Sin telefono</span>
+            </ng-template>
+          </div>
+          <div class="detalle-row">
+            <span class="label">Estado</span>
+            <span class="value" [class.ok]="detalle.leido">
+              {{ detalle.leido ? 'Leido' : 'Nuevo' }}
+            </span>
+          </div>
+          <div class="detalle-row message">
+            <span class="label">Mensaje</span>
+            <div class="detalle-message" *ngIf="detalle.mensaje; else detalleSinMensaje">
+              {{ detalle.mensaje }}
+            </div>
+            <ng-template #detalleSinMensaje>
+              <div class="detalle-message muted">Sin mensaje</div>
+            </ng-template>
+          </div>
+        </div>
+
+        <div class="detalle-acciones">
+          <button class="btn" type="button" (click)="marcarComoLeido(detalle.id_contacto)" [disabled]="detalle.leido">
+            <i class="bi bi-check2-circle"></i>
+            <span>{{ detalle.leido ? 'Marcado como leido' : 'Marcar como leido' }}</span>
+          </button>
+          <button class="btn danger" type="button" (click)="eliminar(detalle)">
+            <i class="bi bi-trash"></i>
+            <span>Eliminar contacto</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 </section>

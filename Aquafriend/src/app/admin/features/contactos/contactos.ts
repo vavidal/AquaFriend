@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { catchError, throwError } from 'rxjs';
 
 interface Contacto {
   id_contacto: number;
@@ -53,7 +54,7 @@ export class ContactosComponent implements OnInit {
       },
       error: () => {
         this.loading = false;
-        this.error = 'Error al cargar los contactos. Verifica que el servidor esté corriendo.';
+        this.error = 'Error al cargar los contactos. Verifica que el servidor esta corriendo.';
       },
     });
   }
@@ -63,9 +64,12 @@ export class ContactosComponent implements OnInit {
       next: () => {
         const c = this.contactos.find((x) => x.id_contacto === id);
         if (c) c.leido = true;
+        if (this.selected?.id_contacto === id) {
+          this.selected = { ...this.selected, leido: true };
+        }
       },
       error: () => {
-        this.error = 'Error al marcar el contacto como leído.';
+        this.error = 'Error al marcar el contacto como leido.';
       },
     });
   }
@@ -82,13 +86,14 @@ export class ContactosComponent implements OnInit {
 
   eliminar(c: Contacto): void {
     const id = c.id_contacto;
-    this.http.delete(`${this.apiUrl}/${id}`).subscribe({
+    this.error = '';
+    this.eliminarContactoRequest(id).subscribe({
       next: () => {
         this.contactos = this.contactos.filter((x) => x.id_contacto !== id);
         if (this.selected?.id_contacto === id) this.cerrarDetalle();
       },
-      error: () => {
-        this.error = 'Error al eliminar el contacto.';
+      error: (err) => {
+        this.error = err?.error?.message || 'Error al eliminar el contacto.';
       },
     });
   }
@@ -117,5 +122,26 @@ export class ContactosComponent implements OnInit {
 
   trackById(_: number, c: Contacto): number {
     return c.id_contacto;
+  }
+
+  private eliminarContactoRequest(id: number) {
+    return this.http.delete(`${this.apiUrl}/${id}`).pipe(
+      catchError((error) => {
+        if (error?.status === 404 || error?.status === 405) {
+          return this.http.post(`${this.apiUrl}/${id}/eliminar`, {}).pipe(
+            catchError((fallbackError) => {
+              if (fallbackError?.status === 404 || fallbackError?.status === 405) {
+                return this.http.post(`${this.apiUrl}/eliminar`, {
+                  id_contacto: id,
+                  id,
+                });
+              }
+              return throwError(() => fallbackError);
+            })
+          );
+        }
+        return throwError(() => error);
+      })
+    );
   }
 }
